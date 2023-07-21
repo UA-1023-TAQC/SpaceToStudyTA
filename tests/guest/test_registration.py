@@ -1,6 +1,9 @@
+import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+
+from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 
 
 class RegistrationTestCase(unittest.TestCase):
@@ -8,6 +11,7 @@ class RegistrationTestCase(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
         self.browser.implicitly_wait(1)
+        self.browser.maximize_window()
         self.addCleanup(self.browser.quit)
         self.browser.get('https://s2s-front-stage.azurewebsites.net/')
 
@@ -26,6 +30,16 @@ class RegistrationTestCase(unittest.TestCase):
         sign_up_as_a_student_modal = self.browser.find_element(By.XPATH, '/html/body/div[2]/div[3]/div/div')
         self.assertTrue(sign_up_as_a_student_modal.is_enabled())
         self.assertIn('Sign up as a student', sign_up_as_a_student_modal.text)
+
+    def test_open_login_modal(self):
+        login_btn = self.browser.find_element(By.XPATH, '//*[@id="root"]/div/header/div/div/button[3]')
+        login_btn.click()
+        time.sleep(2)
+        login_modal = LoginModal(self.browser)
+        email = login_modal.get_email_input()
+        email.set_text("test+1@test.com")
+        self.assertEquals(email.get_label_text(), "Email *")
+        # self.assertEquals(email.get_error_message(), "Email should be of the following format: “local-part@domain.com")
 
 
 if __name__ == '__main__':
