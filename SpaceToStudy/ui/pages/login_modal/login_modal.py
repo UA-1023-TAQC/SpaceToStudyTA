@@ -5,12 +5,12 @@ from SpaceToStudy.ui.pages.base_page import BasePage
 
 EMAIL_INPUT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[1]")
 
-
 class LoginModal(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
         self._email_input = None
+
 
     def get_img(self):
         pass
