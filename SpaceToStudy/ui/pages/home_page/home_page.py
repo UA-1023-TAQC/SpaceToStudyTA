@@ -9,7 +9,7 @@ SEARCH_INPUT = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[2]")
 CATEGORIES_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/button")
 FIND_TUTOR_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[3]/a")
 QUESTIONS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[2]")
-CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/div")
+CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 
 
 class HomePage(BasePage):
@@ -25,13 +25,11 @@ class HomePage(BasePage):
         self._search_tutor = SearchTutor(noda)
         return self._search_tutor
 
-
     def get_categories_btn(self):
         return self.driver.find_element(*CATEGORIES_BTN)
 
     def click_categories_btn(self):
         self.get_categories_btn().click()
-
 
     def get_find_tutor_btn(self):
         return self.driver.find_element(*FIND_TUTOR_BTN)
@@ -43,7 +41,6 @@ class HomePage(BasePage):
         noda = self.driver.find_element(*QUESTIONS)
         self._questions_block = AskedQuestions(noda)
         return self._questions_block
-
 
     def get_blocks_popular_categories(self):
         noda = self.driver.find_element(*CATEGORIES_BLOCK)
