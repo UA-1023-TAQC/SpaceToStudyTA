@@ -7,11 +7,11 @@ class SearchTutor:
     def __init__(self, noda):
         self.noda = noda
 
-    def set_text(self, text):
-        self.get_input().send_keys(text)
-
     def get_input(self):
         return self.noda.find_element(*INPUT)
+
+    def set_text(self, text):
+        self.get_input().send_keys(text)
 
     def find_tutor_btn(self):
         return self.noda.find_element(*FIND_TUTOR_BTN)
