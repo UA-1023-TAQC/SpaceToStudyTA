@@ -2,12 +2,14 @@ from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.elements.my_profile_elements.profile_info import ProfileInfo
 from SpaceToStudy.ui.elements.my_profile_elements.profile_completeness import ProfileCompleteness
+from SpaceToStudy.ui.elements.my_profile_elements.student_reviews import StudentReviews
 from SpaceToStudy.ui.elements.my_profile_elements.video_presentation import VideoPresentation
 from SpaceToStudy.ui.pages.base_page import BasePage
 
 PROFILE_INFO = (By.XPATH, "/html/body/div/div/div[2]/div[2]")
 PROFILE_COMPLETENESS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[2]")
 VIDEO_PRESENTATION = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[3]")
+STUDENT_REVIEW = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]")
 
 class MyProfile(BasePage):
 
@@ -39,3 +41,7 @@ class MyProfile(BasePage):
         self.VideoPresentation = VideoPresentation(noda)
         return self.VideoPresentation
 
+    def get_student_review(self):
+        noda = self.driver.find_element(*STUDENT_REVIEW)
+        self.StudentReviews = StudentReviews(noda)
+        return self.StudentReviews
