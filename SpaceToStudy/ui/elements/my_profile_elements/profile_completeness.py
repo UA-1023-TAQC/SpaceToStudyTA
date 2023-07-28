@@ -5,8 +5,6 @@ from typing import List
 
 from selenium.webdriver.remote.webelement import WebElement
 
-#/html/body/div/div/div[2]/div[2]/div[2]
-#/html/body/div/div/div[2]/div[2]/div[2]/div[2]/div/div/div/div
 TITLE_AND_DESCRIPTION_CONTAINER = (By.XPATH, "./div[1]/a")
 SHOW_HIDE_BUTTON = (By.XPATH, "./div[1]/div/div[1]/button")
 COMPLETENESS_PERCENT = (By.XPATH, "./div[1]/div/div[2]/div[1]")
