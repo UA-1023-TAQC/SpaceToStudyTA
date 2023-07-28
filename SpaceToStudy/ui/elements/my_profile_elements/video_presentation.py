@@ -1,8 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-#/html/body/div/div/div[2]/div[2]/div[3]
-#/html/body/div/div/div[2]/div[2]/div[3]
 TITLE = (By.XPATH, "./p")
 TITLE_BAR = (By.XPATH, "./div/img")
 VIDEO = (By.XPATH, "./div/div/img")
