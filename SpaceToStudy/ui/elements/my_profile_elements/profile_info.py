@@ -54,6 +54,7 @@ class ProfileInfo:
     def click_edit_profile_button(self):
         edit_profile_button = self.noda.find_element(*EDIT_PROFILE_BUTTON)
         edit_profile_button.click()
+        time.sleep(1)
 
     def get_edit_profile_button(self) -> WebElement:
         return self.noda.find_element(*EDIT_PROFILE_BUTTON)
