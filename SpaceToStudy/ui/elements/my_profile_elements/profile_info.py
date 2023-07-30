@@ -19,7 +19,7 @@ class ProfileInfo:
         self.noda = noda
 
     def get_avatar(self):
-        return self.noda.find_element(*AVATAR).find_element(By.XPATH, "//*[local-name()='svg']")
+        return self.noda.find_element(*AVATAR).find_element(By.XPATH, ".//*[local-name()='svg']")
 
     def get_name_surname_text(self) -> str:
         return self.noda.find_element(*NAME_SURNAME).text
@@ -34,13 +34,13 @@ class ProfileInfo:
         return self.noda.find_element(*NATIVE_LANGUAGE_CONTAINER).text
 
     def get_native_language_icon(self) -> WebElement:
-        return self.noda.find_element(*NATIVE_LANGUAGE_CONTAINER).find_element(By.XPATH, "//*[local-name()='svg']")
+        return self.noda.find_element(*NATIVE_LANGUAGE_CONTAINER).find_element(By.XPATH, ".//*[local-name()='svg']")
 
     def get_profile_rating_text(self) -> str:
         return self.noda.find_element(*PROFILE_RATING_CONTAINER).text
 
     def get_profile_rating_icon(self) -> WebElement:
-        return self.noda.find_element(*PROFILE_RATING_CONTAINER).find_element(By.XPATH, "//*[local-name()='svg']")
+        return self.noda.find_element(*PROFILE_RATING_CONTAINER).find_element(By.XPATH, ".//*[local-name()='svg']")
 
     def get_review_counter_text(self) -> str:
         return self.noda.find_element(*REVIEW_COUNTER).text
@@ -49,7 +49,7 @@ class ProfileInfo:
         return self.noda.find_element(*CITY_COUNTRY_BASED_CONTAINER).text
 
     def get_city_country_based_icon(self) -> str:
-        return self.noda.find_element(*CITY_COUNTRY_BASED_CONTAINER).find_element(By.XPATH, "//*[local-name()='svg']")
+        return self.noda.find_element(*CITY_COUNTRY_BASED_CONTAINER).find_element(By.XPATH, ".//*[local-name()='svg']")
 
     def click_edit_profile_button(self):
         edit_profile_button = self.noda.find_element(*EDIT_PROFILE_BUTTON)

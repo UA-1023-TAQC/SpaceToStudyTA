@@ -16,10 +16,10 @@ class ProfileCompleteness:
         self.noda = noda
 
     def get_title_text(self) -> str:
-        return self.noda.find_element(*TITLE_AND_DESCRIPTION_CONTAINER).find_element(By.XPATH, "//h5").text
+        return self.noda.find_element(*TITLE_AND_DESCRIPTION_CONTAINER).find_element(By.XPATH, ".//h5").text
 
     def get_title_description(self) -> str:
-        return self.noda.find_element(*TITLE_AND_DESCRIPTION_CONTAINER).find_element(By.XPATH, "//h6").text
+        return self.noda.find_element(*TITLE_AND_DESCRIPTION_CONTAINER).find_element(By.XPATH, ".//h6").text
 
     def get_show_hide_button(self) -> WebElement:
         return self.noda.find_element(*SHOW_HIDE_BUTTON)
@@ -45,7 +45,7 @@ class ProfileCompleteness:
         return completion_steps_container_title[0]
 
     def get_profile_completion_steps_container_icon(self, profile_completion_steps_container) -> WebElement:
-        return profile_completion_steps_container.find_element(By.XPATH, "//*[local-name()='svg']")
+        return profile_completion_steps_container.find_element(By.XPATH, ".//*[local-name()='svg']")
 
     def get_profile_completion_steps_container_description(self, profile_completion_steps_container) -> str:
         completion_steps_container_title = profile_completion_steps_container.text.split('\n')
