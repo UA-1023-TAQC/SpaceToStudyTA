@@ -1,8 +1,9 @@
-import time
+from time import sleep
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+from SpaceToStudy.ui.pages.home_page.home_page import HomePage
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 
 
@@ -40,6 +41,27 @@ class RegistrationTestCase(unittest.TestCase):
         email.set_text("test+1@test.com")
         self.assertEquals(email.get_label_text(), "Email *")
         # self.assertEquals(email.get_error_message(), "Email should be of the following format: “local-part@domain.com")
+
+    def test_homepage_categories(self):
+        email, password = "login", "pass"
+        login_button = self.browser.find_element(By.XPATH, "/html/body/div/div/header/div/div/button[3]")
+        login_button.click()
+        sleep(2)
+        input_email = self.browser.find_element(By.XPATH,
+                                                "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[1]/div/input")
+        input_email.send_keys(email)
+        input_password = self.browser.find_element(By.XPATH,
+                                                   "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[2]/div/input")
+        input_password.send_keys(password)
+        login_button_step2 = self.browser.find_element(By.XPATH,
+                                                       "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
+        login_button_step2.click()
+        sleep(2)
+
+        # self.browser.get('https://s2s-front-stage.azurewebsites.net/tutor')
+        first_category_name = HomePage(self.browser).get_categories()[0].get_name()
+        self.assertEquals(first_category_name, "Music")
+
 
 
 if __name__ == '__main__':

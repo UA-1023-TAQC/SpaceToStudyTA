@@ -4,12 +4,14 @@ from SpaceToStudy.ui.elements.home_page.categories import PopularCategories
 from SpaceToStudy.ui.elements.home_page.questions import AskedQuestions
 from SpaceToStudy.ui.elements.home_page.search_tutor import SearchTutor
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.home_page.CategoryComponent import CategoryComponent
 
 SEARCH_INPUT = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[2]")
 CATEGORIES_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/button")
 FIND_TUTOR_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[3]/a")
 QUESTIONS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[2]")
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
+CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 
 
 class HomePage(BasePage):
@@ -18,7 +20,16 @@ class HomePage(BasePage):
         super().__init__(driver)
         self._search_tutor = None
         self._questions_block = None
-        self._categories_block = None
+        self._categories = None
+
+    def get_categories(self) -> tuple[CategoryComponent]:
+        if self._categories is None:
+            categories = self.driver.find_elements(*CATEGORIES)
+            self._categories = []
+            for category in categories:
+                self._categories.append(CategoryComponent(category))
+
+        return self._categories
 
     def get_search_input(self):
         noda = self.driver.find_element(*SEARCH_INPUT)
