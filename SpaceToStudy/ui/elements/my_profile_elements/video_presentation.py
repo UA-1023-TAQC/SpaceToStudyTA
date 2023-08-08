@@ -17,8 +17,9 @@ class VideoPresentation:
 
     def get_video(self) -> WebElement:
         """
-        At the time of writing the test dev use img, not video
-        :return: WebElement img
+        While documenting the test procedure, it's important to note that during the testing phase,
+        the developer employed image elements instead of video elements.
+        :return: WebElement
         """
         return self.noda.find_element(*VIDEO)
 

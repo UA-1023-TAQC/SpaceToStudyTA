@@ -3,9 +3,6 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-#/html/body/div/div/div[2]/div[2]/div[1]/div[2]
-#/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[2]
-
 NAME_SURNAME = (By.XPATH, "./div[1]/p")
 TIME_IN_SPASE_TO_STUDY = (By.XPATH, "./div[3]/div[1]/p")
 TEXT_UNDER_TIME_IN_SPASE_TO_STUDY = (By.XPATH, "./div[3]/div[1]/span")
