@@ -6,14 +6,14 @@ TITLE_BAR = (By.XPATH, "./div/img")
 VIDEO = (By.XPATH, "./div/div/img")
 
 class VideoPresentation:
-    def __init__(self, noda):
-        self.noda = noda
+    def __init__(self, node):
+        self.node = node
 
     def get_title_text(self) -> str:
-        return self.noda.find_element(*TITLE).text
+        return self.node.find_element(*TITLE).text
 
     def get_title_bar(self) -> WebElement:
-        return self.noda.find_element(*TITLE_BAR)
+        return self.node.find_element(*TITLE_BAR)
 
     def get_video(self) -> WebElement:
         """
@@ -21,7 +21,7 @@ class VideoPresentation:
         the developer employed image elements instead of video elements.
         :return: WebElement
         """
-        return self.noda.find_element(*VIDEO)
+        return self.node.find_element(*VIDEO)
 
 
 

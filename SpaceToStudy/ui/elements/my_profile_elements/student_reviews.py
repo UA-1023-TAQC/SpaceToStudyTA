@@ -27,25 +27,25 @@ inactive_star_testid = "StarSharpIcon"
 
 class StudentReviews:
     def __init__(self, node):
-        self.noda = node
+        self.node = node
 
     def get_title_text(self) -> str:
-        return self.noda.find_element(*TITLE).text
+        return self.node.find_element(*TITLE).text
 
     def get_rating_number_text(self) -> str:
-        return self.noda.find_element(*RATING_NUMBER).text
+        return self.node.find_element(*RATING_NUMBER).text
 
     def get_review_counter_text(self) -> str:
-        return self.noda.find_element(*RATING_REVIEW_COUNTER).text
+        return self.node.find_element(*RATING_REVIEW_COUNTER).text
 
     def get_stars_container(self) -> WebElement:
-        return self.noda.find_element(*RATING_STARS_CONTAINER)
+        return self.node.find_element(*RATING_STARS_CONTAINER)
 
     def get_rating_progress_bars_element(self) -> WebElement:
-        return self.noda.find_element(*RATING_PROGRESS_BARS)
+        return self.node.find_element(*RATING_PROGRESS_BARS)
 
     def get_rating_progress_bars_list(self) -> List[WebElement]:
-        return self.noda.find_element(*RATING_PROGRESS_BARS).find_elements(By.XPATH, "./div")
+        return self.node.find_element(*RATING_PROGRESS_BARS).find_elements(By.XPATH, "./div")
 
     def get_rating_progress_bar_name_text(self, rating_progress_bar) -> str:
         """
@@ -72,7 +72,7 @@ class StudentReviews:
         return rating_progress_bar.find_element(By.XPATH, ".//span")
 
     def get_students_comments_list(self) -> List[WebElement]:
-        return self.noda.find_element(*COMMENTS).find_elements(By.XPATH, "./div")
+        return self.node.find_element(*COMMENTS).find_elements(By.XPATH, "./div")
 
     def get_student_comment_user_avatar(self, students_comment) -> WebElement:
         return students_comment.find_element(By.XPATH, ".//*[local-name()='svg']")
@@ -121,7 +121,7 @@ class StudentReviews:
         return self.__get_student_comment_stars_rating_counter(students_comment)[1]
 
     def get_student_more_review_button(self) -> WebElement:
-        return self.noda.find_element(*MORE_REVIEW_BUTTON)
+        return self.node.find_element(*MORE_REVIEW_BUTTON)
 
     def student_more_review_button_click(self):
         self.get_student_more_review_button().click()

@@ -19,39 +19,39 @@ CITY_COUNTRY_BASED_TEXT = (By.XPATH, "./div[4]/div/div[1]/div[2]/div[2]")
 
 
 class ProfileDescription:
-    def __init__(self, noda):
-        self.noda = noda
+    def __init__(self, node):
+        self.node = node
 
     def get_name_surname_text(self) -> str:
-        return self.noda.find_element(*NAME_SURNAME).text
+        return self.node.find_element(*NAME_SURNAME).text
 
     def get_time_in_spase2study_text(self) -> str:
-         return self.noda.find_element(*TIME_IN_SPASE_TO_STUDY).text
+         return self.node.find_element(*TIME_IN_SPASE_TO_STUDY).text
 
     def get_text_under_time_in_spase2study_text(self) -> str:
-        return self.noda.find_element(*TEXT_UNDER_TIME_IN_SPASE_TO_STUDY).text
+        return self.node.find_element(*TEXT_UNDER_TIME_IN_SPASE_TO_STUDY).text
 
     def get_native_language_text(self) -> str:
-        return self.noda.find_element(*NATIVE_LANGUAGE_TEXT).text
+        return self.node.find_element(*NATIVE_LANGUAGE_TEXT).text
 
     def get_native_language_icon(self) -> WebElement:
-        return self.noda.find_element(*NATIVE_LANGUAGE_ICON)
+        return self.node.find_element(*NATIVE_LANGUAGE_ICON)
 
     def get_profile_rating_number_text(self) -> str:
-        return self.noda.find_element(*PROFILE_RATING_NUMBER).text
+        return self.node.find_element(*PROFILE_RATING_NUMBER).text
 
     def get_profile_rating_icon(self) -> WebElement:
-        return self.noda.find_element(*PROFILE_RATING_ICON)
+        return self.node.find_element(*PROFILE_RATING_ICON)
 
     def get_profile_rating_reviews_text(self) -> str:
-        return self.noda.find_element(*PROFILE_RATING_REVIEWS).text
+        return self.node.find_element(*PROFILE_RATING_REVIEWS).text
 
     def click_profile_rating_reviews(self):
-        self.noda.find_element(*PROFILE_RATING_REVIEWS).click
+        self.node.find_element(*PROFILE_RATING_REVIEWS).click
         time.sleep(1)
 
     def get_city_country_based_text(self) -> str:
-        return self.noda.find_element(*CITY_COUNTRY_BASED_TEXT).text
+        return self.node.find_element(*CITY_COUNTRY_BASED_TEXT).text
 
     def get_city_country_based_icon(self) -> WebElement:
-        return self.noda.find_element(*CITY_COUNTRY_BASED_ICON)
+        return self.node.find_element(*CITY_COUNTRY_BASED_ICON)

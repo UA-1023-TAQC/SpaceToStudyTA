@@ -16,6 +16,6 @@ class LoginModal(BasePage):
         pass
 
     def get_email_input(self):
-        noda = self.driver.find_element(*EMAIL_INPUT)
-        self._email_input = Input(noda)
+        node = self.driver.find_element(*EMAIL_INPUT)
+        self._email_input = Input(node)
         return self._email_input

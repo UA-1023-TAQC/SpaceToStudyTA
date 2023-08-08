@@ -19,31 +19,31 @@ PROFILE_COMPLETION_STEPS_CONTAINERS = (By.XPATH, "./div[2]/div/div/div/div")
 
 class ProfileCompleteness:
     def __init__(self, node):
-        self.noda = node
+        self.node = node
 
     def get_title_text(self) -> str:
-        return self.noda.find_element(*TITLE)
+        return self.node.find_element(*TITLE)
 
     def get_title_description(self) -> str:
-        return self.noda.find_element(*DESCRIPTION)
+        return self.node.find_element(*DESCRIPTION)
 
     def get_show_hide_button(self) -> WebElement:
-        return self.noda.find_element(*SHOW_HIDE_BUTTON)
+        return self.node.find_element(*SHOW_HIDE_BUTTON)
 
     def click_show_hide_button(self):
-        self.noda.find_element(*SHOW_HIDE_BUTTON).click()
+        self.node.find_element(*SHOW_HIDE_BUTTON).click()
         time.sleep(1)
 
     def get_completeness_percent_array(self) -> List[str]:
-        percent_array_web_elements = self.noda.find_element(*COMPLETENESS_PERCENT).find_elements(By.XPATH, "./h6")
+        percent_array_web_elements = self.node.find_element(*COMPLETENESS_PERCENT).find_elements(By.XPATH, "./h6")
         percent_array = [percent_element.text for percent_element in percent_array_web_elements]
         return percent_array
 
     def get_completeness_progress_bar(self) -> WebElement:
-        return self.noda.find_element(*COMPLETENESS_PROGRESS_BAR)
+        return self.node.find_element(*COMPLETENESS_PROGRESS_BAR)
 
     def get_profile_completion_steps_list(self) -> List[WebElement]:
-        profile_completion_steps_list = self.noda.find_element(*PROFILE_COMPLETION_STEPS_CONTAINERS).find_elements(By.XPATH, "./div")
+        profile_completion_steps_list = self.node.find_element(*PROFILE_COMPLETION_STEPS_CONTAINERS).find_elements(By.XPATH, "./div")
         return profile_completion_steps_list
 
     def get_profile_completion_step_title(self, profile_completion_step_container) -> str:
