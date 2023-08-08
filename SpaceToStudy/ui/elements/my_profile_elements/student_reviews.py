@@ -3,8 +3,6 @@ from typing import List
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-#/html/body/div/div/div[2]/div[2]/div[4]
-#/html/body/div/div/div[2]/div[2]/div[4]
 
 TITLE = (By.XPATH, "./p")
 RATING_NUMBER = (By.XPATH, "./div[1]/div[1]/div[1]/h4")
@@ -15,15 +13,8 @@ RATING_PROGRESS_BARS = (By.XPATH, "./div[1]/div[2]")
 COMMENTS = (By.XPATH, "./div[2]/div")
 MORE_REVIEW_BUTTON = (By.XPATH, "./div[2]/button")
 
-# FULL_STAR_PATH = "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-# EMPTY_STAR_PATH = "M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"
-
 active_star_testid = "StarIcon"  
 inactive_star_testid = "StarSharpIcon"  
-
-
-#<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vdj6uk" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="StarIcon"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-#<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1j738yg" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="StarSharpIcon"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"></path></svg>
 
 class StudentReviews:
     def __init__(self, node):
@@ -125,6 +116,3 @@ class StudentReviews:
 
     def student_more_review_button_click(self):
         self.get_student_more_review_button().click()
-
-
-
