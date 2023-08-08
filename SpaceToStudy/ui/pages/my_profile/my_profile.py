@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from SpaceToStudy.ui.elements.my_profile_elements.profile_info import ProfileInfo
+#from SpaceToStudy.ui.pages.my_profile.profile_info import ProfileInfo
 from SpaceToStudy.ui.elements.my_profile_elements.profile_completeness import ProfileCompleteness
 from SpaceToStudy.ui.elements.my_profile_elements.student_reviews import StudentReviews
 from SpaceToStudy.ui.elements.my_profile_elements.video_presentation import VideoPresentation
@@ -15,33 +15,18 @@ class MyProfile(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.profile_info = None
-
-    def menu_button_bug(self):
-        """
-        bug:
-        when press "Main" button "/html/body/div/div/div[2]/div[1]/nav/ol/li[1]/a"
-        redirects to Main page is ok, but when you click undo "<-" its redirect to same page (Main)
-        """
-        pass
-
-
-    def get_profile_info(self):
-        noda = self.driver.find_element(*PROFILE_INFO)
-        self.profile_info = ProfileInfo(noda)
-        return self.profile_info
 
     def get_profile_completeness(self):
-        noda = self.driver.find_element(*PROFILE_COMPLETENESS)
-        self.profileCompleteness = ProfileCompleteness(noda)
+        node = self.driver.find_element(*PROFILE_COMPLETENESS)
+        self.profileCompleteness = ProfileCompleteness(node)
         return self.profileCompleteness
 
     def get_video_presentation(self):
-        noda = self.driver.find_element(*VIDEO_PRESENTATION)
-        self.VideoPresentation = VideoPresentation(noda)
+        node = self.driver.find_element(*VIDEO_PRESENTATION)
+        self.VideoPresentation = VideoPresentation(node)
         return self.VideoPresentation
 
     def get_student_review(self):
-        noda = self.driver.find_element(*STUDENT_REVIEW)
-        self.StudentReviews = StudentReviews(noda)
+        node = self.driver.find_element(*STUDENT_REVIEW)
+        self.StudentReviews = StudentReviews(node)
         return self.StudentReviews
