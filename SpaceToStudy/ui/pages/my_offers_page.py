@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.my_offers.actions_btn_grid import ActionsBtnGrid
 from SpaceToStudy.ui.elements.my_offers.dropdown_menu import DropdownMenu
@@ -34,10 +35,10 @@ class MyOffersPage(BasePage):
         self._offers_table = OfferElements(node)
         return self._offers_table
 
-    def get_title(self):
+    def get_title(self) -> WebElement:
         return self.driver.find_element(*MY_OFFERS_PAGE_TITLE)
 
-    def get_create_new_offer_btn(self):
+    def get_create_new_offer_btn(self) -> WebElement:
         return self.driver.find_element(*CREATE_NEW_OFFER_BTN)
 
     def click_create_new_offer_btn(self):
@@ -58,22 +59,22 @@ class MyOffersPage(BasePage):
         self._list_box_dropdown_menu = DropdownMenu(node)
         return self._list_box_dropdown_menu
 
-    def get_dropdown_menu(self):
+    def get_dropdown_menu(self) -> WebElement:
         return self.driver.find_element(*DROPDOWN_MENU)
 
     def click_dropdown_menu(self):
         return self.get_dropdown_menu().click()
 
-    def get_actions_btn_inline(self):
+    def get_actions_btn_inline(self) -> WebElement:
         return self.driver.find_element(*ACTIONS_BTN_INLINE)
 
     def click_actions_btn_inline(self):
         self.get_actions_btn_inline().click()
 
-    def get_edit_btn_inline(self):
+    def get_edit_btn_inline(self) -> WebElement:
         return self.driver.find_element(*EDIT_BTN_INLINE)
 
-    def get_view_details_btn_inline(self):
+    def get_view_details_btn_inline(self) -> WebElement:
         return self.driver.find_element(*VIEW_DETAILS_BTN_INLINE)
 
     def click_edit_btn_inline(self):

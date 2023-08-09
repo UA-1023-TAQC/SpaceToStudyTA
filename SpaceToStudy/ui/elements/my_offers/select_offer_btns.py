@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 
 ALL_BTN = (By.XPATH, "./button[1]")
 ACTIVE_BTN = (By.XPATH, "./button[2]")
@@ -10,16 +11,16 @@ class SelectOffers:
     def __init__(self, node):
         self.node = node
 
-    def get_all_btn(self):
+    def get_all_btn(self) -> WebElement:
         return self.node.find_element(*ALL_BTN)
 
-    def get_active_btn(self):
+    def get_active_btn(self) -> WebElement:
         return self.node.find_element(*ACTIVE_BTN)
 
-    def get_draft_btn(self):
+    def get_draft_btn(self) -> WebElement:
         return self.node.find_element(*DRAFT_BTN)
 
-    def get_closed_btn(self):
+    def get_closed_btn(self) -> WebElement:
         return self.node.find_element(*CLOSED_BTN)
 
     def click_all_btn(self):
