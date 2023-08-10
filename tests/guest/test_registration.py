@@ -39,7 +39,7 @@ class RegistrationTestCase(unittest.TestCase):
         login_modal = LoginModal(self.browser)
         email = login_modal.get_email_input()
         email.set_text("test+1@test.com")
-        self.assertEqual(email.get_label_text(), "Email *")
+        self.assertEquals(email.get_label_text(), "Email *")
         # self.assertEquals(email.get_error_message(), "Email should be of the following format: “local-part@domain.com")
 
     def test_homepage_categories(self):
