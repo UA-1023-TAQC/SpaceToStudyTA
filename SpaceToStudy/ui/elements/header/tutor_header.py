@@ -7,7 +7,7 @@ OFFERS_BTN = (By.XPATH, ".[3]")
 MYRESOURCES_BTN = (By.XPATH, ".[4]")
 
 
-class StudentHeader:
+class TutorHeader:
     def __init__(self, node):
         self.node = node
 
