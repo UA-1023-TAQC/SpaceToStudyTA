@@ -14,7 +14,7 @@ CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 
 
-class HomePage(BasePage):
+class HomePageStudent(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
