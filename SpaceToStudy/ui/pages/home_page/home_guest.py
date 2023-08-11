@@ -6,9 +6,10 @@ from SpaceToStudy.ui.pages.home_page.collapse_item import CollapseItem
 
 COLLAPSE_BLOCK_FLEXIBLE_LOCATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]")
 COLLAPSE_BLOCK_INDIVIDUAL_TIME = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[2]")
-COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTOR = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[3]")
+COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[3]")
 COLLAPSE_BLOCK_DIGITAL_COMMUNICATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[4]")
 BUTTON_GET_STARTED_FOR_FREE = (By.XPATH, "//a[contains(text(), 'Get started for free')]")
+
 
 class HomePageGuest(BasePage):
 
@@ -16,6 +17,8 @@ class HomePageGuest(BasePage):
         super().__init__(driver)
         self.flexible_location = None
         self.individual_time = None
+        self.free_choice_of_tutors = None
+        self.digital_communication = None
         self.button_get_started_for_free = None
 
     def get_flexible_location(self) -> CollapseItem:
@@ -29,7 +32,6 @@ class HomePageGuest(BasePage):
         return self
 
     def get_individual_time(self) -> CollapseItem:
-
         if not self.individual_time:
             individual_time = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
             self.individual_time = CollapseItem(individual_time)
@@ -37,6 +39,26 @@ class HomePageGuest(BasePage):
 
     def click_individual_time(self):
         self.get_individual_time().click()
+        return self
+
+    def get_free_choice_of_tutors(self) -> CollapseItem:
+        if not self.free_choice_of_tutors:
+            free_choice_of_tutors = self.driver.find_element(*COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS)
+            self.free_choice_of_tutors = CollapseItem(free_choice_of_tutors)
+        return self.free_choice_of_tutors
+
+    def click_free_choice_of_tutors(self):
+        self.get_free_choice_of_tutors().click()
+        return self
+
+    def get_digital_communication(self) -> CollapseItem:
+        if not self.digital_communication:
+            digital_communication = self.driver.find_element(*COLLAPSE_BLOCK_DIGITAL_COMMUNICATION)
+            self.digital_communication = CollapseItem(digital_communication)
+        return self.digital_communication
+
+    def click_digital_communication(self):
+        self.get_digital_communication().click()
         return self
 
     def get_button_get_started_for_free(self) -> WebElement:
