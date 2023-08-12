@@ -10,6 +10,9 @@ COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS = (By.XPATH, "/html/body/div/div/div[2]/div
 COLLAPSE_BLOCK_DIGITAL_COMMUNICATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[4]")
 BUTTON_GET_STARTED_FOR_FREE = (By.XPATH, "//a[contains(text(), 'Get started for free')]")
 
+CARD_COMPONENT_LEARN_FROM_EXPERTS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]")
+CARD_COMPONENT_SHARE_YOUR_EXPERIENCE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div[2]/div[2]")
+
 
 class HomePageGuest(BasePage):
 
@@ -18,6 +21,8 @@ class HomePageGuest(BasePage):
         self.flexible_location = None
         self.individual_time = None
         self.button_get_started_for_free = None
+        self._card_learn_from_experts = None
+        self._card_share_your_experience = None
 
     def get_flexible_location(self) -> CollapseItem:
         if not self.flexible_location:
@@ -43,3 +48,13 @@ class HomePageGuest(BasePage):
         if not self.button_get_started_for_free:
             self.button_get_started_for_free = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
         return self.button_get_started_for_free
+
+    def get_card_learn_from_experts(self) -> WebElement:
+        if not self._card_learn_from_experts:
+            self._card_learn_from_experts = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
+        return self._card_learn_from_experts
+
+    def get_card_share_your_experience(self) -> WebElement:
+        if not self._card_share_your_experience:
+            self._card_learn_from_experts = self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE)
+        return self._card_share_your_experience

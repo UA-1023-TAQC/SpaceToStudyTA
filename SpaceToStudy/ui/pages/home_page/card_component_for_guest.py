@@ -32,9 +32,14 @@ class CardComponent(BaseComponent):
             self.description = self.node.find_element(*DESCRIPTION)
         return self.description.text
 
-    def get_btn(self) -> str:
+    def get_btn_text(self) -> str:
         if not self.btn:
             self.btn = self.node.find_element(*BUTTON)
         return self.btn.text
+
+    def click_btn(self):
+        if not self.btn:
+            self.btn = self.node.find_element(*BUTTON)
+            self.btn.click()
 
 
