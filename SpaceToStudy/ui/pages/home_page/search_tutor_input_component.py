@@ -24,3 +24,6 @@ class SearchTutorComponent(BaseComponent):
     def click_find_tutor_btn(self):
         self.get_find_tutor_btn().click()
 
+    def get_text_find_tutor_btn(self) -> str:
+        return self.get_find_tutor_btn().text
+
