@@ -1,4 +1,4 @@
-from time import sleep
+from time import sleep, time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -43,7 +43,7 @@ class RegistrationTestCase(unittest.TestCase):
         # self.assertEquals(email.get_error_message(), "Email should be of the following format: “local-part@domain.com")
 
     def test_homepage_categories(self):
-        email, password = "login", "pass"
+        email, password = "rozdilska.n@gmail.com", "12345678q"
         login_button = self.browser.find_element(By.XPATH, "/html/body/div/div/header/div/div/button[3]")
         login_button.click()
         sleep(2)
