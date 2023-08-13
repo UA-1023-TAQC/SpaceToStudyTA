@@ -92,6 +92,12 @@ class MyCooperationsPageStudent(BasePage):
     def get_name_table_title(self) -> str:
         return self.driver.find_element(*NAME_TABLE_TITLE).text
 
+    def get_name_table_title_element(self) -> WebElement:
+        return self.driver.find_element(*NAME_TABLE_TITLE)
+
+    def click_name_table_title_element(self):
+        self.get_name_table_title_element().click()
+
     def get_offer_title_table_title(self) -> str:
         return self.driver.find_element(*OFFER_TITLE_TABLE_TITLE).text
 
@@ -101,8 +107,20 @@ class MyCooperationsPageStudent(BasePage):
     def get_price_table_title(self) -> str:
         return self.driver.find_element(*PRICE_TABLE_TITLE).text
 
+    def get_price_table_title_element(self) -> WebElement:
+        return self.driver.find_element(*PRICE_TABLE_TITLE)
+
+    def click_price_table_title_element(self):
+        self.get_price_table_title_element().click()
+
     def get_last_update_table_title(self) -> str:
         return self.driver.find_element(*LAST_UPDATE_TABLE_TITLE).text
+
+    def get_last_update_table_title_element(self) -> WebElement:
+        return self.driver.find_element(*LAST_UPDATE_TABLE_TITLE)
+
+    def click_last_update_table_title_element(self):
+        self.get_last_update_table_title_element().click()
 
     def get_status_table_title(self) -> str:
         return self.driver.find_element(*STATUS_TABLE_TITLE).text
