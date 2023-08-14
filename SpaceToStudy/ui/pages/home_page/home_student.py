@@ -31,7 +31,6 @@ class HomePageStudent(BasePage):
 
         return self._categories
 
-
     def get_button_go_to_categories(self) -> WebElement:
         if not self._button_go_to_categories:
             self._button_go_to_categories = self.driver.find_element(*BUTTON_GO_TO_CATEGORIES)
@@ -56,9 +55,9 @@ class HomePageStudent(BasePage):
         self.get_button_find_tutor().click()
         return self
 
-
     def get_img_search_block(self) -> WebElement:
         if not self._img_search_block:
             self._img_search_block = self.driver.find_element(*IMG_SEARCH_BLOCK)
         return self._img_search_block
+
 

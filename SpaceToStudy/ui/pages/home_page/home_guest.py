@@ -3,7 +3,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.collapse_item import CollapseItem
-from SpaceToStudy.ui.pages.home_page.how_it_works_component import HowItWorksComponent
+from SpaceToStudy.ui.pages.home_page.how_it_works_component_guest import HowItWorksComponent
 
 COLLAPSE_BLOCK_FLEXIBLE_LOCATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]")
 COLLAPSE_BLOCK_INDIVIDUAL_TIME = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[2]")
