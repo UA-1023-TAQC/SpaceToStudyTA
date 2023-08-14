@@ -1,4 +1,4 @@
-from time import sleep
+from time import sleep, time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
