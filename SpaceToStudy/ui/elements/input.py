@@ -20,9 +20,6 @@ class Input:
     def get_error_message(self):
         return self.node.find_element(*ERROR_MESSAGE).text
 
-    def get_label_text(self):
-        return self.node.find_element(*LABEL).text
-
     def get_label(self) -> str:
         if not self.label:
             self.label = self.node.find_element(*LABEL)
