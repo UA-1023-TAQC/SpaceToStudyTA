@@ -25,6 +25,9 @@ CHECKBOX_HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2
 CARD_COMPONENT_LEARN_FROM_EXPERTS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]")
 CARD_COMPONENT_SHARE_YOUR_EXPERIENCE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div[2]/div[2]")
 
+IMG_MAP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/img")
+MAIN_BANNER = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
+
 
 class HomePageGuest(BasePage):
 
@@ -44,6 +47,8 @@ class HomePageGuest(BasePage):
         self._free_choice_of_tutors = None
         self._button_get_started_for_free = None
         self._button_become_a_student = None
+        self._img_map = None
+        self._main_banner = None
 
     def get_flexible_location(self) -> CollapseItem:
         if not self._flexible_location:
@@ -127,7 +132,6 @@ class HomePageGuest(BasePage):
     def click_checkbox_how_it_works_block(self):
         self.get_checkbox_how_it_works_block().click()
 
-
     def get_card_learn_from_experts(self) -> WebElement:
         if not self._card_learn_from_experts:
             self._card_learn_from_experts = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
@@ -157,3 +161,12 @@ class HomePageGuest(BasePage):
         self.get_button_become_a_student().click()
         return self
 
+    def get_img_map(self) -> WebElement:
+        if not self._img_map:
+            self._img_map = self.driver.find_element(*IMG_MAP)
+        return self._img_map
+
+    def get_main_banner(self) -> WebElement:
+        if not self._main_banner:
+            self._main_banner = self.driver.find_element(*MAIN_BANNER)
+        return self._main_banner

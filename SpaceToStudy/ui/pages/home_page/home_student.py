@@ -1,17 +1,16 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from SpaceToStudy.ui.elements.home_page.categories import PopularCategories
-from SpaceToStudy.ui.elements.home_page.questions import AskedQuestions
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
-from SpaceToStudy.ui.pages.home_page.search_tutor_input_component import SearchTutorComponent
 
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
 
 SEARCH_INPUT_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[2]")
+
+IMG_SEARCH_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
 
 
 class HomePageStudent(BasePage):
@@ -21,6 +20,7 @@ class HomePageStudent(BasePage):
         self._categories = None
         self._button_go_to_categories = None
         self._button_find_tutor = None
+        self._img_search_block = None
 
     def get_categories(self) -> tuple[CategoryComponent]:
         if self._categories is None:
@@ -55,3 +55,10 @@ class HomePageStudent(BasePage):
     def click_button_find_tutor(self):
         self.get_button_find_tutor().click()
         return self
+
+
+    def get_img_search_block(self) -> WebElement:
+        if not self._img_search_block:
+            self._img_search_block = self.driver.find_element(*IMG_SEARCH_BLOCK)
+        return self._img_search_block
+
