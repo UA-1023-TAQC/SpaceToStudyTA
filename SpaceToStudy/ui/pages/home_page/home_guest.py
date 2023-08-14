@@ -9,6 +9,7 @@ COLLAPSE_BLOCK_INDIVIDUAL_TIME = (By.XPATH, "/html/body/div/div/div[2]/div[1]/di
 COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[3]")
 COLLAPSE_BLOCK_DIGITAL_COMMUNICATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[4]")
 BUTTON_GET_STARTED_FOR_FREE = (By.XPATH, "//a[contains(text(), 'Get started for free')]")
+BUTTON_BECOME_A_STUDENT = (By.XPATH, "//button[contains(text(), 'Become a student')]")
 
 
 class HomePageGuest(BasePage):
@@ -17,7 +18,8 @@ class HomePageGuest(BasePage):
         super().__init__(driver)
         self.flexible_location = None
         self.individual_time = None
-        self.button_get_started_for_free = None
+        self._button_get_started_for_free = None
+        self._button_become_a_student = None
 
     def get_flexible_location(self) -> CollapseItem:
         if not self.flexible_location:
@@ -40,6 +42,26 @@ class HomePageGuest(BasePage):
         return self
 
     def get_button_get_started_for_free(self) -> WebElement:
-        if not self.button_get_started_for_free:
-            self.button_get_started_for_free = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
-        return self.button_get_started_for_free
+        if not self._button_get_started_for_free:
+            self._button_get_started_for_free = self.driver.find_element(*BUTTON_GET_STARTED_FOR_FREE)
+        return self._button_get_started_for_free
+
+    def get_text_button_get_started_for_free(self) -> str:
+        return self.get_button_get_started_for_free().text
+
+    def click_button_get_started_for_free(self):
+        self.get_button_get_started_for_free().click()
+        return self
+
+    def get_button_become_a_student(self) -> WebElement:
+        if not self._button_become_a_student:
+            self._button_become_a_student = self.driver.find_element(*BUTTON_BECOME_A_STUDENT)
+        return self._button_become_a_student
+
+    def get_text_button_become_a_student(self) -> str:
+        return self.get_button_become_a_student().text
+
+    def click_button_become_a_student(self):
+        self.get_button_become_a_student().click()
+        return self
+
