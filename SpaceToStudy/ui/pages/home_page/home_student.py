@@ -1,8 +1,5 @@
 from selenium.webdriver.common.by import By
 
-from SpaceToStudy.ui.elements.home_page.categories import PopularCategories
-from SpaceToStudy.ui.elements.home_page.questions import AskedQuestions
-from SpaceToStudy.ui.elements.home_page.search_tutor import SearchTutor
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
