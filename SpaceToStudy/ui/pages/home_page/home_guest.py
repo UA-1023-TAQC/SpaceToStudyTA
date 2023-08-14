@@ -20,6 +20,9 @@ HOW_IT_WORKS_BLOCK_START_LEARNING = (By.XPATH, "/html/body/div/div/div[2]/div[1]
 
 CHECKBOX_HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[1]/span/span[1]/input")
 
+CARD_COMPONENT_LEARN_FROM_EXPERTS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]")
+CARD_COMPONENT_SHARE_YOUR_EXPERIENCE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div[2]/div[2]")
+
 
 class HomePageGuest(BasePage):
 
@@ -28,6 +31,8 @@ class HomePageGuest(BasePage):
         self.flexible_location = None
         self.individual_time = None
         self.button_get_started_for_free = None
+        self._card_learn_from_experts = None
+        self._card_share_your_experience = None
         self._how_it_works_block = None
         self._sign_up = None
         self._select_a_tutor = None
@@ -97,3 +102,13 @@ class HomePageGuest(BasePage):
     def click_checkbox_how_it_works_block(self):
         self.get_checkbox_how_it_works_block().click()
 
+
+    def get_card_learn_from_experts(self) -> WebElement:
+        if not self._card_learn_from_experts:
+            self._card_learn_from_experts = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
+        return self._card_learn_from_experts
+
+    def get_card_share_your_experience(self) -> WebElement:
+        if not self._card_share_your_experience:
+            self._card_learn_from_experts = self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE)
+        return self._card_share_your_experience
