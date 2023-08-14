@@ -1,6 +1,6 @@
-from datetime import time
-from time import sleep
 import unittest
+from time import sleep
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -25,7 +25,7 @@ class RegistrationTestCase(unittest.TestCase):
         login_btn = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/header/div/div/button[3]')
         login_btn.click()
         join_us_for_free_link = self.driver.find_element(By.XPATH,
-                                                          '/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/a')
+                                                         '/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/a')
         join_us_for_free_link.click()
         become_a_student = self.driver.find_element(By.XPATH, '//*[@id="what-сan-you-do"]/div[2]/div[1]/button')
         become_a_student.click()
@@ -36,7 +36,7 @@ class RegistrationTestCase(unittest.TestCase):
     def test_open_login_modal(self):
         login_btn = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/header/div/div/button[3]')
         login_btn.click()
-        time.sleep(2)
+        sleep(2)
         login_modal = LoginModal(self.driver)
         email = login_modal.get_email_input()
         email.set_text("test+1@test.com")
@@ -49,13 +49,13 @@ class RegistrationTestCase(unittest.TestCase):
         login_button.click()
         sleep(2)
         input_email = self.driver.find_element(By.XPATH,
-                                                "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[1]/div/input")
+                                               "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[1]/div/input")
         input_email.send_keys(email)
         input_password = self.driver.find_element(By.XPATH,
-                                                   "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[2]/div/input")
+                                                  "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[2]/div/input")
         input_password.send_keys(password)
         login_button_step2 = self.driver.find_element(By.XPATH,
-                                                       "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
+                                                      "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
         login_button_step2.click()
         sleep(2)
 
@@ -74,7 +74,6 @@ class RegistrationTestCase(unittest.TestCase):
                        .get_individual_time()
                        .is_expanded())
         self.assertTrue(is_expanded)
-
 
 
 if __name__ == '__main__':
