@@ -1,9 +1,9 @@
 from selenium.webdriver.common.by import By
 
 #from SpaceToStudy.ui.pages.my_profile.profile_info import ProfileInfo
-from SpaceToStudy.ui.elements.my_profile_elements.profile_completeness import ProfileCompleteness
-from SpaceToStudy.ui.elements.my_profile_elements.student_reviews import StudentReviews
-from SpaceToStudy.ui.elements.my_profile_elements.video_presentation import VideoPresentation
+from SpaceToStudy.ui.pages.my_profile.profile_completeness import ProfileCompleteness
+from SpaceToStudy.ui.pages.my_profile.student_reviews import StudentReviews
+from SpaceToStudy.ui.pages.my_profile.video_presentation import VideoPresentation
 from SpaceToStudy.ui.pages.base_page import BasePage
 
 PROFILE_INFO = (By.XPATH, "/html/body/div/div/div[2]/div[2]")

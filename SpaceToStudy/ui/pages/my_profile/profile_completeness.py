@@ -5,6 +5,8 @@ from typing import List
 
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.pages.base_page import BasePage
+
 SHOW_HIDE_BUTTON = (By.XPATH, "./div[1]/div/div[1]/button")
 COMPLETENESS_PERCENT = (By.XPATH, "./div[1]/div/div[2]/div[1]")
 COMPLETENESS_PROGRESS_BAR = (By.XPATH, "./div[1]/div/div[2]/div[2]")
@@ -13,7 +15,7 @@ TITLE = (By.XPATH, "./div[1]/div/div[1]/div/h5")
 DESCRIPTION = (By.XPATH, "./div[1]/div/div[1]/div/h6")
 PROFILE_COMPLETION_STEPS_CONTAINERS = (By.XPATH, "./div[2]/div/div/div/div")
 
-class ProfileCompleteness:
+class ProfileCompleteness(BasePage):
     def __init__(self, node):
         self.node = node
 

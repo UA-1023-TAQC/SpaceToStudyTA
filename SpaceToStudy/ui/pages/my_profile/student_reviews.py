@@ -3,6 +3,7 @@ from typing import List
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.pages.base_page import BasePage
 
 TITLE = (By.XPATH, "./p")
 RATING_NUMBER = (By.XPATH, "./div[1]/div[1]/div[1]/h4")
@@ -16,7 +17,7 @@ MORE_REVIEW_BUTTON = (By.XPATH, "./div[2]/button")
 active_star_testid = "StarIcon"  
 inactive_star_testid = "StarSharpIcon"  
 
-class StudentReviews:
+class StudentReviews(BasePage):
     def __init__(self, node):
         self.node = node
 
