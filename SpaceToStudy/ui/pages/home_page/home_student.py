@@ -1,18 +1,20 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from SpaceToStudy.ui.elements.home_page.categories import PopularCategories
-from SpaceToStudy.ui.elements.home_page.questions import AskedQuestions
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
 from SpaceToStudy.ui.pages.home_page.search_tutor_input_component import SearchTutorComponent
 
+
+CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
 
-SEARCH_INPUT_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[2]")
+SEARCH_INPUT_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div")
+
+IMG_SEARCH_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
 
 QUESTIONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[1]")
 QUESTIONS_ITEMS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[2]/div")
@@ -27,6 +29,7 @@ class HomePageStudent(BasePage):
         self._button_find_tutor = None
         self._questions_block = None
         self._questions_items = None
+        self._img_search_block = None
 
     def get_categories(self) -> tuple[CategoryComponent]:
         if self._categories is None:
@@ -36,6 +39,12 @@ class HomePageStudent(BasePage):
                 self._categories.append(CategoryComponent(category))
 
         return self._categories
+
+    def get_search_input(self) -> WebElement:
+        if not self._search_tutor:
+            node = self.driver.find_element(*SEARCH_INPUT_BLOCK)
+            self._search_tutor = SearchTutorComponent(node)
+        return self._search_tutor
 
     def get_button_go_to_categories(self) -> WebElement:
         if not self._button_go_to_categories:
@@ -75,4 +84,8 @@ class HomePageStudent(BasePage):
                 self._questions_items.append(CategoryComponent(questions_item))
         return self._questions_items
 
+    def get_img_search_block(self) -> WebElement:
+        if not self._img_search_block:
+            self._img_search_block = self.driver.find_element(*IMG_SEARCH_BLOCK)
+        return self._img_search_block
 
