@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
+from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 
 
@@ -60,7 +61,7 @@ class RegistrationTestCase(unittest.TestCase):
         sleep(2)
 
         # self.browser.get('https://s2s-front-stage.azurewebsites.net/tutor')
-        first_category_name = HomePage(self.driver).get_categories()[0].get_name()
+        first_category_name = HomePageStudent(self.driver).get_categories()[0].get_name()
         self.assertEquals(first_category_name, "Music")
 
     def test_collapse(self):
