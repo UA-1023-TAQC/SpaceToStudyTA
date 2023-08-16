@@ -1,14 +1,16 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.elements.base_element import BaseElement
+
 INPUT = (By.XPATH, "./div/input")
 LABEL = (By.XPATH, "./label")
 ERROR_MESSAGE = (By.XPATH, "./p/span")
 
 
-class Input:
+class Input(BaseElement):
     def __init__(self, node: WebElement):
-        self.node = node
+        super().__init__(node)
         self.label = None
 
     def set_text(self, text):
@@ -19,9 +21,6 @@ class Input:
 
     def get_error_message(self):
         return self.node.find_element(*ERROR_MESSAGE).text
-
-    def get_label_text(self):
-        return self.node.find_element(*LABEL).text
 
     def get_label(self) -> str:
         if not self.label:

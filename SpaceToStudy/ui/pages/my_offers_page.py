@@ -1,12 +1,12 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from SpaceToStudy.ui.elements.my_offers.actions_btn_grid import ActionsBtnGrid
-from SpaceToStudy.ui.elements.my_offers.dropdown_menu import DropdownMenu
-from SpaceToStudy.ui.elements.my_offers.offers_interaction import OffersInteraction
-from SpaceToStudy.ui.elements.my_offers.offers_table import OfferElements
-from SpaceToStudy.ui.elements.my_offers.select_offer_btns import SelectOffers
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.my_offers.actions_btn_grid import ActionsBtnGrid
+from SpaceToStudy.ui.pages.my_offers.dropdown_menu import DropdownMenu
+from SpaceToStudy.ui.pages.my_offers.offers_interaction import OffersInteraction
+from SpaceToStudy.ui.pages.my_offers.offers_table import OfferElements
+from SpaceToStudy.ui.pages.my_offers.select_offer_btns import SelectOffers
 
 OFFERS_TABLE = (By.XPATH, '/html/body/div/div/div[2]/div[2]/div[4]/div/div/table/tbody/tr[2]')
 MY_OFFERS_PAGE_TITLE = (By.XPATH, "//*[@id='root']/div/div[2]/div[2]/div[1]/p")
