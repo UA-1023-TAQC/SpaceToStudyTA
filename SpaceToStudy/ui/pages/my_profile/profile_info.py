@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from SpaceToStudy.ui.elements.my_profile_elements.profile_description import ProfileDescription
+from SpaceToStudy.ui.pages.my_profile.profile_description import ProfileDescription
 from SpaceToStudy.ui.pages.base_page import BasePage
 
 AVATAR = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[1]/div/*[local-name()='svg']")

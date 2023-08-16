@@ -1,11 +1,13 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.pages.base_page import BasePage
+
 TITLE = (By.XPATH, "./p")
 TITLE_BAR = (By.XPATH, "./div/img")
 VIDEO = (By.XPATH, "./div/div/img")
 
-class VideoPresentation:
+class VideoPresentation(BasePage):
     def __init__(self, node):
         self.node = node
 
