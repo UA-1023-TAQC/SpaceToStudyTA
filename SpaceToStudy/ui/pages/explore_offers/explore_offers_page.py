@@ -8,6 +8,7 @@ STUDENT_FOR_PRIVATE_LESSONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]
 TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[2]/p")
 TEXT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[2]/span")
 BACK_TO_ALL_SUBJECT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[3]/a")
+LEFT_ARROW = (By.XPATH, "/html/body/div[1]/div/div[2]/div[2]/div[3]/a/svg")
 SEARCH_BY_TUTOR_NAME_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div")
 
 
@@ -31,6 +32,9 @@ class ExploreOffersPage(BasePage):
 
     def get_back_to_all_subject(self) -> WebElement:
         return self.driver.find_element(*BACK_TO_ALL_SUBJECT)
+
+    def get_left_arrow(self) -> WebElement:
+        return self.driver.find_element(*LEFT_ARROW)
 
     def click_back_to_all_subject(self):
         return self.get_back_to_all_subject().click()
