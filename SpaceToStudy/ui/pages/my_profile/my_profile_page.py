@@ -6,9 +6,6 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 
-# PROFILE_COMPLETENESS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[2]")
-# VIDEO_PRESENTATION = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[3]")
-# STUDENT_REVIEW = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]")
 
 AVATAR = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[1]/div/*[local-name()='svg']")
 EDIT_PROFILE_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/a")
@@ -161,8 +158,6 @@ class MyProfile(BasePage):
             self.completeness_steps_containers = self.driver.find_elements(*COMPLETENESS_STEPS_CONTAINERS)
         return self.completeness_steps_containers
 
-    # DONE
-
     def get_video_presentation_title_text(self) -> str:
         if not self.video_presentation_title:
             self.video_presentation_title = self.driver.find_element(*VIDEO_PRESENTATION_TITLE).text
@@ -182,8 +177,6 @@ class MyProfile(BasePage):
         if not self.video:
             self.video = self.driver.find_element(*VIDEO)
         return self.video
-
-    # -------------------------
 
     def get_reviews_title_text(self) -> str:
         if not self.reviews_title:
