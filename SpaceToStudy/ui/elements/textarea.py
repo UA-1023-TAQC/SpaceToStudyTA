@@ -43,7 +43,7 @@ class Textarea(BaseElement):
         return self._error_message.text
 
     def is_label_shrink(self) -> bool:
-        if self._label.get_data_shrink():
+        if self._label.get_attribute("data-shrink"):
             return True
         else:
             return False

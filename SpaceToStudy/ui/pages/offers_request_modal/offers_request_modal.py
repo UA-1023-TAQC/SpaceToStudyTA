@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.elements.checkbox import Checkbox
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.textarea import Textarea
 from SpaceToStudy.ui.pages.base_component import BaseComponent
@@ -15,9 +16,16 @@ ADD_TO_DRAFT_BTN = (By.XPATH, "//*/button[contains(@class, 'css-4gyf81')]")
 FIRST_BLOCK_OF_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/form/div[1]")
 NUMBER_OF_FIRST_BLOCK = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}//span[contains(@class, 'css-1sckc2u')]")
 NAME_OF_FIRST_BLOCK = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}//span[contains(@class, 'css-gk4zgh')]")
+DESC_BEFORE_CATEGORY = (By.XPATH, "//*/div[contains(@class, 'css-1w8rjr5')]/../p")
 CATEGORY_INPUT = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[1]/div[1]/div")
 SUBJECT_INPUT = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[1]/div[2]/div")
-CHECKBOX_LEVELS = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[2]/div")
+DESC_BEFORE_CHECKBOX = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/../p")
+CHECKBOX_BEGINNER = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[1]")
+CHECKBOX_INTERMEDIATE = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[2]")
+CHECKBOX_ADVANCED = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[3]")
+CHECKBOX_TEST_PREPARATION = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[4]")
+CHECKBOX_PROFESSIONAL = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[5]")
+CHECKBOX_SPECIALIZED = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[6]")
 
 SECOND_BLOCK_OF_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/form/div[2]")
 NAME_OF_SECOND_BLOCK = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}//span[contains(@class, 'css-gk4zgh')]")
@@ -100,9 +108,16 @@ class FirstBlock(BaseComponent):
         super().__init__(node)
         self._name_of_first_block = None
         self._number_of_first_block = None
+        self._desc_before_category = None
         self._category_input = None
         self._subject_input = None
-        self._checkbox_levels = None
+        self._desc_before_checkbox = None
+        self._checkbox_beginner = None
+        self._checkbox_intermediate = None
+        self._checkbox_advanced = None
+        self._checkbox_test_preparation = None
+        self._checkbox_professional = None
+        self._checkbox_specialized = None
 
     def get_name_of_first_block(self) -> str:
         if not self._name_of_first_block:
@@ -113,6 +128,11 @@ class FirstBlock(BaseComponent):
         if not self._number_of_first_block:
             self._number_of_first_block = self.node.find_element(*NUMBER_OF_FIRST_BLOCK)
         return self._number_of_first_block.text
+
+    def get_desc_before_category(self) -> str:
+        if not self._desc_before_category:
+            self._desc_before_category = self.node.find_element(*DESC_BEFORE_CATEGORY)
+        return self._desc_before_category.text
 
     def get_category_input(self) -> Input:
         if not self._category_input:
@@ -126,10 +146,46 @@ class FirstBlock(BaseComponent):
             self._subject_input = Input(node)
         return self._subject_input
 
-    def get_checkbox_levels(self):
-        pass
+    def get_desc_before_checkbox(self) -> str:
+        if not self._desc_before_checkbox:
+            self._desc_before_checkbox = self.node.find_element(*DESC_BEFORE_CHECKBOX)
+        return self._desc_before_checkbox.text
 
-    # checkbox elem
+    def get_checkbox_beginner(self) -> Checkbox:
+        if not self._checkbox_beginner:
+            node = self.node.find_element(*CHECKBOX_BEGINNER)
+            self._checkbox_beginner = Checkbox(node)
+        return self._checkbox_beginner
+
+    def get_checkbox_intermediate(self) -> Checkbox:
+        if not self._checkbox_intermediate:
+            node = self.node.find_element(*CHECKBOX_INTERMEDIATE)
+            self._checkbox_intermediate = Checkbox(node)
+        return self._checkbox_intermediate
+
+    def get_checkbox_advanced(self) -> Checkbox:
+        if not self._checkbox_advanced:
+            node = self.node.find_element(*CHECKBOX_ADVANCED)
+            self._checkbox_advanced = Checkbox(node)
+        return self._checkbox_advanced
+
+    def get_checkbox_test_preparation(self) -> Checkbox:
+        if not self._checkbox_test_preparation:
+            node = self.node.find_element(*CHECKBOX_TEST_PREPARATION)
+            self._checkbox_test_preparation = Checkbox(node)
+        return self._checkbox_test_preparation
+
+    def get_checkbox_professional(self) -> Checkbox:
+        if not self._checkbox_professional:
+            node = self.node.find_element(*CHECKBOX_PROFESSIONAL)
+            self._checkbox_professional = Checkbox(node)
+        return self._checkbox_professional
+
+    def get_checkbox_specialized(self) -> Checkbox:
+        if not self._checkbox_specialized:
+            node = self.node.find_element(*CHECKBOX_SPECIALIZED)
+            self._checkbox_specialized = Checkbox(node)
+        return self._checkbox_specialized
 
 
 class SecondBlock(BaseComponent):
