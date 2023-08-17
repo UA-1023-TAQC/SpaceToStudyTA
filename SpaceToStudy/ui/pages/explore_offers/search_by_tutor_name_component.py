@@ -1,3 +1,4 @@
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -44,3 +45,15 @@ class SearchByTutorNameComponent(BaseComponent):
 
     def set_search_by_tutor_name_input(self, text):
         self.get_search_by_tutor_name_input().send_keys(text)
+
+    def navigate_categories_input_up(self):
+        return self.get_categories_input().send_keys(Keys.ARROW_UP)
+
+    def navigate_categories_input_down(self):
+        return self.get_categories_input().send_keys(Keys.ARROW_DOWN)
+
+    def navigate_subjects_input_up(self):
+        return self.get_subjects_input().send_keys(Keys.ARROW_UP)
+
+    def navigate_subjects_input_down(self):
+        return self.get_subjects_input().send_keys(Keys.ARROW_DOWN)
