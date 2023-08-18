@@ -1,4 +1,7 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
+
+from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 TITLE = (By.XPATH, "./td[1]")
 CATEGORY_NAME = (By.XPATH, "./td[2]/div/div[1]/span/p")
@@ -8,9 +11,9 @@ LAST_UPDATE = (By.XPATH, "./td[4]")
 STATUS = (By.XPATH, "./td[5]/div/span/p/span[2]")
 
 
-class OfferElements:
-    def __init__(self, node):
-        self.node = node
+class OfferElements(BaseComponent):
+    def __init__(self, node: WebElement):
+        super().__init__(node)
 
     def get_offer_title(self) -> str:
         return self.node.find_element(*TITLE).text

@@ -1,15 +1,17 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.pages.base_component import BaseComponent
+
 ALL_BTN = (By.XPATH, "./button[1]")
 ACTIVE_BTN = (By.XPATH, "./button[2]")
 DRAFT_BTN = (By.XPATH, "./button[3]")
 CLOSED_BTN = (By.XPATH, "./button[4]")
 
 
-class SelectOffers:
-    def __init__(self, node):
-        self.node = node
+class SelectOffers(BaseComponent):
+    def __init__(self, node: WebElement):
+        super().__init__(node)
 
     def get_all_btn(self) -> WebElement:
         return self.node.find_element(*ALL_BTN)
