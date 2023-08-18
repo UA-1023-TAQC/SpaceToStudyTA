@@ -24,7 +24,7 @@ class ReviewComponent(BaseComponent):
         self.get_comment_user_avatar().click()
 
     def get_comment_user_nickname_text(self) -> str:
-        return self.node.find_element(USER_NICKNAME).text
+        return self.node.find_element(*USER_NICKNAME).text
 
     def click_comment_user_nickname(self) -> WebElement:
         return self.node.find_element(*USER_NICKNAME_LINK)
@@ -38,6 +38,6 @@ class ReviewComponent(BaseComponent):
     def get_comment_text(self) -> str:
         return self.node.find_element(*COMMENT_TEXT).text
 
-    def get_comment_stars_rating_element(self) -> WebElement:
-        return self.node.find_element(STARS_COMPONENT)
+    def get_comment_stars_rating_component(self) -> WebElement:
+        return self.node.find_element(*STARS_COMPONENT)
 
