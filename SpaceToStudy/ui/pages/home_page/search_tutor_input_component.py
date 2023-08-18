@@ -53,4 +53,3 @@ class SearchTutorComponent(BaseComponent):
         if not self._icon:
             self._icon = self.node.find_element(*ICON_INPUT)
         return self._icon
-

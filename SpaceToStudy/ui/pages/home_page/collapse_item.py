@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-
 TITLE_COLLAPSE_ITEM = (By.XPATH, "./div[1]/div/h6")
 DESCRIPTION_COLLAPSE_ITEM = (By.XPATH, ".//p")
 

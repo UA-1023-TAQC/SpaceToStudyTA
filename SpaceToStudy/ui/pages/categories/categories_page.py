@@ -41,5 +41,3 @@ class CategoriesPage(BasePage):
 
     def get_search_field_help_text(self) -> str:
         return self.driver.find_element(*SEARCH_FIELD_HELP_TEXT).text
-
-

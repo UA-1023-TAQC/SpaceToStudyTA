@@ -36,9 +36,3 @@ class Starline(BaseElement):
 
     def get_numeric_value_for_stars(self) -> str:
         return self.node.find_element(*NUMERIC_VALUE_FOR_STARS).text
-
-
-
-
-
-

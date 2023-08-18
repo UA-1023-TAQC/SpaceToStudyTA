@@ -4,7 +4,6 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-
 FILTERS_SVG = (By.XPATH, '.div[1]/div/svg')
 FILTER_TITLE = (By.XPATH, './div[1]/div/h6')
 TUTORS_OFFERS = (By.XPATH, './div[2]/span[1]')

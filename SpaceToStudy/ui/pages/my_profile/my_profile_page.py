@@ -6,7 +6,6 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 
-
 AVATAR = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[1]/div/*[local-name()='svg']")
 EDIT_PROFILE_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/a")
 
@@ -15,13 +14,16 @@ TIME_IN_SPASE_TO_STUDY = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div
 TEXT_UNDER_TIME_IN_SPASE_TO_STUDY = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[1]/span")
 
 PROFILE_RATING_NUMBER = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]/span/div/div/p")
-PROFILE_RATING_ICON = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]/span/div/div/*[local-name()='svg']")
+PROFILE_RATING_ICON = (
+By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]/span/div/div/*[local-name()='svg']")
 PROFILE_RATING_REVIEWS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]/span/div/a")
 
-NATIVE_LANGUAGE_ICON = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[1]/div[1]/*[local-name()='svg']")
+NATIVE_LANGUAGE_ICON = (
+By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[1]/div[1]/*[local-name()='svg']")
 NATIVE_LANGUAGE_TEXT = (By.XPATH, "./div[4]/div/div[1]/div[1]/div[2]")
 
-CITY_COUNTRY_BASED_ICON = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1]/*[local-name()='svg']")
+CITY_COUNTRY_BASED_ICON = (
+By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[1]/*[local-name()='svg']")
 CITY_COUNTRY_BASED_TEXT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[2]/div[2]")
 
 COMPLETENESS_SHOW_HIDE_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[2]/div[1]/div/div[1]/button")

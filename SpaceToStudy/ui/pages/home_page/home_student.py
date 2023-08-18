@@ -7,8 +7,6 @@ from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowIt
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
 from SpaceToStudy.ui.pages.home_page.search_tutor_input_component import SearchTutorComponent
 
-
-
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")

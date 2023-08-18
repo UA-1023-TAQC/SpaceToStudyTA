@@ -2,9 +2,8 @@ from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input_with_image import InputWithImage
-from SpaceToStudy.ui.pages.base_component import BaseComponent
 from SpaceToStudy.ui.elements.link import Link
-
+from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 FIRST_NAME_INPUT = (By.ID, "mui-7")
 LAST_NAME_INPUT = (By.ID, "mui-8")

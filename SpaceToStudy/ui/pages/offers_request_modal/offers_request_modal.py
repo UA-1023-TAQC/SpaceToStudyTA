@@ -6,7 +6,6 @@ from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.textarea import Textarea
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-
 MODAL_NAME = (By.XPATH, "//*[contains(@class, 'MuiTypography-body1 css-xszkll')]")
 MODAL_DESC = (By.XPATH, "//*/form[contains(@class, 'css-ggry99')]/p[contains(@class, 'css-1cuyrn')]")
 CLOSE_BTN = (By.XPATH, "//*/button[contains(@class, 'css-13de6kf')]")

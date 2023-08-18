@@ -41,5 +41,3 @@ class CardComponent(BaseComponent):
         if not self.btn:
             self.btn = self.node.find_element(*BUTTON)
             self.btn.click()
-
-

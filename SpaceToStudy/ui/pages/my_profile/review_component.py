@@ -40,4 +40,3 @@ class ReviewComponent(BaseComponent):
 
     def get_comment_stars_rating_component(self) -> WebElement:
         return self.node.find_element(*STARS_COMPONENT)
-

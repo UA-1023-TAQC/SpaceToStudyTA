@@ -4,7 +4,6 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-
 CATEGORIES_INPUT = (By.XPATH, './div[1]/div/div/input')
 SUBJECTS_INPUT = (By.XPATH, './div[2]/div/div/input')
 SEARCH_BY_TUTOR_NAME_INPUT = (By.XPATH, './div[3]/div/div/input')

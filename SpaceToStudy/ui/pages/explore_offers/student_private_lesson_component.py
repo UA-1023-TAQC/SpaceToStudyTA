@@ -3,7 +3,6 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-
 TITLE = (By.XPATH, './div/div[1]/p')
 TEXT = (By.XPATH, './div/div[1]/span')
 CREATE_REQUEST_BTN = (By.XPATH, './div/div[2]/button')

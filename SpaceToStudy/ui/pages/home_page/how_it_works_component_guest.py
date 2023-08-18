@@ -50,4 +50,3 @@ class HowItWorksComponent(BaseComponent):
         if not self.description:
             self.description = self.node.find_element(*DESCRIPTION)
         return self.description.text
-
