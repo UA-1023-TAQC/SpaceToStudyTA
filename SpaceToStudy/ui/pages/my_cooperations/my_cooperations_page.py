@@ -36,8 +36,6 @@ NAME_OPTION = (By.XPATH, '//*[@id="menu-"]/div[3]/ul/li[2]')
 PRICE_LOW_HIGH_OPTION = (By.XPATH, '//*[@id="menu-"]/div[3]/ul/li[3]')
 PRICE_HIGH_LOW_OPTION = (By.XPATH, '//*[@id="menu-"]/div[3]/ul/li[4]')
 
-//*[@id="root"]/div/div[2]/div[2]/div[4]/div/div/table/tbody/tr[3]
-//*[@id="root"]/div/div[2]/div[2]/div[4]/div/div/table/tbody/tr[2]
 
 class MyCooperationsPageStudent(BasePage):
     def __init__(self, driver):
