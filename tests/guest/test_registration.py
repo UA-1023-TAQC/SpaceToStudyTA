@@ -2,7 +2,9 @@ import unittest
 from time import sleep
 
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
@@ -12,7 +14,7 @@ from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 class RegistrationTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         self.driver.implicitly_wait(1)
         self.driver.maximize_window()
         self.addCleanup(self.driver.quit)
