@@ -3,6 +3,8 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.pages.base_page import BasePage
+
 NAME_SURNAME = (By.XPATH, "./div[1]/p")
 TIME_IN_SPASE_TO_STUDY = (By.XPATH, "./div[3]/div[1]/p")
 TEXT_UNDER_TIME_IN_SPASE_TO_STUDY = (By.XPATH, "./div[3]/div[1]/span")
@@ -18,7 +20,7 @@ CITY_COUNTRY_BASED_ICON = (By.XPATH, "./div[4]/div/div[1]/div[2]/div[1]/*[local-
 CITY_COUNTRY_BASED_TEXT = (By.XPATH, "./div[4]/div/div[1]/div[2]/div[2]")
 
 
-class ProfileDescription:
+class ProfileDescription(BasePage):
     def __init__(self, node):
         self.node = node
 
