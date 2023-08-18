@@ -34,6 +34,7 @@ TITLE_INPUT = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[1]")
 DESCRIBE_INPUT = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[2]")
 DESC_BEFORE_LANGUAGE = (By.XPATH, "//*/div[contains(@class, 'css-xxees4')]/../p")
 LANGUAGE_INPUT = (By.XPATH, "//*/div[contains(@class, 'css-xxees4')]/div")
+
 DESC_BEFORE_PRICE = (By.XPATH, "//*/div[contains(@class, 'css-jbbf0i')]/../p")
 PRICE_INPUT = (By.XPATH, "//*/div[contains(@class, 'css-jbbf0i')]")
 PRICE_IMG = (By.XPATH, "//*/div[contains(@class, 'css-jbbf0i')]/div/img")
@@ -234,8 +235,10 @@ class SecondBlock(BaseComponent):
             self._language_input = Input(node)
         return self._language_input
 
-    # Випадаючий список label
-    # Element label
+    def is_language_dropdown_list_open(self) -> bool:
+        if self.get_language_input().get_input().get_attribute("aria-controls") == "mui-16-listbox":
+            return True
+        return False
 
     def get_desc_before_price(self) -> str:
         if not self._desc_before_price:
