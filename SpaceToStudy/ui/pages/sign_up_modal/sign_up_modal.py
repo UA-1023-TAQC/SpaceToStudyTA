@@ -1,7 +1,9 @@
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.elements.input import Input
-from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.elements.input_with_image import InputWithImage
+from SpaceToStudy.ui.elements.link import Link
+from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 FIRST_NAME_INPUT = (By.ID, "mui-7")
 LAST_NAME_INPUT = (By.ID, "mui-8")
@@ -25,25 +27,26 @@ I_AGREE_CHECKBOX = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/d
 SIGN_UP_BTN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button")
 
 TERMS_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]/div/a[1]")
-PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]/div/a[2]")
+PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]"
+                                 "/div/a[2]")
 LOGIN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
 
 
-class RegistrationModal(BasePage):
+class RegistrationModal(BaseComponent):
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, node):
+        super().__init__(node)
         self._first_name_input = None
         self._last_name_input = None
         self._email_input = None
         self._password_input = None
         self._confirm_password_input = None
-        self._terms = None
-        self._privacy_policy = None
+        self._terms_link = None
+        self._privacy_policy_link = None
 
     def get_first_name_input(self):
         if not self._first_name_input:
-            node = self.driver.find_element(*FIRST_NAME_INPUT)
+            node = self.node.find_element(*FIRST_NAME_INPUT)
             self._first_name_input = Input(node)
         return self._first_name_input
 
@@ -61,7 +64,7 @@ class RegistrationModal(BasePage):
 
     def get_last_name_input(self):
         if not self._last_name_input:
-            node = self.driver.find_element(*LAST_NAME_INPUT)
+            node = self.node.find_element(*LAST_NAME_INPUT)
             self._last_name_input = Input(node)
         return self._last_name_input
 
@@ -79,7 +82,7 @@ class RegistrationModal(BasePage):
 
     def get_email_input(self):
         if not self._email_input:
-            node = self.driver.find_element(*EMAIL_INPUT)
+            node = self.node.find_element(*EMAIL_INPUT)
             self._email_input = Input(node)
         return self._email_input
 
@@ -97,24 +100,86 @@ class RegistrationModal(BasePage):
 
     def get_password_input(self):
         if not self._password_input:
-            node = self.driver.find_element(*PASSWORD_INPUT)
-            self._password_input = Input(node)
+            node = self.node.find_element(*PASSWORD_INPUT)
+            self._password_input = InputWithImage(node)
         return self._password_input
+
+    def set_password(self, password_text):
+        password_input = self.get_password_input()
+        password_input.set_text(password_text)
+
+    def get_password_label_text(self):
+        password_input = self.get_password_input()
+        return password_input.get_label()
+
+    def get_password_error_message(self):
+        password_input = self.get_password_input()
+        return password_input.get_error_message()
+
+    def click_password_icon(self):
+        password_input = self.get_password_input()
+        password_input.click_icon()
 
     def get_confirm_password_input(self):
         if not self._confirm_password_input:
-            node = self.driver.find_element(*CONFIRM_PASSWORD_INPUT)
-            self._confirm_password_input = Input(node)
+            node = self.node.find_element(*CONFIRM_PASSWORD_INPUT)
+            self._confirm_password_input = InputWithImage(node)
         return self._confirm_password_input
 
+    def set_confirm_password(self, confirm_password_text):
+        confirm_password_input = self.get_confirm_password_input()
+        confirm_password_input.set_text(confirm_password_text)
+
+    def get_confirm_password_label_text(self):
+        confirm_password_input = self.get_confirm_password_input()
+        return confirm_password_input.get_label()
+
+    def get_confirm_password_error_message(self):
+        confirm_password_input = self.get_confirm_password_input()
+        return confirm_password_input.get_error_message()
+
+    def click_confirm_password_icon(self):
+        confirm_password_input = self.get_confirm_password_input()
+        confirm_password_input.get_icon()
+
     def get_i_agree_checkbox(self):
-        return self.driver.find_element(*I_AGREE_CHECKBOX)
+        return self.node.find_element(*I_AGREE_CHECKBOX)
 
     def click_i_agree_checkbox(self):
-        self.driver.get_i_agree_checkbox.click()
+        i_agree_checkbox = self.get_i_agree_checkbox()
+        i_agree_checkbox.click()
+
+    def get_terms_link(self):
+        if not self._terms_link:
+            node = self.node.find_element(*TERMS_LINK)
+            self._terms_link = Link(node)
+        return self._terms_link
+
+    def get_terms_link_text(self):
+        terms_link_text = self.get_terms_link()
+        return terms_link_text.get_link_text()
+
+    def click_terms_link(self):
+        terms_link = self.get_terms_link()
+        terms_link.click_link()
+
+    def get_privacy_policy_link(self):
+        if not self._privacy_policy_link:
+            node = self.node.find_element(*PRIVACY_POLICY_LINK)
+            self._privacy_policy_link = Link(node)
+        return self._privacy_policy_link
+
+    def get_privacy_policy_link_text(self):
+        privacy_policy_link_text = self.get_privacy_policy_link()
+        return privacy_policy_link_text.get_link_text()
+
+    def click_privacy_policy_link(self):
+        privacy_policy_link = self.get_privacy_policy_link()
+        privacy_policy_link.click_link()
 
     def get_sign_up_btn(self):
-        return self.driver.find_element(*SIGN_UP_BTN)
+        return self.node.find_element(*SIGN_UP_BTN)
 
     def click_sign_up_btn(self):
-        self.driver.get_sign_up_btn.click()
+        sign_up_btn = self.get_sign_up_btn()
+        sign_up_btn.click()

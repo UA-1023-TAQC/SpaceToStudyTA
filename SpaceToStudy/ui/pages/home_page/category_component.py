@@ -33,4 +33,3 @@ class CategoryComponent(BaseComponent):
         if not self.offers:
             self.offers = self.node.find_element(*OFFERS)
         return self.offers.text()
-

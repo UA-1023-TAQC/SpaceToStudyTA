@@ -28,12 +28,12 @@ class HowItWorksComponent(BaseComponent):
 
     def get_checkbox_learn_from_experts(self) -> str:
         if not self.checkbox_learn_from_experts:
-            self.checkbox_learn_from_experts = self.node.find_element(*CHECKBOX_SHARE_YOUR_EXPERIENCE)
+            self.checkbox_learn_from_experts = self.node.find_element(*CHECKBOX_LEARN_FROM_EXPERTS)
         return self.checkbox_learn_from_experts.text
 
     def get_checkbox_share_your_experience(self) -> str:
         if not self.checkbox_share_your_experience:
-            self.checkbox_share_your_experience = self.node.find_element(*IMAGE)
+            self.checkbox_share_your_experience = self.node.find_element(*CHECKBOX_SHARE_YOUR_EXPERIENCE)
         return self.checkbox_share_your_experience.text
 
     def get_image(self) -> WebElement:
@@ -50,4 +50,3 @@ class HowItWorksComponent(BaseComponent):
         if not self.description:
             self.description = self.node.find_element(*DESCRIPTION)
         return self.description.text
-

@@ -9,7 +9,6 @@ from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 IMG_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/img")
 TITLE_MODAL = (By.XPATH, "//*[contains(text(),'Welcome back')]")
-
 EMAIL_INPUT = (By.ID, "mui-7")
 PASSWORD_INPUT = (By.ID, "mui-8")
 
@@ -32,7 +31,6 @@ class LoginModal(BaseComponent):
         self._sign_in_as_gmail = None
         self._join_us_for_free = None
         self._login_button = None
-
 
     def get_img(self):
         if not self._img_modal:

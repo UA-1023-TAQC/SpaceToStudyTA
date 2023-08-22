@@ -40,4 +40,3 @@ class Footer(BaseComponent):
         if not self._all_rights:
             self._all_rights = self.node.find_element(*ALL_RIGHTS)
         return self._all_rights.text
-

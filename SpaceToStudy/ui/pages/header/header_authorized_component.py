@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from SpaceToStudy.ui.pages.header.user_menu_component import UserMenuComponent
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
+from SpaceToStudy.ui.pages.header.user_menu_component import UserMenuComponent
 
 USER_MENU = (By.XPATH, "/html/body/div[1]/div/header/div/div")
 
