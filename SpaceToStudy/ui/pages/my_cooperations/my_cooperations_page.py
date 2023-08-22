@@ -9,23 +9,23 @@ CURRENT_PAGE_NAME = (By.XPATH, '//p[@to="my-cooperations"]')
 MY_COOPERATIONS_PAGE_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[1]/p')
 VIEW_MY_OFFERS_BTN = (By.XPATH, '//a[contains(text(), "View my offers")]')
 
-TABLE_FILTER_BAR = '//*[@id="root"]/div/div[2]/div[2]/div[2]'
-ALL_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR}/button[1]')
-ACTIVE_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR}/button[2]')
-PENDING_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR}/button[3]')
-CLOSED_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR}/button[4]')
+TABLE_FILTER_BAR_START_PATH = '//*[@id="root"]/div/div[2]/div[2]/div[2]'
+ALL_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR_START_PATH}/button[1]')
+ACTIVE_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR_START_PATH}/button[2]')
+PENDING_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR_START_PATH}/button[3]')
+CLOSED_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR_START_PATH}/button[4]')
 
 FILTER_TEXT_FIELD = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[3]/div[1]/div/input')
 ROW_VIEW_TOGGLE_BUTTON = (By.XPATH, '//button[@aria-label="inline card view"]')
 CARD_VIEW_TOGGLE_BUTTON = (By.XPATH, '//button[@aria-label="grid card view"]')
 
-TABLE_TITLES_ROW = '//*[@id="root"]/div/div[2]/div[2]/div[4]/div/div/table/thead/tr'
-NAME_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[1]/span')
-OFFER_TITLE_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[2]/span')
-SUBJECT_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[3]/span')
-PRICE_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[4]/span')
-LAST_UPDATE_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[5]/span')
-STATUS_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[6]/span')
+TABLE_TITLES_ROW_START_PATH = '//*[@id="root"]/div/div[2]/div[2]/div[4]/div/div/table/thead/tr'
+NAME_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW_START_PATH}/th[1]/span')
+OFFER_TITLE_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW_START_PATH}/th[2]/span')
+SUBJECT_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW_START_PATH}/th[3]/span')
+PRICE_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW_START_PATH}/th[4]/span')
+LAST_UPDATE_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW_START_PATH}/th[5]/span')
+STATUS_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW_START_PATH}/th[6]/span')
 
 ROW_WITH_NO_MATCHES = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[4]/div/div[2]')
 
