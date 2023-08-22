@@ -9,7 +9,7 @@ CURRENT_PAGE_NAME = (By.XPATH, '//p[@to="my-cooperations"]')
 MY_COOPERATIONS_PAGE_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[1]/p')
 VIEW_MY_OFFERS_BTN = (By.XPATH, '//a[contains(text(), "View my offers")]')
 
-TABLE_FILTER_BAR = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]')
+TABLE_FILTER_BAR = '//*[@id="root"]/div/div[2]/div[2]/div[2]'
 ALL_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR}/button[1]')
 ACTIVE_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR}/button[2]')
 PENDING_TABLE_FILTER = (By.XPATH, f'{TABLE_FILTER_BAR}/button[3]')
@@ -19,7 +19,7 @@ FILTER_TEXT_FIELD = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[3]/div[1]/
 ROW_VIEW_TOGGLE_BUTTON = (By.XPATH, '//button[@aria-label="inline card view"]')
 CARD_VIEW_TOGGLE_BUTTON = (By.XPATH, '//button[@aria-label="grid card view"]')
 
-TABLE_TITLES_ROW = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[4]/div/div/table/thead/tr')
+TABLE_TITLES_ROW = '//*[@id="root"]/div/div[2]/div[2]/div[4]/div/div/table/thead/tr'
 NAME_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[1]/span')
 OFFER_TITLE_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[2]/span')
 SUBJECT_TABLE_TITLE = (By.XPATH, f'{TABLE_TITLES_ROW}/th[3]/span')
@@ -37,7 +37,7 @@ PRICE_LOW_HIGH_OPTION = (By.XPATH, '//*[@id="menu-"]/div[3]/ul/li[3]')
 PRICE_HIGH_LOW_OPTION = (By.XPATH, '//*[@id="menu-"]/div[3]/ul/li[4]')
 
 
-class MyCooperationsPageStudent(BasePage):
+class MyCooperationsPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
