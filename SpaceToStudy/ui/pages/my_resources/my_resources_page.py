@@ -32,6 +32,7 @@ ACTIONS_ATTACHMENTS_COLUMN = (By.XPATH, f'{TABLE_ATTACHMENTS_TITLES_ROW}/th[4]/s
 
 ROW_WITH_NO_MATCHES = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/div[2]/div/div[2]')
 
+ROWS_PATH = "//tbody[@class='MuiTableBody-root']//tr"
 
 class MyResourcesPage(BasePage):
     def __init__(self, driver):
@@ -179,6 +180,4 @@ class MyResourcesPage(BasePage):
         return self.get_row_with_no_matches().text
 
     def get_list_of_rows_lessons(self) -> list:
-        rows_xpath = "//tbody[@class='MuiTableBody-root']//tr"
-        rows = self.driver.find_elements(By.XPATH, rows_xpath)
-        return rows
+        return self.driver.find_elements(By.XPATH, ROWS_PATH)
