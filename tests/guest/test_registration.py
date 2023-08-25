@@ -9,16 +9,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
+from tests.test_runners import BaseTestRunner
 
 
-class RegistrationTestCase(unittest.TestCase):
+class RegistrationTestCase(BaseTestRunner):
 
-    def setUp(self):
-        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-        self.driver.implicitly_wait(1)
-        self.driver.maximize_window()
-        self.addCleanup(self.driver.quit)
-        self.driver.get('https://s2s-front-stage.azurewebsites.net/')
 
     def test_page_title(self):
         self.driver.get('https://s2s-front-stage.azurewebsites.net/')
