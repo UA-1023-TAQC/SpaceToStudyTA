@@ -90,17 +90,6 @@ class HomePageGuest(BasePage):
         self.get_digital_communication().click()
         return self
 
-    def get_button_get_started_for_free(self) -> WebElement:
-        if not self._button_get_started_for_free:
-            self._button_get_started_for_free = self.driver.find_element(*BUTTON_GET_STARTED_FOR_FREE)
-        return self._button_get_started_for_free
-
-    def get_how_it_works_block(self) -> WebElement:
-        if not self._how_it_works_block:
-            node = self.driver.find_element(*HOW_IT_WORKS_BLOCK)
-            self._how_it_works_block = HowItWorksComponent(node)
-        return self._how_it_works_block
-
     def get_sign_up_items(self) -> WebElement:
         if not self._sign_up:
             node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SIGN_UP)
@@ -124,6 +113,12 @@ class HomePageGuest(BasePage):
             node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
             self._start_learning = HowItWorksComponent(node)
         return self._start_learning
+
+    def get_how_it_works_block(self) -> WebElement:
+        if not self._how_it_works_block:
+            node = self.driver.find_element(*HOW_IT_WORKS_BLOCK)
+            self._how_it_works_block = HowItWorksComponent(node)
+        return self._how_it_works_block
 
     def get_checkbox_how_it_works_block(self) -> WebElement:
         if not self._checkbox_how_it_works_block:
@@ -160,6 +155,11 @@ class HomePageGuest(BasePage):
     def click_button_become_a_student(self):
         self.get_button_become_a_student().click()
         return self
+
+    def get_button_get_started_for_free(self) -> WebElement:
+        if not self._button_get_started_for_free:
+            self._button_get_started_for_free = self.driver.find_element(*BUTTON_GET_STARTED_FOR_FREE)
+        return self._button_get_started_for_free
 
     def get_img_map(self) -> WebElement:
         if not self._img_map:
