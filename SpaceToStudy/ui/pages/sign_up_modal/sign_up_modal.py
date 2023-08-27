@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input_with_image import InputWithImage
@@ -31,6 +32,8 @@ PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2
                                  "/div/a[2]")
 LOGIN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
 
+TITLE_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
+
 
 class RegistrationModal(BaseComponent):
 
@@ -43,6 +46,7 @@ class RegistrationModal(BaseComponent):
         self._confirm_password_input = None
         self._terms_link = None
         self._privacy_policy_link = None
+        self._title_modal = None
 
     def get_first_name_input(self):
         if not self._first_name_input:
@@ -183,3 +187,12 @@ class RegistrationModal(BaseComponent):
     def click_sign_up_btn(self):
         sign_up_btn = self.get_sign_up_btn()
         sign_up_btn.click()
+
+    def get_title_modal(self) -> WebElement:
+        if not self._title_modal:
+            self._title_modal = self.node.find_element(*TITLE_MODAL)
+        return self._title_modal
+
+    def get_text_title_modal(self) -> str:
+        return self.get_title_modal().text
+
