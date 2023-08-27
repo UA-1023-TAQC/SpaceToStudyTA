@@ -19,6 +19,8 @@ HOW_IT_WORKS_BLOCK_SIGN_UP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]
 HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[3]")
 HOW_IT_WORKS_BLOCK_SEND_REQUEST = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[4]")
 HOW_IT_WORKS_BLOCK_START_LEARNING = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[5]")
+HOW_IT_WORKS_BLOCK_BECOME_A_TUTOR_OR_STUDENT_BUTTON = (By.XPATH,
+                                                       "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/button")
 
 CHECKBOX_HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[1]/span/span[1]/input")
 
@@ -131,6 +133,12 @@ class HomePageGuest(BasePage):
 
     def click_checkbox_how_it_works_block(self):
         self.get_checkbox_how_it_works_block().click()
+
+    def get_how_it_works_block_become_a_tutor_or_student_button(self) -> WebElement:
+        return self.driver.find_element(*HOW_IT_WORKS_BLOCK_BECOME_A_TUTOR_OR_STUDENT_BUTTON)
+
+    def click_how_it_works_block_become_a_tutor_or_student_button(self):
+        self.get_how_it_works_block_become_a_tutor_or_student_button().click()
 
     def get_card_learn_from_experts(self) -> WebElement:
         if not self._card_learn_from_experts:

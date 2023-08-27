@@ -5,6 +5,7 @@ from SpaceToStudy.ui.elements.input_with_image import InputWithImage
 from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
+TITLE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
 FIRST_NAME_INPUT = (By.ID, "mui-7")
 LAST_NAME_INPUT = (By.ID, "mui-8")
 EMAIL_INPUT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[2]/div")
@@ -36,6 +37,7 @@ class RegistrationModal(BaseComponent):
 
     def __init__(self, node):
         super().__init__(node)
+        self._login_link = None
         self._first_name_input = None
         self._last_name_input = None
         self._email_input = None
@@ -43,6 +45,9 @@ class RegistrationModal(BaseComponent):
         self._confirm_password_input = None
         self._terms_link = None
         self._privacy_policy_link = None
+
+    def get_title_text(self) -> str:
+        return self.node.find_element(*TITLE).text
 
     def get_first_name_input(self):
         if not self._first_name_input:
@@ -183,3 +188,13 @@ class RegistrationModal(BaseComponent):
     def click_sign_up_btn(self):
         sign_up_btn = self.get_sign_up_btn()
         sign_up_btn.click()
+
+    def get_login_link_text(self) -> str:
+        if not self._login_link:
+            self._login_link = self.node.find_element(*LOGIN)
+        return self._login_link.text
+
+    def click_login_link(self):
+        if not self._login_link:
+            self._login_link = self.node.find_element(*LOGIN)
+            self._login_link.click()
