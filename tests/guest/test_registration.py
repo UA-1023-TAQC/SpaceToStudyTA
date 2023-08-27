@@ -73,6 +73,20 @@ class RegistrationTestCase(BaseTestRunner):
                        .is_expanded())
         self.assertTrue(is_expanded)
 
+    def test_registration_tutor_too_long_password(self):
+        home = HomePageGuest(self.driver)
+        registration = RegistrationModal(self.driver)  # NODE OR DRIVER?
+        home.get_button_get_started_for_free().click()
+        (home
+            .get_card_share_your_experience()
+            .click_btn())
+        registration.set_first_name("Nata")
+        registration.set_last_name("Nata")
+        registration.set_email("rozdilska.n@gmail.com")
+        registration.set_password("1111111111111111111111111q")
+        registration.get_confirm_password_input().click()
+        message = registration.get_password_error_message()
+        self.assertEquals(message, "Password cannot be shorter than 8 and longer than 25 characters")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
