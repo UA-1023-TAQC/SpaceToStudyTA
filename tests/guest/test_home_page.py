@@ -1,4 +1,5 @@
 import unittest
+from time import sleep
 
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
@@ -14,6 +15,7 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEquals(button_become_a_student_text, "Become a tutor")
         home_page_guest.click_how_it_works_block_become_a_tutor_or_student_button()
         registration_modal = RegistrationModal(self.driver)
+        sleep(1)
         registration_modal_title = registration_modal.get_title_text()
         self.assertTrue(registration_modal_title, "Sign up as a tutor")
         registration_modal.click_login_link()
