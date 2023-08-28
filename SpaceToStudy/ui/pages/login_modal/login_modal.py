@@ -9,8 +9,8 @@ from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 IMG_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/img")
 TITLE_MODAL = (By.XPATH, "//*[contains(text(),'Welcome back')]")
-EMAIL_INPUT = (By.ID, "mui-7")
-PASSWORD_INPUT = (By.ID, "mui-8")
+EMAIL_INPUT = (By.CSS_SELECTOR, 'input[type="email"]')
+PASSWORD_INPUT = (By.CSS_SELECTOR, 'input[type="password"]')
 
 FORGOT_PASSWORD_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[1]")
 LOGIN_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
@@ -43,15 +43,16 @@ class LoginModal(BaseComponent):
         return self._title_modal
 
     def get_email_input(self):
-        node = self.node.find_element(*EMAIL_INPUT)
-        self._email_input = Input(node)
-        return self._email_input
+        return self.node.find_element(*EMAIL_INPUT)
+
+    def set_email_input(self, value):
+        self.get_email_input().send_keys(value)
 
     def get_password_input(self):
-        if not self._password_input:
-            node = self.node.find_element(*PASSWORD_INPUT)
-            self._password_input = PasswordInput(node)
-        return self._password_input
+        return self.node.find_element(*PASSWORD_INPUT)
+
+    def set_password_input(self, value):
+        self.get_password_input().send_keys(value)
 
     def get_email_error_message(self):
         last_name_input = self.get_last_name_input()
@@ -67,10 +68,11 @@ class LoginModal(BaseComponent):
         return self._forgot_password_button
 
     def get_login_button(self):
-        node = self.node.find_element(*LOGIN_BUTTON)
-        self._login_button = Button(node)
-        return self._login_button
-    
+        return self.node.find_element(*LOGIN_BUTTON)
+
+    def click_login_button(self):
+        self.get_login_button().click()
+
     def get_join_us_for_free(self):
         node = self.node.find_element(*JOIN_US_FOR_FREE)
         self._join_us_for_free = Link(node)

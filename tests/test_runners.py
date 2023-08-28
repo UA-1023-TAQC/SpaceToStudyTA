@@ -1,10 +1,13 @@
 import unittest
+from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-from value_pvider import ValueProvider
+from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
+from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
+from tests.value_pvider import ValueProvider
 
 IMPLICITLY_WAIT = 5
 
@@ -22,7 +25,14 @@ class BaseTestRunner(unittest.TestCase):
         self.driver.get(ValueProvider.get_base_url())
 
     def _login(self, email: str, password: str):
-        pass
+        header = HeaderUnauthorizedComponent(self.driver)
+        header.click_login_btn()
+        login_modal = LoginModal(self.driver)
+        login_modal.set_email_input(email)
+        login_modal.set_password_input(password)
+        sleep(1)
+        login_modal.click_login_button()
+        sleep(1)
 
 
 class TestRunnerWithStudent(BaseTestRunner):
