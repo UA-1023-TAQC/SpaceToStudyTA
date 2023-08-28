@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from time import sleep
 
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input import PasswordInput
@@ -9,8 +10,8 @@ from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 IMG_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/img")
 TITLE_MODAL = (By.XPATH, "//*[contains(text(),'Welcome back')]")
-EMAIL_INPUT = (By.CSS_SELECTOR, 'input[type="email"]')
-PASSWORD_INPUT = (By.CSS_SELECTOR, 'input[type="password"]')
+EMAIL_INPUT = (By.XPATH, "//div[@data-testid='email']")
+PASSWORD_INPUT = (By.XPATH, "//label[contains(text(), 'Password')]/..")
 
 FORGOT_PASSWORD_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[1]")
 LOGIN_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
@@ -43,17 +44,21 @@ class LoginModal(BaseComponent):
         return self._title_modal
 
     def get_email_input(self):
-        return self.node.find_element(*EMAIL_INPUT)
-
-    def set_email_input(self, value):
-        self.get_email_input().send_keys(value)
+        node = self.node.find_element(*EMAIL_INPUT)
+        self._email_input = Input(node)
+        return self._email_input
+    def set_email(self, email: str):
+        self.get_email_input().set_text(email)
+        return self
 
     def get_password_input(self):
-        return self.node.find_element(*PASSWORD_INPUT)
-
-    def set_password_input(self, value):
-        self.get_password_input().send_keys(value)
-
+        if not self._password_input:
+            node = self.node.find_element(*PASSWORD_INPUT)
+            self._password_input = PasswordInput(node)
+        return self._password_input
+    def set_password(self, password: str):
+        self.get_password_input().set_text(password)
+        return self
     def get_email_error_message(self):
         last_name_input = self.get_last_name_input()
         return last_name_input.get_error_message()
@@ -68,11 +73,16 @@ class LoginModal(BaseComponent):
         return self._forgot_password_button
 
     def get_login_button(self):
-        return self.node.find_element(*LOGIN_BUTTON)
+        node = self.node.find_element(*LOGIN_BUTTON)
+        self._login_button = Button(node)
+        return self._login_button
 
     def click_login_button(self):
-        self.get_login_button().click()
+        sleep(0.1)
+        self.get_login_button().click_button()
+        sleep(1)
 
+    
     def get_join_us_for_free(self):
         node = self.node.find_element(*JOIN_US_FOR_FREE)
         self._join_us_for_free = Link(node)
