@@ -5,7 +5,7 @@ from SpaceToStudy.ui.elements.input_with_image import InputWithImage
 from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-FIRST_NAME_INPUT = (By.ID, "mui-7")
+FIRST_NAME_INPUT = (By.XPATH, "//label[contains(text(), 'First name')]/..")
 LAST_NAME_INPUT = (By.ID, "mui-8")
 EMAIL_INPUT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[2]/div")
 PASSWORD_INPUT = (By.ID, "mui-10")

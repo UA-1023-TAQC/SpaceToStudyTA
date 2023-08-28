@@ -1,20 +1,15 @@
 import unittest
 from time import sleep
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
-from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 
 
 class RegistrationTestCase(BaseTestRunner):
-
 
     def test_page_title(self):
         self.driver.get('https://s2s-front-stage.azurewebsites.net/')
@@ -75,12 +70,9 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertTrue(is_expanded)
 
     def test_registration_password_without_alphabetic_numeric_character(self):
-        home = HomePageGuest(self.driver)
-        registration = RegistrationModal(self.driver)  # NODE OR DRIVER?
-        home.get_button_get_started_for_free().click()
-        (home
-            .get_card_share_your_experience()
-            .click_btn())
+        registration = (HomePageGuest(self.driver)
+                        .click_started_for_free()
+                        .click_become_a_tutor())
         registration.set_first_name("Nata")
         registration.set_last_name("Nata")
         registration.set_email("rozdilska.n@gmail.com")
