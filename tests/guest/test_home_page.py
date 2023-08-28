@@ -1,6 +1,7 @@
 import unittest
 from time import sleep
 
+
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
