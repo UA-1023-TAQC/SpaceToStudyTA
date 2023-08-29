@@ -5,7 +5,9 @@ from SpaceToStudy.ui.elements.base_element import BaseElement
 
 INPUT = (By.XPATH, "./div/input")
 LABEL = (By.XPATH, "./label")
-ERROR_MESSAGE = (By.XPATH, "./p/span")
+ERROR_MESSAGE = (By.XPATH, "./following-sibling::*/p/span")
+
+
 
 
 class Input(BaseElement):
@@ -42,7 +44,7 @@ class Input(BaseElement):
             self._input_css_class = self._input.get_attribute("class")
         return self._input_css_class  
     
-    def get_error_message(self):
+    def get_error_message(self) -> str:
         return self.node.find_element(*ERROR_MESSAGE).text
     
     

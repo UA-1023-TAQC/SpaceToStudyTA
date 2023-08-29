@@ -75,19 +75,16 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertTrue(is_expanded)
 
     def test_registration_password_without_alphabetic_numeric_character(self):
-        home = HomePageGuest(self.driver)
-        registration = RegistrationModal(self.driver)  # NODE OR DRIVER?
-        home.get_button_get_started_for_free().click()
-        (home
-            .get_card_share_your_experience()
-            .click_btn())
-        registration.set_first_name("Nata")
-        registration.set_last_name("Nata")
-        registration.set_email("rozdilska.n@gmail.com")
+        registration = (HomePageGuest(self.driver)
+                        .click_started_for_free()
+                        .click_become_a_tutor())
+        registration.set_first_name("test")
+        registration.set_last_name("test")
+        registration.set_email("test@gmail.com")
         registration.set_password("@#$%//////")
-        registration.click_password_icon()
-        message = registration.get_password_error_message()
-        self.assertEquals(message, "Password must contain at least one alphabetic and one numeric character")
+        registration.click_sign_up_btn()
+        message = (registration.get_password_error_message().get_error_message())
+        self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
 
 if __name__ == '__main__':
