@@ -112,7 +112,7 @@ class RegistrationModal(BaseComponent):
         password_input = self.get_password_input()
         return password_input.get_label()
 
-    def get_password_error_message(self) -> str:
+    def get_password_error_message(self):
         password_input = self.get_password_input()
         return password_input.get_error_message()
 

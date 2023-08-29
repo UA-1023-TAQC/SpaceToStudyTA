@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -42,3 +44,4 @@ class CardComponent(BaseComponent):
 
     def click_btn(self):
         self.get_btn().click()
+        sleep(1)

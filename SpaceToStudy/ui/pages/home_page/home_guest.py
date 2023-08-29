@@ -1,5 +1,6 @@
 from time import sleep
 
+from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -112,10 +113,10 @@ class HomePageGuest(BasePage):
             self._send_request = HowItWorksComponent(_send_request)
         return self._send_request
 
-    def get_start_learning_items(self) -> HowItWorksComponent:
+    def get_start_learning_items(self) -> WebElement:
         if not self._start_learning:
-            _start_learning = self.driver.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
-            self._start_learning = HowItWorksComponent(_start_learning)
+            node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
+            self._start_learning = HowItWorksComponent(node)
         return self._start_learning
 
     def get_how_it_works_block(self) -> HowItWorksComponent:
@@ -145,6 +146,9 @@ class HomePageGuest(BasePage):
         self.get_card_share_your_experience().click_btn()
         return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
 
+    def click_become_a_tutor(self) -> RegistrationModal:
+        self.get_card_share_your_experience().click_btn()
+        return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
     def get_text_button_get_started_for_free(self) -> str:
         return self.get_button_get_started_for_free().text
 
