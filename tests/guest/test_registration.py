@@ -1,10 +1,8 @@
 import unittest
 from time import sleep
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+
 
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
@@ -74,19 +72,17 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertTrue(is_expanded)
 
     def test_registration_tutor_too_long_password(self):
-        home = HomePageGuest(self.driver)
-        registration = RegistrationModal(self.driver)  # NODE OR DRIVER?
-        home.get_button_get_started_for_free().click()
-        (home
-            .get_card_share_your_experience()
-            .click_btn())
-        registration.set_first_name("Nata")
-        registration.set_last_name("Nata")
-        registration.set_email("rozdilska.n@gmail.com")
-        registration.set_password("1111111111111111111111111q")
-        registration.get_confirm_password_input().click()
-        message = registration.get_password_error_message()
-        self.assertEquals(message, "Password cannot be shorter than 8 and longer than 25 characters")
+        registration = (HomePageGuest(self.driver)
+                        .click_started_for_free()
+                        .click_become_a_tutor())
+        registration.set_first_name("test")
+        registration.set_last_name("test")
+        registration.set_email("test@gmail.com")
+        registration.set_password("11111111111111111111111111q")
+        registration.click_sign_up_btn()
+        message = (registration.get_password_error_message().get_error_message())
+        self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
