@@ -40,7 +40,6 @@ class RegistrationTestCase(BaseTestRunner):
         email = login_modal.get_email_input()
         email.set_text("test+1@test.com")
         self.assertEquals(email.get_label_text(), "Email *")
-        # self.assertEquals(email.get_error_message(), "Email should be of the following format: “local-part@domain.com")
 
     def test_homepage_categories(self):
         email, password = "login", "pass"
@@ -57,8 +56,6 @@ class RegistrationTestCase(BaseTestRunner):
                                                       "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
         login_button_step2.click()
         sleep(2)
-
-        # self.browser.get('https://s2s-front-stage.azurewebsites.net/tutor')
         first_category_name = HomePageStudent(self.driver).get_categories()[0].get_name()
         self.assertEquals(first_category_name, "Music")
 
@@ -75,12 +72,9 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertTrue(is_expanded)
 
     def test_registration_modal_student_is_shown_for_guest(self):
-        home = HomePageGuest(self.driver)
-        registration = RegistrationModal(self.driver)
-        home.get_button_get_started_for_free().click()
-        (home
-            .get_card_share_your_experience()
-            .click_btn())
+        registration = (HomePageGuest(self.driver)
+                        .click_started_for_free()
+                        .click_become_a_tutor())
         title_info = registration.get_title_modal().is_displayed()
         self.assertTrue(title_info, "Element not displayed!")
 
