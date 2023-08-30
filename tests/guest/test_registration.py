@@ -85,12 +85,12 @@ class RegistrationTestCase(BaseTestRunner):
         registration = (HomePageGuest(self.driver)
                         .click_started_for_free()
                         .click_become_a_tutor())
-        registration.set_first_name("test")
-        registration.set_last_name("test")
-        registration.set_email("test@gmail.com")
-        registration.set_password("11111111111111111111111111q")
-        registration.click_sign_up_btn()
-        message = (registration.get_password_error_message().get_error_message())
+        (registration.set_first_name("test")
+                     .set_last_name("test")
+                     .set_email("test@gmail.com")
+                     .set_password("11111111111111111111111111q")
+                     .click_sign_up_btn())
+        message = (registration.get_password_error_message())
         self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
 
 
