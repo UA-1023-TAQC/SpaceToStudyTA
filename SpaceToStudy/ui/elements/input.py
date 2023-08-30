@@ -5,7 +5,7 @@ from SpaceToStudy.ui.elements.base_element import BaseElement
 
 INPUT = (By.XPATH, "./div/input")
 LABEL = (By.XPATH, "./label")
-ERROR_MESSAGE = (By.XPATH, "./following-sibling::*/p/span")
+ERROR_MESSAGE = (By.XPATH, "./p/span")
 
 
 

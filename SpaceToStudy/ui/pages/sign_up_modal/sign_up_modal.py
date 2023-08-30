@@ -53,6 +53,7 @@ class RegistrationModal(BaseComponent):
     def set_first_name(self, first_name_text):
         first_name_input = self.get_first_name_input()
         first_name_input.set_text(first_name_text)
+        return self
 
     def get_first_name_label_text(self):
         first_name_input = self.get_first_name_input()
@@ -71,6 +72,7 @@ class RegistrationModal(BaseComponent):
     def set_last_name(self, last_name_text):
         last_name_input = self.get_last_name_input()
         last_name_input.set_text(last_name_text)
+        return self
 
     def get_last_name_label_text(self):
         last_name_input = self.get_last_name_input()
@@ -89,7 +91,7 @@ class RegistrationModal(BaseComponent):
     def set_email(self, email_text):
         email_input = self.get_email_input()
         email_input.set_text(email_text)
-
+        return self
     def get_email_label_text(self):
         email_input = self.get_email_input()
         return email_input.get_label()
@@ -107,19 +109,19 @@ class RegistrationModal(BaseComponent):
     def set_password(self, password_text):
         password_input = self.get_password_input()
         password_input.set_text(password_text)
-
+        return self
     def get_password_label_text(self):
         password_input = self.get_password_input()
         return password_input.get_label()
 
-    def get_password_error_message(self):
+    def get_password_error_message(self)->str:
         password_input = self.get_password_input()
         return password_input.get_error_message()
 
     def click_password_icon(self):
         password_input = self.get_password_input()
         password_input.click_icon()
-
+        return self
     def get_confirm_password_input(self):
         if not self._confirm_password_input:
             node = self.node.find_element(*CONFIRM_PASSWORD_INPUT)
@@ -129,7 +131,7 @@ class RegistrationModal(BaseComponent):
     def set_confirm_password(self, confirm_password_text):
         confirm_password_input = self.get_confirm_password_input()
         confirm_password_input.set_text(confirm_password_text)
-
+        return self
     def get_confirm_password_label_text(self):
         confirm_password_input = self.get_confirm_password_input()
         return confirm_password_input.get_label()
@@ -141,14 +143,14 @@ class RegistrationModal(BaseComponent):
     def click_confirm_password_icon(self):
         confirm_password_input = self.get_confirm_password_input()
         confirm_password_input.get_icon()
-
+        return self
     def get_i_agree_checkbox(self):
         return self.node.find_element(*I_AGREE_CHECKBOX)
 
     def click_i_agree_checkbox(self):
         i_agree_checkbox = self.get_i_agree_checkbox()
         i_agree_checkbox.click()
-
+        return self
     def get_terms_link(self):
         if not self._terms_link:
             node = self.node.find_element(*TERMS_LINK)
@@ -162,6 +164,7 @@ class RegistrationModal(BaseComponent):
     def click_terms_link(self):
         terms_link = self.get_terms_link()
         terms_link.click_link()
+        #ToDo
 
     def get_privacy_policy_link(self):
         if not self._privacy_policy_link:
@@ -176,6 +179,7 @@ class RegistrationModal(BaseComponent):
     def click_privacy_policy_link(self):
         privacy_policy_link = self.get_privacy_policy_link()
         privacy_policy_link.click_link()
+        #ToDo return page privacy policy
 
     def get_sign_up_btn(self):
         return self.node.find_element(*SIGN_UP_BTN)

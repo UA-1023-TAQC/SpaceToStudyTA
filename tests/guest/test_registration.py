@@ -1,20 +1,15 @@
 import unittest
 from time import sleep
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
-from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 
 
 class RegistrationTestCase(BaseTestRunner):
-
 
     def test_page_title(self):
         self.driver.get('https://s2s-front-stage.azurewebsites.net/')
@@ -78,12 +73,12 @@ class RegistrationTestCase(BaseTestRunner):
         registration = (HomePageGuest(self.driver)
                         .click_started_for_free()
                         .click_become_a_tutor())
-        registration.set_first_name("test")
-        registration.set_last_name("test")
-        registration.set_email("test@gmail.com")
-        registration.set_password("@#$%//////")
-        registration.click_sign_up_btn()
-        message = (registration.get_password_error_message().get_error_message())
+        (registration.set_first_name("test")
+                     .set_last_name("test")
+                     .set_email("test@gmail.com")
+                     .set_password("@#$%//////")
+                     .click_sign_up_btn())
+        message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
 
