@@ -3,10 +3,14 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.explore_offers.filtering_and_sorting_component import FilteringAndSortingComponent
+from SpaceToStudy.ui.pages.explore_offers.inline_card_component import InlineCardComponent
 # from SpaceToStudy.ui.pages.explore_offers.offer_and_request_component import OfferAndRequestComponent
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.explore_offers.student_private_lesson_component import StudentPrivateLessonComponent
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
+from tests.value_provider import ValueProvider
+
+EXPLORE_OFFERS_PAGE = "categories/subjects/find-offers/"
 
 STUDENT_FOR_PRIVATE_LESSONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 
@@ -26,12 +30,13 @@ POPULAR_CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/d
 GO_TO_CATEGORIES_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/div[2]/button")
 
 SCROLL_UP_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[3]/button")
-
+LIST_OF_OFFERS = (By.XPATH, "//div[@data-testid='OfferContainer']")
 
 class ExploreOffersPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+        self._list_of_filtered_offers = None
         self._student_for_private_lessons_block = None
         self._search_by_tutor_name_block = None
         self._filtering_and_sorting_block = None
@@ -98,3 +103,14 @@ class ExploreOffersPage(BasePage):
 
     def click_back_to_all_subject(self):
         return self.get_back_to_all_subject().click()
+
+    @classmethod
+    def get_explore_offers_page_address(cls) -> str:
+        return ValueProvider.get_base_url()+EXPLORE_OFFERS_PAGE
+
+    def get_list_of_filtered_offers(self) -> list:
+        offers = self.driver.find_element(*LIST_OF_OFFERS).find_elements(By.XPATH, "./div")
+        self._list_of_filtered_offers = []
+        for offer in offers:
+            self._list_of_filtered_offers.append(InlineCardComponent(offer))
+        return self._list_of_filtered_offers
