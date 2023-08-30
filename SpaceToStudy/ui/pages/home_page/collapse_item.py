@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
@@ -7,6 +8,9 @@ DESCRIPTION_COLLAPSE_ITEM = (By.XPATH, ".//p")
 
 
 class CollapseItem(BaseComponent):
+
+    def __init__(self, node: WebElement):
+        super().__init__(node)
 
     def get_title(self) -> str:
         return self.node.find_element(*TITLE_COLLAPSE_ITEM).text
