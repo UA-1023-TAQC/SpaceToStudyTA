@@ -3,7 +3,6 @@ from time import sleep
 
 from selenium.webdriver.common.by import By
 
-
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
@@ -11,7 +10,6 @@ from tests.test_runners import BaseTestRunner
 
 
 class RegistrationTestCase(BaseTestRunner):
-
 
     def test_page_title(self):
         self.driver.get('https://s2s-front-stage.azurewebsites.net/')
@@ -70,6 +68,18 @@ class RegistrationTestCase(BaseTestRunner):
                        .get_individual_time()
                        .is_expanded())
         self.assertTrue(is_expanded)
+
+    def test_registration_password_without_alphabetic_numeric_character(self):
+        registration = (HomePageGuest(self.driver)
+                        .click_started_for_free()
+                        .click_become_a_tutor())
+        (registration.set_first_name("test")
+                     .set_last_name("test")
+                     .set_email("test@gmail.com")
+                     .set_password("@#$%//////")
+                     .click_sign_up_btn())
+        message = (registration.get_password_error_message())
+        self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
     def test_registration_tutor_too_long_password(self):
         registration = (HomePageGuest(self.driver)
