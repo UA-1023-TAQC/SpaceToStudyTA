@@ -6,9 +6,11 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
+from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
+from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 
 
@@ -72,6 +74,36 @@ class RegistrationTestCase(BaseTestRunner):
                        .get_individual_time()
                        .is_expanded())
         self.assertTrue(is_expanded)
+
+    def test_tutor_signIn_button_is_active(self):
+        home_page = HomePageGuest(self.driver)
+        header_unauthorised = HeaderUnauthorizedComponent(self.driver.find_element(By.XPATH, "/html"))
+        header_unauthorised.click_login_btn()
+        # login_modal = LoginModal(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/div/div"))
+        # login_modal.get_join_us_for_free().click_link()
+        join_us_for_free_link = self.driver.find_element(By.XPATH,
+                                                         '/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/a')
+        join_us_for_free_link.click()
+        home_page.click_button_become_a_student()
+        registration_modal = RegistrationModal(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/div/div"))
+        registration_modal.set_first_name("Anton")
+        registration_modal.set_last_name("Ivanow")
+        registration_modal.set_email("ai@gmail.com")
+
+        # login_btn = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/header/div/div/button[3]')
+        # login_btn.click()
+        # join_us_for_free_link = self.driver.find_element(By.XPATH,
+        #                                                  '/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/a')
+        # join_us_for_free_link.click()
+
+        # sign_up_as_a_student_modal = self.driver.find_element(By.XPATH, '/html/body/div[2]/div[3]/div/div')
+        # RegistrationModal(sign_up_as_a_student_modal)
+        # first_name_input = self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[1]/div[1]/div/input")
+        # self.assertTrue(first_name_input.is_enabled())
+        # sleep(1)
+        # first_name_input.send_keys("Anon")
+
+
 
 
 if __name__ == '__main__':
