@@ -8,47 +8,45 @@ from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.textarea import Textarea
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-MODAL_NAME = (By.XPATH, "//*[contains(@class, 'MuiTypography-body1 css-xszkll')]")
-MODAL_DESC = (By.XPATH, "//*/form[contains(@class, 'css-ggry99')]/p[contains(@class, 'css-1cuyrn')]")
-CLOSE_BTN = (By.XPATH, "//*/button[contains(@class, 'css-13de6kf')]")
-CREATE_OFFER_BTN = (By.XPATH, "//*/button[contains(@class, 'css-mfmxa4')]")
-ADD_TO_DRAFT_BTN = (By.XPATH, "//*/button[contains(@class, 'css-4gyf81')]")
+MODAL_NAME = (By.XPATH, "/html/body/div[2]/div[3]/form/p[1]")
+MODAL_DESC = (By.XPATH, "/html/body/div[2]/div[3]/form/p[2]")
+CLOSE_BTN = (By.XPATH, "/html/body/div[2]/div[3]/button")
+CREATE_OFFER_BTN = (By.XPATH, "//button[contains(@type, 'submit')][1]")
+ADD_TO_DRAFT_BTN = (By.XPATH, "//button[contains(@type, 'submit')][2]")
 
 FIRST_BLOCK_OF_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/form/div[1]")
-NUMBER_OF_FIRST_BLOCK = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}//span[contains(@class, 'css-1sckc2u')]")
-NAME_OF_FIRST_BLOCK = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}//span[contains(@class, 'css-gk4zgh')]")
-DESC_BEFORE_CATEGORY = (By.XPATH, "//*/div[contains(@class, 'css-1w8rjr5')]/../p")
+NUMBER_OF_FIRST_BLOCK = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[1]/p/span/span")
+NAME_OF_FIRST_BLOCK = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[1]/p/span")
+DESC_BEFORE_CATEGORY = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[1]/p")
 CATEGORY_INPUT = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL[1]}/div[2]/div[1]/div[1]/div")
 SUBJECT_INPUT = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[1]/div[2]/div")
-DESC_BEFORE_CHECKBOX = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/../p")
-CHECKBOX_BEGINNER = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[1]")
-CHECKBOX_INTERMEDIATE = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[2]")
-CHECKBOX_ADVANCED = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[3]")
-CHECKBOX_TEST_PREPARATION = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[4]")
-CHECKBOX_PROFESSIONAL = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[5]")
-CHECKBOX_SPECIALIZED = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[6]")
+DESC_BEFORE_CHECKBOX = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[2]/p")
+CHECKBOX_BEGINNER = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[2]/div/label[1]")
+CHECKBOX_INTERMEDIATE = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[2]/div/label[2]")
+CHECKBOX_ADVANCED = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[2]/div/label[3]")
+CHECKBOX_TEST_PREPARATION = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[2]/div/label[4]")
+CHECKBOX_PROFESSIONAL = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[2]/div/label[5]")
+CHECKBOX_SPECIALIZED = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[2]/div/label[6]")
 
 SECOND_BLOCK_OF_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/form/div[2]")
-NAME_OF_SECOND_BLOCK = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}//span[contains(@class, 'css-gk4zgh')]")
-NUMBER_OF_SECOND_BLOCK = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}//span[contains(@class, 'css-1sckc2u')]")
+NAME_OF_SECOND_BLOCK = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[1]/p/span")
+NUMBER_OF_SECOND_BLOCK = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[1]/p/span/span")
 TITLE_INPUT = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[1]")
 DESCRIBE_INPUT = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[2]")
-DESC_BEFORE_LANGUAGE = (By.XPATH, "//*/div[contains(@class, 'css-xxees4')]/../p")
-LANGUAGE_INPUT = (By.XPATH, "//*/div[contains(@class, 'css-xxees4')]/div")
-LANGUAGE_CHIP = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[3]/div[2]/div/div/div[1]"
-                           f"//div[contains(@data-testid, 'chip')][1]")
-
-DESC_BEFORE_PRICE = (By.XPATH, "//*/div[contains(@class, 'css-jbbf0i')]/../p")
-PRICE_INPUT = (By.XPATH, "//*/div[contains(@class, 'css-jbbf0i')]")
-PRICE_IMG = (By.XPATH, "//*/div[contains(@class, 'css-jbbf0i')]/div/img")
+DESC_BEFORE_LANGUAGE = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[3]/p")
+LANGUAGE_INPUT = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[3]/div[1]")
+LANGUAGE_CHIPS = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}//div[contains(@data-testid, 'chip')]")
+DESC_BEFORE_PRICE = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[4]/p")
+PRICE_INPUT = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[4]/div")
+PRICE_IMG = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}//img")
 
 THIRD_BLOCK_OF_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/form/div[3]")
-NAME_OF_THIRD_BLOCK = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}//span[contains(@class, 'css-gk4zgh')]")
-NUMBER_OF_THIRD_BLOCK = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}//span[contains(@class, 'css-1sckc2u')]")
-DESC_BEFORE_QUESTION = (By.XPATH, "")
+NAME_OF_THIRD_BLOCK = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}/div[1]/p/span")
+NUMBER_OF_THIRD_BLOCK = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}/div[1]/p/span/span")
+DESC_BEFORE_QUESTION = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}/div[2]/p[1]")
 QUESTION_INPUT = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}/div[2]/div[1]/div/div[1]")
 ANSWER_INPUT = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}/div[2]/div[1]/div/div[2]/div")
-ADD_QUESTION_BTN = (By.XPATH, "//*/button[contains(@class, 'css-19s6v2f')]")
+ADD_QUESTION_BTN = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}//button[contains(@type, 'button')]")
 ADDITION_QUESTION_INPUT = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}/div[2]/div[2]/div/div[1]")
 ADDITION_ANSWER_INPUT = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}/div[2]/div[2]/div/div[2]/div")
 QUESTION_CLOSE_BTN = (By.XPATH, f"{THIRD_BLOCK_OF_MODAL}/div[2]/div[1]/button")
@@ -98,8 +96,8 @@ class OffersRequestModal(BaseComponent):
     def click_create_offer_btn(self):
         self.get_create_offer_btn().click()
 
-    def is_btn_displayed(self, btn: WebElement) -> bool:
-        if btn.is_displayed():
+    def is_btn_displayed(self: WebElement) -> bool:
+        if self.is_displayed():
             return True
         return False
 
@@ -201,7 +199,7 @@ class SecondBlock(BaseComponent):
         self._describe_input = None
         self._desc_before_language = None
         self._language_input = None
-        self._language_chip = None
+        self._language_chips = None
         self._desc_before_price = None
         self._price_img = None
         self._price_input = None
@@ -244,9 +242,14 @@ class SecondBlock(BaseComponent):
             .set_text(language)
             .send_keys(Keys.ARROW_DOWN)
             .send_keys(Keys.ENTER))
-        node = self.node.find_element()
-        self._language_chip = Chip(node)
-        return self._language_chip
+
+    def get_language_chips(self) -> tuple[Chip]:
+        if not self._language_chips:
+            set_of_chips = self.node.find_element(*LANGUAGE_CHIPS)
+            self._language_chips = []
+            for chip in set_of_chips:
+                self._language_chips.append(Chip(chip))
+        return self._language_chips
 
     def is_language_dropdown_list_open(self) -> bool:
         if self.get_language_input().get_input().get_attribute("aria-expanded") == "true":
@@ -350,7 +353,7 @@ class ThirdBlock(BaseComponent):
     def click_addition_close_btn(self):
         self.get_addition_close_btn().click()
 
-    def is_btn_displayed(self, close_btn: WebElement) -> bool:
-        if close_btn.is_displayed():
+    def is_btn_displayed(self:WebElement) -> bool:
+        if self.is_displayed():
             return True
         return False
