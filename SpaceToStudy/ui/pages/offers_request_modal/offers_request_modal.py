@@ -1,7 +1,9 @@
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.checkbox import Checkbox
+from SpaceToStudy.ui.elements.chip import Chip
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.textarea import Textarea
 from SpaceToStudy.ui.pages.base_component import BaseComponent
@@ -16,7 +18,7 @@ FIRST_BLOCK_OF_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/form/div[1]")
 NUMBER_OF_FIRST_BLOCK = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}//span[contains(@class, 'css-1sckc2u')]")
 NAME_OF_FIRST_BLOCK = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}//span[contains(@class, 'css-gk4zgh')]")
 DESC_BEFORE_CATEGORY = (By.XPATH, "//*/div[contains(@class, 'css-1w8rjr5')]/../p")
-CATEGORY_INPUT = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[1]/div[1]/div")
+CATEGORY_INPUT = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL[1]}/div[2]/div[1]/div[1]/div")
 SUBJECT_INPUT = (By.XPATH, f"{FIRST_BLOCK_OF_MODAL}/div[2]/div[1]/div[2]/div")
 DESC_BEFORE_CHECKBOX = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/../p")
 CHECKBOX_BEGINNER = (By.XPATH, "//*/div[contains(@class, 'css-ohugnc')]/label[1]")
@@ -33,6 +35,8 @@ TITLE_INPUT = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[1]")
 DESCRIBE_INPUT = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[2]")
 DESC_BEFORE_LANGUAGE = (By.XPATH, "//*/div[contains(@class, 'css-xxees4')]/../p")
 LANGUAGE_INPUT = (By.XPATH, "//*/div[contains(@class, 'css-xxees4')]/div")
+LANGUAGE_CHIP = (By.XPATH, f"{SECOND_BLOCK_OF_MODAL}/div[2]/div[3]/div[2]/div/div/div[1]"
+                           f"//div[contains(@data-testid, 'chip')][1]")
 
 DESC_BEFORE_PRICE = (By.XPATH, "//*/div[contains(@class, 'css-jbbf0i')]/../p")
 PRICE_INPUT = (By.XPATH, "//*/div[contains(@class, 'css-jbbf0i')]")
@@ -197,6 +201,7 @@ class SecondBlock(BaseComponent):
         self._describe_input = None
         self._desc_before_language = None
         self._language_input = None
+        self._language_chip = None
         self._desc_before_price = None
         self._price_img = None
         self._price_input = None
@@ -234,8 +239,17 @@ class SecondBlock(BaseComponent):
             self._language_input = Input(node)
         return self._language_input
 
+    def set_language(self, language: str):
+        (self.get_language_input()
+            .set_text(language)
+            .send_keys(Keys.ARROW_DOWN)
+            .send_keys(Keys.ENTER))
+        node = self.node.find_element()
+        self._language_chip = Chip(node)
+        return self._language_chip
+
     def is_language_dropdown_list_open(self) -> bool:
-        if self.get_language_input().get_input().get_attribute("aria-controls") == "mui-16-listbox":
+        if self.get_language_input().get_input().get_attribute("aria-expanded") == "true":
             return True
         return False
 
