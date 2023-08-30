@@ -146,9 +146,6 @@ class HomePageGuest(BasePage):
         self.get_card_share_your_experience().click_btn()
         return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
 
-    def click_become_a_tutor(self) -> RegistrationModal:
-        self.get_card_share_your_experience().click_btn()
-        return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
     def get_text_button_get_started_for_free(self) -> str:
         return self.get_button_get_started_for_free().text
 
