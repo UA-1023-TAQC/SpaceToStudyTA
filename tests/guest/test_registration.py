@@ -81,6 +81,18 @@ class RegistrationTestCase(BaseTestRunner):
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
+    def test_registration_tutor_too_long_password(self):
+        registration = (HomePageGuest(self.driver)
+                        .click_started_for_free()
+                        .click_become_a_tutor())
+        (registration.set_first_name("test")
+                     .set_last_name("test")
+                     .set_email("test@gmail.com")
+                     .set_password("11111111111111111111111111q")
+                     .click_sign_up_btn())
+        message = (registration.get_password_error_message())
+        self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
