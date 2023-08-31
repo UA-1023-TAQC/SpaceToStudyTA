@@ -29,7 +29,7 @@ class CategoryComponent(BaseComponent):
             self.name = self.node.find_element(*NAME)
         return self.name.text
 
-    def get_offers(self) -> WebElement:
+    def get_offers(self) -> str:
         if not self.offers:
             self.offers = self.node.find_element(*OFFERS)
-        return self.offers.text()
+        return self.offers.text

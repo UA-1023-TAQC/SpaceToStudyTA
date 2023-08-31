@@ -8,6 +8,8 @@ LABEL = (By.XPATH, "./label")
 ERROR_MESSAGE = (By.XPATH, "./p/span")
 
 
+
+
 class Input(BaseElement):
     def __init__(self, node: WebElement):
         super().__init__(node)
@@ -42,7 +44,7 @@ class Input(BaseElement):
             self._input_css_class = self._input.get_attribute("class")
         return self._input_css_class  
     
-    def get_error_message(self):
+    def get_error_message(self) -> str:
         return self.node.find_element(*ERROR_MESSAGE).text
     
     

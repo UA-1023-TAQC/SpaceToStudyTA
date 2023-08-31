@@ -3,7 +3,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-INPUT = (By.XPATH, ".div[2]/div/div/input")
+INPUT = (By.XPATH, "./div[2]/div/div/input")
 FIND_TUTOR_BTN = (By.XPATH, "./div[2]/a")
 TITLE_INPUT_BLOCK = (By.XPATH, "./div[1]/p")
 DESCRIPTION_INPUT_BLOCK = (By.XPATH, "./div[1]/p/span")

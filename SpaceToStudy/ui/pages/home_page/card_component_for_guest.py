@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -32,12 +34,14 @@ class CardComponent(BaseComponent):
             self.description = self.node.find_element(*DESCRIPTION)
         return self.description.text
 
-    def get_btn_text(self) -> str:
+    def get_btn(self) -> WebElement:
         if not self.btn:
             self.btn = self.node.find_element(*BUTTON)
-        return self.btn.text
+        return self.btn
+
+    def get_btn_text(self) -> str:
+        return self.get_btn().text
 
     def click_btn(self):
-        if not self.btn:
-            self.btn = self.node.find_element(*BUTTON)
-            self.btn.click()
+        self.get_btn().click()
+        sleep(1)
