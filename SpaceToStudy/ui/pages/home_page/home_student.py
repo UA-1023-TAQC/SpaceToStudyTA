@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowItWorksComponentStudent
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
@@ -59,7 +60,7 @@ class HomePageStudent(BasePage):
 
     def click_button_go_to_categories(self):
         self.get_button_go_to_categories().click()
-        return self
+        return CategoriesPage(self.driver)
 
     def get_button_find_tutor(self) -> WebElement:
         if not self._button_find_tutor:

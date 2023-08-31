@@ -8,9 +8,6 @@ from SpaceToStudy.ui.pages.explore_offers.inline_card_component import InlineCar
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.explore_offers.student_private_lesson_component import StudentPrivateLessonComponent
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
-from tests.value_provider import ValueProvider
-
-EXPLORE_OFFERS_PAGE = "categories/subjects/find-offers/"
 
 STUDENT_FOR_PRIVATE_LESSONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 
@@ -31,6 +28,8 @@ GO_TO_CATEGORIES_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/div[2
 
 SCROLL_UP_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[3]/button")
 LIST_OF_OFFERS = (By.XPATH, "//div[@data-testid='OfferContainer']")
+OFFER_ITEM = (By.XPATH, "./div")
+
 
 class ExploreOffersPage(BasePage):
 
@@ -104,12 +103,8 @@ class ExploreOffersPage(BasePage):
     def click_back_to_all_subject(self):
         return self.get_back_to_all_subject().click()
 
-    @classmethod
-    def get_explore_offers_page_address(cls) -> str:
-        return ValueProvider.get_base_url()+EXPLORE_OFFERS_PAGE
-
     def get_list_of_filtered_offers(self) -> list:
-        offers = self.driver.find_element(*LIST_OF_OFFERS).find_elements(By.XPATH, "./div")
+        offers = self.driver.find_element(*LIST_OF_OFFERS).find_elements(*OFFER_ITEM)
         self._list_of_filtered_offers = []
         for offer in offers:
             self._list_of_filtered_offers.append(InlineCardComponent(offer))

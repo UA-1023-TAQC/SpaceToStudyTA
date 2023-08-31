@@ -11,27 +11,24 @@ from tests.test_runners import TestRunnerWithStudent
 
 class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
 
-    def test_filters_by_category_subject_and_tutors_name(self):
+    def setUp(self):
+        super().setUp()
         home_page_student = HomePageStudent(self.driver)
-        sleep(0.2)
-        home_page_student.go_to_url(ExploreOffersPage.get_explore_offers_page_address())
-        sleep(0.2)
-        search_by_tutor_name_component = SearchByTutorNameComponent(self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div"))
-        sleep(0.2)
-        (search_by_tutor_name_component.set_categories_input("Music")
-                                       .navigate_categories_input_down()
-                                       .choose_categories_item())
-        sleep(0.2)
-        self.assertEqual(search_by_tutor_name_component.get_categories_input_text(), "Music")
-        (search_by_tutor_name_component.set_subjects_input("Guitar")
-                                       .navigate_subjects_input_down()
-                                       .choose_subjects_item())
-        self.assertEqual(search_by_tutor_name_component.get_subjects_input_text(), "Guitar")
-        search_by_tutor_name_component.set_search_by_tutor_name_input("Yura")
-        sleep(0.2)
-        self.assertEqual(search_by_tutor_name_component.get_search_by_tutor_name_input_text(), "Yura")
-        search_by_tutor_name_component.click_search_btn()
-        sleep(2)
+        (home_page_student.click_button_go_to_categories()
+                          .click_show_all_offers_btn())
+
+    def test_filters_by_category_subject_and_tutors_name(self):
+        explore_offers_page = ExploreOffersPage(self.driver)
+        (explore_offers_page.get_search_by_tutor_name_block()
+                            .set_categories_input("Music")
+                            .navigate_categories_input_down()
+                            .choose_categories_item()
+                            .set_subjects_input("Guitar")
+                            .navigate_subjects_input_down()
+                            .choose_subjects_item()
+                            .set_search_by_tutor_name_input("Yura")
+                            .click_search_btn())
+
         list_of_filtered_offers = ExploreOffersPage(self.driver.find_element(*LIST_OF_OFFERS))
         self.assertEqual(len(list_of_filtered_offers.get_list_of_filtered_offers()), 2)
         for offer in list_of_filtered_offers.get_list_of_filtered_offers():
