@@ -10,6 +10,7 @@ from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
+from tests.value_provider import ValueProvider
 
 
 class RegistrationTestCase(BaseTestRunner):
@@ -96,36 +97,22 @@ class RegistrationTestCase(BaseTestRunner):
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
 
-    def test_tutor_signIn_button_is_active(self):
-        home_page = HomePageGuest(self.driver)
-        header_unauthorised = HeaderUnauthorizedComponent(self.driver.find_element(By.XPATH, "/html"))
-        header_unauthorised.click_login_btn()
-        # login_modal = LoginModal(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/div/div"))
-        # login_modal.get_join_us_for_free().click_link()
-        join_us_for_free_link = self.driver.find_element(By.XPATH,
-                                                         '/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/a')
-        join_us_for_free_link.click()
-        home_page.click_button_become_a_student()
-        registration_modal = RegistrationModal(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/div/div"))
-        registration_modal.set_first_name("Anton")
-        registration_modal.set_last_name("Ivanow")
-        registration_modal.set_email("ai@gmail.com")
-
-        # login_btn = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/header/div/div/button[3]')
-        # login_btn.click()
-        # join_us_for_free_link = self.driver.find_element(By.XPATH,
-        #                                                  '/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/a')
-        # join_us_for_free_link.click()
-
-        # sign_up_as_a_student_modal = self.driver.find_element(By.XPATH, '/html/body/div[2]/div[3]/div/div')
-        # RegistrationModal(sign_up_as_a_student_modal)
-        # first_name_input = self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[1]/div[1]/div/input")
-        # self.assertTrue(first_name_input.is_enabled())
-        # sleep(1)
-        # first_name_input.send_keys("Anon")
-
-
-
+    def test_tutor_signUp_button_is_active(self):
+        (HeaderUnauthorizedComponent(self.driver)
+                                .click_login_btn()
+                                .get_join_us_for_free()
+                                .click_link())
+        registration_modal = (HomePageGuest(self.driver)
+                              .click_become_a_tutor()
+                              .set_first_name(ValueProvider.get_tutor_first_name())
+                              .set_last_name(ValueProvider.get_tutor_last_name())
+                              .set_email(ValueProvider.get_tutor_email())
+                              .set_password(ValueProvider.get_tutor_password())
+                              .set_confirm_password(ValueProvider.get_tutor_password())
+                              .click_i_agree_checkbox())
+        self.assertEqual('0', registration_modal.get_sign_up_btn().get_attribute("tabindex"))
+        self.assertEqual("rgba(38, 50, 56, 1)",
+                         registration_modal.get_sign_up_btn().value_of_css_property("background-color"))
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

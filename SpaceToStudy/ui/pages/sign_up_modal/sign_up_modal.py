@@ -24,7 +24,7 @@ PASSWORD_ERROR = (By.XPATH, "//*[@id='mui-13-helper-text']/span")
 CONFIRM_PASSWORD_ERROR = (By.XPATH, "//*[@id='mui-14-helper-text']/span")
 
 I_AGREE_CHECKBOX = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[1]/input")
-SIGN_UP_BTN = (By.XPATH, "//button[contains(text(), 'Sign up')]/..")
+SIGN_UP_BTN = (By.XPATH, "//button[contains(text(), 'Sign up')]")
 
 TERMS_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]/div/a[1]")
 PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]"
