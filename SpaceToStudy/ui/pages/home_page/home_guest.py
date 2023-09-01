@@ -170,3 +170,4 @@ class HomePageGuest(BasePage):
         if not self._main_banner:
             self._main_banner = self.driver.find_element(*MAIN_BANNER)
         return self._main_banner
+
