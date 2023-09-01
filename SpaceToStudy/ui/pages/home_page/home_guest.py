@@ -4,6 +4,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.collapse_item import CollapseItem
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_guest import HowItWorksComponent
+from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 
 COLLAPSE_BLOCK_FLEXIBLE_LOCATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]")
 COLLAPSE_BLOCK_INDIVIDUAL_TIME = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[2]")
@@ -11,7 +12,7 @@ COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS = (By.XPATH, "/html/body/div/div/div[2]/div
 COLLAPSE_BLOCK_DIGITAL_COMMUNICATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[4]")
 
 BUTTON_GET_STARTED_FOR_FREE = (By.XPATH, "//a[contains(text(), 'Get started for free')]")
-BUTTON_BECOME_A_STUDENT = (By.XPATH, "//button[contains(text(), 'Become a student')]")
+BECOME_A_TUTOR_OR_STUDENT_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/button")
 
 HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div")
 
@@ -19,8 +20,6 @@ HOW_IT_WORKS_BLOCK_SIGN_UP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]
 HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[3]")
 HOW_IT_WORKS_BLOCK_SEND_REQUEST = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[4]")
 HOW_IT_WORKS_BLOCK_START_LEARNING = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[5]")
-HOW_IT_WORKS_BLOCK_BECOME_A_TUTOR_OR_STUDENT_BUTTON = (By.XPATH,
-                                                       "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/button")
 
 CHECKBOX_HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[1]/span/span[1]/input")
 
@@ -29,6 +28,7 @@ CARD_COMPONENT_SHARE_YOUR_EXPERIENCE = (By.XPATH, "/html/body/div/div/div[2]/div
 
 IMG_MAP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/img")
 MAIN_BANNER = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
+SIGN_UP_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div")
 
 
 class HomePageGuest(BasePage):
@@ -48,7 +48,6 @@ class HomePageGuest(BasePage):
         self._digital_communication = None
         self._free_choice_of_tutors = None
         self._button_get_started_for_free = None
-        self._button_become_a_student = None
         self._img_map = None
         self._main_banner = None
 
@@ -133,12 +132,7 @@ class HomePageGuest(BasePage):
 
     def click_checkbox_how_it_works_block(self):
         self.get_checkbox_how_it_works_block().click()
-
-    def get_how_it_works_block_become_a_tutor_or_student_button(self) -> WebElement:
-        return self.driver.find_element(*HOW_IT_WORKS_BLOCK_BECOME_A_TUTOR_OR_STUDENT_BUTTON)
-
-    def click_how_it_works_block_become_a_tutor_or_student_button(self):
-        self.get_how_it_works_block_become_a_tutor_or_student_button().click()
+        return self
 
     def get_card_learn_from_experts(self) -> WebElement:
         if not self._card_learn_from_experts:
@@ -157,17 +151,16 @@ class HomePageGuest(BasePage):
         self.get_button_get_started_for_free().click()
         return self
 
-    def get_button_become_a_student(self) -> WebElement:
-        if not self._button_become_a_student:
-            self._button_become_a_student = self.driver.find_element(*BUTTON_BECOME_A_STUDENT)
-        return self._button_become_a_student
+    def get_button_become_a_student_tutor(self) -> WebElement:
+        return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
 
-    def get_text_button_become_a_student(self) -> str:
-        return self.get_button_become_a_student().text
+    def get_text_button_become_a_student_tutor(self) -> str:
+        return self.get_button_become_a_student_tutor().text
 
-    def click_button_become_a_student(self):
-        self.get_button_become_a_student().click()
-        return self
+    def click_button_become_a_student_tutor(self):
+        self.get_button_become_a_student_tutor().click()
+        node = self.driver.find_element(*SIGN_UP_MODAL)
+        return RegistrationModal(node)
 
     def get_img_map(self) -> WebElement:
         if not self._img_map:

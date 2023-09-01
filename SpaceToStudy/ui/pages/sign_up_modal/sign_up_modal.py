@@ -4,8 +4,9 @@ from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input_with_image import InputWithImage
 from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 
-TITLE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
+TITLE = (By.XPATH, "//h2")
 FIRST_NAME_INPUT = (By.ID, "mui-7")
 LAST_NAME_INPUT = (By.ID, "mui-8")
 EMAIL_INPUT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[2]/div")
@@ -31,6 +32,7 @@ TERMS_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/for
 PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]"
                                  "/div/a[2]")
 LOGIN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
+LOGIN_MODAL = (By.XPATH, "//*[@role='dialog']")
 
 
 class RegistrationModal(BaseComponent):
@@ -198,3 +200,7 @@ class RegistrationModal(BaseComponent):
         if not self._login_link:
             self._login_link = self.node.find_element(*LOGIN)
             self._login_link.click()
+        node = self.node.parent.find_element(*LOGIN_MODAL)
+        return LoginModal(node)
+
+
