@@ -5,6 +5,7 @@ from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 
 LOGIN_BTN = (By.XPATH, "/html/body/div/div/header/div/div/button[3]")
+LOGIN_MODAL = (By.XPATH, "/html/body/div[2]/div[3]")
 
 
 class HeaderUnauthorizedComponent(HeaderComponent):
@@ -18,3 +19,6 @@ class HeaderUnauthorizedComponent(HeaderComponent):
     def click_login_btn(self) -> LoginModal:
         self.get_login_btn().click()
         return LoginModal(self.node)
+
+    def get_login_modal(self) -> WebElement:
+        return self.node.find_element(By.XPATH, *LOGIN_MODAL)
