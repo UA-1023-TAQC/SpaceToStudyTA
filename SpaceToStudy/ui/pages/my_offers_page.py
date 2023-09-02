@@ -34,7 +34,6 @@ class MyOffersPage(BasePage):
         self._list_box_dropdown_menu = None
         self._actions_btn_grid = None
         self._card_offers = None
-        self._lst = None
         self._list_price = None
 
     def get_offers_table(self):
@@ -104,7 +103,7 @@ class MyOffersPage(BasePage):
         return self._card_offers
 
     def get_list_prices(self) -> list:
-        if self._card_offers is None:
+        if self._list_price is None:
             list_price = self.driver.find_elements(*PRICE)
             self._list_price = []
             for price in list_price:
