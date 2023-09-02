@@ -14,8 +14,8 @@ class HeaderAuthorizedComponent(HeaderComponent):
         self._user_menu = None
 
     def get_user_menu(self):
+        node = self.node.find_element(*USER_MENU)
         if not self._user_menu:
-            node = self.node.find_element(*USER_MENU)
             self._user_menu = UserMenuComponent(node)
         return self._user_menu
 

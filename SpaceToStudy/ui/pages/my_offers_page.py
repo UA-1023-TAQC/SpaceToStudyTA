@@ -108,6 +108,6 @@ class MyOffersPage(BasePage):
             self._list_price = []
             for price in list_price:
                 text = str(price.text).replace(" UAH", "")
-                self._list_price.append(text)
+                self._list_price.append(int(text))
         return self._list_price
 
