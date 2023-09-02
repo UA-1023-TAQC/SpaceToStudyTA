@@ -3,9 +3,11 @@ from time import sleep
 
 from selenium.webdriver.common.by import By
 
+from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
+from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 
 
@@ -80,6 +82,12 @@ class RegistrationTestCase(BaseTestRunner):
                      .click_sign_up_btn())
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
+
+    def test_open_student_form_via_what_can_u_do_block(self):
+        HeaderUnauthorizedComponent(self.driver).get_navigate_links()[1].click()
+        HomePageGuest(self.driver).click_button_become_a_student()
+        modal = RegistrationModal(self.driver).get_title_text()
+        self.assertTrue(modal, "Sign up as a student")
 
 
 if __name__ == '__main__':
