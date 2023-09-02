@@ -18,8 +18,7 @@ class MyOffers(TestRunnerWithTutor):
          .click_grid_btn()
          .click_get_sort()
          .click_low_high())
-        expected = offers.get_list_prices()
-        expected.sort()
+        expected = sorted(offers.get_list_prices())
         actual = offers.get_list_prices()
         self.assertEqual(expected, actual)
 
