@@ -82,8 +82,9 @@ class RegistrationTestCase(BaseTestRunner):
     def test_registration_modal_student_is_shown_for_guest(self):
         registration = (HomePageGuest(self.driver)
                         .click_started_for_free()
-                        .click_become_a_tutor())
-        title_info = registration.get_title_modal().is_displayed()
+                        .click_become_a_tutor()
+                        .sig_up_modal())
+        title_info = registration.is_displayed()
         self.assertTrue(title_info, "Element not displayed!")
 
 

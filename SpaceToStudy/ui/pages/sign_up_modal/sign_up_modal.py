@@ -33,7 +33,7 @@ PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2
 LOGIN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
 
 TITLE_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
-
+MODAL = (By.XPATH, "//div[@data-testid='popupContent']")
 
 class RegistrationModal(BaseComponent):
 
@@ -192,11 +192,13 @@ class RegistrationModal(BaseComponent):
         sign_up_btn = self.get_sign_up_btn()
         sign_up_btn.click()
 
-    def get_title_modal(self) -> WebElement:
+    def get_title(self) -> WebElement:
         if not self._title_modal:
             self._title_modal = self.node.find_element(*TITLE_MODAL)
         return self._title_modal
 
     def get_text_title_modal(self) -> str:
-        return self.get_title_modal().text
+        return self.get_title().text
 
+    def sig_up_modal(self):
+        return self.node.find_element(*MODAL)
