@@ -28,7 +28,7 @@ class MenuItems(BaseComponent):
 
     def menu_items_my_profile(self) -> WebElement:
         if not self._my_profile:
-            self._my_profile = self.node.find_element(*MY_OFFERS)
+            self._my_profile = self.node.find_element(*MY_PROFILE)
         return self._my_profile
 
     def click_menu_items_my_profile(self):
@@ -36,7 +36,7 @@ class MenuItems(BaseComponent):
 
     def menu_items_my_cooperation(self) -> WebElement:
         if not self._my_cooperation:
-            self._my_cooperation = self.node.find_element(*MY_OFFERS)
+            self._my_cooperation = self.node.find_element(*MY_COOPERATION)
         return self._my_cooperation
 
     def click_menu_items_my_cooperation(self):
@@ -44,7 +44,7 @@ class MenuItems(BaseComponent):
 
     def menu_items_log_out(self) -> WebElement:
         if not self._log_out:
-            self._log_out = self.node.find_element(*MY_OFFERS)
+            self._log_out = self.node.find_element(*LOG_OUT)
         return self._log_out
 
     def click_menu_items_log_out(self):
