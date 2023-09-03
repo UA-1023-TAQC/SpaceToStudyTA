@@ -17,5 +17,5 @@ class HeaderAuthorizedComponent(HeaderComponent):
         node = self.node.find_element(*USER_MENU)
         if not self._user_menu:
             self._user_menu = UserMenuComponent(node)
-            gitreturn self._user_menu
+            return self._user_menu
 
