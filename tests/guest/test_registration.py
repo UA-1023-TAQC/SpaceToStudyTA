@@ -80,12 +80,11 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
     def test_registration_modal_student_is_shown_for_guest(self):
-        registration = (HomePageGuest(self.driver)
+        is_displayed = (HomePageGuest(self.driver)
                         .click_started_for_free()
                         .click_become_a_tutor()
-                        .sig_up_modal())
-        title_info = registration.is_displayed()
-        self.assertTrue(title_info, "Element not displayed!")
+                        .is_displayed())
+        self.assertTrue(is_displayed, "Element not displayed!")
 
 
 
