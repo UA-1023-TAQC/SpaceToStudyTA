@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input_with_image import InputWithImage
@@ -31,6 +32,8 @@ PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2
                                  "/div/a[2]")
 LOGIN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
 
+TITLE_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
+
 
 class RegistrationModal(BaseComponent):
 
@@ -43,6 +46,7 @@ class RegistrationModal(BaseComponent):
         self._confirm_password_input = None
         self._terms_link = None
         self._privacy_policy_link = None
+        self._title_modal = None
 
     def get_first_name_input(self):
         if not self._first_name_input:
@@ -92,6 +96,7 @@ class RegistrationModal(BaseComponent):
         email_input = self.get_email_input()
         email_input.set_text(email_text)
         return self
+
     def get_email_label_text(self):
         email_input = self.get_email_input()
         return email_input.get_label()
@@ -110,11 +115,12 @@ class RegistrationModal(BaseComponent):
         password_input = self.get_password_input()
         password_input.set_text(password_text)
         return self
+
     def get_password_label_text(self):
         password_input = self.get_password_input()
         return password_input.get_label()
 
-    def get_password_error_message(self)->str:
+    def get_password_error_message(self) -> str:
         password_input = self.get_password_input()
         return password_input.get_error_message()
 
@@ -122,6 +128,7 @@ class RegistrationModal(BaseComponent):
         password_input = self.get_password_input()
         password_input.click_icon()
         return self
+
     def get_confirm_password_input(self):
         if not self._confirm_password_input:
             node = self.node.find_element(*CONFIRM_PASSWORD_INPUT)
@@ -132,6 +139,7 @@ class RegistrationModal(BaseComponent):
         confirm_password_input = self.get_confirm_password_input()
         confirm_password_input.set_text(confirm_password_text)
         return self
+
     def get_confirm_password_label_text(self):
         confirm_password_input = self.get_confirm_password_input()
         return confirm_password_input.get_label()
@@ -144,6 +152,7 @@ class RegistrationModal(BaseComponent):
         confirm_password_input = self.get_confirm_password_input()
         confirm_password_input.get_icon()
         return self
+
     def get_i_agree_checkbox(self):
         return self.node.find_element(*I_AGREE_CHECKBOX)
 
@@ -151,6 +160,7 @@ class RegistrationModal(BaseComponent):
         i_agree_checkbox = self.get_i_agree_checkbox()
         i_agree_checkbox.click()
         return self
+
     def get_terms_link(self):
         if not self._terms_link:
             node = self.node.find_element(*TERMS_LINK)
@@ -164,7 +174,7 @@ class RegistrationModal(BaseComponent):
     def click_terms_link(self):
         terms_link = self.get_terms_link()
         terms_link.click_link()
-        #ToDo
+        # ToDo
 
     def get_privacy_policy_link(self):
         if not self._privacy_policy_link:
@@ -179,7 +189,7 @@ class RegistrationModal(BaseComponent):
     def click_privacy_policy_link(self):
         privacy_policy_link = self.get_privacy_policy_link()
         privacy_policy_link.click_link()
-        #ToDo return page privacy policy
+        # ToDo return page privacy policy
 
     def get_sign_up_btn(self):
         return self.node.find_element(*SIGN_UP_BTN)
@@ -187,3 +197,14 @@ class RegistrationModal(BaseComponent):
     def click_sign_up_btn(self):
         sign_up_btn = self.get_sign_up_btn()
         sign_up_btn.click()
+
+    def get_title(self) -> WebElement:
+        if not self._title_modal:
+            self._title_modal = self.node.find_element(*TITLE_MODAL)
+        return self._title_modal
+
+    def get_text_title_modal(self) -> str:
+        return self.get_title().text
+
+    def is_displayed(self) -> bool:
+        return self.node.is_displayed()

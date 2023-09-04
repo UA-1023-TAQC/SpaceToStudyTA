@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
+from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 
 
@@ -35,7 +36,6 @@ class RegistrationTestCase(BaseTestRunner):
         email = login_modal.get_email_input()
         email.set_text("test+1@test.com")
         self.assertEquals(email.get_label_text(), "Email *")
-        # self.assertEquals(email.get_error_message(), "Email should be of the following format: “local-part@domain.com")
 
     def test_homepage_categories(self):
         email, password = "login", "pass"
@@ -52,8 +52,6 @@ class RegistrationTestCase(BaseTestRunner):
                                                       "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
         login_button_step2.click()
         sleep(2)
-
-        # self.browser.get('https://s2s-front-stage.azurewebsites.net/tutor')
         first_category_name = HomePageStudent(self.driver).get_categories()[0].get_name()
         self.assertEquals(first_category_name, "Music")
 
@@ -80,6 +78,13 @@ class RegistrationTestCase(BaseTestRunner):
                      .click_sign_up_btn())
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
+
+    def test_registration_modal_student_is_shown_for_guest(self):
+        is_displayed = (HomePageGuest(self.driver)
+                        .click_started_for_free()
+                        .click_become_a_tutor()
+                        .is_displayed())
+        self.assertTrue(is_displayed, "Element not displayed!")
 
     def test_registration_tutor_too_long_password(self):
         registration = (HomePageGuest(self.driver)
