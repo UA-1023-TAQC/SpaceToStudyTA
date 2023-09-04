@@ -205,15 +205,18 @@ class RegistrationModal(BaseComponent):
         sign_up_btn = self.get_sign_up_btn()
         sign_up_btn.click()
 
-    def get_login_link_text(self) -> str:
+    def get_login_link(self) -> WebElement:
         if not self._login_link:
             self._login_link = self.node.find_element(*LOGIN)
-        return self._login_link.text
+        return self._login_link
+
+    def get_login_link_text(self) -> str:
+
+        return self.get_login_link().text
 
     def click_login_link(self):
-        if not self._login_link:
-            self._login_link = self.node.find_element(*LOGIN)
-            self._login_link.click()
+        login_link = self.get_login_link()
+        login_link.click()
         node = self.node.parent.find_element(*LOGIN_MODAL)
         return LoginModal(node)
 

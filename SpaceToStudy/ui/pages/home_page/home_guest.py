@@ -162,6 +162,7 @@ class HomePageGuest(BasePage):
     def click_button_become_a_student_tutor(self):
         self.get_button_become_a_student_tutor().click()
         node = self.driver.find_element(*SIGN_UP_MODAL)
+        sleep(1)
         return RegistrationModal(node)
 
     def get_button_get_started_for_free(self) -> WebElement:
