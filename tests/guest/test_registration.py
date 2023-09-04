@@ -2,12 +2,15 @@ import unittest
 from time import sleep
 
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
+from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
+from tests.value_provider import ValueProvider
 
 
 class RegistrationTestCase(BaseTestRunner):
@@ -98,6 +101,22 @@ class RegistrationTestCase(BaseTestRunner):
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
 
+    def test_tutor_signUp_button_is_active(self):
+        (HeaderUnauthorizedComponent(self.driver)
+                                .click_login_btn()
+                                .get_join_us_for_free()
+                                .click_link())
+        registration_modal = (HomePageGuest(self.driver)
+                              .click_become_a_tutor()
+                              .set_first_name(ValueProvider.get_tutor_first_name())
+                              .set_last_name(ValueProvider.get_tutor_last_name())
+                              .set_email(ValueProvider.get_tutor_email())
+                              .set_password(ValueProvider.get_tutor_password())
+                              .set_confirm_password(ValueProvider.get_tutor_password())
+                              .click_i_agree_checkbox())
+        self.assertEqual('0', registration_modal.get_sign_up_btn().get_attribute("tabindex"))
+        self.assertEqual("rgba(38, 50, 56, 1)",
+                         registration_modal.get_sign_up_btn().value_of_css_property("background-color"))
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
