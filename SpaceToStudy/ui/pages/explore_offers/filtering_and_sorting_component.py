@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.explore_offers.filters_sidebar_component import FiltersSidebarComponent
 
 FILTERS_SVG = (By.XPATH, '.div[1]/div/svg')
 FILTER_TITLE = (By.XPATH, './div[1]/div/h6')
@@ -14,11 +15,14 @@ SORT_LIST = (By.XPATH, '/div[3]/div[1]/div/div/div')
 INLINE_CARD_BTN = (By.XPATH, '/div[3]/div[2]/button[1]')
 GRID_CARD_BTN = (By.XPATH, '/div[3]/div[2]/button[2]')
 
+FILTERS_SIDEBAR_COMPONENT = (By.XPATH, "/html/body/div[2]/div[3]")
+
 
 class FilteringAndSortingComponent(BaseComponent):
 
     def __init__(self, node):
         super().__init__(node)
+        self._filters_sidebar_component = None
 
     def get_filters_svg(self) -> WebElement:
         return self.node.find_element(*FILTERS_SVG)
@@ -67,3 +71,9 @@ class FilteringAndSortingComponent(BaseComponent):
 
     def navigate_sort_list_down(self):
         return self.get_sort_list().send_keys(Keys.ARROW_DOWN)
+
+    def get_filters_sidebar_component(self):
+        new_node = self.node.find_element(*FILTERS_SIDEBAR_COMPONENT)
+        if not self._filters_sidebar_component:
+            self._filters_sidebar_component = FiltersSidebarComponent(new_node)
+            return self._filters_sidebar_component
