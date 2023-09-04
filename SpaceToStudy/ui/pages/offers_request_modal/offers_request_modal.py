@@ -1,4 +1,5 @@
-from selenium.webdriver import Keys
+from time import sleep
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -93,6 +94,7 @@ class OffersRequestModal(BaseComponent):
 
     def click_add_to_draft_btn(self):
         self.get_add_to_draft_btn().click()
+        sleep(2)
 
     def click_create_offer_btn(self):
         self.get_create_offer_btn().click()
@@ -137,16 +139,16 @@ class FirstBlock(BaseComponent):
             self._desc_before_category = self.node.find_element(*DESC_BEFORE_CATEGORY)
         return self._desc_before_category.text
 
-    def get_category_input(self) -> Input:
+    def get_category_input(self) -> InputDropDownList:
         if not self._category_input:
             node = self.node.find_element(*CATEGORY_INPUT)
-            self._category_input = Input(node)
+            self._category_input = InputDropDownList(node)
         return self._category_input
 
-    def get_subject_input(self) -> Input:
+    def get_subject_input(self) -> InputDropDownList:
         if not self._subject_input:
             node = self.node.find_element(*SUBJECT_INPUT)
-            self._subject_input = Input(node)
+            self._subject_input = InputDropDownList(node)
         return self._subject_input
 
     def get_desc_before_checkbox(self) -> str:
@@ -303,11 +305,16 @@ class ThirdBlock(BaseComponent):
             self._question_input = Input(node)
         return self._question_input
 
-    def get_answer_input(self) -> Textarea:
+    def get_answer_input(self) -> WebElement:
         if not self._answer_input:
-            node = self.node.find_element(*ANSWER_INPUT)
-            self._answer_input = Textarea(node)
+            self._answer_input = self.node.find_element(*ANSWER_INPUT)
         return self._answer_input
+
+    def get_answer_input_text(self) -> str:
+        return self.get_answer_input().text
+
+    def set_answer_input_text(self, text: str):
+        self.get_answer_input().send_keys(text)
 
     def get_add_question_btn(self) -> WebElement:
         if not self._add_question_btn:
@@ -326,11 +333,16 @@ class ThirdBlock(BaseComponent):
             self._addition_question_input = Input(node)
         return self._addition_question_input
 
-    def get_addition_answer_input(self) -> Textarea:
+    def get_addition_answer_input(self) -> WebElement:
         if not self._addition_answer_input:
-            node = self.node.find_element(*ADDITION_ANSWER_INPUT)
-            self._addition_answer_input = Textarea(node)
+            self._addition_answer_input = self.node.find_element(*ADDITION_ANSWER_INPUT)
         return self._addition_answer_input
+
+    def get_additional_answer_input_text(self) -> str:
+        return self.get_addition_answer_input().text
+
+    def set_additional_answer_input_text(self, text: str):
+        self.get_addition_answer_input().send_keys(text)
 
     def get_question_close_btn(self) -> WebElement:
         if not self._question_close_btn:
