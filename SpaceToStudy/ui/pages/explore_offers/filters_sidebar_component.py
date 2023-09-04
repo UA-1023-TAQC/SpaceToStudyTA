@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
-from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 
 CLOSE_BUTTON = (By.XPATH, "./button")
 
@@ -110,5 +109,6 @@ class FiltersSidebarComponent(BaseComponent):
         return self
 
     def click_apply_filters_btn(self):
+        from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.node.find_element(*APPLY_FILTERS_BTN).click()
         return ExploreOffersPage(self.node.parent)
