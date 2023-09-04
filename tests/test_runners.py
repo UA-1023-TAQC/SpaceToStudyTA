@@ -42,8 +42,6 @@ class TestRunnerWithStudent(BaseTestRunner):
         self._login(ValueProvider.get_student_email(),
                     ValueProvider.get_student_password())
 
-    def test_(self):
-        pass
 
 
 class TestRunnerWithTutor(BaseTestRunner):
