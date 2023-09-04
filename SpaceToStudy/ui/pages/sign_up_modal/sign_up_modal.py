@@ -37,6 +37,7 @@ LOGIN_MODAL = (By.XPATH, "//*[@role='dialog']")
 
 TITLE_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
 
+TITLE =(By.XPATH, "//h2[contains(text(), 'student')]")
 
 class RegistrationModal(BaseComponent):
 
@@ -51,9 +52,11 @@ class RegistrationModal(BaseComponent):
         self._terms_link = None
         self._privacy_policy_link = None
         self._title_modal = None
+        self._title = None
 
     def get_title_text(self) -> str:
         return self.node.find_element(*TITLE).text
+
 
     def get_first_name_input(self):
         if not self._first_name_input:
@@ -204,6 +207,12 @@ class RegistrationModal(BaseComponent):
     def click_sign_up_btn(self):
         sign_up_btn = self.get_sign_up_btn()
         sign_up_btn.click()
+
+    def get_title_text(self) -> WebElement:
+        if not self._title:
+            self._title = self.node.find_element(*TITLE)
+        return self._title.text
+
 
     def get_login_link(self) -> WebElement:
         if not self._login_link:

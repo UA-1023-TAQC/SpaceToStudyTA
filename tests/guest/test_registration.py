@@ -118,5 +118,12 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual("rgba(38, 50, 56, 1)",
                          registration_modal.get_sign_up_btn().value_of_css_property("background-color"))
 
+    def test_open_student_form_via_what_can_u_do_block(self):
+        HeaderUnauthorizedComponent(self.driver).get_navigate_links()[1].click()
+        HomePageGuest(self.driver).click_button_become_a_student()
+        modal = RegistrationModal(self.driver).get_title_text()
+        self.assertTrue(modal, "Sign up as a student")
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
