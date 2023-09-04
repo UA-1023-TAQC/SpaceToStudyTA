@@ -4,6 +4,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 LOW_HIGH = (By.XPATH, "./ul/li[2]")
+HIGH_LOW = (By.XPATH, "./ul/li[3]")
 
 
 class SortComponent(BaseComponent):
@@ -19,4 +20,12 @@ class SortComponent(BaseComponent):
 
     def click_low_high(self):
         self.get_low_high().click()
+
+    def get_high_low(self) -> WebElement:
+        if not self._low_high:
+            self._low_high = self.node.find_element(*HIGH_LOW)
+        return self._low_high
+
+    def click_high_low(self):
+        self.get_high_low().click()
 

@@ -22,3 +22,17 @@ class MyOffers(TestRunnerWithTutor):
         actual = offers.get_list_prices()
         self.assertEqual(expected, actual)
 
+    def test_offers_sort_price_high_low(self):
+        menu = HeaderAuthorizedComponent(self.driver)
+        (menu.get_user_menu()
+         .click_get_account()
+         .click_menu_items_my_offers())
+        offers = MyOffersPage(self.driver)
+        (offers
+         .get_offers_interaction()
+         .click_grid_btn()
+         .click_get_sort()
+         .click_high_low())
+        expected = sorted(offers.get_list_prices(), reverse=True)
+        actual = offers.get_list_prices()
+        self.assertEqual(expected, actual)
