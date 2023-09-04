@@ -4,6 +4,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.my_offers.actions_btn_grid import ActionsBtnGrid
 from SpaceToStudy.ui.pages.my_offers.dropdown_menu import DropdownMenu
+from SpaceToStudy.ui.pages.my_offers.my_offers_card_component import OffersCardComponent
 from SpaceToStudy.ui.pages.my_offers.offers_interaction import OffersInteraction
 from SpaceToStudy.ui.pages.my_offers.offers_table import OfferElements
 from SpaceToStudy.ui.pages.my_offers.select_offer_btns import SelectOffers
@@ -19,6 +20,9 @@ ACTIONS_BTN_INLINE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div
 EDIT_BTN_INLINE = (By.XPATH, "/html/body/div[2]/div[3]/ul/li[1]")
 VIEW_DETAILS_BTN_INLINE = (By.XPATH, "/html/body/div[2]/div[3]/ul/li[2]")
 ACTIONS_BTN_GRID = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div[2]/div/div[4]")
+CARD_OFFERS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div[1]/div")
+
+PRICE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div/div[3]/div/p")
 
 
 class MyOffersPage(BasePage):
@@ -29,6 +33,8 @@ class MyOffersPage(BasePage):
         self._offers_interaction = None
         self._list_box_dropdown_menu = None
         self._actions_btn_grid = None
+        self._card_offers = None
+        self._list_price = None
 
     def get_offers_table(self):
         node = self.driver.find_element(*OFFERS_TABLE)
@@ -87,3 +93,21 @@ class MyOffersPage(BasePage):
         node = self.driver.find_element(*ACTIONS_BTN_GRID)
         self._actions_btn_grid = ActionsBtnGrid(node)
         return self._actions_btn_grid
+
+    def get_card_offers(self) -> list[OffersCardComponent]:
+        if self._card_offers is None:
+            card_offers = self.driver.find_elements(*CARD_OFFERS)
+            self._card_offers = []
+            for card in card_offers:
+                self._card_offers.append(OffersCardComponent(card))
+        return self._card_offers
+
+    def get_list_prices(self) -> list:
+        if self._list_price is None:
+            list_price = self.driver.find_elements(*PRICE)
+            self._list_price = []
+            for price in list_price:
+                text = str(price.text).replace(" UAH", "")
+                self._list_price.append(int(text))
+        return self._list_price
+
