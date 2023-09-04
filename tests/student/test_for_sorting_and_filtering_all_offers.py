@@ -1,3 +1,7 @@
+from time import sleep
+
+from selenium.webdriver.common.by import By
+
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage, LIST_OF_OFFERS
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
