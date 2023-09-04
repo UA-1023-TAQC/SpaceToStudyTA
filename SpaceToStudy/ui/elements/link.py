@@ -3,7 +3,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.base_element import BaseElement
 
-LINK = (By.XPATH, "./div/a ")
+LINK = (By.XPATH, ". ")
 
 
 class Link(BaseElement):
