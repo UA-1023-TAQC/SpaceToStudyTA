@@ -34,3 +34,36 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
         for offer in list_of_filtered_offers.get_list_of_filtered_offers():
             self.assertEqual("GUITAR", offer.get_subject_label())
             self.assertIn("Yura", offer.get_person_name())
+
+    def test_toggle_between_tutors_offers_and_students_requests(self):
+        explore_offers_page = ExploreOffersPage(self.driver)
+        filtering_sorting_block = explore_offers_page\
+            .get_filtering_and_sorting_block()
+
+        # Toggle to students' requests
+        filtering_sorting_block.click_toggle()
+        self.assertIn("authorRole=student", self.driver.current_url)
+
+        # Check the text color
+        tutors_offers_text_color = filtering_sorting_block\
+            .get_tutors_offers()\
+            .value_of_css_property("color")
+        students_requests_text_color = filtering_sorting_block\
+            .get_students_requests()\
+            .value_of_css_property("color")
+        self.assertEqual(tutors_offers_text_color, "rgba(96, 125, 139, 1)")
+        self.assertEqual(students_requests_text_color, "rgba(38, 50, 56, 1)")
+
+        # Toggle back to tutors' offers
+        filtering_sorting_block.click_toggle()
+        self.assertIn("authorRole=tutor", self.driver.current_url)
+
+        # Check the text color again
+        tutors_offers_text_color = filtering_sorting_block\
+            .get_tutors_offers()\
+            .value_of_css_property("color")
+        students_requests_text_color = filtering_sorting_block\
+            .get_students_requests()\
+            .value_of_css_property("color")
+        self.assertEqual(tutors_offers_text_color, "rgba(38, 50, 56, 1)")
+        self.assertEqual(students_requests_text_color, "rgba(96, 125, 139, 1)")
