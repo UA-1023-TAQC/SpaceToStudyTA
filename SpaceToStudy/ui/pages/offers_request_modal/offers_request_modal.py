@@ -1,10 +1,13 @@
 from time import sleep
 
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.checkbox import Checkbox
+from SpaceToStudy.ui.elements.chip import Chip
 from SpaceToStudy.ui.elements.input import Input
+from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.elements.textarea import Textarea
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
@@ -97,8 +100,8 @@ class OffersRequestModal(BaseComponent):
     def click_create_offer_btn(self):
         self.get_create_offer_btn().click()
 
-    def is_btn_displayed(self, btn: WebElement) -> bool:
-        if btn.is_displayed():
+    def is_btn_displayed(self: WebElement) -> bool:
+        if self.is_displayed():
             return True
         return False
 
@@ -200,6 +203,7 @@ class SecondBlock(BaseComponent):
         self._describe_input = None
         self._desc_before_language = None
         self._language_input = None
+        self._language_chips = None
         self._desc_before_price = None
         self._price_img = None
         self._price_input = None
@@ -231,14 +235,22 @@ class SecondBlock(BaseComponent):
             self._desc_before_language = self.node.find_element(*DESC_BEFORE_LANGUAGE)
         return self._desc_before_language.text
 
-    def get_language_input(self) -> Input:
+    def get_language_input(self) -> InputDropDownList:
         if not self._language_input:
             node = self.node.find_element(*LANGUAGE_INPUT)
-            self._language_input = Input(node)
+            self._language_input = InputDropDownList(node)
         return self._language_input
 
+    def get_language_chips(self) -> tuple[Chip]:
+        if not self._language_chips:
+            set_of_chips = self.node.find_element(*LANGUAGE_CHIPS)
+            self._language_chips = []
+            for chip in set_of_chips:
+                self._language_chips.append(Chip(chip))
+        return self._language_chips
+
     def is_language_dropdown_list_open(self) -> bool:
-        if self.get_language_input().get_input().get_attribute("aria-controls") == "mui-16-listbox":
+        if self.get_language_input().get_input().get_attribute("aria-expanded") == "true":
             return True
         return False
 
@@ -349,7 +361,7 @@ class ThirdBlock(BaseComponent):
     def click_addition_close_btn(self):
         self.get_addition_close_btn().click()
 
-    def is_btn_displayed(self, close_btn: WebElement) -> bool:
-        if close_btn.is_displayed():
+    def is_btn_displayed(self:WebElement) -> bool:
+        if self.is_displayed():
             return True
         return False
