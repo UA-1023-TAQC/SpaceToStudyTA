@@ -33,7 +33,7 @@ class OffersInteraction(BaseComponent):
 
     def click_grid_btn(self):
         self.get_grid_btn().click()
-
+        return self
     def get_sort(self) -> WebElement:
         return self.node.find_element(*SORT)
 
