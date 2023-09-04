@@ -3,7 +3,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.input import Input
 
-ICON = (By.XPATH, "./button/svg")
+ICON = (By.XPATH, "./following-sibling::div/div/button/svg")
 
 
 class InputWithImage(Input):
@@ -17,4 +17,4 @@ class InputWithImage(Input):
         return self.icon
 
     def click_icon(self):
-        self.icon.click()
+        self.get_icon().click()

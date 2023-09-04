@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from time import sleep
+from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input import PasswordInput
@@ -20,6 +21,7 @@ JOIN_US_FOR_FREE = (By.XPATH, "//*[contains(text(),'Join us for free')]")
 
 UNSUCCESS_LOGIN_POP_UP = (By.XPATH, "?????????????")
 
+
 class LoginModal(BaseComponent):
 
     def __init__(self, node):
@@ -38,15 +40,19 @@ class LoginModal(BaseComponent):
            self._img_modal = self.node.find_element(*IMG_MODAL)
         return self._img_modal
 
-    def get_title(self):
+    def get_title(self) -> WebElement:
         if not self._title_modal:
            self._title_modal = self.node.find_element(*TITLE_MODAL)
         return self._title_modal
+
+    def get_title_text(self):
+        return self.get_title().text
 
     def get_email_input(self):
         node = self.node.find_element(*EMAIL_INPUT)
         self._email_input = Input(node)
         return self._email_input
+
     def set_email(self, email: str):
         self.get_email_input().set_text(email)
         return self
@@ -56,9 +62,11 @@ class LoginModal(BaseComponent):
             node = self.node.find_element(*PASSWORD_INPUT)
             self._password_input = PasswordInput(node)
         return self._password_input
+
     def set_password(self, password: str):
         self.get_password_input().set_text(password)
         return self
+
     def get_email_error_message(self):
         last_name_input = self.get_last_name_input()
         return last_name_input.get_error_message()
@@ -82,7 +90,7 @@ class LoginModal(BaseComponent):
         self.get_login_button().click_button()
         sleep(1)
 
-    
+
     def get_join_us_for_free(self):
         node = self.node.find_element(*JOIN_US_FOR_FREE)
         self._join_us_for_free = Link(node)

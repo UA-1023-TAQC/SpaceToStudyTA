@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowItWorksComponentStudent
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
@@ -31,6 +32,7 @@ class HomePageStudent(BasePage):
         self._button_find_tutor = None
         self._questions_block = None
         self._questions_items = None
+        self._search_tutor = None
         self._img_search_block = None
         self._how_it_works_block_student = None
 
@@ -43,10 +45,10 @@ class HomePageStudent(BasePage):
 
         return self._categories
 
-    def get_search_input(self) -> WebElement:
+    def get_search_input(self) -> SearchTutorComponent:
         if not self._search_tutor:
-            node = self.driver.find_element(*SEARCH_INPUT_BLOCK)
-            self._search_tutor = SearchTutorComponent(node)
+            _search_tutor = self.driver.find_element(*SEARCH_INPUT_BLOCK)
+            self._search_tutor = SearchTutorComponent(_search_tutor)
         return self._search_tutor
 
     def get_button_go_to_categories(self) -> WebElement:
@@ -59,7 +61,7 @@ class HomePageStudent(BasePage):
 
     def click_button_go_to_categories(self):
         self.get_button_go_to_categories().click()
-        return self
+        return CategoriesPage(self.driver)
 
     def get_button_find_tutor(self) -> WebElement:
         if not self._button_find_tutor:
@@ -73,10 +75,10 @@ class HomePageStudent(BasePage):
         self.get_button_find_tutor().click()
         return self
 
-    def get_questions_block(self) -> WebElement:
+    def get_questions_block(self) -> QuestionsComponent:
         if not self._questions_block:
-            node = self.driver.find_element(*QUESTIONS_BLOCK)
-            self._questions_block = QuestionsComponent(node)
+            _questions_block = self.driver.find_element(*QUESTIONS_BLOCK)
+            self._questions_block = QuestionsComponent(_questions_block)
         return self._questions_block
 
     def get_questions_items(self) -> list[QuestionsComponent]:
@@ -92,8 +94,8 @@ class HomePageStudent(BasePage):
             self._img_search_block = self.driver.find_element(*IMG_SEARCH_BLOCK)
         return self._img_search_block
 
-    def get_how_it_works_block_student(self) -> WebElement:
+    def get_how_it_works_block_student(self) -> HowItWorksComponentStudent:
         if not self._how_it_works_block_student:
-            node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_STUDENT)
-            self._how_it_works_block_student = HowItWorksComponentStudent(node)
+            _how_it_works_block_student = self.driver.find_element(*HOW_IT_WORKS_BLOCK_STUDENT)
+            self._how_it_works_block_student = HowItWorksComponentStudent(_how_it_works_block_student)
         return self._how_it_works_block_student

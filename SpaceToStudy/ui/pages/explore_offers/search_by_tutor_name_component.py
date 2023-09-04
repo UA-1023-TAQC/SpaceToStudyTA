@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
@@ -18,11 +20,20 @@ class SearchByTutorNameComponent(BaseComponent):
     def get_categories_input(self) -> WebElement:
         return self.node.find_element(*CATEGORIES_INPUT)
 
+    def get_categories_input_text(self) -> str:
+        return self.get_categories_input().get_attribute("value")
+
     def get_subjects_input(self) -> WebElement:
         return self.node.find_element(*SUBJECTS_INPUT)
 
+    def get_subjects_input_text(self) -> str:
+        return self.get_subjects_input().get_attribute("value")
+
     def get_search_by_tutor_name_input(self) -> WebElement:
         return self.node.find_element(*SEARCH_BY_TUTOR_NAME_INPUT)
+
+    def get_search_by_tutor_name_input_text(self) -> str:
+        return self.get_search_by_tutor_name_input().get_attribute("value")
 
     def get_search_btn(self) -> WebElement:
         return self.node.find_element(*SEARCH_BTN)
@@ -34,25 +45,41 @@ class SearchByTutorNameComponent(BaseComponent):
         return self.get_subjects_input().click()
 
     def click_search_btn(self):
-        return self.get_search_btn().click()
+        self.get_search_btn().click()
+        return self
 
     def set_categories_input(self, text):
         self.get_categories_input().send_keys(text)
+        return self
 
     def set_subjects_input(self, text):
         self.get_subjects_input().send_keys(text)
+        return self
 
     def set_search_by_tutor_name_input(self, text):
         self.get_search_by_tutor_name_input().send_keys(text)
+        return self
 
     def navigate_categories_input_up(self):
         return self.get_categories_input().send_keys(Keys.ARROW_UP)
 
     def navigate_categories_input_down(self):
-        return self.get_categories_input().send_keys(Keys.ARROW_DOWN)
+        self.get_categories_input().send_keys(Keys.ARROW_DOWN)
+        return self
 
     def navigate_subjects_input_up(self):
         return self.get_subjects_input().send_keys(Keys.ARROW_UP)
 
     def navigate_subjects_input_down(self):
-        return self.get_subjects_input().send_keys(Keys.ARROW_DOWN)
+        self.get_subjects_input().send_keys(Keys.ARROW_DOWN)
+        return self
+
+    def choose_categories_item(self):
+        self.get_categories_input().send_keys(Keys.ENTER)
+        sleep(0.5)
+        return self
+
+    def choose_subjects_item(self):
+        self.get_subjects_input().send_keys(Keys.ENTER)
+        sleep(0.5)
+        return self

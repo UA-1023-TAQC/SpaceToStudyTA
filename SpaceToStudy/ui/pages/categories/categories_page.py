@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 
 CATEGORIES_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/p')
 CATEGORIES_SUBTEXT = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/span')
@@ -26,6 +27,7 @@ class CategoriesPage(BasePage):
 
     def click_show_all_offers_btn(self):
         self.get_show_all_offers_btn().click()
+        return ExploreOffersPage(self.driver)
 
     def get_search_btn(self) -> WebElement:
         return self.driver.find_element(*SEARCH_BTN)
