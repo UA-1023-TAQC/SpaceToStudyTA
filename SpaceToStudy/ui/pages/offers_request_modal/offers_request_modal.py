@@ -3,6 +3,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.checkbox import Checkbox
 from SpaceToStudy.ui.elements.input import Input
+from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.elements.textarea import Textarea
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
@@ -228,10 +229,10 @@ class SecondBlock(BaseComponent):
             self._desc_before_language = self.node.find_element(*DESC_BEFORE_LANGUAGE)
         return self._desc_before_language.text
 
-    def get_language_input(self) -> Input:
+    def get_language_input(self) -> InputDropDownList:
         if not self._language_input:
             node = self.node.find_element(*LANGUAGE_INPUT)
-            self._language_input = Input(node)
+            self._language_input = InputDropDownList(node)
         return self._language_input
 
     def is_language_dropdown_list_open(self) -> bool:
