@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from tests.value_provider import ValueProvider
 
