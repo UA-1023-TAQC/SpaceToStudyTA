@@ -1,6 +1,5 @@
 from time import sleep
 
-from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -140,16 +139,16 @@ class FirstBlock(BaseComponent):
             self._desc_before_category = self.node.find_element(*DESC_BEFORE_CATEGORY)
         return self._desc_before_category.text
 
-    def get_category_input(self) -> Input:
+    def get_category_input(self) -> InputDropDownList:
         if not self._category_input:
             node = self.node.find_element(*CATEGORY_INPUT)
-            self._category_input = Input(node)
+            self._category_input = InputDropDownList(node)
         return self._category_input
 
-    def get_subject_input(self) -> Input:
+    def get_subject_input(self) -> InputDropDownList:
         if not self._subject_input:
             node = self.node.find_element(*SUBJECT_INPUT)
-            self._subject_input = Input(node)
+            self._subject_input = InputDropDownList(node)
         return self._subject_input
 
     def get_desc_before_checkbox(self) -> str:

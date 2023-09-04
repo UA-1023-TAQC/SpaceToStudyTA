@@ -22,19 +22,22 @@ class CreateRequestTestCase(BaseTestRunner):
             .click())
         self.driver.find_element(By.XPATH, "//button[contains(text(), 'Create request')]").click()
         first_block = FirstBlock(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/form/div[1]"))
-        first_block.get_category_input().set_select("Music")
-        first_block.get_subject_input().set_select("Guitar")
+        first_block.get_category_input().set_text("Music")
+        first_block.get_category_input().press_down_button(1).press_enter_button()
+        first_block.get_subject_input().set_text("Guitar")
+        first_block.get_subject_input().press_down_button(1).press_enter_button()
         first_block.get_checkbox_beginner().set_check()
         second_block = SecondBlock(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/form/div[2]"))
         second_block.get_title_input().set_text("I'd like to become a guitar coach")
         second_block.get_describe_input().set_text("Prefer focus on standard")
-        second_block.get_language_input().set_select("Ukrainian")
+        second_block.get_language_input().set_text("Ukrainian")
+        second_block.get_language_input().press_down_button(1).press_enter_button()
         second_block.get_price_input().set_text("700")
         third_block = ThirdBlock(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/form/div[3]"))
         third_block.get_question_input().set_text("What staff do I need?")
         third_block.set_answer_input_text("You need a guitar")
         OffersRequestModal(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/form")).click_add_to_draft_btn()
-
+        # TODO: finish test implementation
 
     def tearDown(self):
         self.driver.quit()

@@ -1,5 +1,3 @@
-from selenium.webdriver import Keys
-from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -27,10 +25,6 @@ class Input(BaseElement):
     
     def set_text(self, text):
         self.get_input().send_keys(text)
-
-    def set_select(self, text):
-        self.get_input().send_keys(text, Keys.ARROW_DOWN, Keys.ENTER)
-        sleep(0.1)
 
     def get_text(self):
         return self.get_input().get_attribute("value")
