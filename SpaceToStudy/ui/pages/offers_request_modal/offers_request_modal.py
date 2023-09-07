@@ -242,7 +242,7 @@ class SecondBlock(BaseComponent):
 
     def get_language_chips(self) -> tuple[Chip]:
         if not self._language_chips:
-            set_of_chips = self.node.find_element(*LANGUAGE_CHIPS)
+            set_of_chips = self.node.find_elements(*LANGUAGE_CHIPS)
             self._language_chips = []
             for chip in set_of_chips:
                 self._language_chips.append(Chip(chip))
