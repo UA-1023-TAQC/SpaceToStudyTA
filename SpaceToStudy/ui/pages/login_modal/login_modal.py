@@ -22,7 +22,6 @@ SIGN_IN_WITH_GMAIL = (By.XPATH, '//*[@id="googleButton"]/div/div/div/div[2]/span
 JOIN_US_FOR_FREE = (By.XPATH, "//*[contains(text(),'Join us for free')]")
 
 UNSUCCESS_LOGIN_POP_UP = (By.XPATH, "?????????????")
-LOGIN_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div")
 
 
 class LoginModal(BaseComponent):
@@ -106,18 +105,6 @@ class LoginModal(BaseComponent):
     
     def click_sign_in_as_gmail(self):
         self.get_sign_in_as_gmail().click()
-
-    def is_open(self):
-        try:
-            self.get_img()
-            self.get_title()
-            self.get_email_input()
-            self.get_password_input()
-            self.get_forgot_password_button()
-            self.get_login_button()
-            return True
-        except NoSuchElementException:
-            return False
 
     def outside_click(self):
         modal_element = self.node.find_element(By.XPATH, "/html/body/div[2]/div[3]/div")

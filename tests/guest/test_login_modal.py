@@ -10,9 +10,9 @@ class LoginModalTestCase(BaseTestRunner):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()
                        .click_login_btn())
-        self.assertTrue(login_modal.is_open())
+        self.assertTrue(login_modal.get_title_text, "Welcome back")
         login_modal.outside_click()
-        self.assertTrue(login_modal.is_open())
+        self.assertTrue(login_modal.get_title_text, "Welcome back")
 
     def test_login_button_greyed_out_and_non_clickable(self):
         HeaderUnauthorizedComponent(self.driver).click_login_btn()
