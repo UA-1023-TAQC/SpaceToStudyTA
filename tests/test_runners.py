@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from tests.value_provider import ValueProvider
 
@@ -31,6 +32,8 @@ class BaseTestRunner(unittest.TestCase):
         .set_password(password)
         .click_login_button())
 
+    def tearDown(self):
+        self.driver.quit()
 
 
 class TestRunnerWithStudent(BaseTestRunner):
@@ -39,8 +42,6 @@ class TestRunnerWithStudent(BaseTestRunner):
         self._login(ValueProvider.get_student_email(),
                     ValueProvider.get_student_password())
 
-    def test_(self):
-        pass
 
 
 class TestRunnerWithTutor(BaseTestRunner):

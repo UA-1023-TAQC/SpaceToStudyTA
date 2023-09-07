@@ -12,3 +12,9 @@ class Button(BaseElement):
 
     def click_button(self):
         self.get_button().click()
+
+    def is_enabled_button(self):
+        return self.get_button().is_enabled()
+
+    def get_value_css_property(self, property_name):
+        return self.get_button().value_of_css_property(property_name)
