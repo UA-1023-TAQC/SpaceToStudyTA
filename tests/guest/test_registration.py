@@ -124,6 +124,25 @@ class RegistrationTestCase(BaseTestRunner):
         modal = RegistrationModal(self.driver).get_title_text()
         self.assertTrue(modal, "Sign up as a student")
 
+    def test_how_it_works_block_is_visible_guest(self):
+        (HeaderUnauthorizedComponent(self.driver)
+         .get_navigate_links()[1]
+         .click())
+        block_is_displayed = (HomePageGuest(self.driver)
+                              .get_how_it_works_block()
+                              .is_displayed_how_it_works_block())
+        self.assertTrue(block_is_displayed, "Element not displayed!")
+        block_learn = (HomePageGuest(self.driver)
+                       .get_how_it_works_block()
+                       .get_checkbox_learn_from_experts()
+                       .value_of_css_property("color"))
+        self.assertEqual("rgba(38, 50, 56, 1)", block_learn)
+        block_share = (HomePageGuest(self.driver)
+                       .get_how_it_works_block()
+                       .get_checkbox_share_your_experience()
+                       .value_of_css_property("color"))
+        self.assertEqual("rgba(96, 125, 139, 1)", block_share)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

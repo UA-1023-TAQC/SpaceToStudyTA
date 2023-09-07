@@ -26,15 +26,21 @@ class HowItWorksComponent(BaseComponent):
             self.block_name = self.node.find_element(*CHECKBOX_LEARN_FROM_EXPERTS)
         return self.block_name.text
 
-    def get_checkbox_learn_from_experts(self) -> str:
+    def get_checkbox_learn_from_experts(self) -> WebElement:
         if not self.checkbox_learn_from_experts:
             self.checkbox_learn_from_experts = self.node.find_element(*CHECKBOX_LEARN_FROM_EXPERTS)
-        return self.checkbox_learn_from_experts.text
+        return self.checkbox_learn_from_experts
 
-    def get_checkbox_share_your_experience(self) -> str:
+    def get_text_checkbox_learn_from_experts(self) -> str:
+        return self.get_checkbox_learn_from_experts().text
+
+    def get_checkbox_share_your_experience(self) -> WebElement:
         if not self.checkbox_share_your_experience:
             self.checkbox_share_your_experience = self.node.find_element(*CHECKBOX_SHARE_YOUR_EXPERIENCE)
-        return self.checkbox_share_your_experience.text
+        return self.checkbox_share_your_experience
+
+    def get_text_checkbox_share_your_experience(self) -> str:
+        return self.get_checkbox_learn_from_experts().text
 
     def get_image(self) -> WebElement:
         if not self.image:
@@ -50,3 +56,6 @@ class HowItWorksComponent(BaseComponent):
         if not self.description:
             self.description = self.node.find_element(*DESCRIPTION)
         return self.description.text
+
+    def is_displayed_how_it_works_block(self) -> bool:
+        return self.node.is_displayed()
