@@ -51,7 +51,7 @@ class CreateRequestTestCase(BaseTestRunner):
          .click_add_to_draft_btn())
 
         inline_card = OfferDetailsPage(self.driver).get_inline_card_component()
-        self.assertEqual("Anastasiia M.", inline_card.get_person_name())
+        self.assertEqual("Student F.", inline_card.get_person_name())
         self.assertEqual(title, inline_card.get_offer_title())
         self.assertEqual(str.upper(subject), inline_card.get_subject_label())
         self.assertEqual(str.upper("Beginner"), inline_card.get_level_label())
