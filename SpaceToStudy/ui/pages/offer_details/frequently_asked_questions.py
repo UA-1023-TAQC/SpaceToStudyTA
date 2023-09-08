@@ -18,10 +18,8 @@ class FrequentlyAskedQuestions(BaseComponent):
             self._title = self.node.find_element(*TITLE)
         return self._title.text
 
-    def get_questions(self) -> []:
+    def get_questions(self) -> list[QuestionComponent]:
         if not self._questions:
             question_set = self.node.find_elements(*QUESTIONS)
-            self._questions = []
-            for question in question_set:
-                self._questions.append(QuestionComponent(question))
+            self._questions = [QuestionComponent(question) for question in question_set]
         return self._questions

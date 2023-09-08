@@ -27,10 +27,8 @@ class InfoComponentManyValues(BaseComponent):
             self._img = self.node.find_element(*IMG)
         return self._img
 
-    def get_values(self) -> []:
+    def get_values(self) -> list[Value]:
         if not self._values:
             value = self.node.find_elements(*VALUES)
-            self._values = []
-            for val in value:
-                self._values.append(Value(val))
+            self._values = [Value(val) for val in value]
         return self._values
