@@ -51,38 +51,51 @@ class CreateRequestTestCase(BaseTestRunner):
          .click_add_to_draft_btn())
 
         inline_card = OfferDetailsPage(self.driver).get_inline_card_component()
-        self.assertEqual("Student F.", inline_card.get_person_name())
-        self.assertEqual(title, inline_card.get_offer_title())
-        self.assertEqual(str.upper(subject), inline_card.get_subject_label())
-        self.assertEqual(str.upper("Beginner"), inline_card.get_level_label())
-        self.assertEqual(language, inline_card.get_languages())
-        self.assertEqual(f"{price} UAH", inline_card.get_price_value())
+        student_name_actual = inline_card.get_person_name()
+        card_title_actual = inline_card.get_offer_title()
+        card_subject_actual = inline_card.get_subject_label()
+        card_level_actual = inline_card.get_level_label()
+        card_language_actual = inline_card.get_languages()
+        card_price_actual = inline_card.get_price_value()
+        self.assertEqual("Student F.", student_name_actual)
+        self.assertEqual(title, card_title_actual)
+        self.assertEqual(str.upper(subject), card_subject_actual)
+        self.assertEqual(str.upper("Beginner"), card_level_actual)
+        self.assertEqual(language, card_language_actual)
+        self.assertEqual(f"{price} UAH", card_price_actual)
 
         general_info_component = OfferDetailsPage(self.driver).get_general_info_component()
-        self.assertEqual(desc, OfferDetailsPage(self.driver).get_about_offer_desc())
-        self.assertEqual(subject, general_info_component
-                         .get_tutoring_subject_component()
-                         .get_value())
-        self.assertEqual("Beginner", general_info_component
+        offer_desc_actual = OfferDetailsPage(self.driver).get_about_offer_desc()
+        subject_actual = (general_info_component
+                          .get_tutoring_subject_component()
+                          .get_value())
+        level_actual = (general_info_component
                          .get_preparation_levels_component()
                          .get_values()[0]
                          .get_text())
-        self.assertEqual(language, general_info_component
+        language_actual = (general_info_component
                          .get_tutoring_languages_component()
                          .get_values()[0]
                          .get_text())
-        self.assertEqual(f"{price} UAH/hour", general_info_component
+        price_actual = (general_info_component
                          .get_pricing_component()
                          .get_value())
+        self.assertEqual(desc, offer_desc_actual)
+        self.assertEqual(subject, subject_actual)
+        self.assertEqual("Beginner", level_actual)
+        self.assertEqual(language, language_actual)
+        self.assertEqual(f"{price} UAH/hour", price_actual)
 
-        self.assertEqual(question, OfferDetailsPage(self.driver)
+        question_actual = (OfferDetailsPage(self.driver)
                          .get_frequently_asked_questions_component()
                          .get_questions()[0].get_question_text())
-        self.assertEqual(answer, OfferDetailsPage(self.driver)
+        answer_actual = (OfferDetailsPage(self.driver)
                          .get_frequently_asked_questions_component()
                          .get_questions()[0]
                          .click_question_btn()
                          .get_answer())
+        self.assertEqual(question, question_actual)
+        self.assertEqual(answer, answer_actual)
 
     def tearDown(self):
         self.driver.quit()
