@@ -1,3 +1,5 @@
+from selenium.common import NoSuchElementException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from time import sleep
 from selenium.webdriver.remote.webelement import WebElement
@@ -103,3 +105,14 @@ class LoginModal(BaseComponent):
     
     def click_sign_in_as_gmail(self):
         self.get_sign_in_as_gmail().click()
+
+    def outside_click(self):
+        modal_element = self.node.find_element(By.XPATH, "/html/body/div[2]/div[3]/div")
+        modal_location = modal_element.location
+
+        x = modal_location['x'] - 10
+        y = modal_location['y'] - 10
+
+        actions = ActionChains(self.node.parent)
+        actions.move_by_offset(x, y).click().perform()
+        return
