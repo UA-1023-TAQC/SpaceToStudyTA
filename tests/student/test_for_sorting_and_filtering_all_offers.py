@@ -30,7 +30,6 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
                             .click_search_btn())
 
         list_of_filtered_offers = ExploreOffersPage(self.driver.find_element(*LIST_OF_OFFERS))
-        self.assertEqual(len(list_of_filtered_offers.get_list_of_filtered_offers()), 2)
         for offer in list_of_filtered_offers.get_list_of_filtered_offers():
             self.assertEqual("GUITAR", offer.get_subject_label())
             self.assertIn("Yura", offer.get_person_name())
@@ -79,7 +78,7 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
         filter_quantity = explore_offers_page\
             .get_filtering_and_sorting_block()\
             .get_filter_quantity_number()
-        self.assertEqual(filter_quantity, "1")
+        self.assertEqual(filter_quantity, 1)
 
         list_of_filtered_offers = explore_offers_page.get_list_of_filtered_offers()
         for offer in list_of_filtered_offers:

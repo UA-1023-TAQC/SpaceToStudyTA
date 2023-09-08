@@ -34,8 +34,8 @@ class FilteringAndSortingComponent(BaseComponent):
     def get_filter_quantity(self) -> WebElement:
         return self.node.find_element(*FILTER_QUANTITY)
 
-    def get_filter_quantity_number(self) -> str:
-        return self.node.find_element(*FILTER_QUANTITY).text
+    def get_filter_quantity_number(self) -> int:
+        return int(self.node.find_element(*FILTER_QUANTITY).text)
 
     def get_tutors_offers(self) -> WebElement:
         return self.node.find_element(*TUTORS_OFFERS)
