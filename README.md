@@ -15,3 +15,7 @@ TUTOR_PASSWORD=tutor_password
 TUTOR_FIRST_NAME=tutor
 TUTOR_LAST_NAME=tutor
 ```
+run pylint
+```shell
+pylint ./SpaceToStudy
+```
