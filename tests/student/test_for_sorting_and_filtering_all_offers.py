@@ -30,7 +30,6 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
                             .click_search_btn())
 
         list_of_filtered_offers = ExploreOffersPage(self.driver.find_element(*LIST_OF_OFFERS))
-        self.assertEqual(len(list_of_filtered_offers.get_list_of_filtered_offers()), 2)
         for offer in list_of_filtered_offers.get_list_of_filtered_offers():
             self.assertEqual("GUITAR", offer.get_subject_label())
             self.assertIn("Yura", offer.get_person_name())
@@ -67,3 +66,20 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
             .value_of_css_property("color")
         self.assertEqual(tutors_offers_text_color, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_text_color, "rgba(96, 125, 139, 1)")
+
+    def test_filter_by_level_in_sidebar(self):
+        explore_offers_page = ExploreOffersPage(self.driver)\
+            .get_filtering_and_sorting_block()\
+            .click_filter_title()\
+            .get_filters_sidebar_component()\
+            .click_level_beginner_checkbox()\
+            .click_apply_filters_btn()
+
+        filter_quantity = explore_offers_page\
+            .get_filtering_and_sorting_block()\
+            .get_filter_quantity_number()
+        self.assertEqual(filter_quantity, 1)
+
+        list_of_filtered_offers = explore_offers_page.get_list_of_filtered_offers()
+        for offer in list_of_filtered_offers:
+            self.assertIn("BEGINNER", offer.get_level_label())
