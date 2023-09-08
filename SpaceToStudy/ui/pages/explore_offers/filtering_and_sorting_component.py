@@ -71,12 +71,12 @@ class FilteringAndSortingComponent(BaseComponent):
     def click_inline_card_btn(self):
         from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.get_inline_card_btn().click()
-        return ExploreOffersPage(self)
+        return ExploreOffersPage(self.node.parent)
 
     def click_grid_card_btn(self):
         from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.get_grid_card_btn().click()
-        return ExploreOffersPage(self)
+        return ExploreOffersPage(self.node.parent)
 
     def navigate_sort_list_up(self):
         return self.get_sort_list().send_keys(Keys.ARROW_UP)
