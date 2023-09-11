@@ -1,3 +1,6 @@
+from time import sleep
+
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -84,8 +87,17 @@ class FiltersSidebarComponent(BaseComponent):
         self.node.find_element(*LANGUAGE_INPUT).click()
         return self
 
+    def get_language_input(self):
+        return self.node.find_element(*LANGUAGE_INPUT)
+
     def set_language_input(self, language):
-        self.node.find_element(*LANGUAGE_INPUT).send_keys(language)
+        self.get_language_input()\
+            .send_keys(language)
+        sleep(0.2)
+        self.get_language_input()\
+            .send_keys(Keys.ARROW_DOWN)
+        self.get_language_input()\
+            .send_keys(Keys.ENTER)
         return self
 
     def click_native_speaker_checkbox(self):
