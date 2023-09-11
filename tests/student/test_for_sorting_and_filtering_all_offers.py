@@ -1,5 +1,6 @@
 from time import sleep
 
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage, LIST_OF_OFFERS
@@ -33,6 +34,34 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
         for offer in list_of_filtered_offers.get_list_of_filtered_offers():
             self.assertEqual("GUITAR", offer.get_subject_label())
             self.assertIn("Yura", offer.get_person_name())
+
+    def test_change_offers_view_to_card_and_to_list(self):
+
+        # Change offers view to grid card view
+        list_of_offers_in_grid_card_view = ExploreOffersPage(self.driver)\
+            .get_filtering_and_sorting_block()\
+            .click_grid_card_btn()\
+            .get_list_of_filtered_offers()
+        for offer in list_of_offers_in_grid_card_view:
+            try:
+                result = offer.get_offer_details()
+            except NoSuchElementException:
+                result = None
+            self.assertIsNone(result)
+
+        # Change offers view to inline card view
+        list_of_offers_in_inline_card_view = ExploreOffersPage(self.driver)\
+            .get_filtering_and_sorting_block()\
+            .click_inline_card_btn()\
+            .get_list_of_filtered_offers()
+        for offer in list_of_offers_in_inline_card_view:
+            try:
+                result = offer.get_offer_details()
+            except NoSuchElementException:
+                result = None
+            self.assertIsNotNone(result)
+
+
 
     def test_toggle_between_tutors_offers_and_students_requests(self):
         explore_offers_page = ExploreOffersPage(self.driver)

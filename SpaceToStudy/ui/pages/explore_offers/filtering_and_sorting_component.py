@@ -12,9 +12,9 @@ TUTORS_OFFERS = (By.XPATH, './div[2]/span[1]')
 STUDENTS_REQUESTS = (By.XPATH, './div[2]/span[3]')
 TOGGLE = (By.XPATH, './div[2]/span[2]/span[1]/input')
 SORT_TITLE = (By.XPATH, './div[1]/div/h6')
-SORT_LIST = (By.XPATH, '/div[3]/div[1]/div/div/div')
-INLINE_CARD_BTN = (By.XPATH, '/div[3]/div[2]/button[1]')
-GRID_CARD_BTN = (By.XPATH, '/div[3]/div[2]/button[2]')
+SORT_LIST = (By.XPATH, './div[3]/div[1]/div/div/div')
+INLINE_CARD_BTN = (By.XPATH, './div[3]/div[2]/button[1]')
+GRID_CARD_BTN = (By.XPATH, './div[3]/div[2]/button[2]')
 
 FILTERS_SIDEBAR_COMPONENT = (By.XPATH, "/html/body/div[2]/div[3]")
 
