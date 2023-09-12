@@ -26,7 +26,7 @@ class BaseTestRunner(unittest.TestCase):
 
     def _login(self, email: str, password: str):
         (HomePageGuest(self.driver)
-        .get_header()
+        .get_header()[1]
         .click_login_btn()
         .set_email(email)
         .set_password(password)
