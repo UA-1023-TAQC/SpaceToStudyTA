@@ -3,6 +3,8 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
+import re
+
 INLINE_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
 
 PERSON_ICON = (By.XPATH, './div/div[1]/a/div/svg')
@@ -59,8 +61,11 @@ class InlineCardComponent(BaseComponent):
     def get_languages(self) -> str:
         return self.node.find_element(*LANGUAGES).text
 
-    def get_price_value(self) -> str:
-        return self.node.find_element(*PRICE_VALUE).text
+    def get_price_value(self) -> float:
+        price_text = self.node.find_element(*PRICE_VALUE).text
+        match = re.search(r'[\d.]+', price_text)
+        price_value = float(match.group())
+        return price_value
 
     def get_period_for_price(self) -> str:
         return self.node.find_element(*PERIOD_FOR_PRICE).text
