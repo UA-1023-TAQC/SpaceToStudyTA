@@ -119,7 +119,6 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         QUESTIONS = "Questions 1"
         ANSWER = "Answer 1"
 
-
         categories_url = (HomePageStudent(self.driver)
                           .get_header()[0]
                           .get_navigate_links()[0]
@@ -132,8 +131,12 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
                                 .click_create_request_btn())
 
         first_block = offers_request_modal.get_first_block()
-        first_block.get_category_input().set_text(CATEGORY)
-        # first_block.get_subject_input().set_text(SUBJECT)
+        category_input = first_block.get_category_input()
+        category_input.set_text(CATEGORY)
+        category_input.press_down_button(1).press_enter_button()
+        subject_input = first_block.get_subject_input()
+        subject_input.set_text(SUBJECT)
+        subject_input.press_down_button(1).press_enter_button()
         first_block.get_checkbox_beginner().set_check()
 
         second_block = offers_request_modal.get_second_block()
@@ -146,8 +149,13 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         third_block.get_question_input().set_text(QUESTIONS)
         third_block.set_answer_input_text(ANSWER)
         third_block.click_add_question_btn()
-        sleep(5)
-
         offers_request_modal.click_add_to_draft_btn()
-        offers_request_modal.click_create_offer_btn()
-        pass
+
+        inline_card_component = OfferDetailsPage(self.driver).get_inline_card_component()
+        expected_title = inline_card_component.get_offer_title()
+        expected_subject_label = inline_card_component.get_subject_label()
+        expected_price_value = inline_card_component.get_price_value()
+
+        self.assertEqual(TITLE, expected_title)
+        self.assertEqual(SUBJECT.upper(), expected_subject_label)
+        self.assertEqual(PRICE + " UAH", expected_price_value)
