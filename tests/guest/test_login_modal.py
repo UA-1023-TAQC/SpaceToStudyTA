@@ -1,8 +1,10 @@
 from time import sleep
 
+from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
+from SpaceToStudy.ui.pages.my_profile.my_profile_page import MyProfile
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
 
@@ -25,11 +27,12 @@ class LoginModalTestCase(BaseTestRunner):
         authorize = (LoginModal(self.driver)
                      .set_email(ValueProvider.get_tutor_email())
                      .set_password(ValueProvider.get_tutor_password())
-                     # .click_login_button()
                      )
-        sleep(1)
+        sleep(0.6)
         self.assertEqual("rgba(38, 50, 56, 1)",
                          authorize.get_login_button().get_value_css_property("background-color"))
-        # self.assertTrue(authorize.get)
-        # self.assertTrue()
-
+        authorize.click_login_button()
+        HeaderAuthorizedComponent(self.driver).get_user_menu().click_get_account().click_menu_items_my_profile()
+        full_name = ValueProvider.get_tutor_first_name() + " " + ValueProvider.get_tutor_last_name()
+        name_surname = MyProfile(self.driver).get_name_surname_text()
+        self.assertEqual(full_name, name_surname)
