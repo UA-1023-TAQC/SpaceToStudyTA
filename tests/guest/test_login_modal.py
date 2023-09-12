@@ -46,4 +46,3 @@ class LoginModalTestCase(BaseTestRunner):
                         .get_name_surname_text())
         full_name = ValueProvider.get_tutor_first_name() + " " + ValueProvider.get_tutor_last_name()
         self.assertEqual(full_name, name_surname)
-
