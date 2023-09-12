@@ -3,6 +3,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.categories.card_component import CardComponent
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 
 CATEGORIES_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/p')
@@ -11,11 +12,13 @@ SHOW_ALL_OFFERS_BTN = (By.XPATH, '//a[text()="Show all offers"]')
 SEARCH_BTN = (By.XPATH, '//button[text()="Search"]')
 SEARCH_INPUT = (By.XPATH, '//input[contains(@role, "combobox")]/../..')
 SEARCH_FIELD_HELP_TEXT = (By.XPATH, '//*[@id="mui-2488-label"]')
+CARDS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/a")
 
 
 class CategoriesPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
+        self._cards = None
 
     def get_categories_title(self) -> str:
         return self.driver.find_element(*CATEGORIES_TITLE).text
@@ -42,3 +45,9 @@ class CategoriesPage(BasePage):
 
     def get_search_field_help_text(self) -> str:
         return self.driver.find_element(*SEARCH_FIELD_HELP_TEXT).text
+
+    def get_cards(self) -> list[CardComponent]:
+        if not self._cards:
+            card_set = self.driver.find_elements(*CARDS)
+            self._cards = [CardComponent(card) for card in card_set]
+        return self._cards

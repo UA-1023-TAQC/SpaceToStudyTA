@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
+from SpaceToStudy.ui.pages.subjects.subjects_page import SubjectsPage
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
 
@@ -25,8 +26,8 @@ class CategoriesPageTestCase(BaseTestRunner):
         search_input.set_text(category)
         search_input.press_down_button(1).press_enter_button()
 
-        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/a").click()
-        card_name = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div[2]/div[5]/div/a/div/p").text
+        CategoriesPage(self.driver).get_cards()[0].click_card()
+        card_name = SubjectsPage(self.driver).get_cards()[0].get_title()
         self.assertEqual("Web design", card_name)
 
     def tearDown(self):

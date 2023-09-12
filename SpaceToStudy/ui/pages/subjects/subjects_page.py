@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.categories.card_component import CardComponent
 
 SUBJECTS_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/p')
 SUBJECTS_SUBTEXT = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/span')
@@ -16,10 +17,13 @@ NO_RESULTS_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[5]/div/div/
 NO_RESULTS_SUBTEXT = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[5]/div/div/span')
 REQUEST_A_NEW_SUBJECT_BTN = (By.XPATH, '//button[text()="Request a new subjects"]')
 
+CARDS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[5]/div/a")
+
 
 class SubjectsPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
+        self._cards = None
 
     def get_subjects_title(self) -> str:
         return self.driver.find_element(*SUBJECTS_TITLE).text
@@ -71,3 +75,9 @@ class SubjectsPage(BasePage):
 
     def click_request_a_new_subject_btn(self):
         self.get_request_a_new_subject_btn().click()
+
+    def get_cards(self) -> list[CardComponent]:
+        if not self._cards:
+            card_set = self.driver.find_elements(*CARDS)
+            self._cards = [CardComponent(card) for card in card_set]
+        return self._cards
