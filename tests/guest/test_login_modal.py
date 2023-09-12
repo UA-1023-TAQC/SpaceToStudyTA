@@ -1,7 +1,6 @@
 from time import sleep
 
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
-from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
