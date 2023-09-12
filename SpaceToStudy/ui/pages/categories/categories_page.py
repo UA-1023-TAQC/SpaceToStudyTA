@@ -3,7 +3,6 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.pages.base_page import BasePage
-from SpaceToStudy.ui.pages.categories.card_component import CardComponent
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 
 CATEGORIES_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/p')
@@ -46,7 +45,8 @@ class CategoriesPage(BasePage):
     def get_search_field_help_text(self) -> str:
         return self.driver.find_element(*SEARCH_FIELD_HELP_TEXT).text
 
-    def get_cards(self) -> list[CardComponent]:
+    def get_cards(self) -> list:
+        from SpaceToStudy.ui.pages.categories.card_component import CardComponent
         if not self._cards:
             card_set = self.driver.find_elements(*CARDS)
             self._cards = [CardComponent(card) for card in card_set]

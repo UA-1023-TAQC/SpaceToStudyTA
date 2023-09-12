@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
-from SpaceToStudy.ui.pages.categories.card_component import CardComponent
 
 SUBJECTS_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/p')
 SUBJECTS_SUBTEXT = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/span')
@@ -76,7 +75,8 @@ class SubjectsPage(BasePage):
     def click_request_a_new_subject_btn(self):
         self.get_request_a_new_subject_btn().click()
 
-    def get_cards(self) -> list[CardComponent]:
+    def get_cards(self) -> list:
+        from SpaceToStudy.ui.pages.categories.card_component import CardComponent
         if not self._cards:
             card_set = self.driver.find_elements(*CARDS)
             self._cards = [CardComponent(card) for card in card_set]

@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.subjects.subjects_page import SubjectsPage
 
 TITLE = (By.XPATH, "./div/p")
 OFFERS = (By.XPATH, "./div/span")
@@ -24,4 +25,4 @@ class CardComponent(BaseComponent):
 
     def click_card(self):
         self.node.click()
-        return self
+        return SubjectsPage(self.node.parent)
