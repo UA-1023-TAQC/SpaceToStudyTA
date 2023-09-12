@@ -1,7 +1,5 @@
 import unittest
 
-from selenium.webdriver.common.by import By
-
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
@@ -25,7 +23,7 @@ class CategoriesPageTestCase(BaseTestRunner):
         search_input.set_text(category)
         search_input.press_enter_button()
 
-        result_text = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div/p").text
+        result_text = CategoriesPage(self.driver).get_no_result_title()
         self.assertEqual("Sorry, no results found", result_text)
 
     def tearDown(self):
