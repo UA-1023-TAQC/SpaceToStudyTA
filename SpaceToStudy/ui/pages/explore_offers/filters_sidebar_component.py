@@ -25,6 +25,7 @@ LEVEL_SPECIALIZED_TITLE = (By.XPATH, "./div/div[1]/label[6]/p")
 
 LANGUAGE_TITLE = (By.XPATH, "./div/p[2]")
 LANGUAGE_INPUT = (By.XPATH, "./div/div[2]/div/div/div/input")
+LANGUAGE_LIST = (By.XPATH, "//div[@role='presentation']/div/ul/li")
 NATIVE_SPEAKER_CHECKBOX = (By.XPATH, "./div/div[2]/label/span/input")
 NATIVE_SPEAKER_TITLE = (By.XPATH, "./div/div[2]/label/p")
 
@@ -58,6 +59,7 @@ CLEAR_FILTERS_BTN = (By.XPATH, ".//button[contains(text(), 'Clear filters')]")
 class FiltersSidebarComponent(BaseComponent):
     def __init__(self, node):
         super().__init__(node)
+        self._list_of_languages = None
 
     def click_level_beginner_checkbox(self):
         self.node.find_element(*LEVEL_BEGINNER_CHECKBOX).click()
@@ -90,14 +92,19 @@ class FiltersSidebarComponent(BaseComponent):
     def get_language_input(self):
         return self.node.find_element(*LANGUAGE_INPUT)
 
+    def get_list_of_languages(self) -> list:
+        languages = self.node.find_elements(*LANGUAGE_LIST)
+        self._list_of_languages = []
+        for language in languages:
+            self._list_of_languages.append(language.text)
+        return self._list_of_languages
+
     def set_language_input(self, language):
-        self.get_language_input()\
-            .send_keys(language)
-        sleep(0.2)
-        self.get_language_input()\
-            .send_keys(Keys.ARROW_DOWN)
-        self.get_language_input()\
-            .send_keys(Keys.ENTER)
+        languages = self.node.find_elements(*LANGUAGE_LIST)
+        for item in languages:
+            if item.text == language:
+                item.click()
+                break
         return self
 
     def click_native_speaker_checkbox(self):

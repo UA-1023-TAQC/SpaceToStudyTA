@@ -88,8 +88,9 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
         explore_offers_page = ExploreOffersPage(self.driver) \
             .get_filtering_and_sorting_block() \
             .click_filter_title() \
-            .get_filters_sidebar_component()\
-            .set_language_input("Ukrainian")\
+            .get_filters_sidebar_component() \
+            .click_language_input() \
+            .set_language_input("Ukrainian") \
             .click_apply_filters_btn()
 
         filter_quantity = explore_offers_page \
@@ -97,6 +98,6 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
             .get_filter_quantity_number()
         self.assertEqual(filter_quantity, 1)
 
-        list_of_filtered_offers = explore_offers_page.get_list_of_filtered_offers()
+        list_of_filtered_offers = explore_offers_page.get_list_of_offers_inline_card()
         for offer in list_of_filtered_offers:
             self.assertIn("Ukrainian", offer.get_languages())
