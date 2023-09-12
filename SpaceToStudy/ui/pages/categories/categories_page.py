@@ -14,10 +14,13 @@ SEARCH_INPUT = (By.XPATH, './input')
 SEARCH_FIELD_HELP_TEXT = (By.XPATH, '//*[@id="mui-2488-label"]')
 STUDENT_PRIVATE_LESSON_COMPONENT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 
+NO_RESULT_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div/p")
+
 
 class CategoriesPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
+        self._no_result_title = None
 
     def get_categories_title(self) -> str:
         return self.driver.find_element(*CATEGORIES_TITLE).text
@@ -49,4 +52,9 @@ class CategoriesPage(BasePage):
 
     def get_student_private_lesson_component(self) -> TutorPrivateLessonComponent:
         return TutorPrivateLessonComponent(self.driver.find_element(*STUDENT_PRIVATE_LESSON_COMPONENT))
+
+    def get_no_result_title(self) -> str:
+        if not self._no_result_title:
+            self._no_result_title = self.driver.find_element(*NO_RESULT_TITLE)
+        return self._no_result_title.text
 
