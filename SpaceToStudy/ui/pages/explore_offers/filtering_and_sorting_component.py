@@ -7,6 +7,7 @@ from SpaceToStudy.ui.pages.explore_offers.filters_sidebar_component import Filte
 
 FILTERS_SVG = (By.XPATH, '.div[1]/div/svg')
 FILTER_TITLE = (By.XPATH, './div[1]/div/h6')
+FILTER_QUANTITY = (By.XPATH, './/*[@data-testid="filters-qty"]')
 TUTORS_OFFERS = (By.XPATH, './div[2]/span[1]')
 STUDENTS_REQUESTS = (By.XPATH, './div[2]/span[3]')
 TOGGLE = (By.XPATH, './div[2]/span[2]/span[1]/input')
@@ -30,6 +31,12 @@ class FilteringAndSortingComponent(BaseComponent):
     def get_filter_title(self) -> WebElement:
         return self.node.find_element(*FILTER_TITLE)
 
+    def get_filter_quantity(self) -> WebElement:
+        return self.node.find_element(*FILTER_QUANTITY)
+
+    def get_filter_quantity_number(self) -> int:
+        return int(self.node.find_element(*FILTER_QUANTITY).text)
+
     def get_tutors_offers(self) -> WebElement:
         return self.node.find_element(*TUTORS_OFFERS)
 
@@ -52,7 +59,8 @@ class FilteringAndSortingComponent(BaseComponent):
         return self.node.find_element(*GRID_CARD_BTN)
 
     def click_filter_title(self):
-        return self.get_filter_title().click()
+        self.get_filter_title().click()
+        return self
 
     def click_toggle(self):
         return self.get_toggle().click()

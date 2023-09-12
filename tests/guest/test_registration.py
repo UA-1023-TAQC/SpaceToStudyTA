@@ -2,7 +2,6 @@ import unittest
 from time import sleep
 
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
@@ -123,6 +122,8 @@ class RegistrationTestCase(BaseTestRunner):
         HomePageGuest(self.driver).click_button_become_a_student()
         modal = RegistrationModal(self.driver).get_title_text()
         self.assertTrue(modal, "Sign up as a student")
+
+
 
 
 if __name__ == '__main__':
