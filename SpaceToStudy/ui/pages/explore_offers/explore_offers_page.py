@@ -3,6 +3,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.explore_offers.filtering_and_sorting_component import FilteringAndSortingComponent
+from SpaceToStudy.ui.pages.explore_offers.grid_card_component import GridCardComponent
 from SpaceToStudy.ui.pages.explore_offers.inline_card_component import InlineCardComponent
 # from SpaceToStudy.ui.pages.explore_offers.offer_and_request_component import OfferAndRequestComponent
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
@@ -35,7 +36,8 @@ class ExploreOffersPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self._list_of_filtered_offers = None
+        self._list_of_offers_inline_card = None
+        self._list_of_offers_grid_card = None
         self._student_for_private_lessons_block = None
         self._search_by_tutor_name_block = None
         self._filtering_and_sorting_block = None
@@ -103,9 +105,16 @@ class ExploreOffersPage(BasePage):
     def click_back_to_all_subject(self):
         return self.get_back_to_all_subject().click()
 
-    def get_list_of_filtered_offers(self) -> list:
+    def get_list_of_offers_grid_card(self) -> list:
         offers = self.driver.find_element(*LIST_OF_OFFERS).find_elements(*OFFER_ITEM)
-        self._list_of_filtered_offers = []
+        self._list_of_offers_grid_card = []
         for offer in offers:
-            self._list_of_filtered_offers.append(InlineCardComponent(offer))
-        return self._list_of_filtered_offers
+            self._list_of_offers_grid_card.append(GridCardComponent(offer))
+        return self._list_of_offers_grid_card
+
+    def get_list_of_offers_inline_card(self) -> list:
+        offers = self.driver.find_element(*LIST_OF_OFFERS).find_elements(*OFFER_ITEM)
+        self._list_of_offers_inline_card = []
+        for offer in offers:
+            self._list_of_offers_inline_card.append(InlineCardComponent(offer))
+        return self._list_of_offers_inline_card

@@ -3,6 +3,8 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
+INLINE_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
+
 PERSON_ICON = (By.XPATH, './div/div[1]/a/div/svg')
 PERSON_NAME = (By.XPATH, './div/div[1]/div/a/p')
 STARLINE_ELEMENT = (By.XPATH, './div/div[1]/div/div')
@@ -86,3 +88,6 @@ class InlineCardComponent(BaseComponent):
 
     def click_add_to_bookmarks_btn(self):
         self.get_add_to_bookmarks_btn().click()
+
+    def check_inline_card_is_displayed(self) -> bool:
+        return self.node.find_element(*INLINE_CARD).is_displayed()

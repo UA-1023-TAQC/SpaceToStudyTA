@@ -3,6 +3,8 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
+GRID_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=2]")
+
 PERSON_ICON = (By.XPATH, './div/div[1]/div[1]/a/div/svg')
 PERSON_NAME = (By.XPATH, './div/div[1]/div[1]/div/a/p')
 ADD_TO_BOOKMARKS_BTN = (By.XPATH, './div/div[1]/button')
@@ -90,3 +92,5 @@ class GridCardComponent(BaseComponent):
     def click_send_message_btn(self):
         self.get_send_message_btn().click()
 
+    def check_grid_card_is_displayed(self) -> bool:
+        return self.node.find_element(*GRID_CARD).is_displayed()
