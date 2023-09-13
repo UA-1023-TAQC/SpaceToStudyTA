@@ -3,6 +3,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
+
 PERSON_ICON = (By.XPATH, './div/div[1]/div[1]/a/div/svg')
 PERSON_NAME = (By.XPATH, './div/div[1]/div[1]/div/a/p')
 ADD_TO_BOOKMARKS_BTN = (By.XPATH, './div/div[1]/button')
@@ -89,4 +90,3 @@ class GridCardComponent(BaseComponent):
 
     def click_send_message_btn(self):
         self.get_send_message_btn().click()
-
