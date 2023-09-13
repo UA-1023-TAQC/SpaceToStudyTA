@@ -36,7 +36,7 @@ class MenuItems(BaseComponent):
 
     def click_menu_items_my_profile(self):
         self.menu_items_my_profile().click()
-        return MyProfile(self.node.find_element(*MY_PROFILE_PAGE))
+        return MyProfile(self.node.parent)
 
     def menu_items_my_cooperation(self) -> WebElement:
         if not self._my_cooperation:

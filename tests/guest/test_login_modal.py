@@ -35,7 +35,7 @@ class LoginModalTestCase(BaseTestRunner):
                      .set_email(ValueProvider.get_tutor_email())
                      .set_password(ValueProvider.get_tutor_password())
                      )
-        sleep(0.6)
+        sleep(1)
         self.assertEqual("rgba(38, 50, 56, 1)",
                          authorize.get_login_button().get_value_css_property("background-color"))
         authorize.click_login_button()
