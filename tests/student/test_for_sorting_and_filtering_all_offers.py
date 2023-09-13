@@ -30,9 +30,26 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
                             .click_search_btn())
 
         list_of_filtered_offers = ExploreOffersPage(self.driver.find_element(*LIST_OF_OFFERS))
-        for offer in list_of_filtered_offers.get_list_of_filtered_offers():
+        for offer in list_of_filtered_offers.get_list_of_offers_inline_card():
             self.assertEqual("GUITAR", offer.get_subject_label())
             self.assertIn("Yura", offer.get_person_name())
+
+    def test_change_offers_view_to_card_and_to_list(self):
+        # Change offers view to grid card view
+        list_of_offers = ExploreOffersPage(self.driver)\
+            .get_filtering_and_sorting_block()\
+            .click_grid_card_btn()\
+            .get_list_of_offers_grid_card()
+        for offer in list_of_offers:
+            self.assertTrue(offer.check_grid_card_is_displayed())
+
+        # Change offers view to inline card view
+        list_of_offers = ExploreOffersPage(self.driver)\
+            .get_filtering_and_sorting_block()\
+            .click_inline_card_btn()\
+            .get_list_of_offers_inline_card()
+        for offer in list_of_offers:
+            self.assertTrue(offer.check_inline_card_is_displayed())
 
     def test_toggle_between_tutors_offers_and_students_requests(self):
         explore_offers_page = ExploreOffersPage(self.driver)
@@ -80,7 +97,7 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
             .get_filter_quantity_number()
         self.assertEqual(filter_quantity, 1)
 
-        list_of_filtered_offers = explore_offers_page.get_list_of_filtered_offers()
+        list_of_filtered_offers = explore_offers_page.get_list_of_offers_inline_card()
         for offer in list_of_filtered_offers:
             self.assertIn("BEGINNER", offer.get_level_label())
 
@@ -122,6 +139,39 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
         for offer in list_of_filtered_offers:
             self.assertTrue((new_lowest_price <= offer.get_price_value()) and
                             (new_highest_price >= offer.get_price_value()))
+
+    def test_price_input_filter_in_sidebar(self):
+        explore_offers_page = ExploreOffersPage(self.driver) \
+            .get_filtering_and_sorting_block() \
+            .click_filter_title() \
+            .get_filters_sidebar_component() \
+            .set_lowest_value_input("500") \
+            .set_highest_value_input("1000") \
+            .click_apply_filters_btn()
+
+        filter_quantity = explore_offers_page \
+            .get_filtering_and_sorting_block() \
+            .get_filter_quantity_number()
+        self.assertEqual(filter_quantity, 1)
+
+        list_of_filtered_offers = explore_offers_page \
+            .get_list_of_offers_inline_card()
+        for offer in list_of_filtered_offers:
+            self.assertTrue((offer.get_price_value() >= 500) and
+                            (offer.get_price_value() <= 1000))
+
+    def test_search_by_name_filter_in_sidebar(self):
+        explore_offers_page = ExploreOffersPage(self.driver) \
+            .get_filtering_and_sorting_block() \
+            .click_filter_title() \
+            .get_filters_sidebar_component() \
+            .set_search_by_name_input("Yura") \
+            .click_apply_filters_btn()
+
+        list_of_filtered_offers = explore_offers_page\
+            .get_list_of_offers_inline_card()
+        for offer in list_of_filtered_offers:
+            self.assertIn("Yura", offer.get_person_name())
 
     def test_rating_filter_in_sidebar(self):
         explore_offers_page = ExploreOffersPage(self.driver) \
