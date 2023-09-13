@@ -122,3 +122,25 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
         for offer in list_of_filtered_offers:
             self.assertTrue((new_lowest_price <= offer.get_price_value()) and
                             (new_highest_price >= offer.get_price_value()))
+
+    def test_rating_filter_in_sidebar(self):
+        explore_offers_page = ExploreOffersPage(self.driver) \
+            .get_filtering_and_sorting_block() \
+            .click_filter_title() \
+            .get_filters_sidebar_component() \
+            .click_4_and_above_radio_btn() \
+            .click_apply_filters_btn()
+
+        # Get the number of filtered offers
+        filter_quantity = explore_offers_page \
+            .get_filtering_and_sorting_block() \
+            .get_filter_quantity_number()
+        self.assertEqual(filter_quantity, 1)
+
+        # Check the ratings
+        list_of_filtered_offers = explore_offers_page\
+            .get_list_of_offers_inline_card()
+        for offer in list_of_filtered_offers:
+            rating = offer.get_starline_element()\
+                .get_numeric_value_for_stars()
+            self.assertTrue(rating >= 4)
