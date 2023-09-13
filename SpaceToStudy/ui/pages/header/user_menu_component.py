@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
-from SpaceToStudy.ui.pages.header.menu_items import MenuItems
 
 MESSAGES = (By.XPATH, "./a")
 NOTIFICATIONS = (By.XPATH, "./button[1]")
@@ -29,5 +28,6 @@ class UserMenuComponent(BaseComponent):
         self.get_notifications().click()
 
     def click_get_account(self):
+        from SpaceToStudy.ui.pages.header.menu_items import MenuItems
         self.get_account().click()
         return MenuItems(self.node.find_element(By.XPATH, "/html/body/div[2]/div[3]"))
