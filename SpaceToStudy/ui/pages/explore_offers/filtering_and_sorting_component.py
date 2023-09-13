@@ -11,10 +11,10 @@ FILTER_QUANTITY = (By.XPATH, './/*[@data-testid="filters-qty"]')
 TUTORS_OFFERS = (By.XPATH, './div[2]/span[1]')
 STUDENTS_REQUESTS = (By.XPATH, './div[2]/span[3]')
 TOGGLE = (By.XPATH, './div[2]/span[2]/span[1]/input')
-SORT_TITLE = (By.XPATH, './div[3]/div[1]/p')
-SORT_LIST = (By.XPATH, '/div[3]/div[1]/div/div/div')
-INLINE_CARD_BTN = (By.XPATH, '/div[3]/div[2]/button[1]')
-GRID_CARD_BTN = (By.XPATH, '/div[3]/div[2]/button[2]')
+SORT_TITLE = (By.XPATH, './div[1]/div/h6')
+SORT_LIST = (By.XPATH, './div[3]/div[1]/div/div/div')
+INLINE_CARD_BTN = (By.XPATH, './div[3]/div[2]/button[1]')
+GRID_CARD_BTN = (By.XPATH, './div[3]/div[2]/button[2]')
 
 FILTERS_SIDEBAR_COMPONENT = (By.XPATH, "/html/body/div[2]/div[3]")
 
@@ -69,10 +69,14 @@ class FilteringAndSortingComponent(BaseComponent):
         return self.get_sort_list().click()
 
     def click_inline_card_btn(self):
-        return self.get_inline_card_btn().click()
+        from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
+        self.get_inline_card_btn().click()
+        return ExploreOffersPage(self.node.parent)
 
     def click_grid_card_btn(self):
-        return self.get_grid_card_btn().click()
+        from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
+        self.get_grid_card_btn().click()
+        return ExploreOffersPage(self.node.parent)
 
     def navigate_sort_list_up(self):
         return self.get_sort_list().send_keys(Keys.ARROW_UP)
