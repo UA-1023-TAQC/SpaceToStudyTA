@@ -146,6 +146,10 @@ class FiltersSidebarComponent(BaseComponent):
         self.node.find_element(*RATING_3_AND_ABOVE_CRADIOBTN).click()
         return self
 
+    def set_search_by_name_input(self, name):
+        self.node.find_element(*SEARCH_BY_NAME_INPUT).send_keys(name)
+        return self
+
     def click_apply_filters_btn(self):
         from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.node.find_element(*APPLY_FILTERS_BTN).click()

@@ -122,3 +122,16 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
         for offer in list_of_filtered_offers:
             self.assertTrue((new_lowest_price <= offer.get_price_value()) and
                             (new_highest_price >= offer.get_price_value()))
+
+    def test_search_by_name_filter_in_sidebar(self):
+        explore_offers_page = ExploreOffersPage(self.driver) \
+            .get_filtering_and_sorting_block() \
+            .click_filter_title() \
+            .get_filters_sidebar_component() \
+            .set_search_by_name_input("Yura") \
+            .click_apply_filters_btn()
+
+        list_of_filtered_offers = explore_offers_page\
+            .get_list_of_offers_inline_card()
+        for offer in list_of_filtered_offers:
+            self.assertIn("Yura", offer.get_person_name())
