@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from time import sleep
 
 from selenium.webdriver import Keys
@@ -5,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+
 
 CLOSE_BUTTON = (By.XPATH, "./button")
 
@@ -40,13 +42,13 @@ PRICE_HIGHEST_VALUE_INPUT = (By.XPATH, "./div/div[3]/div/div[2]/div/div/input")
 
 RATING_TITLE = (By.XPATH, "./div/p[4]")
 RATING_BLOCK = (By.XPATH, "./div/div[4]/div")
-RATING_ANY_RATING_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[1]/span[1]/input")
+RATING_ANY_RATING_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[1]/span/input")
 RATING_ANY_RATING_TITLE = (By.XPATH, "./div/div[4]/div/label[1]/span[2]")
-RATING_5_STARS_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[2]/span[1]/input")
+RATING_5_STARS_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[2]/span/input")
 RATING_5_STARS_TITLE = (By.XPATH, "./div/div[4]/div/label[2]/span[2]")
-RATING_4_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[3]/span[1]/input")
+RATING_4_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[3]/span/input")
 RATING_4_AND_ABOVE_TITLE = (By.XPATH, "./div/div[4]/div/label[3]/span[2]")
-RATING_3_AND_ABOVE_CRADIOBTN = (By.XPATH, "./div/div[4]/div/label[4]/span[1]/input")
+RATING_3_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[4]/span/input")
 RATING_3_AND_ABOVE_TITLE = (By.XPATH, "./div/div[4]/div/label[4]/span[2]")
 
 SEARCH_BY_NAME_TITLE = (By.XPATH, "./div/p[5]")
@@ -111,6 +113,42 @@ class FiltersSidebarComponent(BaseComponent):
         self.node.find_element(*NATIVE_SPEAKER_CHECKBOX).click()
         return self
 
+    def get_lowest_value_on_slider(self):
+        return float(self.node.find_element(*PRICE_LOWEST_VALUE_ON_SLIDER).text)
+
+    def get_highest_value_on_slider(self):
+        return float(self.node.find_element(*PRICE_HIGHEST_VALUE_ON_SLIDER).text)
+
+    def get_lowest_value_input(self):
+        return float(self.node.find_element(*PRICE_LOWEST_VALUE_INPUT)
+                     .get_attribute('value'))
+
+    def get_highest_value_input(self):
+        return float(self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT)
+                     .get_attribute('value'))
+
+    def set_lowest_value_input(self, value):
+        self.node.find_element(*PRICE_LOWEST_VALUE_INPUT).send_keys(value)
+        return self
+
+    def set_highest_value_input(self, value):
+        self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT).send_keys(value)
+        return self
+
+    def drag_left_slider(self, pixels_to_the_right):
+        slider = self.node.find_element(*PRICE_LEFT_SLIDER)
+        ActionChains(self.node.parent) \
+            .drag_and_drop_by_offset(slider, pixels_to_the_right, 0) \
+            .perform()
+        return self
+
+    def drag_right_slider(self, pixels_to_the_left):
+        slider = self.node.find_element(*PRICE_RIGHT_SLIDER)
+        ActionChains(self.node.parent) \
+            .drag_and_drop_by_offset(slider, -pixels_to_the_left, 0) \
+            .perform()
+        return self
+
     def click_any_rating_radio_btn(self):
         self.node.find_element(*RATING_ANY_RATING_RADIOBTN).click()
         return self
@@ -124,10 +162,19 @@ class FiltersSidebarComponent(BaseComponent):
         return self
 
     def click_3_and_above_radio_btn(self):
-        self.node.find_element(*RATING_3_AND_ABOVE_CRADIOBTN).click()
+        self.node.find_element(*RATING_3_AND_ABOVE_RADIOBTN).click()
+        return self
+
+    def set_search_by_name_input(self, name):
+        self.node.find_element(*SEARCH_BY_NAME_INPUT).send_keys(name)
         return self
 
     def click_apply_filters_btn(self):
         from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.node.find_element(*APPLY_FILTERS_BTN).click()
+        return ExploreOffersPage(self.node.parent)
+
+    def click_close_button(self):
+        from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
+        self.node.find_element(*CLOSE_BUTTON).click()
         return ExploreOffersPage(self.node.parent)
