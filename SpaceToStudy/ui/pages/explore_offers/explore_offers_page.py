@@ -31,6 +31,9 @@ SCROLL_UP_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[3]/button")
 LIST_OF_OFFERS = (By.XPATH, "//div[@data-testid='OfferContainer']")
 OFFER_ITEM = (By.XPATH, "./div")
 
+GRID_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=2]")
+INLINE_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
+
 
 class ExploreOffersPage(BasePage):
 
@@ -108,13 +111,15 @@ class ExploreOffersPage(BasePage):
     def get_list_of_offers_grid_card(self) -> list:
         offers = self.driver.find_element(*LIST_OF_OFFERS).find_elements(*OFFER_ITEM)
         self._list_of_offers_grid_card = []
-        for offer in offers:
-            self._list_of_offers_grid_card.append(GridCardComponent(offer))
+        if self.driver.find_element(*GRID_CARD).is_displayed():
+            for offer in offers:
+                self._list_of_offers_grid_card.append(GridCardComponent(offer))
         return self._list_of_offers_grid_card
 
     def get_list_of_offers_inline_card(self) -> list:
         offers = self.driver.find_element(*LIST_OF_OFFERS).find_elements(*OFFER_ITEM)
         self._list_of_offers_inline_card = []
-        for offer in offers:
-            self._list_of_offers_inline_card.append(InlineCardComponent(offer))
+        if self.driver.find_element(*INLINE_CARD).is_displayed():
+            for offer in offers:
+                self._list_of_offers_inline_card.append(InlineCardComponent(offer))
         return self._list_of_offers_inline_card
