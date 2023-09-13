@@ -1,7 +1,9 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+
 
 CLOSE_BUTTON = (By.XPATH, "./button")
 
@@ -92,6 +94,42 @@ class FiltersSidebarComponent(BaseComponent):
         self.node.find_element(*NATIVE_SPEAKER_CHECKBOX).click()
         return self
 
+    def get_lowest_value_on_slider(self):
+        return float(self.node.find_element(*PRICE_LOWEST_VALUE_ON_SLIDER).text)
+
+    def get_highest_value_on_slider(self):
+        return float(self.node.find_element(*PRICE_HIGHEST_VALUE_ON_SLIDER).text)
+
+    def get_lowest_value_input(self):
+        return float(self.node.find_element(*PRICE_LOWEST_VALUE_INPUT)
+                     .get_attribute('value'))
+
+    def get_highest_value_input(self):
+        return float(self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT)
+                     .get_attribute('value'))
+
+    def set_lowest_value_input(self, value):
+        self.node.find_element(*PRICE_LOWEST_VALUE_INPUT).send_keys(value)
+        return self
+
+    def set_highest_value_input(self, value):
+        self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT).send_keys(value)
+        return self
+
+    def drag_left_slider(self, pixels_to_the_right):
+        slider = self.node.find_element(*PRICE_LEFT_SLIDER)
+        ActionChains(self.node.parent) \
+            .drag_and_drop_by_offset(slider, pixels_to_the_right, 0) \
+            .perform()
+        return self
+
+    def drag_right_slider(self, pixels_to_the_left):
+        slider = self.node.find_element(*PRICE_RIGHT_SLIDER)
+        ActionChains(self.node.parent) \
+            .drag_and_drop_by_offset(slider, -pixels_to_the_left, 0) \
+            .perform()
+        return self
+
     def click_any_rating_radio_btn(self):
         self.node.find_element(*RATING_ANY_RATING_RADIOBTN).click()
         return self
@@ -111,4 +149,9 @@ class FiltersSidebarComponent(BaseComponent):
     def click_apply_filters_btn(self):
         from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.node.find_element(*APPLY_FILTERS_BTN).click()
+        return ExploreOffersPage(self.node.parent)
+
+    def click_close_button(self):
+        from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
+        self.node.find_element(*CLOSE_BUTTON).click()
         return ExploreOffersPage(self.node.parent)
