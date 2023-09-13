@@ -38,13 +38,13 @@ PRICE_HIGHEST_VALUE_INPUT = (By.XPATH, "./div/div[3]/div/div[2]/div/div/input")
 
 RATING_TITLE = (By.XPATH, "./div/p[4]")
 RATING_BLOCK = (By.XPATH, "./div/div[4]/div")
-RATING_ANY_RATING_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[1]/span[1]/input")
+RATING_ANY_RATING_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[1]/span/input")
 RATING_ANY_RATING_TITLE = (By.XPATH, "./div/div[4]/div/label[1]/span[2]")
-RATING_5_STARS_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[2]/span[1]/input")
+RATING_5_STARS_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[2]/span/input")
 RATING_5_STARS_TITLE = (By.XPATH, "./div/div[4]/div/label[2]/span[2]")
-RATING_4_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[3]/span[1]/input")
+RATING_4_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[3]/span/input")
 RATING_4_AND_ABOVE_TITLE = (By.XPATH, "./div/div[4]/div/label[3]/span[2]")
-RATING_3_AND_ABOVE_CRADIOBTN = (By.XPATH, "./div/div[4]/div/label[4]/span[1]/input")
+RATING_3_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[4]/span/input")
 RATING_3_AND_ABOVE_TITLE = (By.XPATH, "./div/div[4]/div/label[4]/span[2]")
 
 SEARCH_BY_NAME_TITLE = (By.XPATH, "./div/p[5]")
@@ -143,7 +143,7 @@ class FiltersSidebarComponent(BaseComponent):
         return self
 
     def click_3_and_above_radio_btn(self):
-        self.node.find_element(*RATING_3_AND_ABOVE_CRADIOBTN).click()
+        self.node.find_element(*RATING_3_AND_ABOVE_RADIOBTN).click()
         return self
 
     def set_search_by_name_input(self, name):
