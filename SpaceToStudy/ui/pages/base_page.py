@@ -19,8 +19,11 @@ class BasePage:
 
     def get_header(self) -> [HeaderAuthorizedComponent,
                              HeaderUnauthorizedComponent]:
-        return HeaderAuthorizedComponent(self.driver.find_element(By.XPATH, "//header")),\
-               HeaderUnauthorizedComponent(self.driver.find_element(By.XPATH, "//header"))
+        header_unauthorized_component = HeaderUnauthorizedComponent(self.driver.find_element(By.XPATH, "//header"))
+        if header_unauthorized_component.is_login_button_present():
+            return header_unauthorized_component
+        else:
+            return HeaderAuthorizedComponent(self.driver.find_element(By.XPATH, "//header"))
 
     def go_to_url(self, url):
         self.driver.get(url)

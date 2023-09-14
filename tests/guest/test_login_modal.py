@@ -8,7 +8,7 @@ class LoginModalTestCase(BaseTestRunner):
 
     def test_login_modal_outside_click(self):
         login_modal = (HomePageGuest(self.driver)
-                       .get_header()[1]
+                       .get_header()
                        .click_login_btn())
         self.assertTrue(login_modal.get_title_text, "Welcome back")
         login_modal.outside_click()

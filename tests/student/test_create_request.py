@@ -110,44 +110,44 @@ if __name__ == '__main__':
 
 class CreateStudentRequestTestCase(TestRunnerWithStudent):
     def test_create_request_as_student(self):
-        CATEGORIES_URL = "https://s2s-front-stage.azurewebsites.net/categories"
-        CATEGORY = "Music"
-        SUBJECT = "Guitar"
-        TITLE = "Title 1"
-        DESCRIPTION = "Description Description Description Description Description Description"
-        PRICE = "1"
-        QUESTIONS = "Questions 1"
-        ANSWER = "Answer 1"
+        categories_url = "https://s2s-front-stage.azurewebsites.net/categories"
+        category = "Music"
+        subject = "Guitar"
+        title = "Title 1"
+        description = "Description Description Description Description Description Description"
+        price = "1"
+        questions = "Questions 1"
+        answer = "Answer 1"
 
         categories_url = (HomePageStudent(self.driver)
-                          .get_header()[0]
+                          .get_header()
                           .get_navigate_links()[0]
                           .click()
                           .parent
                           .current_url)
-        self.assertEqual(categories_url, CATEGORIES_URL)
+        self.assertEqual(categories_url, categories_url)
         offers_request_modal = (CategoriesPage(self.driver)
                                 .get_student_private_lesson_component()
                                 .click_create_request_btn())
 
         first_block = offers_request_modal.get_first_block()
         category_input = first_block.get_category_input()
-        category_input.set_text(CATEGORY)
+        category_input.set_text(category)
         category_input.press_down_button(1).press_enter_button()
         subject_input = first_block.get_subject_input()
-        subject_input.set_text(SUBJECT)
+        subject_input.set_text(subject)
         subject_input.press_down_button(1).press_enter_button()
         first_block.get_checkbox_beginner().set_check()
 
         second_block = offers_request_modal.get_second_block()
-        second_block.get_title_input().set_text(TITLE)
-        second_block.get_describe_input().set_text(DESCRIPTION)
+        second_block.get_title_input().set_text(title)
+        second_block.get_describe_input().set_text(description)
         second_block.get_language_input().press_down_button(2).press_enter_button()
-        second_block.get_price_input().set_text(PRICE)
+        second_block.get_price_input().set_text(price)
 
         third_block = offers_request_modal.get_third_block()
-        third_block.get_question_input().set_text(QUESTIONS)
-        third_block.set_answer_input_text(ANSWER)
+        third_block.get_question_input().set_text(questions)
+        third_block.set_answer_input_text(answer)
         third_block.click_add_question_btn()
         offers_request_modal.click_add_to_draft_btn()
 
@@ -156,6 +156,6 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         expected_subject_label = inline_card_component.get_subject_label()
         expected_price_value = inline_card_component.get_price_value()
 
-        self.assertEqual(TITLE, expected_title)
-        self.assertEqual(SUBJECT.upper(), expected_subject_label)
-        self.assertEqual(PRICE + " UAH", expected_price_value)
+        self.assertEqual(title, expected_title)
+        self.assertEqual(subject.upper(), expected_subject_label)
+        self.assertEqual(float(price), expected_price_value)
