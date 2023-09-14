@@ -149,10 +149,6 @@ class HomePageGuest(BasePage):
     def get_text_button_get_started_for_free(self) -> str:
         return self.get_button_get_started_for_free().text
 
-    def click_button_get_started_for_free(self):
-        self.get_button_get_started_for_free().click()
-        return self
-
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
 

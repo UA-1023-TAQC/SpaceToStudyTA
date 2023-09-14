@@ -38,3 +38,23 @@ class HomePageTestCase(BaseTestRunner):
                        .get_checkbox_share_your_experience()
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
+
+    def test_the_list_of_collapse_items(self):
+        flexible_location_item = (HomePageGuest(self.driver)
+                                  .get_flexible_location())
+        self.assertEqual("rgba(55, 71, 79, 1)",
+                         flexible_location_item.node.value_of_css_property("background-color"))
+        self.assertEqual("rgba(255, 255, 255, 1)", flexible_location_item.get_color_of_title())
+        individual_time_item = (HomePageGuest(self.driver)
+                                .click_individual_time()
+                                .get_individual_time()
+                                .is_expanded())
+        self.assertTrue(individual_time_item, "Element not displayed")
+        self.assertNotEqual(individual_time_item, flexible_location_item.is_expanded(),
+                            "The previous element did not close")
+        free_choice_of_tutors = (HomePageGuest(self.driver)
+                                 .get_free_choice_of_tutors())
+        initial_location = free_choice_of_tutors.node.location
+        free_choice_of_tutors.click()
+        new_location = free_choice_of_tutors.node.location
+        self.assertNotEqual(initial_location, new_location, "The element remained in place")
