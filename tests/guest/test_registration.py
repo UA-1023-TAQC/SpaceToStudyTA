@@ -69,10 +69,9 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertTrue(modal, "Sign up as a student")
 
     def test_guest_can_open_the_student_registration_popup(self):
-        HomePageGuest(self.driver).get_how_it_works_block().get_checkbox_learn_from_experts().click()
         (HomePageGuest(self.driver)
          .get_how_it_works_block()
-         .get_checkbox_share_your_experience()
+         .get_checkbox_learn_from_experts()
          .click()
         )
         HomePageGuest(self.driver).click_button_become_a_student_tutor()
