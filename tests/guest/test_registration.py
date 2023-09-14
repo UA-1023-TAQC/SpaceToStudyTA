@@ -74,7 +74,6 @@ class RegistrationTestCase(BaseTestRunner):
         modal = RegistrationModal(self.driver).get_title_text()
         self.assertTrue(modal, "Sign up as a student")
 
-
     def test_open_tutor_registration_modal_at_what_can_you_do_block(self):
         block_is_displayed = (HomePageGuest(self.driver)
                               .get_header()
