@@ -42,13 +42,13 @@ PRICE_HIGHEST_VALUE_INPUT = (By.XPATH, "./div/div[3]/div/div[2]/div/div/input")
 
 RATING_TITLE = (By.XPATH, "./div/p[4]")
 RATING_BLOCK = (By.XPATH, "./div/div[4]/div")
-RATING_ANY_RATING_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[1]/span/input")
+RATING_ANY_RATING_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[1]/span[1]")
 RATING_ANY_RATING_TITLE = (By.XPATH, "./div/div[4]/div/label[1]/span[2]")
-RATING_5_STARS_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[2]/span/input")
+RATING_5_STARS_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[2]/span[1]")
 RATING_5_STARS_TITLE = (By.XPATH, "./div/div[4]/div/label[2]/span[2]")
-RATING_4_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[3]/span/input")
+RATING_4_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[3]/span[1]")
 RATING_4_AND_ABOVE_TITLE = (By.XPATH, "./div/div[4]/div/label[3]/span[2]")
-RATING_3_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[4]/span/input")
+RATING_3_AND_ABOVE_RADIOBTN = (By.XPATH, "./div/div[4]/div/label[4]/span[1]")
 RATING_3_AND_ABOVE_TITLE = (By.XPATH, "./div/div[4]/div/label[4]/span[2]")
 
 SEARCH_BY_NAME_TITLE = (By.XPATH, "./div/p[5]")
@@ -128,10 +128,14 @@ class FiltersSidebarComponent(BaseComponent):
                      .get_attribute('value'))
 
     def set_lowest_value_input(self, value):
+        self.node.find_element(*PRICE_LOWEST_VALUE_INPUT) \
+            .send_keys(Keys.CONTROL + "a" + Keys.BACKSPACE)
         self.node.find_element(*PRICE_LOWEST_VALUE_INPUT).send_keys(value)
         return self
 
     def set_highest_value_input(self, value):
+        self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT)\
+            .send_keys(Keys.CONTROL + "a" + Keys.BACKSPACE)
         self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT).send_keys(value)
         return self
 
@@ -170,9 +174,14 @@ class FiltersSidebarComponent(BaseComponent):
         return self
 
     def click_apply_filters_btn(self):
+        sleep(0.5)
         from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.node.find_element(*APPLY_FILTERS_BTN).click()
         return ExploreOffersPage(self.node.parent)
+
+    def click_clear_filters_btn(self):
+        self.node.find_element(*CLEAR_FILTERS_BTN).click()
+        return self
 
     def click_close_button(self):
         from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
