@@ -1,7 +1,9 @@
 from time import sleep
 
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.card_component_for_guest import CardComponent
@@ -31,7 +33,7 @@ CARD_COMPONENT_SHARE_YOUR_EXPERIENCE = (By.XPATH, "/html/body/div/div/div[2]/div
 IMG_MAP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/img")
 MAIN_BANNER = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
 SIGN_UP_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div")
-
+WHAT_CAN_U_DO_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 
 class HomePageGuest(BasePage):
 
@@ -154,7 +156,7 @@ class HomePageGuest(BasePage):
 
     def click_button_get_started_for_free(self):
         self.get_button_get_started_for_free().click()
-        return self
+        return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
 
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
@@ -187,4 +189,13 @@ class HomePageGuest(BasePage):
         if not self._main_banner:
             self._main_banner = self.driver.find_element(*MAIN_BANNER)
         return self._main_banner
+
+    def hover(self, hover_el):
+        from selenium.webdriver.support import expected_conditions as EC
+        actions = ActionChains(self.driver)
+        actions.move_to_element(hover_el).perform()
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(EC.element_to_be_clickable(hover_el))
+        return hover_el
+
 
