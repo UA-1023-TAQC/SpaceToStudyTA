@@ -119,9 +119,18 @@ class RegistrationTestCase(BaseTestRunner):
 
     def test_open_student_form_via_what_can_u_do_block(self):
         HeaderUnauthorizedComponent(self.driver).get_navigate_links()[1].click()
-        HomePageGuest(self.driver).click_button_become_a_student()
+        HomePageGuest(self.driver).click_button_become_a_student_tutor()
         modal = RegistrationModal(self.driver).get_title_text()
         self.assertTrue(modal, "Sign up as a student")
+
+    def test_open_tutor_registration_modal_at_what_can_you_do_block(self):
+        block_is_displayed = (HomePageGuest(self.driver)
+                              .get_header()
+                              .get_navigate_links()[0]
+                              .click()
+                              .click_become_a_tutor()
+                              .is_displayed())
+        self.assertTrue(block_is_displayed, "Element not displayed!")
 
     def test_open_student_registration_modal_at_what_can_you_do_block(self):
         block_is_displayed = (HomePageGuest(self.driver)

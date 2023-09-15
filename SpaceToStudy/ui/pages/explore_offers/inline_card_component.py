@@ -5,6 +5,7 @@ from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 import re
 
+
 PERSON_ICON = (By.XPATH, './div/div[1]/a/div/svg')
 PERSON_NAME = (By.XPATH, './div/div[1]/div/a/p')
 STARLINE_ELEMENT = (By.XPATH, './div/div[1]/div/div')
@@ -38,8 +39,10 @@ class InlineCardComponent(BaseComponent):
     def get_person_name(self) -> str:
         return self.node.find_element(*PERSON_NAME).text
 
-    def get_starline_element(self) -> WebElement:
-        return self.node.find_element(*STARLINE_ELEMENT)
+    def get_starline_element(self):
+        from SpaceToStudy.ui.elements.starline import Starline
+        starline_element = self.node.find_element(*STARLINE_ELEMENT)
+        return Starline(starline_element)
 
     def get_reviews_line(self) -> str:
         return self.node.find_element(*REVIEWS_LINE).text
