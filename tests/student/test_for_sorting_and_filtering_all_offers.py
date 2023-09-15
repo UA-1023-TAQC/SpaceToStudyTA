@@ -194,3 +194,25 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
             rating = offer.get_starline_element()\
                 .get_numeric_value_for_stars()
             self.assertTrue(rating >= 4)
+
+    def test_clearing_filters_in_sidebar(self):
+        explore_offers_page = ExploreOffersPage(self.driver) \
+            .get_filtering_and_sorting_block() \
+            .click_filter_title() \
+            .get_filters_sidebar_component() \
+            .click_level_professional_checkbox() \
+            .set_search_by_name_input("Yura") \
+            .click_apply_filters_btn()
+
+        # Get the number of filtered offers
+        filter_quantity = explore_offers_page \
+            .get_filtering_and_sorting_block() \
+            .get_filter_quantity_number()
+        self.assertEqual(filter_quantity, 2)
+
+        # Clear filters
+        explore_offers_page\
+            .get_filtering_and_sorting_block()\
+            .get_filters_sidebar_component()\
+            .click_clear_filters_btn()\
+            .click_close_button()
