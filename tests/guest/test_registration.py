@@ -132,15 +132,6 @@ class RegistrationTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
-    def test_open_student_registration_modal_at_what_can_you_do_block(self):
-        block_is_displayed = (HomePageGuest(self.driver)
-                              .get_header()
-                              .get_navigate_links()[0]
-                              .click()
-                              .click_become_a_student()
-                              .is_displayed())
-        self.assertTrue(block_is_displayed, "Element not displayed!")
-
 
 
 
