@@ -2,6 +2,7 @@ from time import sleep
 from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
+from selenium.webdriver.common.action_chains import ActionChains
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from tests.test_runners import BaseTestRunner
@@ -127,3 +128,17 @@ class HomePageTestCase(BaseTestRunner):
         logo.send_keys(Keys.TAB, 3, Keys.ENTER)
         title = (HomePageGuest(self.driver).get_who_we_are_block().get_title())
         self.assertEqual("Who we are", title)
+
+    def test_that_controls_active_after_navigating_to_them(self):
+        sleep(3)
+        (HeaderUnauthorizedComponent(self.driver)
+         .get_navigate_links()[0]
+         .click())
+        become_a_student = (HomePageGuest(self.driver)
+                            .get_card_learn_from_experts()
+                            .get_btn())
+        button_before_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
+        ActionChains(self.driver).move_to_element(become_a_student).perform()
+        sleep(5)
+        button_after_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
+        self.assertNotEqual(button_before_it_is_hovered_over, button_after_it_is_hovered_over, "The button hasn't changed")
