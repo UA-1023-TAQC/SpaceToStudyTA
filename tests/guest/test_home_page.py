@@ -38,3 +38,26 @@ class HomePageTestCase(BaseTestRunner):
                        .get_checkbox_share_your_experience()
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
+
+    def test_the_collapse_block_ui_alignment(self):
+        # check the coordinates of X
+        location_x = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        for result in location_x:
+            self.assertEqual(969, result.get_title().location['x'])
+
+        location_y = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        start_coordinate_y = 922
+        # check the coordinates of Y starting from the second element
+        for result in location_y[1:]:
+            sleep(2)
+            start_coordinate_y = start_coordinate_y + 68
+            self.assertEqual(start_coordinate_y, result.get_title().location['y'])
+        # check the width block
+        width_block = (HomePageGuest(self.driver).get_collapse_block())
+        width = width_block.size['width']
+        self.assertEqual(540, width)
+
+
+
+
+
