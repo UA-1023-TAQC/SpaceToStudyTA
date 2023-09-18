@@ -2,6 +2,7 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.elements.slider import Slider
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 CLOSE_BUTTON = (By.XPATH, "//div[@role='dialog']//button[@type='button']")
@@ -11,12 +12,12 @@ YOUR_REQUIRED_LEVEL_DROPDOWN = (By.XPATH, "//div[@aria-labelledby='select-label'
 YOUR_REQUIRED_LEVEL_DROPDOWN_LIST = (By.XPATH, "//ul[@aria-labelledby='select-label']")
 LEVEL_DROPDOWN_ITEM = (By.XPATH, "//ul[@aria-labelledby='select-label']/li")
 
-PREFERRED_PRICE_SLIDER = (By.XPATH, "//form/div[3]/div[1]")
+PREFERRED_PRICE_SLIDER = (By.XPATH, "//form/div[3]/div[1]/span")
 PREFERRED_PRICE_LOWEST_VALUE_ON_SLIDER = (By.XPATH, "//span[@data-index='0'][1]")
 PREFERRED_PRICE_LOWEST_VALUE_ON_SLIDER_LABEL = (By.XPATH, "//span[@data-index='0'][2]")
 PREFERRED_PRICE_HIGHEST_VALUE_ON_SLIDER = (By.XPATH, "//span[@data-index='1'][1]")
 PREFERRED_PRICE_HIGHEST_VALUE_ON_SLIDER_LABEL = (By.XPATH, "//span[@data-index='1'][2]")
-PREFERRED_PRICE_SLIDER_MOVING_CIRCLE = (By.XPATH, "//input[@type='range']")
+PREFERRED_PRICE_SLIDER_THUMB = (By.XPATH, "//input[@type='range']")
 PREFERRED_PRICE_INPUT = (By.XPATH, "//input[@inputmode='numeric']")
 
 ADDITIONAL_INFORMATION_INPUT = (By.XPATH, "//textarea[@maxlength = '1000']")
@@ -78,14 +79,32 @@ class EnrollOfferModal(BaseComponent):
         return self
 
     def get_current_price_label(self) -> float:
-        return float(self.node.find_element(*PREFERRED_PRICE_LOWEST_VALUE_ON_SLIDER_LABEL)
-                     .get_attribute('["aria-valuenow"]'))
+        current_price = self.node.find_element(*PREFERRED_PRICE_INPUT)
+        return float(current_price.get_attribute('value'))
 
     def set_preferred_price_input(self, value):
         price = (self.node.find_element(*PREFERRED_PRICE_INPUT))
         price.send_keys(Keys.CONTROL + "a")
         price.send_keys(Keys.DELETE)
         price.send_keys(value)
+        return self
+
+    def drag_price_slider_left(self, pixels: int):
+        slider = self.node.find_element(*PREFERRED_PRICE_SLIDER)
+        slider_thumb = self.node.find_element(*PREFERRED_PRICE_SLIDER_THUMB)
+        Slider(self.node).drag_slider_left(pixels, slider, slider_thumb)
+        return self
+
+    def drag_price_slider_right(self, pixels: int):
+        slider = self.node.find_element(*PREFERRED_PRICE_SLIDER)
+        slider_thumb = self.node.find_element(*PREFERRED_PRICE_SLIDER_THUMB)
+        Slider(self.node).drag_slider_right(pixels, slider, slider_thumb)
+        return self
+
+    def drag_price_slider_to_value(self, value: int):
+        slider = self.node.find_element(*PREFERRED_PRICE_SLIDER)
+        slider_thumb = self.node.find_element(*PREFERRED_PRICE_SLIDER_THUMB)
+        Slider(self.node).drag_slider_to_value(value, slider, slider_thumb)
         return self
 
     def add_additional_information(self, additional_information: str):

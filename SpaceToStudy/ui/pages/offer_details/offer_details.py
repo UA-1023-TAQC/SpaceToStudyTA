@@ -36,7 +36,6 @@ class OfferDetailsPage(BasePage):
         self._general_info_component = None
         self._frequently_asked_questions_component = None
         self._what_students_say_component = None
-        self._general_info_component = None
         self._enroll_offer_btn = None
         self._is_request_sent_successfully = None
 
