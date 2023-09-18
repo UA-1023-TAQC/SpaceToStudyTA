@@ -43,5 +43,7 @@ class CardComponent(BaseComponent):
         return self.get_btn().text
 
     def click_btn(self):
+        from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
         self.get_btn().click()
         sleep(1)
+        return RegistrationModal(self.node)
