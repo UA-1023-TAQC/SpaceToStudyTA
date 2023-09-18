@@ -18,7 +18,7 @@ PASSWORD_INPUT = (By.XPATH, "//label[contains(text(), 'Password')]/..")
 
 FORGOT_PASSWORD_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[1]")
 LOGIN_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
-SIGN_IN_WITH_GMAIL = (By.XPATH, '//*[@id="googleButton"]/div/div/div/div[2]/span[1]')
+SIGN_IN_WITH_GMAIL = (By.XPATH, '//*[@id="googleButton"]/div/iframe')
 JOIN_US_FOR_FREE = (By.XPATH, "//*[contains(text(),'Join us for free')]")
 
 UNSUCCESS_LOGIN_POP_UP = (By.XPATH, "?????????????")
@@ -100,7 +100,7 @@ class LoginModal(BaseComponent):
     
     def get_sign_in_as_gmail(self):
         if not self._sign_in_as_gmail:
-           self._sign_in_as_gmail = self.node.find_element(*SIGN_IN_WITH_GMAIL)
+            self._sign_in_as_gmail = self.node.find_element(*SIGN_IN_WITH_GMAIL)
         return self._sign_in_as_gmail
     
     def click_sign_in_as_gmail(self):

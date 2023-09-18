@@ -1,5 +1,6 @@
 from time import sleep
 
+from SpaceToStudy.ui.pages.google_authorization_popups.google_popup_email_input import GooglePopUpEmailInput
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
@@ -46,3 +47,14 @@ class LoginModalTestCase(BaseTestRunner):
                         .get_name_surname_text())
         full_name = ValueProvider.get_tutor_first_name() + " " + ValueProvider.get_tutor_last_name()
         self.assertEqual(full_name, name_surname)
+
+    def test_google_authorization(self):
+        (HomePageGuest(self.driver)
+            .get_header()
+            .click_login_btn())
+        (LoginModal(self.driver)
+            .get_sign_in_as_gmail()
+            .click_sign_in_as_gmail())
+
+        title = GooglePopUpEmailInput(self.driver).get_title_text()
+        self.assertEqual(title, "Увійти")
