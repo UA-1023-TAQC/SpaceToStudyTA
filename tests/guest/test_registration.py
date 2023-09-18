@@ -77,7 +77,20 @@ class RegistrationTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
-
+    def test_opening_of_modal_registration_window_for_tutor_and_student(self):
+        get_started_for_free = (HomePageGuest(self.driver)
+                                .click_button_get_started_for_free())
+        start_student = get_started_for_free\
+            .get_card_learn_from_experts()\
+            .click_btn()
+        title_student = start_student.get_text_title_modal()
+        self.assertEqual(title_student, "Sign up as a student")
+        start_student.click_close_btn()
+        title_tutor = get_started_for_free\
+            .get_card_share_your_experience()\
+            .click_btn()\
+            .get_text_title_modal()
+        self.assertEqual(title_tutor, "Sign up as a tutor")
 
 
 if __name__ == '__main__':
