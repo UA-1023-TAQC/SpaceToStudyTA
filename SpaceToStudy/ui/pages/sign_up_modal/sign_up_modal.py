@@ -7,6 +7,8 @@ from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 
+CLOSE_BTN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/button")
+
 TITLE = (By.XPATH, "//h2")
 FIRST_NAME_INPUT = (By.XPATH, "//label[contains(text(), 'First name')]/..")
 LAST_NAME_INPUT = (By.XPATH, "//label[contains(text(), 'Last name')]/..")
@@ -37,7 +39,7 @@ LOGIN_MODAL = (By.XPATH, "//*[@role='dialog']")
 
 TITLE_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
 
-TITLE =(By.XPATH, "//h2[contains(text(), 'student')]")
+TITLE = (By.XPATH, "//h2[contains(text(), 'student')]")
 
 class RegistrationModal(BaseComponent):
 
@@ -53,6 +55,14 @@ class RegistrationModal(BaseComponent):
         self._privacy_policy_link = None
         self._title_modal = None
         self._title = None
+
+    def get_close_btn(self):
+        return self.node.find_element(*CLOSE_BTN)
+
+    def click_close_btn(self):
+        from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
+        self.get_close_btn().click()
+        return HomePageGuest(self.node.parent)
 
     def get_title_text(self) -> str:
         return self.node.find_element(*TITLE).text

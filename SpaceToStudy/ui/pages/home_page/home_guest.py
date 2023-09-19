@@ -7,7 +7,10 @@ from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.card_component_for_guest import CardComponent
 from SpaceToStudy.ui.pages.home_page.collapse_item import CollapseItem
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_guest import HowItWorksComponent
+from SpaceToStudy.ui.pages.home_page.who_we_are_block import WhoWeAreBlock
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
+
+COLLAPSE_BLOCK_ITEMS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div")
 
 COLLAPSE_BLOCK_FLEXIBLE_LOCATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]")
 COLLAPSE_BLOCK_INDIVIDUAL_TIME = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[2]")
@@ -18,7 +21,6 @@ BUTTON_GET_STARTED_FOR_FREE = (By.XPATH, "//a[contains(text(), 'Get started for 
 BECOME_A_TUTOR_OR_STUDENT_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/button")
 
 HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div")
-
 HOW_IT_WORKS_BLOCK_SIGN_UP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[2]")
 HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[3]")
 HOW_IT_WORKS_BLOCK_SEND_REQUEST = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[4]")
@@ -32,6 +34,12 @@ CARD_COMPONENT_SHARE_YOUR_EXPERIENCE = (By.XPATH, "/html/body/div/div/div[2]/div
 IMG_MAP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/img")
 MAIN_BANNER = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
 SIGN_UP_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div")
+
+COLLAPSE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div")
+
+WHAT_CAN_U_DO_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
+WHO_WE_ARE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[4]")
+
 
 
 class HomePageGuest(BasePage):
@@ -53,6 +61,22 @@ class HomePageGuest(BasePage):
         self._button_get_started_for_free = None
         self._img_map = None
         self._main_banner = None
+        self._collapse_items = None
+        self._collapse_block = None
+
+    def get_collapse_block(self) -> WebElement:
+        if not self._collapse_block:
+            self._collapse_block = self.driver.find_element(*COLLAPSE_BLOCK)
+        return self._collapse_block
+
+    def get_collapse_list_items_block(self) -> list[CollapseItem]:
+        if self._collapse_items is None:
+            _collapse_items = self.driver.find_elements(*COLLAPSE_BLOCK_ITEMS)
+            self._collapse_items = []
+            for collapse_item in _collapse_items:
+                self._collapse_items.append(CollapseItem(collapse_item))
+        return self._collapse_items
+
 
     def get_flexible_location(self) -> CollapseItem:
         if not self._flexible_location:
@@ -137,6 +161,10 @@ class HomePageGuest(BasePage):
             self._card_learn_from_experts = CardComponent(self.driver.find_element(*CARD_COMPONENT_LEARN_FROM_EXPERTS))
         return self._card_learn_from_experts
 
+    def click_become_a_student(self) -> RegistrationModal:
+        self.get_card_learn_from_experts().click_btn()
+        return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
+
     def get_card_share_your_experience(self) -> CardComponent:
         if not self._card_share_your_experience:
             self._card_share_your_experience = CardComponent(self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE))
@@ -151,7 +179,7 @@ class HomePageGuest(BasePage):
 
     def click_button_get_started_for_free(self):
         self.get_button_get_started_for_free().click()
-        return self
+        return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
 
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
@@ -185,3 +213,9 @@ class HomePageGuest(BasePage):
             self._main_banner = self.driver.find_element(*MAIN_BANNER)
         return self._main_banner
 
+
+    def get_who_we_are_block(self) -> WhoWeAreBlock:
+        if not self._who_we_are_block:
+            node = self.driver.find_element(*WHO_WE_ARE_BLOCK)
+            self._who_we_are_block = WhoWeAreBlock(node)
+        return self._who_we_are_block

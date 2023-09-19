@@ -1,4 +1,6 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
@@ -19,7 +21,19 @@ class BasePage:
 
     def get_header(self) -> [HeaderAuthorizedComponent,
                              HeaderUnauthorizedComponent]:
-        return HeaderUnauthorizedComponent(self.driver.find_element(By.XPATH, "//header"))
+        header_unauthorized_component = HeaderUnauthorizedComponent(self.driver.find_element(By.XPATH, "//header"))
+        if header_unauthorized_component.is_login_button_present():
+            return header_unauthorized_component
+        else:
+            return HeaderAuthorizedComponent(self.driver.find_element(By.XPATH, "//header"))
 
     def go_to_url(self, url):
         self.driver.get(url)
+
+    def hover(self, hover_el):
+        from selenium.webdriver.support import expected_conditions as EC
+        actions = ActionChains(self.driver)
+        actions.move_to_element(hover_el).perform()
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(EC.element_to_be_clickable(hover_el))
+        return hover_el

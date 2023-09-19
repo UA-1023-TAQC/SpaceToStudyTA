@@ -12,11 +12,20 @@ class CollapseItem(BaseComponent):
     def __init__(self, node: WebElement):
         super().__init__(node)
 
-    def get_title(self) -> str:
-        return self.node.find_element(*TITLE_COLLAPSE_ITEM).text
+    def get_title(self) -> WebElement:
+        return self.node.find_element(*TITLE_COLLAPSE_ITEM)
 
-    def get_description(self) -> str:
-        return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).text
+    def get_title_text(self) -> str:
+        return self.get_title().text
+
+    def get_description(self) -> WebElement:
+        return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM)
+
+    def get_description_text(self) -> str:
+        return self.get_description().text
+    def get_color_of_title(self):
+        return self.node.find_element(*TITLE_COLLAPSE_ITEM).value_of_css_property("color")
+
 
     def is_expanded(self) -> bool:
         aria_expanded = self.node.find_element(By.XPATH, ".//div[@aria-expanded]").get_attribute("aria-expanded")
