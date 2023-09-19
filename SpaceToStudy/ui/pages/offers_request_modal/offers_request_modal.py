@@ -55,59 +55,6 @@ QUESTION_CLOSE_BTN = (By.XPATH, "./div[2]/div[1]/button")
 ADDITION_CLOSE_BTN = (By.XPATH, "./div[2]/div[2]/button")
 
 
-class OffersRequestModal(BaseComponent):
-    def __init__(self, node: WebElement):
-        super().__init__(node)
-        self._modal_name = None
-        self._modal_desc = None
-        self._close_btn = None
-        self._create_offer_btn = None
-        self._add_to_draft_btn = None
-
-    def get_modal_name(self) -> str:
-        if not self._modal_name:
-            self._modal_name = self.node.find_element(*MODAL_NAME)
-        return self._modal_name.text
-
-    def get_modal_desc(self) -> str:
-        if not self._modal_desc:
-            self._modal_desc = self.node.find_element(*MODAL_DESC)
-        return self._modal_desc.text
-
-    def get_close_btn(self) -> WebElement:
-        if not self._close_btn:
-            self._close_btn = self.node.find_element(*CLOSE_BTN)
-        return self._close_btn
-
-    def get_add_to_draft_btn(self) -> WebElement:
-        if not self._add_to_draft_btn:
-            self._add_to_draft_btn = self.node.find_element(*ADD_TO_DRAFT_BTN)
-        return self._add_to_draft_btn
-
-    def get_create_offer_btn(self) -> WebElement:
-        if not self._create_offer_btn:
-            self._create_offer_btn = self.node.find_element(*CREATE_OFFER_BTN)
-        return self._create_offer_btn
-
-    def click_close_btn(self):
-        self.get_close_btn().click()
-
-    def click_add_to_draft_btn(self):
-        self.get_add_to_draft_btn().click()
-        sleep(2)
-
-    def click_create_offer_btn(self):
-        self.get_create_offer_btn().click()
-
-    def is_btn_displayed(self: WebElement) -> bool:
-        if self.is_displayed():
-            return True
-        return False
-
-    def get_btn_name(self, btn: WebElement) -> str:
-        return btn.text
-
-
 class FirstBlock(BaseComponent):
     def __init__(self, node: WebElement):
         super().__init__(node)
@@ -358,7 +305,69 @@ class ThirdBlock(BaseComponent):
     def click_addition_close_btn(self):
         self.get_addition_close_btn().click()
 
-    def is_btn_displayed(self:WebElement) -> bool:
+    def is_btn_displayed(self: WebElement) -> bool:
         if self.is_displayed():
             return True
         return False
+
+
+class OffersRequestModal(BaseComponent):
+    def __init__(self, node: WebElement):
+        super().__init__(node)
+        self._modal_name = None
+        self._modal_desc = None
+        self._close_btn = None
+        self._create_offer_btn = None
+        self._add_to_draft_btn = None
+
+    def get_modal_name(self) -> str:
+        if not self._modal_name:
+            self._modal_name = self.node.find_element(*MODAL_NAME)
+        return self._modal_name.text
+
+    def get_modal_desc(self) -> str:
+        if not self._modal_desc:
+            self._modal_desc = self.node.find_element(*MODAL_DESC)
+        return self._modal_desc.text
+
+    def get_close_btn(self) -> WebElement:
+        if not self._close_btn:
+            self._close_btn = self.node.find_element(*CLOSE_BTN)
+        return self._close_btn
+
+    def get_add_to_draft_btn(self) -> WebElement:
+        if not self._add_to_draft_btn:
+            self._add_to_draft_btn = self.node.find_element(*ADD_TO_DRAFT_BTN)
+        return self._add_to_draft_btn
+
+    def get_create_offer_btn(self) -> WebElement:
+        if not self._create_offer_btn:
+            self._create_offer_btn = self.node.find_element(*CREATE_OFFER_BTN)
+        return self._create_offer_btn
+
+    def click_close_btn(self):
+        self.get_close_btn().click()
+
+    def click_add_to_draft_btn(self):
+        self.get_add_to_draft_btn().click()
+        sleep(2)
+
+    def click_create_offer_btn(self):
+        self.get_create_offer_btn().click()
+
+    def is_btn_displayed(self: WebElement) -> bool:
+        if self.is_displayed():
+            return True
+        return False
+
+    def get_btn_name(self, btn: WebElement) -> str:
+        return btn.text
+
+    def get_first_block(self) -> FirstBlock:
+        return FirstBlock(self.node.find_element(*FIRST_BLOCK_OF_MODAL))
+
+    def get_second_block(self) -> SecondBlock:
+        return SecondBlock(self.node.find_element(*SECOND_BLOCK_OF_MODAL))
+
+    def get_third_block(self) -> ThirdBlock:
+        return ThirdBlock(self.node.find_element(*THIRD_BLOCK_OF_MODAL))
