@@ -41,6 +41,19 @@ class HomePageTestCase(BaseTestRunner):
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
 
+    def test_what_can_you_do_elements_visible(self):
+        (HeaderUnauthorizedComponent(self.driver)
+         .get_navigate_links()[0]
+         .click())
+        become_student_button = (HomePageGuest(self.driver)
+                                 .get_card_learn_from_experts()
+                                 .get_btn())
+        self.assertIsNotNone(become_student_button, "The 'Become a student' button is not found")
+        become_tutor_button = (HomePageGuest(self.driver)
+                               .get_card_share_your_experience()
+                               .get_btn())
+        self.assertIsNotNone(become_tutor_button, "The 'Become a tutor' button is not found")
+
     def test_the_list_of_collapse_items(self):
         flexible_location_item = (HomePageGuest(self.driver)
                                   .get_flexible_location())

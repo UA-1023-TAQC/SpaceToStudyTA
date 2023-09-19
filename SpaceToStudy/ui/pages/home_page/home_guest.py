@@ -141,6 +141,10 @@ class HomePageGuest(BasePage):
             self._card_learn_from_experts = CardComponent(self.driver.find_element(*CARD_COMPONENT_LEARN_FROM_EXPERTS))
         return self._card_learn_from_experts
 
+    def click_become_a_student(self) -> RegistrationModal:
+        self.get_card_learn_from_experts().click_btn()
+        return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
+
     def get_card_share_your_experience(self) -> CardComponent:
         if not self._card_share_your_experience:
             self._card_share_your_experience = CardComponent(self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE))
