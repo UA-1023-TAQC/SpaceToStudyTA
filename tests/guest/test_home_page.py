@@ -43,33 +43,33 @@ class HomePageTestCase(BaseTestRunner):
 
     def test_the_collapse_block_ui_tab(self):
         # check tab
-        (HeaderUnauthorizedComponent(self.driver).get_logo().send_keys(Keys.TAB * 7))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(6))
         sleep(2)
         first_el_tab = (HomePageGuest(self.driver)
-                         .get_collapse_list_items_block()[0]
-                         .get_el_tab()
-                         .value_of_css_property("background-color"))
-        (HeaderUnauthorizedComponent(self.driver).get_logo().send_keys(Keys.TAB * 7))
+                        .get_collapse_list_items_block()[0]
+                        .get_background_el_with_tab()
+                        .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(7))
         sleep(2)
         second_el_tab = (HomePageGuest(self.driver)
-                  .get_collapse_list_items_block()[1]
-                  .get_el_tab()
-                  .value_of_css_property("background-color"))
-        (HeaderUnauthorizedComponent(self.driver).get_logo().send_keys(Keys.TAB * 8))
+                         .get_collapse_list_items_block()[1]
+                         .get_background_el_with_tab()
+                         .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(8))
         sleep(2)
         third_el_tab = (HomePageGuest(self.driver)
-                         .get_collapse_list_items_block()[2]
-                         .get_el_tab()
-                         .value_of_css_property("background-color"))
-        (HeaderUnauthorizedComponent(self.driver).get_logo().send_keys(Keys.TAB * 8))
+                        .get_collapse_list_items_block()[2]
+                        .get_background_el_with_tab()
+                        .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(9))
         sleep(2)
         fourth_el_tab = (HomePageGuest(self.driver)
-                        .get_collapse_list_items_block()[3]
-                        .get_el_tab()
-                        .value_of_css_property("background-color"))
+                         .get_collapse_list_items_block()[3]
+                         .get_background_el_with_tab()
+                         .value_of_css_property("background-color"))
         self.assertEqual("rgba(0, 0, 0, 0.12)", first_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", second_el_tab)
-        self.assertEqual("rgba(0, 0, 0, 0.12)",  third_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
 
 

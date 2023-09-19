@@ -1,3 +1,4 @@
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -28,3 +29,7 @@ class HeaderComponent(BaseComponent):
             for element in navigate_links:
                 self._navigate_elements.append(NavigateComponent(element))
         return self._navigate_elements
+
+    def tab_key(self, number):
+        self.get_logo().send_keys(Keys.TAB * number)
+        return
