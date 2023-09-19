@@ -224,8 +224,9 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
         self.assertEqual(filter_quantity, 2)
 
         # Clear filters
-        explore_offers_page\
+        explore_offers_page = ExploreOffersPage(self.driver) \
             .get_filtering_and_sorting_block()\
+            .click_filter_title()\
             .get_filters_sidebar_component()\
             .click_clear_filters_btn()\
             .click_apply_filters_btn()

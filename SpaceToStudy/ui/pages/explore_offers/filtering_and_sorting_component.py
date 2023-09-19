@@ -40,7 +40,7 @@ class FilteringAndSortingComponent(BaseComponent):
         return int(self.node.find_element(*FILTER_QUANTITY).text)
 
     def check_filter_quantity_is_visible(self):
-        return self.get_filter_quantity().is_displayed()
+        return len(self.node.find_elements(*FILTER_QUANTITY)) != 0
 
     def get_tutors_offers(self) -> WebElement:
         return self.node.find_element(*TUTORS_OFFERS)
