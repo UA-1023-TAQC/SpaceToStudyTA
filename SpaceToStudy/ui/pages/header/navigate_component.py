@@ -13,7 +13,7 @@ class NavigateComponent(BaseComponent):
 
     def click(self):
         self.node.click()
-        return
+        return self.node
 
     def get_name(self) -> WebElement:
         if not self.name:
