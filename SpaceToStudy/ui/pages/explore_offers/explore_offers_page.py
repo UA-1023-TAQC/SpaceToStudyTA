@@ -112,5 +112,5 @@ class ExploreOffersPage(BasePage):
 
     def get_list_of_offers_inline_card(self) -> list:
         offers = self.driver.find_elements(*INLINE_CARD)
-        self._list_of_offers_grid_card = [InlineCardComponent(offer) for offer in offers]
+        self._list_of_offers_inline_card = [InlineCardComponent(offer) for offer in offers]
         return self._list_of_offers_inline_card
