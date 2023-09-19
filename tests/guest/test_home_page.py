@@ -1,7 +1,7 @@
 from time import sleep
-
 from selenium.webdriver import Keys
 
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from tests.test_runners import BaseTestRunner
@@ -40,6 +40,15 @@ class HomePageTestCase(BaseTestRunner):
                        .get_checkbox_share_your_experience()
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
+
+    def test_who_we_are_block_contains_video_content(self):
+        (HeaderComponent(self.driver)
+         .get_navigate_links()[2]
+         .click())
+        video = (HomePageGuest(self.driver)
+                 .get_who_we_are_block()
+                 .get_video())
+        self.assertTrue(video)
 
     def test_open_who_we_are_block_by_tabs(self):
         logo = HeaderUnauthorizedComponent(self.driver).get_logo()
