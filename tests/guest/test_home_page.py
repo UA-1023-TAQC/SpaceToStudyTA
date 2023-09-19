@@ -43,6 +43,7 @@ class HomePageTestCase(BaseTestRunner):
 
     def test_the_collapse_block_ui_alignment(self):
         # check the coordinates of X
+        margin_between_elements = 68
         location_x = (HomePageGuest(self.driver).get_collapse_list_items_block())
         for result in location_x:
             self.assertEqual(969, result.get_title().location['x'])
@@ -52,7 +53,7 @@ class HomePageTestCase(BaseTestRunner):
         # check the coordinates of Y starting from the second element
         for result in location_y[1:]:
             sleep(2)
-            start_coordinate_y = start_coordinate_y + 68
+            start_coordinate_y = start_coordinate_y + margin_between_elements
             self.assertEqual(start_coordinate_y, result.get_title().location['y'])
         # check the width block
         width_block = (HomePageGuest(self.driver).get_collapse_block())
