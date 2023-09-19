@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 
 INPUT = (By.XPATH, "./div[2]/div/div/input")
 FIND_TUTOR_BTN = (By.XPATH, "./div[2]/a")
@@ -27,6 +28,7 @@ class SearchTutorComponent(BaseComponent):
 
     def set_text(self, text):
         self.get_input().send_keys(text)
+        return self
 
     def get_find_tutor_btn(self) -> WebElement:
         if not self._find_tutor_btn:
@@ -35,6 +37,7 @@ class SearchTutorComponent(BaseComponent):
 
     def click_find_tutor_btn(self):
         self.get_find_tutor_btn().click()
+        return ExploreOffersPage(self.node.parent)
 
     def get_text_find_tutor_btn(self) -> str:
         return self.get_find_tutor_btn().text

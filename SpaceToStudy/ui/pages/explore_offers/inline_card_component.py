@@ -18,9 +18,9 @@ LANGUAGES = (By.XPATH, './div/div[2]/div[2]/p')
 PRICE_VALUE = (By.XPATH, './div/div[3]/div[1]/div/h6')
 
 PERIOD_FOR_PRICE = (By.XPATH, './div/div[3]/div[1]/div/p')
-VIEW_DETAILS_BTN = (By.XPATH, '//a[contains(text(), "View details")]')
-SEND_MESSAGE_BTN = (By.XPATH, '//button[contains(text(), "Send message")]')
-ADD_TO_BOOKMARKS_BTN = (By.XPATH, '//button[data-testid="iconButton"]')
+VIEW_DETAILS_BTN = (By.XPATH, './/a[contains(text(), "View details")]')
+SEND_MESSAGE_BTN = (By.XPATH, './/button[contains(text(), "Send message")]')
+ADD_TO_BOOKMARKS_BTN = (By.XPATH, './/button[data-testid="iconButton"]')
 
 
 class InlineCardComponent(BaseComponent):
