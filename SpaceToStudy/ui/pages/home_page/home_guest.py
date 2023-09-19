@@ -1,9 +1,7 @@
 from time import sleep
 
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.card_component_for_guest import CardComponent
@@ -186,12 +184,5 @@ class HomePageGuest(BasePage):
             self._main_banner = self.driver.find_element(*MAIN_BANNER)
         return self._main_banner
 
-    def hover(self, hover_el):
-        from selenium.webdriver.support import expected_conditions as EC
-        actions = ActionChains(self.driver)
-        actions.move_to_element(hover_el).perform()
-        wait = WebDriverWait(self.driver, 10)
-        wait.until(EC.element_to_be_clickable(hover_el))
-        return hover_el
 
 
