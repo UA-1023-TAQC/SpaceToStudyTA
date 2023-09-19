@@ -7,6 +7,7 @@ from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.card_component_for_guest import CardComponent
 from SpaceToStudy.ui.pages.home_page.collapse_item import CollapseItem
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_guest import HowItWorksComponent
+from SpaceToStudy.ui.pages.home_page.who_we_are_block import WhoWeAreBlock
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 
 COLLAPSE_BLOCK_FLEXIBLE_LOCATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]")
@@ -33,6 +34,8 @@ IMG_MAP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/img")
 MAIN_BANNER = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
 SIGN_UP_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div")
 
+WHO_WE_ARE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[4]")
+
 
 class HomePageGuest(BasePage):
 
@@ -53,6 +56,7 @@ class HomePageGuest(BasePage):
         self._button_get_started_for_free = None
         self._img_map = None
         self._main_banner = None
+        self._who_we_are_block = None
 
     def get_flexible_location(self) -> CollapseItem:
         if not self._flexible_location:
@@ -185,3 +189,8 @@ class HomePageGuest(BasePage):
             self._main_banner = self.driver.find_element(*MAIN_BANNER)
         return self._main_banner
 
+    def get_who_we_are_block(self) -> WhoWeAreBlock:
+        if not self._who_we_are_block:
+            node = self.driver.find_element(*WHO_WE_ARE_BLOCK)
+            self._who_we_are_block = WhoWeAreBlock(node)
+        return self._who_we_are_block
