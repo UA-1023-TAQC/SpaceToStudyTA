@@ -89,7 +89,7 @@ class RegistrationTestCase(BaseTestRunner):
 
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
-                                .click_button_get_started_for_free())
+                                .click_started_for_free())
         start_student = get_started_for_free\
             .get_card_learn_from_experts()\
             .click_btn()
