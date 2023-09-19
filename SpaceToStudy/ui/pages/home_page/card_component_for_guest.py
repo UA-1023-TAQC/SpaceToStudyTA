@@ -1,5 +1,6 @@
 from time import sleep
 
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -42,6 +43,16 @@ class CardComponent(BaseComponent):
     def get_btn_text(self) -> str:
         return self.get_btn().text
 
+    def get_tub_animation(self) -> bool:
+        try:
+            pulsate = self.node.find_element(By.XPATH,
+                                             "//span[@class='MuiTouchRipple-child MuiTouchRipple-childPulsate']")
+            return True
+        except NoSuchElementException:
+            return False
+
     def click_btn(self):
+        from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
         self.get_btn().click()
         sleep(1)
+        return RegistrationModal(self.node)
