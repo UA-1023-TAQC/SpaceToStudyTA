@@ -1,12 +1,7 @@
 import unittest
-from time import sleep
-
-from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
-from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
-from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
