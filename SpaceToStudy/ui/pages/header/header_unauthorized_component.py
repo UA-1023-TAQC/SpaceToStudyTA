@@ -1,3 +1,4 @@
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -19,6 +20,13 @@ class HeaderUnauthorizedComponent(HeaderComponent):
     def click_login_btn(self) -> LoginModal:
         self.get_login_btn().click()
         return LoginModal(self.node)
+
+    def is_login_button_present(self) -> bool:
+        try:
+            self.get_login_btn()
+            return True
+        except NoSuchElementException:
+            return False
 
     def get_login_modal(self) -> WebElement:
         return self.node.find_element(By.XPATH, *LOGIN_MODAL)
