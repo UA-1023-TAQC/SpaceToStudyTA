@@ -1,5 +1,7 @@
 import requests
 
+from tests.value_provider import ValueProvider
+
 
 class ApiForEmails:
     def __init__(self):
@@ -7,7 +9,7 @@ class ApiForEmails:
         self._email = None
         self._payload = {}
         self._headers = {
-            "apikey": "zgFR7AAZlgjRbrhLGVp3JuL3Oih6spnP"
+            "apikey": ValueProvider.get_api_key_for_emails()
         }
         #  received from get_domains request as a rarely changed list
         #  to make less requests to api (limited to 500 per month)
