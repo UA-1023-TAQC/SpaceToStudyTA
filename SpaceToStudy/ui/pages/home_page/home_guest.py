@@ -37,6 +37,7 @@ SIGN_UP_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div")
 
 COLLAPSE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div")
 
+WHAT_CAN_U_DO_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 WHO_WE_ARE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[4]")
 
 
@@ -176,6 +177,10 @@ class HomePageGuest(BasePage):
     def get_text_button_get_started_for_free(self) -> str:
         return self.get_button_get_started_for_free().text
 
+    def click_button_get_started_for_free(self):
+        self.get_button_get_started_for_free().click()
+        return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
+
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
 
@@ -207,6 +212,7 @@ class HomePageGuest(BasePage):
         if not self._main_banner:
             self._main_banner = self.driver.find_element(*MAIN_BANNER)
         return self._main_banner
+
 
     def get_who_we_are_block(self) -> WhoWeAreBlock:
         if not self._who_we_are_block:
