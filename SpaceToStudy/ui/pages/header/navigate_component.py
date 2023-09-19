@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -11,11 +12,13 @@ class NavigateComponent(BaseComponent):
         super().__init__(node)
         self.name = None
 
+    @allure.step("Click on a navigation link")
     def click(self):
         self.node.click()
         return self.node
 
-    def get_name(self) -> WebElement:
+    @allure.step("Get the text of a navigation link")
+    def get_name(self) -> str:
         if not self.name:
             self.name = self.node.find_element(*NAME)
-            return self.name
+            return self.name.text
