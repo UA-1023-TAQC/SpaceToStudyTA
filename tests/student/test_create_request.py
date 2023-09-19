@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponen
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
@@ -29,7 +30,7 @@ class CreateRequestTestCase(BaseTestRunner):
          .set_email(ValueProvider.get_student_email())
          .set_password(ValueProvider.get_student_password())
          .click_login_button())
-        (HeaderAuthorizedComponent(self.driver)
+        (HeaderComponent(self.driver)
          .get_navigate_links()[0]
          .click())
         self.driver.find_element(By.XPATH, "//button[contains(text(), 'Create request')]").click()
@@ -54,13 +55,15 @@ class CreateRequestTestCase(BaseTestRunner):
          .click_add_to_draft_btn())
 
         inline_card = OfferDetailsPage(self.driver).get_inline_card_component()
+        student_name_expected = (f"{ValueProvider.get_student_first_name()} "
+                                 f"{ValueProvider.get_student_last_name()[0]}.")
         student_name_actual = inline_card.get_person_name()
         card_title_actual = inline_card.get_offer_title()
         card_subject_actual = inline_card.get_subject_label()
         card_level_actual = inline_card.get_level_label()
         card_language_actual = inline_card.get_languages()
         card_price_actual = inline_card.get_price_value()
-        self.assertEqual("Student F.", student_name_actual)
+        self.assertEqual(student_name_expected, student_name_actual)
         self.assertEqual(title, card_title_actual)
         self.assertEqual(str.upper(subject), card_subject_actual)
         self.assertEqual(str.upper("Beginner"), card_level_actual)

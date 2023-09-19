@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
-from SpaceToStudy.ui.pages.header.navigate_component import NavigateComponent
 
 LIST_ITEMS = (By.XPATH, '/html/body/div[1]/div/header/div/ul')
 LOGO = (By.XPATH, "/html/body/div[1]/div/header/div/a")
@@ -21,7 +20,8 @@ class HeaderComponent(BaseComponent):
     def click_logo(self):
         self.get_logo().click()
 
-    def get_navigate_links(self) -> tuple[NavigateComponent]:
+    def get_navigate_links(self) -> tuple:
+        from SpaceToStudy.ui.pages.header.navigate_component import NavigateComponent
         if self._navigate_elements is None:
             navigate_links = self.node.find_elements(*NAVIGATE_ELEMENTS)
             self._navigate_elements = []

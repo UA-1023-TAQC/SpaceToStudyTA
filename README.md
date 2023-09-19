@@ -19,3 +19,10 @@ run pylint
 ```shell
 pylint ./SpaceToStudy
 ```
+
+
+## Run tests
+```shell
+pytest --alluredir=./my_allure_results ./tests
+```
+
