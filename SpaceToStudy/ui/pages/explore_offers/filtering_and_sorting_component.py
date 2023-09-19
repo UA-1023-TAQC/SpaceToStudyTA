@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
@@ -60,6 +62,7 @@ class FilteringAndSortingComponent(BaseComponent):
 
     def click_filter_title(self):
         self.get_filter_title().click()
+        sleep(0.5)
         return self
 
     def click_toggle(self):
