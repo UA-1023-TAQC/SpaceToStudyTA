@@ -68,6 +68,27 @@ class HomePageTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
+    def test_the_collapse_block_ui_alignment(self):
+        # check the coordinates of X
+        margin_between_elements = 68
+        location_x = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        for result in location_x:
+            self.assertEqual(969, result.get_title().location['x'])
+
+        location_y = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        start_coordinate_y = 922
+        # check the coordinates of Y starting from the second element
+        for result in location_y[1:]:
+            sleep(2)
+            start_coordinate_y = start_coordinate_y + margin_between_elements
+            self.assertEqual(start_coordinate_y, result.get_title().location['y'])
+        # check the width block
+        width_block = (HomePageGuest(self.driver).get_collapse_block())
+        width = width_block.size['width']
+        self.assertEqual(540, width)
+
+
+
     def test_the_collapse_block_ui_text(self):
         flexible_location = "Flexible Location"
         individual_time = "Individual Time"
@@ -201,3 +222,4 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(236, 239, 241, 1)", hover_second_el)
         self.assertEqual("rgba(236, 239, 241, 1)", hover_third_el)
         self.assertEqual("rgba(55, 71, 79, 1)", background_fourth_el)
+
