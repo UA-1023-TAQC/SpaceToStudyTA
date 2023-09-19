@@ -53,8 +53,11 @@ class HomePageTestCase(BaseTestRunner):
         self.assertFalse(individual_free_choice_el, "Element is opened")
         self.assertFalse(digital_communication_el, "Element is opened")
 
-        # check if guest can open a description to any of four items in the list
+        # check if guest can open a description to any of four items in the list and change text color and background
         (HomePageGuest(self.driver).get_collapse_list_items_block()[1].get_title().click())
+        background_color = (HomePageGuest(self.driver).get_individual_time()
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
         sleep(2)
         color_description = (HomePageGuest(self.driver)
                              .get_collapse_list_items_block()[1]
@@ -71,6 +74,9 @@ class HomePageTestCase(BaseTestRunner):
 
         (HomePageGuest(self.driver).get_collapse_list_items_block()[2].get_title().click())
         sleep(2)
+        background_color = (HomePageGuest(self.driver).get_free_choice_of_tutors()
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
         color_description = (HomePageGuest(self.driver)
                              .get_collapse_list_items_block()[2]
                              .get_description().value_of_css_property("color"))
@@ -86,6 +92,9 @@ class HomePageTestCase(BaseTestRunner):
 
         (HomePageGuest(self.driver).get_collapse_list_items_block()[3].get_title().click())
         sleep(2)
+        background_color = (HomePageGuest(self.driver).get_digital_communication()
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
         color_description = (HomePageGuest(self.driver)
                              .get_collapse_list_items_block()[3]
                              .get_description().value_of_css_property("color"))
