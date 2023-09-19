@@ -1,5 +1,7 @@
 from time import sleep
 
+from selenium.webdriver import Keys
+
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from tests.test_runners import BaseTestRunner
@@ -38,3 +40,37 @@ class HomePageTestCase(BaseTestRunner):
                        .get_checkbox_share_your_experience()
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
+
+    def test_the_collapse_block_ui_tab(self):
+        # check tab
+        (HeaderUnauthorizedComponent(self.driver).get_logo().send_keys(Keys.TAB * 7))
+        sleep(2)
+        first_el_tab = (HomePageGuest(self.driver)
+                         .get_collapse_list_items_block()[0]
+                         .get_el_tab()
+                         .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).get_logo().send_keys(Keys.TAB * 7))
+        sleep(2)
+        second_el_tab = (HomePageGuest(self.driver)
+                  .get_collapse_list_items_block()[1]
+                  .get_el_tab()
+                  .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).get_logo().send_keys(Keys.TAB * 8))
+        sleep(2)
+        third_el_tab = (HomePageGuest(self.driver)
+                         .get_collapse_list_items_block()[2]
+                         .get_el_tab()
+                         .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).get_logo().send_keys(Keys.TAB * 8))
+        sleep(2)
+        fourth_el_tab = (HomePageGuest(self.driver)
+                        .get_collapse_list_items_block()[3]
+                        .get_el_tab()
+                        .value_of_css_property("background-color"))
+        self.assertEqual("rgba(0, 0, 0, 0.12)", first_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", second_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)",  third_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
+
+
+
