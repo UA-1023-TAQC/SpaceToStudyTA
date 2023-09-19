@@ -38,3 +38,26 @@ class HomePageTestCase(BaseTestRunner):
                        .get_checkbox_share_your_experience()
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
+
+    def test_the_collapse_block_ui_hover(self):
+        # check hover elements
+        get_first_el = self.driver.find_element(*COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
+        hover_first_el = (HomePageGuest(self.driver)
+                          .hover(get_first_el)
+                          .value_of_css_property("background-color"))
+
+        get_second_el = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
+        hover_second_el = (HomePageGuest(self.driver)
+                           .hover(get_second_el)
+                           .value_of_css_property("background-color"))
+
+        get_third_el = self.driver.find_element(*COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS)
+        hover_third_el = (HomePageGuest(self.driver)
+                          .hover(get_third_el)
+                          .value_of_css_property("background-color"))
+        background_fourth_el = (self.driver.find_element(*COLLAPSE_BLOCK_DIGITAL_COMMUNICATION)
+                                .value_of_css_property("background-color"))
+        self.assertEqual("rgba(236, 239, 241, 1)", hover_first_el)
+        self.assertEqual("rgba(236, 239, 241, 1)", hover_second_el)
+        self.assertEqual("rgba(236, 239, 241, 1)", hover_third_el)
+        self.assertEqual("rgba(55, 71, 79, 1)", background_fourth_el)
