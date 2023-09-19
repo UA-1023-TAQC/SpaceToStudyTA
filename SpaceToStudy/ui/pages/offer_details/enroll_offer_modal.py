@@ -4,10 +4,13 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.slider import Slider
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.explore_offers.grid_card_component import GridCardComponent
 
-CLOSE_BUTTON = (By.XPATH, "//div[@role='dialog']//button[@type='button']")
+CLOSE_BTN = (By.XPATH, "//div[@role='dialog']//button[@type='button']")
 
-TITLE_MODAL = (By.XPATH, "//p[contains(text(),'Enroll offer')]")
+MODAL_TITLE = (By.XPATH, "//p[contains(text(),'Enroll offer')]")
+MODAL_TITLE_DESC = (By.XPATH, "//span[contains(text(), 'Send a Request to Create a Cooperation')]")
+
 YOUR_REQUIRED_LEVEL_DROPDOWN = (By.XPATH, "//div[@aria-labelledby='select-label']")
 YOUR_REQUIRED_LEVEL_DROPDOWN_LIST = (By.XPATH, "//ul[@aria-labelledby='select-label']")
 LEVEL_DROPDOWN_ITEM = (By.XPATH, "//ul[@aria-labelledby='select-label']/li")
@@ -22,21 +25,32 @@ PREFERRED_PRICE_INPUT = (By.XPATH, "//input[@inputmode='numeric']")
 
 ADDITIONAL_INFORMATION_INPUT = (By.XPATH, "//textarea[@maxlength = '1000']")
 SEND_COOPERATION_REQUEST_BTN = (By.XPATH, "//div[@role='dialog']//button[@type='submit']")
-GRID_CARD_COMPONENT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div/div")
+GRID_CARD_COMPONENT = (By.XPATH, "//div[@data-testid='popupContent']/div/div/div/div")
 
 
 class EnrollOfferModal(BaseComponent):
 
     def __init__(self, node):
         super().__init__(node)
-        self._title_modal = None
+        self._modal_title = None
+        self._modal_title_description = None
         self._your_required_level_dropdown = None
         self._list_of_available_levels = None
         self._preferred_price_slider = None
         self._preferred_price_input = None
         self._additional_information_input = None
         self._send_cooperation_request_btn = None
-        self._inline_card_component = None
+        self._grid_card_component = None
+
+    def get_modal_title_text(self) -> str:
+        if not self._modal_title:
+            self._modal_title = self.node.find_element(*MODAL_TITLE).text
+        return self._modal_title.text
+
+    def get_modal_title_description(self) -> str:
+        if not self._modal_title_description:
+            self._modal_title_description = self.node.find_element(*MODAL_TITLE_DESC)
+        return self._modal_title_description.text
 
     def get_your_required_level_dropdown(self):
         self.node.find_element(*YOUR_REQUIRED_LEVEL_DROPDOWN).click()
@@ -117,4 +131,18 @@ class EnrollOfferModal(BaseComponent):
     def click_send_cooperation_request_btn(self):
         from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
         self.get_send_cooperation_request_btn().click()
+        return OfferDetailsPage(self.node)
+
+    def get_grid_card_component(self) -> GridCardComponent:
+        if not self._grid_card_component:
+            node = self.node.find_element(*GRID_CARD_COMPONENT)
+            self._grid_card_component = GridCardComponent(node)
+        return self._grid_card_component
+
+    def get_close_btn(self):
+        return self.node.find_element(*CLOSE_BTN)
+
+    def click_close_btn(self):
+        from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
+        self.get_close_btn().click()
         return OfferDetailsPage(self.node)
