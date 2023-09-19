@@ -23,6 +23,9 @@ class CollapseItem(BaseComponent):
 
     def get_description_text(self) -> str:
         return self.get_description().text
+    def get_color_of_title(self):
+        return self.node.find_element(*TITLE_COLLAPSE_ITEM).value_of_css_property("color")
+
 
     def is_expanded(self) -> bool:
         aria_expanded = self.node.find_element(By.XPATH, ".//div[@aria-expanded]").get_attribute("aria-expanded")

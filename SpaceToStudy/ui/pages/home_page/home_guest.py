@@ -7,6 +7,7 @@ from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.home_page.card_component_for_guest import CardComponent
 from SpaceToStudy.ui.pages.home_page.collapse_item import CollapseItem
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_guest import HowItWorksComponent
+from SpaceToStudy.ui.pages.home_page.who_we_are_block import WhoWeAreBlock
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 
 COLLAPSE_BLOCK_ITEMS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div")
@@ -35,6 +36,9 @@ MAIN_BANNER = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
 SIGN_UP_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div")
 
 COLLAPSE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div")
+
+WHO_WE_ARE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[4]")
+
 
 
 class HomePageGuest(BasePage):
@@ -71,6 +75,7 @@ class HomePageGuest(BasePage):
             for collapse_item in _collapse_items:
                 self._collapse_items.append(CollapseItem(collapse_item))
         return self._collapse_items
+
 
     def get_flexible_location(self) -> CollapseItem:
         if not self._flexible_location:
@@ -155,6 +160,10 @@ class HomePageGuest(BasePage):
             self._card_learn_from_experts = CardComponent(self.driver.find_element(*CARD_COMPONENT_LEARN_FROM_EXPERTS))
         return self._card_learn_from_experts
 
+    def click_become_a_student(self) -> RegistrationModal:
+        self.get_card_learn_from_experts().click_btn()
+        return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
+
     def get_card_share_your_experience(self) -> CardComponent:
         if not self._card_share_your_experience:
             self._card_share_your_experience = CardComponent(self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE))
@@ -166,10 +175,6 @@ class HomePageGuest(BasePage):
 
     def get_text_button_get_started_for_free(self) -> str:
         return self.get_button_get_started_for_free().text
-
-    def click_button_get_started_for_free(self):
-        self.get_button_get_started_for_free().click()
-        return self
 
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
@@ -203,3 +208,8 @@ class HomePageGuest(BasePage):
             self._main_banner = self.driver.find_element(*MAIN_BANNER)
         return self._main_banner
 
+    def get_who_we_are_block(self) -> WhoWeAreBlock:
+        if not self._who_we_are_block:
+            node = self.driver.find_element(*WHO_WE_ARE_BLOCK)
+            self._who_we_are_block = WhoWeAreBlock(node)
+        return self._who_we_are_block
