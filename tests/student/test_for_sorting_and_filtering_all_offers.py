@@ -1,8 +1,4 @@
-from time import sleep
-
-from selenium.webdriver.common.by import By
-
-from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage, LIST_OF_OFFERS
+from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 
@@ -232,4 +228,11 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
             .get_filtering_and_sorting_block()\
             .get_filters_sidebar_component()\
             .click_clear_filters_btn()\
-            .click_close_button()
+            .click_apply_filters_btn()
+
+        # Check that the number of filtered offers is not displayed
+        filter_quantity = explore_offers_page \
+            .get_filtering_and_sorting_block() \
+            .check_filter_quantity_is_visible()
+        self.assertFalse(filter_quantity)
+
