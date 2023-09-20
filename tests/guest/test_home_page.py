@@ -87,8 +87,6 @@ class HomePageTestCase(BaseTestRunner):
         width = width_block.size['width']
         self.assertEqual(540, width)
 
-
-
     def test_the_collapse_block_ui_text(self):
         flexible_location = "Flexible Location"
         individual_time = "Individual Time"
@@ -99,22 +97,22 @@ class HomePageTestCase(BaseTestRunner):
         title_fl = (HomePageGuest(self.driver)
                     .get_flexible_location()
                     .get_title())
-        self.assertIn(flexible_location, title_fl)
+        self.assertEqual(flexible_location, title_fl)
         description_fl = (HomePageGuest(self.driver)
                           .get_flexible_location().get_description())
-        self.assertIn(description_fl, description)
+        self.assertEqual(description_fl, description)
         title_it = (HomePageGuest(self.driver)
                     .get_individual_time()
                     .get_title())
-        self.assertIn(individual_time, title_it)
+        self.assertEqual(individual_time, title_it)
         description_it = (HomePageGuest(self.driver)
                           .get_individual_time()
                           .get_description())
-        self.assertIn(description_it, description)
+        self.assertEqual(description_it, description)
         title_fc = (HomePageGuest(self.driver)
                     .get_free_choice_of_tutors()
                     .get_title())
-        self.assertIn(free_choice, title_fc)
+        self.assertEqual(free_choice, title_fc)
         description_fc = (HomePageGuest(self.driver)
                           .get_free_choice_of_tutors()
                           .get_description())
@@ -122,7 +120,7 @@ class HomePageTestCase(BaseTestRunner):
         title_dc = (HomePageGuest(self.driver)
                     .get_digital_communication()
                     .get_title())
-        self.assertIn(digital_communication, title_dc)
+        self.assertEqual(digital_communication, title_dc)
         description_dc = (HomePageGuest(self.driver)
                           .get_digital_communication()
                           .get_description())
