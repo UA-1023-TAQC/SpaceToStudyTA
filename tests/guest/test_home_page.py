@@ -58,55 +58,52 @@ class HomePageTestCase(BaseTestRunner):
         self.assertFalse(digital_communication_el, "Element is opened")
 
         # check if guest can open a description to any of four items in the list and change text color and background
-        (HomePageGuest(self.driver).get_collapse_list_items_block()[1].get_title().click())
-        background_color = (HomePageGuest(self.driver).get_individual_time()
+        (HomePageGuest(self.driver).click_individual_time())
+        background_color = (HomePageGuest(self.driver).get_individual_time().node
                             .value_of_css_property("background-color"))
         self.assertEqual("rgba(55, 71, 79, 1)", background_color)
         sleep(2)
         color_description = (HomePageGuest(self.driver)
-                             .get_collapse_list_items_block()[1]
-                             .get_description().value_of_css_property("color"))
+                             .get_individual_time()
+                             .get_color_of_description("color"))
         self.assertEqual("rgba(255, 255, 255, 1)", color_description)
         color_title = (HomePageGuest(self.driver)
-                       .get_collapse_list_items_block()[1]
-                       .get_title()
-                       .value_of_css_property("color"))
+                       .get_individual_time()
+                       .get_color_of_title())
         self.assertEqual("rgba(255, 255, 255, 1)", color_title)
         is_second_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
         for result in is_second_el_open[:1] + is_second_el_open[2:]:
             self.assertFalse(result.get_description().is_displayed(), "Element is selected")
 
-        (HomePageGuest(self.driver).get_collapse_list_items_block()[2].get_title().click())
+        (HomePageGuest(self.driver).click_free_choice_of_tutors())
         sleep(2)
-        background_color = (HomePageGuest(self.driver).get_free_choice_of_tutors()
+        background_color = (HomePageGuest(self.driver).get_free_choice_of_tutors().node
                             .value_of_css_property("background-color"))
         self.assertEqual("rgba(55, 71, 79, 1)", background_color)
         color_description = (HomePageGuest(self.driver)
-                             .get_collapse_list_items_block()[2]
-                             .get_description().value_of_css_property("color"))
+                             .get_free_choice_of_tutors()
+                             .get_color_of_description("color"))
         self.assertEqual("rgba(255, 255, 255, 1)", color_description)
         color_title = (HomePageGuest(self.driver)
-                       .get_collapse_list_items_block()[2]
-                       .get_title()
-                       .value_of_css_property("color"))
+                       .get_free_choice_of_tutors()
+                       .get_color_of_title())
         self.assertEqual("rgba(255, 255, 255, 1)", color_title)
         is_third_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
         for result in is_third_el_open[:2] + is_third_el_open[3:]:
             self.assertFalse(result.get_description().is_displayed(), "Element is selected")
 
-        (HomePageGuest(self.driver).get_collapse_list_items_block()[3].get_title().click())
+        (HomePageGuest(self.driver).click_digital_communication())
         sleep(2)
-        background_color = (HomePageGuest(self.driver).get_digital_communication()
+        background_color = (HomePageGuest(self.driver).get_digital_communication().node
                             .value_of_css_property("background-color"))
         self.assertEqual("rgba(55, 71, 79, 1)", background_color)
         color_description = (HomePageGuest(self.driver)
-                             .get_collapse_list_items_block()[3]
-                             .get_description().value_of_css_property("color"))
+                             .get_digital_communication()
+                             .get_color_of_description("color"))
         self.assertEqual("rgba(255, 255, 255, 1)", color_description)
         color_title = (HomePageGuest(self.driver)
-                       .get_collapse_list_items_block()[3]
-                       .get_title()
-                       .value_of_css_property("color"))
+                       .get_digital_communication()
+                       .get_color_of_title())
         self.assertEqual("rgba(255, 255, 255, 1)", color_title)
         is_fourth_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
         for result in is_fourth_el_open[:3]:

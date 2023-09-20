@@ -57,29 +57,41 @@ class HomePageGuest(BasePage):
         self._main_banner = None
         self._who_we_are_block = None
 
-    def get_flexible_location(self) -> WebElement:
-        return self.driver.find_element(*COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
+    def get_flexible_location(self) -> CollapseItem:
+        if not self._flexible_location:
+            _flexible_location = self.driver.find_element(*COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
+            self._flexible_location = CollapseItem(_flexible_location)
+        return self._flexible_location
 
     def click_flexible_location(self):
         self.get_flexible_location().click()
         return self
 
-    def get_individual_time(self) -> WebElement:
-        return self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
+    def get_individual_time(self) -> CollapseItem:
+        if not self._individual_time:
+            _individual_time = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
+            self._individual_time = CollapseItem(_individual_time)
+        return self._individual_time
 
     def click_individual_time(self):
         self.get_individual_time().click()
         return self
 
-    def get_free_choice_of_tutors(self) -> WebElement:
-        return self.driver.find_element(*COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS)
+    def get_free_choice_of_tutors(self) -> CollapseItem:
+        if not self._free_choice_of_tutors:
+            _free_choice_of_tutors = self.driver.find_element(*COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS)
+            self._free_choice_of_tutors = CollapseItem(_free_choice_of_tutors)
+        return self._free_choice_of_tutors
 
     def click_free_choice_of_tutors(self):
         self.get_free_choice_of_tutors().click()
         return self
 
-    def get_digital_communication(self) -> WebElement:
-        return self.driver.find_element(*COLLAPSE_BLOCK_DIGITAL_COMMUNICATION)
+    def get_digital_communication(self) -> CollapseItem:
+        if not self._digital_communication:
+            _digital_communication = self.driver.find_element(*COLLAPSE_BLOCK_DIGITAL_COMMUNICATION)
+            self._digital_communication = CollapseItem(_digital_communication)
+        return self._digital_communication
 
     def click_digital_communication(self):
         self.get_digital_communication().click()
