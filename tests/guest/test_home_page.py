@@ -202,10 +202,10 @@ class HomePageTestCase(BaseTestRunner):
                          .get_collapse_list_items_block()[3]
                          .get_background_el_with_tab()
                          .value_of_css_property("background-color"))
-        self.assertEqual("rgba(0, 0, 0, 0.12)", first_el_tab)
-        self.assertEqual("rgba(0, 0, 0, 0.12)", second_el_tab)
-        self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
-        self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
+        self.assertEqual(first_el_tab, "rgba(0, 0, 0, 0.12)")
+        self.assertEqual(second_el_tab, "rgba(0, 0, 0, 0.12)")
+        self.assertEqual(third_el_tab, "rgba(0, 0, 0, 0.12)")
+        self.assertEqual(fourth_el_tab, "rgba(0, 0, 0, 0.12)")
 
 
 
