@@ -8,7 +8,7 @@ from SpaceToStudy.ui.pages.explore_offers.inline_card_component import InlineCar
 # from SpaceToStudy.ui.pages.explore_offers.offer_and_request_component import OfferAndRequestComponent
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.explore_offers.student_private_lesson_component import StudentPrivateLessonComponent
-from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
+
 
 STUDENT_FOR_PRIVATE_LESSONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 
@@ -41,8 +41,6 @@ class ExploreOffersPage(BasePage):
         self._student_for_private_lessons_block = None
         self._search_by_tutor_name_block = None
         self._filtering_and_sorting_block = None
-        # self._offer_and_request_block = None
-        self._popular_categories_cards = None
 
     def get_student_for_private_lessons_block(self):
         node = self.driver.find_element(*STUDENT_FOR_PRIVATE_LESSONS_BLOCK)
@@ -81,14 +79,6 @@ class ExploreOffersPage(BasePage):
     #         for element in navigate_links:
     #             self._offer_and_request_block.append(OfferAndRequestComponent(element))
     #     return self._offer_and_request_block
-
-    def get_popular_categories_cards(self) -> tuple[CategoryComponent]:
-        if self._popular_categories_cards is None:
-            navigate_links = self.driver.find_elements(*OFFER_AND_REQUEST_BLOCK)
-            self._popular_categories_cards = []
-            for element in navigate_links:
-                self._popular_categories_cards.append(CategoryComponent(element))
-        return self._popular_categories_cards
 
     def get_go_to_categories_btn(self) -> WebElement:
         return self.driver.find_element(*GO_TO_CATEGORIES_BTN)
