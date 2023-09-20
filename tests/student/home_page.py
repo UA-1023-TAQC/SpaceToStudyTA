@@ -31,6 +31,9 @@ class TestHomePageStudent(TestRunnerWithStudent):
                          .get_list_of_offers_grid_card())
         for result in search_result:
             self.assertIn("CYBERSECURITY", result.get_subject_label())
+        count_of_filters = (ExploreOffersPage(self.driver)
+                                   .get_filtering_and_sorting_block()
+                                   .get_filter_quantity_number())
         tutors_offers_is_active = (ExploreOffersPage(self.driver)
                                    .get_filtering_and_sorting_block()
                                    .get_tutors_offers()
@@ -39,5 +42,6 @@ class TestHomePageStudent(TestRunnerWithStudent):
                                            .get_filtering_and_sorting_block()
                                            .get_students_requests()
                                            .value_of_css_property("color"))
+        self.assertEqual(count_of_filters, 1)
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)")
