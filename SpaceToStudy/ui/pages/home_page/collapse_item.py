@@ -18,7 +18,7 @@ class CollapseItem(BaseComponent):
     def get_color_of_title(self):
         return self.node.find_element(*TITLE_COLLAPSE_ITEM).value_of_css_property("color")
 
-    def get_color_of_description(self, value):
+    def get_description_value_of_css(self, value):
         return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).value_of_css_property(value)
 
     def get_description(self) -> str:
