@@ -55,15 +55,15 @@ class EnrollStudentsOffer(TestRunnerWithStudent):
         (OfferDetailsPage(self.driver).get_offer_inline_card_component()
          .click_enroll_offer_btn())
 
-        default_price = EnrollOfferModal(self.driver).get_current_price_label()
+        default_price = EnrollOfferModal(self.driver).get_current_price_value()
         self.assertEqual(default_price, 500.1, "Actual prices not equal!")
 
         EnrollOfferModal(self.driver).set_lowest_price()
-        lowest_price = EnrollOfferModal(self.driver).get_current_price_label()
+        lowest_price = EnrollOfferModal(self.driver).get_current_price_value()
         self.assertEqual(lowest_price, 375, "Min prices not equal!")
 
         EnrollOfferModal(self.driver).set_highest_price()
-        highest_price = EnrollOfferModal(self.driver).get_current_price_label()
+        highest_price = EnrollOfferModal(self.driver).get_current_price_value()
         self.assertEqual(highest_price, 625, "Max prices not equal!")
 
     def test_set_price_using_slider(self):
@@ -77,7 +77,7 @@ class EnrollStudentsOffer(TestRunnerWithStudent):
          .click_enroll_offer_btn())
 
         EnrollOfferModal(self.driver).drag_price_slider_to_value(600)
-        default_price = EnrollOfferModal(self.driver).get_current_price_label()
+        default_price = EnrollOfferModal(self.driver).get_current_price_value()
         self.assertEqual(default_price, 600, "Actual prices not equal!")
 
     def test_set_price_moving_slider_left(self):
@@ -91,7 +91,7 @@ class EnrollStudentsOffer(TestRunnerWithStudent):
          .click_enroll_offer_btn())
 
         EnrollOfferModal(self.driver).drag_price_slider_left(10)
-        default_price = EnrollOfferModal(self.driver).get_current_price_label()
+        default_price = EnrollOfferModal(self.driver).get_current_price_value()
         self.assertEqual(default_price, 490, "Actual prices not equal!")
 
     def test_set_price_moving_slider_right(self):
@@ -105,7 +105,7 @@ class EnrollStudentsOffer(TestRunnerWithStudent):
          .click_enroll_offer_btn())
 
         EnrollOfferModal(self.driver).drag_price_slider_right(60)
-        default_price = EnrollOfferModal(self.driver).get_current_price_label()
+        default_price = EnrollOfferModal(self.driver).get_current_price_value()
         self.assertEqual(default_price, 560, "Actual prices not equal!")
 
     if __name__ == '__main__':

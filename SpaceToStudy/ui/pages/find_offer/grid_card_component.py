@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -29,65 +30,86 @@ class CardComponent(BaseComponent):
         super().__init__(node)
         self.node = node
 
+    @allure.step("Get sender avatar link")
     def get_sender_avatar_link(self) -> WebElement:
         return self.node.find_element(AVATAR_LINK)
 
+    @allure.step("Click sender avatar link")
     def click_sender_avatar_link(self):
         self.get_sender_avatar_link().click()
 
+    @allure.step("Get sender avatar")
     def get_sender_avatar(self) -> WebElement:
         return self.node.find_element(*AVATAR)
 
+    @allure.step("Get sender nickname text")
     def get_sender_nickname_text(self) -> str:
         return self.node.find_element(*NICKNAME_TEXT).text
 
+    @allure.step("Get title text")
     def get_title_text(self) -> str:
         return self.node.find_element(*TITLE).text
 
+    @allure.step("Get subject text")
     def get_subject_text(self) -> str:
         return self.node.find_element(*SUBJECT).text
 
+    @allure.step("Get subject element")
     def get_subject_element(self) -> WebElement:
         return self.node.find_element(*SUBJECT)
 
+    @allure.step("Get skill level text")
     def get_skill_level_text(self) -> str:
         return self.node.find_element(*SKILL_LEVEL).text
 
+    @allure.step("Get skill level element")
     def get_skill_level_element(self) -> WebElement:
         return self.node.find_element(*SKILL_LEVEL)
 
+    @allure.step("Get price text")
     def get_price_text(self) -> str:
         return self.node.find_element(*PRICE).text
 
+    @allure.step("Get duration text")
     def get_duration_text(self) -> str:
         return self.node.find_element(*DURATION).text
 
+    @allure.step("Get view details link")
     def get_view_details_link(self) -> WebElement:
         return self.node.find_element(*VIEW_DETAILS_LINK)
 
+    @allure.step("Click view details link")
     def click_view_details_link(self):
         self.get_view_details_link().click()
 
+    @allure.step("Get view details button")
     def get_view_details_button(self) -> WebElement:
         return self.node.find_element(*VIEW_DETAILS_BUTTON)
 
+    @allure.step("Get add to favorite button")
     def get_add_to_favorite_button(self) -> WebElement:
         return self.node.find_element(*ADD_TO_FAVORITE_BUTTON)
 
+    @allure.step("Click add to favorite button")
     def click_add_to_favorite_button(self):
         self.get_add_to_favorite_button().click()
 
+    @allure.step("Get send message button")
     def get_send_massage(self) -> WebElement:
         return self.node.find_element(*SEND_MESSAGE_BUTTON)
 
+    @allure.step("Click send message button")
     def click_send_massage(self):
         self.get_send_massage().click()
 
+    @allure.step("Get stars icon")
     def get_stars_icon(self) -> WebElement:
         return self.node.find_element(*STAR_ICON)
 
+    @allure.step("Get review counter text")
     def get_review_counter_text(self) -> str:
         return self.node.find_element(*REVIEW_COUNTER).text
 
+    @allure.step("get rating text")
     def get_rating_text(self) -> str:
         return self.node.find_element(*RATING_NUMBER).text

@@ -1,7 +1,7 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-
+from selenium.webdriver.support import expected_conditions as EC
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 
@@ -31,7 +31,6 @@ class BasePage:
         self.driver.get(url)
 
     def hover(self, hover_el):
-        from selenium.webdriver.support import expected_conditions as EC
         actions = ActionChains(self.driver)
         actions.move_to_element(hover_el).perform()
         wait = WebDriverWait(self.driver, 10)

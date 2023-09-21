@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -11,10 +12,12 @@ class Chip(BaseElement):
         super().__init__(node)
         self._name = None
 
+    @allure.step("Get text chip element")
     def get_chip_name(self) -> str:
         if not self._name:
             self._name = self.node.find_element(*NAME)
         return self._name.text
 
+    @allure.step("Click chip element")
     def click_close_btn(self):
         self.node.find_element(*CLOSE_BTN).click()
