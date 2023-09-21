@@ -222,6 +222,30 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(236, 239, 241, 1)", hover_third_el)
         self.assertEqual("rgba(55, 71, 79, 1)", background_fourth_el)
 
+    def test_the_collapse_block_ui_resize(self):
+        HomePageGuest(self.driver).set_size_window(899, 1080)
+        width_tablet = (HomePageGuest(self.driver).get_collapse_block().size['width'])
+        self.assertEqual(229, width_tablet)
+
+        (HomePageGuest(self.driver).set_size_window(599, 1080))
+        sleep(3)
+        width_mobile = (
+            HomePageGuest(self.driver).get_collapse_list_items_block_mobile_size_screen()[0].node.size['width'])
+        self.assertEqual(544, width_mobile)
+
+        is_hidden_first_el = (HomePageGuest(self.driver)
+                              .get_collapse_list_items_block_mobile_size_screen()[0].node.get_attribute("aria-hidden"))
+        is_hidden_second_el = (HomePageGuest(self.driver)
+                               .get_collapse_list_items_block_mobile_size_screen()[1].node.get_attribute("aria-hidden"))
+        is_hidden_third_el = (HomePageGuest(self.driver)
+                              .get_collapse_list_items_block_mobile_size_screen()[2].node.get_attribute("aria-hidden"))
+        is_hidden_fourth_el = (HomePageGuest(self.driver)
+                               .get_collapse_list_items_block_mobile_size_screen()[3].node.get_attribute("aria-hidden"))
+        self.assertEqual("false", is_hidden_first_el, "First element is hidden")
+        self.assertTrue(is_hidden_second_el, "Second element is not hidden")
+        self.assertTrue(is_hidden_third_el, "Third element is not hidden")
+        self.assertTrue(is_hidden_fourth_el, "Fourth element is not hidden")
+
     def test_the_collapse_block_ui_tab(self):
         # check tab
         (HeaderUnauthorizedComponent(self.driver).tab_key(6))
@@ -252,7 +276,3 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(0, 0, 0, 0.12)",second_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
-
-
-
-

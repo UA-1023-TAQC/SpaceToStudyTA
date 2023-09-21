@@ -12,6 +12,7 @@ from SpaceToStudy.ui.pages.home_page.who_we_are_block import WhoWeAreBlock
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 
 COLLAPSE_BLOCK_ITEMS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div")
+COLLAPSE_BLOCK_ITEMS_MOBILE = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/div/div")
 
 COLLAPSE_BLOCK_FLEXIBLE_LOCATION = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]")
 COLLAPSE_BLOCK_INDIVIDUAL_TIME = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div/div[2]")
@@ -65,6 +66,7 @@ class HomePageGuest(BasePage):
         self._main_banner = None
         self._collapse_items = None
         self._collapse_block = None
+        self._collapse_items_mobile = None
 
     @allure.step("Get collapse block")
     def get_collapse_block(self) -> WebElement:
@@ -80,6 +82,17 @@ class HomePageGuest(BasePage):
             for collapse_item in _collapse_items:
                 self._collapse_items.append(CollapseItem(collapse_item))
         return self._collapse_items
+
+
+    def get_collapse_list_items_block_mobile_size_screen(self) -> list[CollapseItem]:
+        if self._collapse_items_mobile is None:
+            _collapse_items_mobile = self.driver.find_elements(*COLLAPSE_BLOCK_ITEMS_MOBILE)
+            self._collapse_items_mobile = []
+            for collapse_item in _collapse_items_mobile:
+                self._collapse_items_mobile.append(CollapseItem(collapse_item))
+        return self._collapse_items_mobile
+
+
 
     @allure.step("Get flexible location")
     def get_flexible_location(self) -> CollapseItem:
