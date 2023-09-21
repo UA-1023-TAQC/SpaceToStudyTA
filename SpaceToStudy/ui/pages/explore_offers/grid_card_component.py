@@ -5,19 +5,19 @@ from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 
 PERSON_ICON = (By.XPATH, './div/div[1]/div[1]/a/div/svg')
-PERSON_NAME = (By.XPATH, './div/div[1]/div[1]/div/a/p')
-ADD_TO_BOOKMARKS_BTN = (By.XPATH, './div/div[1]/button')
-LANGUAGES = (By.XPATH, './div/div[1]/div[1]/div/div/p')
-OFFER_TITLE = (By.XPATH, './div/div[1]/p')
-SUBJECT_LABEL = (By.XPATH, './div/div[1]/div[2]/div[2]/div[1]/span/p')
-LEVEL_LABEL = (By.XPATH, './div/div[1]/div[2]/div[2]/div[2]/span/p')
+PERSON_NAME = (By.XPATH, './div/div/div/a/p')
+ADD_TO_BOOKMARKS_BTN = (By.XPATH, './div/div/div[1]/button')
+LANGUAGES = (By.XPATH, './div/div[2]/div[2]/p')
+OFFER_TITLE = (By.XPATH, './div/div[2]/h6')
+SUBJECT_LABEL = (By.XPATH, './div/div[2]/div/div[1]/span/p')
+LEVEL_LABEL = (By.XPATH, './div/div[2]/div/div[2]/span/p')
 
-PRICE_VALUE = (By.XPATH, './div/div[2]/div[1]/div[1]/p')
-PRICE_PERIOD = (By.XPATH, './div/div[2]/div[1]/div[1]/span')
+PRICE_VALUE = (By.XPATH, './div/div[3]/div/div/h6')
+PRICE_PERIOD = (By.XPATH, './div/div[3]/div/div/p')
 
-STAR_ICON = (By.XPATH, './/*[@data-testid="star-icon"]')
-RATING_VALUE = (By.XPATH, './div/div[2]/div[1]/div[2]/div/p')
-REVIEWS_LINE = (By.XPATH, './div/div[2]/div[1]/div[2]/p')
+STAR_ICON = (By.XPATH, './/*[@data-testid="app-rating"]')
+RATING_VALUE = (By.XPATH, './/*[@data-testid="app-rating"]/span[2]')
+REVIEWS_LINE = (By.XPATH, './div/div/div[1]/p')
 
 VIEW_DETAILS_BTN = (By.XPATH, '//a[contains(text(), "View details")]')
 SEND_MESSAGE_BTN = (By.XPATH, '//button[contains(text(), "Send message")]')
