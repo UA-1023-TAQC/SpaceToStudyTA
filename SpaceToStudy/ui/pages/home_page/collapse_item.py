@@ -31,5 +31,9 @@ class CollapseItem(BaseComponent):
         aria_expanded = self.node.find_element(By.XPATH, ".//div[@aria-expanded]").get_attribute("aria-expanded")
         return aria_expanded == "true"
 
+    def is_aria_hidden(self) -> bool:
+        aria_hidden = self.node.find_element(By.XPATH, ".//div[@aria-hidden]").get_attribute("aria-hidden")
+        return aria_hidden == "true"
+
     def click(self):
         self.node.click()

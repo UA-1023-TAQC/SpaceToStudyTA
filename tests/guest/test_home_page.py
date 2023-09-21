@@ -223,3 +223,27 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(236, 239, 241, 1)", hover_third_el)
         self.assertEqual("rgba(55, 71, 79, 1)", background_fourth_el)
 
+    def test_the_collapse_block_ui_resize(self):
+        (HomePageGuest(self.driver).driver.set_window_size(820, 1080))
+        width_tablet = (HomePageGuest(self.driver).get_collapse_block().size['width'])
+        self.assertEqual(229, width_tablet)
+
+        (HomePageGuest(self.driver).driver.set_window_size(599, 1080))
+        sleep(3)
+        width_mobile = (
+            HomePageGuest(self.driver).get_collapse_list_items_block_mobile_size_screen()[0].node.size['width'])
+        self.assertEqual(544, width_mobile)
+
+        is_hidden_first_el = (HomePageGuest(self.driver)
+                              .get_collapse_list_items_block_mobile_size_screen()[0].node.get_attribute("aria-hidden"))
+        is_hidden_second_el = (HomePageGuest(self.driver)
+                               .get_collapse_list_items_block_mobile_size_screen()[1].node.get_attribute("aria-hidden"))
+        is_hidden_third_el = (HomePageGuest(self.driver)
+                              .get_collapse_list_items_block_mobile_size_screen()[2].node.get_attribute("aria-hidden"))
+        is_hidden_fourth_el = (HomePageGuest(self.driver)
+                               .get_collapse_list_items_block_mobile_size_screen()[3].node.get_attribute("aria-hidden"))
+        self.assertFalse(is_hidden_first_el, "Element is hidden")
+        self.assertTrue(is_hidden_second_el, "Element not hidden")
+        self.assertTrue(is_hidden_third_el, "Element not hidden")
+        self.assertTrue(is_hidden_fourth_el, "Element not hidden")
+
