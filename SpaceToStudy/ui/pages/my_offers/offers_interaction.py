@@ -13,10 +13,6 @@ SORT = (By.XPATH, "./div[2]/div[1]/div/div/div")
 
 
 class OffersInteraction(BaseComponent):
-    @allure.step("Init an offer interaction component for My Offers page")
-    def __init__(self, node):
-        self.node = node
-
     @allure.step("Get the search input area 'Search user name or title' on the My Offers page")
     def get_search_input(self) -> WebElement:
         return self.node.find_element(*SEARCH_INPUT)
@@ -29,7 +25,7 @@ class OffersInteraction(BaseComponent):
     def get_grid_btn(self) -> WebElement:
         return self.node.find_element(*GRID_BTN)
 
-    @allure.step("Set an input data in the search area 'Search user name or title' on the My Offers page")
+    @allure.step("Set an input data {text} in the search area 'Search user name or title' on the My Offers page")
     def set_search(self, text):
         self.get_search_input().send_keys(text)
 
