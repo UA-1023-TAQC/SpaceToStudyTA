@@ -8,10 +8,6 @@ VIEW_DETAILS_BTN_GRID = (By.XPATH, "./a")
 
 
 class ActionsBtnGrid:
-    @allure.step("Init a hamburger navigation of the Actions for an offer in the my offers table")
-    def __init__(self, node):
-        self.node = node
-
     @allure.step("Get 'Edit offer' option in the offer Actions hamburger navigation in the my offers table")
     def get_edit_btn_grid(self) -> WebElement:
         return self.node.find_element(*EDIT_BTN_GRID)

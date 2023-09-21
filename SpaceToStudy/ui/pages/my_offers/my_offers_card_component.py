@@ -9,7 +9,6 @@ PRICE = (By.XPATH, "./div[3]/div/p")
 
 
 class OffersCardComponent(BaseComponent):
-    @allure.step("Init an offer card component when offers are displayed in a card format on the My Offers page")
     def __init__(self, node: WebElement):
         super().__init__(node)
         self._price = None
