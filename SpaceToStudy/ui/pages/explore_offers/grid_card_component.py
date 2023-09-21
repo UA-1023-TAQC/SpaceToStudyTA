@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -27,66 +28,83 @@ class GridCardComponent(BaseComponent):
     def __init__(self, node):
         super().__init__(node)
 
+    @allure.step("Get person's icon")
     def get_person_icon(self) -> WebElement:
         return self.node.find_element(*PERSON_ICON)
 
+    @allure.step("Click on the person's icon")
     def click_person_icon(self):
         self.get_person_icon().click()
 
+    @allure.step("Get person's name")
     def get_person_name(self):
         return self.node.find_element(*PERSON_NAME)
 
+    @allure.step("Get text of person's name")
     def get_person_name_text(self) -> str:
         return self.node.find_element(*PERSON_NAME).text
 
+    @allure.step("Click on person's name")
     def click_person_name(self):
         self.get_person_name().click()
 
+    @allure.step("Get add to bookmarks button")
     def get_add_to_bookmarks_btn(self):
         return self.node.find_element(*ADD_TO_BOOKMARKS_BTN)
 
+    @allure.step("Click on the add to bookmarks button")
     def click_add_to_bookmarks_btn(self):
         self.get_add_to_bookmarks_btn().click()
         return self
 
+    @allure.step("Get languages as a text")
     def get_languages(self) -> str:
         return self.node.find_element(*LANGUAGES).text
 
+    @allure.step("Get offer title as a text")
     def get_offer_title(self) -> str:
         return self.node.find_element(*OFFER_TITLE).text
 
+    @allure.step("Get subject label as a text")
     def get_subject_label(self) -> str:
         return self.node.find_element(*SUBJECT_LABEL).text
 
+    @allure.step("Get level label as a text")
     def get_level_label(self) -> str:
         return self.node.find_element(*LEVEL_LABEL).text
 
+    @allure.step("Get price value")
     def get_price_value(self) -> str:
         return self.node.find_element(*PRICE_VALUE).text
 
+    @allure.step("Get period for price as a text")
     def get_period_for_price(self) -> str:
         return self.node.find_element(*PRICE_PERIOD).text
 
-    def get_price_period(self) -> str:
-        return self.node.find_element(*PRICE_PERIOD).text
-
+    @allure.step("Get star icon")
     def get_star_icon(self) -> WebElement:
         return self.node.find_element(*STAR_ICON)
 
+    @allure.step("Get rating value as a text")
     def get_rating_value(self) -> str:
         return self.node.find_element(*RATING_VALUE).text
 
+    @allure.step("Get reviews line as a text")
     def get_reviews_line(self) -> str:
         return self.node.find_element(*REVIEWS_LINE).text
 
+    @allure.step("Get view details button")
     def get_view_details_btn(self) -> WebElement:
         return self.node.find_element(*VIEW_DETAILS_BTN)
 
+    @allure.step("Click on the view details button")
     def click_view_details_btn(self):
         self.get_view_details_btn().click()
 
+    @allure.step("Get send message button")
     def get_send_message_btn(self) -> WebElement:
         return self.node.find_element(*SEND_MESSAGE_BTN)
 
+    @allure.step("Click on the send message button")
     def click_send_message_btn(self):
         self.get_send_message_btn().click()
