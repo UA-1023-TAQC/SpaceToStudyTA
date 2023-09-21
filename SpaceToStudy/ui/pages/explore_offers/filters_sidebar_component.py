@@ -111,7 +111,7 @@ class FiltersSidebarComponent(BaseComponent):
             self._list_of_languages.append(language.text)
         return self._list_of_languages
 
-    @allure.step("Set language input")
+    @allure.step("Set {language} input")
     def set_language_input(self, language):
         languages = self.node.find_elements(*LANGUAGE_LIST)
         for item in languages:
@@ -143,21 +143,21 @@ class FiltersSidebarComponent(BaseComponent):
         return float(self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT)
                      .get_attribute('value'))
 
-    @allure.step("Set the lowest value input")
+    @allure.step("Set the lowest {value} input")
     def set_lowest_value_input(self, value):
         self.node.find_element(*PRICE_LOWEST_VALUE_INPUT) \
             .send_keys(Keys.CONTROL + "a" + Keys.BACKSPACE)
         self.node.find_element(*PRICE_LOWEST_VALUE_INPUT).send_keys(value)
         return self
 
-    @allure.step("Set the highest value input")
+    @allure.step("Set the highest {value} input")
     def set_highest_value_input(self, value):
         self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT)\
             .send_keys(Keys.CONTROL + "a" + Keys.BACKSPACE)
         self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT).send_keys(value)
         return self
 
-    @allure.step("Drag left slider")
+    @allure.step("Drag left slider by {pixels_to_the_right} pixels")
     def drag_left_slider(self, pixels_to_the_right):
         slider = self.node.find_element(*PRICE_LEFT_SLIDER)
         ActionChains(self.node.parent) \
@@ -165,7 +165,7 @@ class FiltersSidebarComponent(BaseComponent):
             .perform()
         return self
 
-    @allure.step("Drag right slider")
+    @allure.step("Drag right slider by {pixels_to_the_left} pixels")
     def drag_right_slider(self, pixels_to_the_left):
         slider = self.node.find_element(*PRICE_RIGHT_SLIDER)
         ActionChains(self.node.parent) \
@@ -193,7 +193,7 @@ class FiltersSidebarComponent(BaseComponent):
         self.node.find_element(*RATING_3_AND_ABOVE_RADIOBTN).click()
         return self
 
-    @allure.step("Set search by name input")
+    @allure.step("Set search by {name} input")
     def set_search_by_name_input(self, name):
         self.node.find_element(*SEARCH_BY_NAME_INPUT).send_keys(name)
         return self
