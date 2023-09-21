@@ -96,7 +96,7 @@ class MyResourcesPage(BasePage):
     def get_search_lessons_input(self) -> WebElement:
         return self.driver.find_element(*SEARCH_LESSONS_INPUT)
 
-    @allure.step("Set search lessons input")
+    @allure.step("Set search lessons input: '{text}'")
     def set_search_lessons_input(self, text):
         self.get_search_lessons_input().send_keys(text)
 
