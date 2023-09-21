@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -17,16 +18,19 @@ class InfoComponentManyValues(BaseComponent):
         self._img = None
         self._values = None
 
+    @allure.step("Get title of component in 'General information' on offer details page")
     def get_title(self) -> str:
         if not self._title:
             self._title = self.node.find_element(*TITLE)
         return self._title.text
 
+    @allure.step("Get image of component in 'General information' on offer details page")
     def get_img(self) -> WebElement:
         if not self._img:
             self._img = self.node.find_element(*IMG)
         return self._img
 
+    @allure.step("Get list of component values in 'General information' on offer details page")
     def get_values(self) -> list[Value]:
         if not self._values:
             value = self.node.find_elements(*VALUES)
