@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -13,6 +14,7 @@ class HeaderAuthorizedComponent(HeaderComponent):
         super().__init__(node)
         self._user_menu = None
 
+    @allure.step("Get elements user menu")
     def get_user_menu(self):
         node = self.node.find_element(*USER_MENU)
         if not self._user_menu:
