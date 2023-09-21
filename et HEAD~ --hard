@@ -1,0 +1,3614 @@
+[33mcommit d5c09d8505aa6aa68451cf262c6e216ff632fde6[m[33m ([m[1;36mHEAD -> [m[1;32mtest_the_collapse_block_ui_interaction[m[33m, [m[1;31morigin/test_the_collapse_block_ui_interaction[m[33m)[m
+Merge: afe8c02 2aa4424
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 21 21:43:25 2023 +0300
+
+    resolve conflicts
+
+[33mcommit 2aa44248fc2571c961cc550bb9d0caf47e874b8b[m[33m ([m[1;32mdevelop[m[33m)[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:59:14 2023 +0300
+
+    fix
+
+[33mcommit 7eac20d31b452f9efc2490673c601508bc55c287[m
+Merge: 91ca67b 4953999
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:54:20 2023 +0300
+
+    Merge pull request #277 from UA-1023-TAQC/237-make-allure-steps-18
+    
+    237 make allure steps 18
+
+[33mcommit 49539990ee53ffcdf24cdc52fd653234fa167867[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Thu Sep 21 14:53:05 2023 +0300
+
+    Deleted init
+
+[33mcommit 91ca67b3e9ea0185b3f2385b1bbabd34523a0259[m
+Merge: 3fe02bd e0dfa89
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:51:51 2023 +0300
+
+    Merge pull request #278 from UA-1023-TAQC/218-verify-that-a-student-can-see-all-tutors-offers-at-the-home-page
+    
+    Add test_student_can_see_tutors_offers_at_the_home_page
+
+[33mcommit e0dfa89db8b2ac485ec16febbf66517bf262fee3[m
+Merge: 94e1711 3fe02bd
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:51:12 2023 +0300
+
+    Merge branch 'develop' into 218-verify-that-a-student-can-see-all-tutors-offers-at-the-home-page
+    
+    # Conflicts:
+    #       tests/student/home_page.py
+
+[33mcommit 3fe02bd682e1dc1bfe5e598419fe00bb90e295c4[m
+Merge: 3805675 dd629c1
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:49:00 2023 +0300
+
+    Merge pull request #270 from UA-1023-TAQC/Verify_that_a_Student_can_find_a_tutor_or_Categorie/Subject_by_name_at_the_welcoming_block
+    
+    Verify that a student can find a tutor by name at the welcoming block
+
+[33mcommit dd629c1869e398a547da1eaa085e9ccd3819b3d4[m
+Merge: 79576b5 3805675
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:48:19 2023 +0300
+
+    Merge branch 'develop' into Verify_that_a_Student_can_find_a_tutor_or_Categorie/Subject_by_name_at_the_welcoming_block
+
+[33mcommit 38056751cf8e200f3118d84dfa663ee97b0ccd6f[m
+Merge: 2b0684e 60a897c
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:47:42 2023 +0300
+
+    Merge pull request #279 from UA-1023-TAQC/238-make-allure-steps-19
+    
+    238 make allure steps 19
+
+[33mcommit 2b0684ea746c4b475fed6fc40c00d9c74ba3eac0[m
+Merge: fbd5a57 36a9a9b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:47:08 2023 +0300
+
+    Merge pull request #280 from UA-1023-TAQC/Resolve_problem_in_Make_allure_steps_23_#242
+    
+    small fix
+
+[33mcommit 60a897c2e1b5a2905b99d1767ebe8cfda70d6528[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Thu Sep 21 14:42:35 2023 +0300
+
+    Deleted init, added text param, added the parent to OfferElements class, renamed variables SUBJECT and SKILL_LEVEL
+
+[33mcommit 36a9a9b7e5b0cbc4932da52af10eb1559fda1bdd[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Thu Sep 21 14:40:20 2023 +0300
+
+    small fix
+
+[33mcommit fbd5a57177285a5b0d9be16e8a0715f5c9d9eae1[m
+Merge: 5a5f36c 7b3311c
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:38:03 2023 +0300
+
+    Merge pull request #276 from UA-1023-TAQC/240-make-allure-steps-21
+    
+    Added allure steps 21
+
+[33mcommit 5a5f36cc0825d2b0484fc8b27d5a4a193c9c43ee[m
+Merge: 8b30e78 7950580
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:37:24 2023 +0300
+
+    Merge pull request #274 from UA-1023-TAQC/236-make-allure-steps-17
+    
+    236 make allure steps 17
+
+[33mcommit 8b30e78ee0bce4e52f58389bb797a9bf345fc098[m
+Merge: e7e0a1f 71aa0ab
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:36:48 2023 +0300
+
+    Merge pull request #272 from UA-1023-TAQC/make_allure_steps_7
+    
+    Added allure steps 7
+
+[33mcommit e7e0a1fc81641538dc441611d0b40c3774b00846[m
+Merge: e1ffa59 0e7c17d
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:35:20 2023 +0300
+
+    Merge pull request #271 from UA-1023-TAQC/make_allure_steps_5
+    
+    Added allure steps 5
+
+[33mcommit e1ffa5949f7835a87a23e1c3c7d6668ddbfa5e9f[m
+Merge: c790f9b ae37abf
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:33:09 2023 +0300
+
+    Merge pull request #268 from UA-1023-TAQC/242-make-allure-steps-23
+    
+    Make allure steps 23 #242
+
+[33mcommit c790f9bbd7dca6589389e2e41015c5246d52bfe6[m
+Merge: be14831 185bf29
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:32:00 2023 +0300
+
+    Merge pull request #267 from UA-1023-TAQC/239-make-allure-steps-20
+    
+    Make allure steps 20 #239
+
+[33mcommit be148319c48eaa29f1e5c0ae53b270dd9a1cc71f[m
+Merge: 6c4edff 5dd3e50
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:31:28 2023 +0300
+
+    Merge pull request #262 from UA-1023-TAQC/make_allure_steps_6
+    
+    added allure steps 6
+
+[33mcommit 71aa0abefebc7165f03fe4ad64eeb05126f3b716[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Thu Sep 21 14:30:10 2023 +0300
+
+    modified titles
+
+[33mcommit 6c4edffeadf114686197e3fb1b7dddddc09ca593[m
+Merge: 25046e7 faf5131
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:23:43 2023 +0300
+
+    Merge pull request #266 from UA-1023-TAQC/232-make-allure-steps-13
+    
+    232 make allure steps 13
+
+[33mcommit 5dd3e5060c3dca745ddff67914d7bf66bf56ece3[m
+Merge: 71fd8d6 25046e7
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Thu Sep 21 14:20:14 2023 +0300
+
+    Merge branch 'develop' into make_allure_steps_6
+    
+    # Conflicts:
+    #       SpaceToStudy/ui/pages/explore_offers/filtering_and_sorting_component.py
+
+[33mcommit 71fd8d661c8e6635900bb7267924fba718dcfb77[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Thu Sep 21 14:14:11 2023 +0300
+
+    changed titles
+
+[33mcommit 25046e731c0d778a0307526c772b4b9eb473f6a2[m
+Merge: 0fdd688 7310b2e
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:07:31 2023 +0300
+
+    Merge pull request #265 from UA-1023-TAQC/231-make-allure-steps-12
+    
+    231 make allure steps 12
+
+[33mcommit 0fdd688b3d63f195078b12727c37c447e8f7b8e5[m
+Merge: ca4fd5d 5751e9b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:05:00 2023 +0300
+
+    Merge pull request #264 from UA-1023-TAQC/241-make-allure-steps-22
+    
+    Added allure steps 22
+
+[33mcommit ca4fd5d804ea1bed23250747e7cfefbc64447a38[m
+Merge: 77421b5 545638b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 14:04:27 2023 +0300
+
+    Merge pull request #263 from UA-1023-TAQC/227-make-allure-steps-8
+    
+    227 make allure steps 8
+
+[33mcommit 77421b5d84ef0bf565eb69c1eda42f77183a4928[m
+Merge: fec012d de88c5e
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:58:59 2023 +0300
+
+    Merge pull request #261 from UA-1023-TAQC/243-make-allure-steps-24
+    
+    Added allure steps 24
+
+[33mcommit fec012d30b125f472d3cdaf185623a76d77e853a[m
+Merge: 509f6d7 1ddb0e2
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:58:06 2023 +0300
+
+    Merge pull request #260 from UA-1023-TAQC/233-make-allure-steps-14
+    
+    Add allure steps 14
+
+[33mcommit 509f6d725ad23ff2561ef3a1a3aa525b7e1e4759[m
+Merge: 2ec6e9a f282161
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:57:17 2023 +0300
+
+    Merge pull request #255 from UA-1023-TAQC/Make-allure-steps-2
+    
+    Make allure steps 2
+
+[33mcommit 2ec6e9a0a3e0c676e4d727abc1fd02a091f94995[m
+Merge: 955aa8c 501272b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:56:40 2023 +0300
+
+    Merge pull request #247 from UA-1023-TAQC/125-filter-and-sorting-in-student-page-965-subtest-11
+    
+    125 filter and sorting in student page 965 subtest 11
+
+[33mcommit f282161e2ef68ec300580241e7d23fd79bf04205[m[33m ([m[1;31morigin/Make-allure-steps-2[m[33m, [m[1;32mMake-allure-steps-2[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 21 13:36:54 2023 +0300
+
+    update
+
+[33mcommit 955aa8c813d1f7bfb461c755cf7da0a9d49697e6[m
+Merge: b3ba15e 7628b40
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:31:52 2023 +0300
+
+    Merge pull request #254 from UA-1023-TAQC/Make-allure-steps-1
+    
+    Make allure steps 1
+
+[33mcommit b3ba15e8bea3e7a58bb035be3a52da34e91a15b9[m
+Merge: f5a02b2 d88b5fb
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:31:24 2023 +0300
+
+    Merge pull request #249 from UA-1023-TAQC/allure_steps_10
+    
+    added allure steps №10
+
+[33mcommit 7628b407dea42a57cbcb98dfafcfa91e56b7accb[m[33m ([m[1;31morigin/Make-allure-steps-1[m[33m, [m[1;32mMake-allure-steps-1[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 21 13:30:53 2023 +0300
+
+    update
+
+[33mcommit f5a02b25db101607ea61bf19528745127b38fd85[m
+Merge: 75de120 b085172
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:30:53 2023 +0300
+
+    Merge pull request #250 from UA-1023-TAQC/allure_steps_11
+    
+    added allure steps №11
+
+[33mcommit 75de120efd01a98938cbc5f47dad5e0d8690b04b[m
+Merge: d871147 67f4f3a
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:30:11 2023 +0300
+
+    Merge pull request #251 from UA-1023-TAQC/244-make-allure-steps-25
+    
+    Added allure steps 25
+
+[33mcommit d8711472df17898cc8f3c11ae3c8456668a3a182[m
+Merge: 8c64e9e 23b6fc2
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:29:35 2023 +0300
+
+    Merge pull request #252 from UA-1023-TAQC/245-make-allure-steps-26
+    
+    Added allure steps 26
+
+[33mcommit 8c64e9e8ea71e579e8fecee85d7c6957d3cf8189[m
+Merge: d6f528a 14785e6
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:28:48 2023 +0300
+
+    Merge pull request #253 from UA-1023-TAQC/235-make-allure-steps-16
+    
+    Add allure steps
+
+[33mcommit d6f528a2bb4f9feba37b7c6b0e060176155a8beb[m
+Merge: 1571fe6 05b54f1
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:27:21 2023 +0300
+
+    Merge pull request #258 from UA-1023-TAQC/test_search_field_find_by_title
+    
+    test_search_field_find_by_title
+
+[33mcommit 1571fe68b9d754e834feaff8c3c37d2e41e2723c[m
+Merge: 95de91f 0a1a4a8
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:26:34 2023 +0300
+
+    Merge pull request #257 from UA-1023-TAQC/234-make-allure-steps-15
+    
+    Add allure steps 15
+
+[33mcommit 95de91f4e3a586af28910bdba0614def3bfde0a4[m
+Merge: cb43095 47df0ec
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:25:54 2023 +0300
+
+    Merge pull request #256 from UA-1023-TAQC/Make-allure-steps-3
+    
+    Make allure steps 3
+
+[33mcommit cb43095a689f55b8f7a65914f1ed37f909965fe6[m
+Merge: a8f64a2 4ed0a08
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Thu Sep 21 13:21:12 2023 +0300
+
+    Merge pull request #248 from UA-1023-TAQC/allure_steps_9
+    
+    added allure steps №9
+
+[33mcommit e9b876f6f78662a3ec97c431a7c335e39228dc39[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Thu Sep 21 13:12:18 2023 +0300
+
+    Added allure steps into offers_table for My offers page
+
+[33mcommit a4cec1d94efe132dc09c6a5ac78d5590a3f8ce8e[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Thu Sep 21 12:55:38 2023 +0300
+
+    Added allure steps to offers_interaction
+
+[33mcommit afe8c020b51723ec3456b88fb9aea6e85752c25c[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 21 12:38:33 2023 +0300
+
+    update
+
+[33mcommit 94e1711f8ee37c97ad7eb7b0a09d3b1813ff524e[m
+Author: headles <bobzakon16@gmail.com>
+Date:   Thu Sep 21 12:33:08 2023 +0300
+
+    Add test_student_can_see_tutors_offers_at_the_home_page and updated xpath
+
+[33mcommit 9c1f9b138d6285670e9c1204e7640c81a7fcf5d0[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Thu Sep 21 12:23:16 2023 +0300
+
+    Added allure steps into my_offers_card_component
+
+[33mcommit 3be26450ee21765718660deec1e8e9c0926d3ead[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Thu Sep 21 12:15:51 2023 +0300
+
+    Added allure steps into dropdown_menu
+
+[33mcommit 4766d19ce3d65781625ec593f62729cae8386e44[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Thu Sep 21 12:01:17 2023 +0300
+
+    Added allure steps into actions_btn_grid
+
+[33mcommit 7b3311c226f88226bcf555e3714f143d8daa32a2[m
+Author: Olha Haichenkova <olha.haichenkova@gmail.com>
+Date:   Thu Sep 21 11:35:17 2023 +0300
+
+    Added allure steps 21
+
+[33mcommit 7950580052f39ed781e10549fc454041cf3b9135[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Thu Sep 21 09:46:39 2023 +0300
+
+    Added allur steps into Table card component
+
+[33mcommit 872977561d5e8bba4dc877bcc7a31c4127cb5f5a[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 21 00:28:18 2023 +0300
+
+    change
+
+[33mcommit a9431a590ca86ed3fb72047de5d5564d052cf4a1[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 21 00:16:54 2023 +0300
+
+    change method
+
+[33mcommit b7438adcc30140829a3123e09ac72ddea6edd6d3[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 21 00:12:01 2023 +0300
+
+    update test
+
+[33mcommit 143dabe8a357a039092e94be73f747c3ecdf265a[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Wed Sep 20 21:32:32 2023 +0300
+
+    Added allure steps to table row component
+
+[33mcommit dc84968938f20fed832fc86a5353bb9084798848[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Wed Sep 20 20:07:02 2023 +0300
+
+    Added allure steps to My cooperation page
+
+[33mcommit 2231c20d4e28c70916a68557291da59650eeb75e[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Wed Sep 20 20:01:31 2023 +0300
+
+    added allure steps 7
+
+[33mcommit 0e7c17dc4491dd426c24bbd71ce26eae70980eef[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Wed Sep 20 19:08:26 2023 +0300
+
+    added allure steps 5
+
+[33mcommit 79576b54b6d8a9c364179a0d83c71bf1cbb6c689[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Wed Sep 20 18:21:54 2023 +0300
+
+    added test_find_tutor_or_category_by_name
+
+[33mcommit 9b07c9e3c2adc057acdd6a3a44694cb2690c07d8[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Wed Sep 20 18:21:38 2023 +0300
+
+    Code cleanup
+
+[33mcommit ae37abfce6c8e6d6c7c01bf4d2c304aeb0e9b262[m[33m ([m[1;31morigin/242-make-allure-steps-23[m[33m)[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Wed Sep 20 15:19:12 2023 +0300
+
+    task is done
+
+[33mcommit 185bf2936ab63150f3abda53c5598d9d05501d06[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Wed Sep 20 14:50:45 2023 +0300
+
+    task is done
+
+[33mcommit faf51319e9b0089e2a74cead6bd4d2524cadf9d5[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Wed Sep 20 14:33:54 2023 +0300
+
+    home_student done
+
+[33mcommit 5c8da793fe402174d6526a7400aa7db5baa69e5a[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Wed Sep 20 14:26:41 2023 +0300
+
+    home_guest done
+
+[33mcommit 7310b2ebb7678fd26a5f543c709c64894646aeca[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 20 12:49:09 2023 +0300
+
+    added allure steps to collapse item
+
+[33mcommit 193f9b77757969b1f5c0cf910a74054024296979[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 20 12:46:43 2023 +0300
+
+    added allure steps to category component
+
+[33mcommit efba8aa81c1d8bc415b166b06e6cf236b85b29a0[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 20 12:44:43 2023 +0300
+
+    added allure steps to card component for guest
+
+[33mcommit 5751e9b105e874edf37bcb32a2627052f99e9556[m
+Author: Olha Haichenkova <olha.haichenkova@gmail.com>
+Date:   Wed Sep 20 12:38:36 2023 +0300
+
+    Added allure steps 22
+
+[33mcommit 545638b76360fe477bfe0539f401c01dc4249501[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 20 12:36:10 2023 +0300
+
+    added allure steps to grid card component
+
+[33mcommit a1440808069069c8c567031780be253c157af642[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 20 12:30:28 2023 +0300
+
+    added allure steps to card_component.py
+
+[33mcommit be02f428da9349300a53006ed4320c7146b14b64[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Wed Sep 20 12:07:32 2023 +0300
+
+    added allure steps 6
+
+[33mcommit de88c5e5e1e1cec6c853122b9f6555b864564120[m
+Author: Olha Haichenkova <olha.haichenkova@gmail.com>
+Date:   Wed Sep 20 11:30:24 2023 +0300
+
+    Added allure steps 24
+
+[33mcommit 05b54f1ecdf5336f22115b0a7afd1f3455a0f053[m[33m ([m[1;31morigin/test_search_field_find_by_title[m[33m, [m[1;32mtest_search_field_find_by_title[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 20 10:28:41 2023 +0300
+
+    add assert
+
+[33mcommit 1ddb0e264fff5f7ba530fcaa2ad529a554c40827[m
+Author: headles <bobzakon16@gmail.com>
+Date:   Wed Sep 20 09:41:25 2023 +0300
+
+    Add allure steps 14
+
+[33mcommit 8ec0fde4526965d30fe1fdd76e86244cc71ba078[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 20 09:31:18 2023 +0300
+
+    test_search_field_find_by_title
+
+[33mcommit 0a1a4a8058bdcc39f447a30e993a6cbcb5e8ca07[m[33m ([m[1;31morigin/234-make-allure-steps-15[m[33m)[m
+Author: headles <bobzakon16@gmail.com>
+Date:   Wed Sep 20 08:41:19 2023 +0300
+
+    Add allure steps 15
+
+[33mcommit 47df0ec871d6a8efb351cc144b743dc84dee725a[m[33m ([m[1;31morigin/Make-allure-steps-3[m[33m, [m[1;32mMake-allure-steps-3[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 20 02:12:41 2023 +0300
+
+    Make allure steps 3
+
+[33mcommit 0aa2031025b536774ebd3e90126fc44961b88c85[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 20 01:49:46 2023 +0300
+
+    Make allure steps 2
+
+[33mcommit 296c37546a1ca01ff7c258af5c67e6ec91ecf872[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 20 01:19:59 2023 +0300
+
+    add steps
+
+[33mcommit 14785e6ae0021a9713ddbc3d5664c249ee55b832[m[33m ([m[1;31morigin/235-make-allure-steps-16[m[33m)[m
+Author: headles <bobzakon16@gmail.com>
+Date:   Tue Sep 19 22:18:24 2023 +0300
+
+    Add allure steps
+
+[33mcommit 67f4f3a358d283c3840d538e0d62747a2783ee3a[m[33m ([m[1;31morigin/244-make-allure-steps-25[m[33m)[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 19 21:56:02 2023 +0300
+
+    Added allure steps 25
+
+[33mcommit 23b6fc223cd0cca1f9decff7d0ba0ecb3ff9a770[m[33m ([m[1;31morigin/245-make-allure-steps-26[m[33m)[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 19 21:41:47 2023 +0300
+
+    Added allure steps 26
+
+[33mcommit b0851724a096fb03ecd5ca10475fbd2b18d54318[m[33m ([m[1;31morigin/allure_steps_11[m[33m)[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Tue Sep 19 21:22:12 2023 +0300
+
+    added allure steps for:
+    navigate_component.py
+    user_menu_component.py
+    (steps №11)
+    renamed click_get_account to click_account
+
+[33mcommit d88b5fbcee3a29c38bcc15e874d60a50c3daf912[m[33m ([m[1;31morigin/allure_steps_10[m[33m)[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Tue Sep 19 20:12:15 2023 +0300
+
+    added allure steps for:
+    header_unauthorized_component.py
+    menu_items.py
+    (steps №10)
+
+[33mcommit 4ed0a085b1747d01760f94474bee70670d4b14d1[m[33m ([m[1;31morigin/allure_steps_9[m[33m)[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Tue Sep 19 19:51:03 2023 +0300
+
+    added allure steps for:
+    footer_component.py
+    header_authorized_component.py
+    header_component.py
+    (steps №9)
+
+[33mcommit 501272bb29e6e7936441bc2db13d4752703b8e7b[m[33m ([m[1;31morigin/125-filter-and-sorting-in-student-page-965-subtest-11[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 19 18:31:59 2023 +0300
+
+    fixed test
+
+[33mcommit 26e82ecffbc16c289dd326f3f719ced4c3a37a91[m
+Merge: 0cc11e4 a8f64a2
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 19 16:58:52 2023 +0300
+
+    Merge branch 'develop' into 125-filter-and-sorting-in-student-page-965-subtest-11
+
+[33mcommit a8f64a23aaa959e2e22e2c2fd9d73ce77ea44b80[m[33m ([m[1;31morigin/246-make-allure-steps-27[m[33m, [m[1;31morigin/243-make-allure-steps-24[m[33m)[m
+Merge: da57ac4 6b0bc35
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 15:38:35 2023 +0300
+
+    Merge pull request #205 from UA-1023-TAQC/test_the_collapse_block_ui_alignment
+    
+    Test the collapse block UI alignment
+
+[33mcommit 6b0bc35c0560f8089753f9449bdef309b292d42a[m[33m ([m[1;31morigin/test_the_collapse_block_ui_alignment[m[33m, [m[1;32mtest_the_collapse_block_ui_alignment[m[33m)[m
+Merge: 2f273d8 da57ac4
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 15:37:38 2023 +0300
+
+    Merge branch 'develop' into test_the_collapse_block_ui_alignment
+
+[33mcommit 0cc11e402f4cdd7964f855792e766cc287e438e9[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 19 15:33:40 2023 +0300
+
+    updated test
+
+[33mcommit da57ac46adecf1004dba381e1c4fc246424bb5a6[m[33m ([m[1;31morigin/test_the_get_started_for_free_button_ui[m[33m, [m[1;32mtest_the_get_started_for_free_button_ui[m[33m)[m
+Merge: cf5526d 4eb865a
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 15:27:32 2023 +0300
+
+    Merge pull request #201 from UA-1023-TAQC/test_the_get_started_for_free_button_ui
+    
+    Test the get started for free button UI
+
+[33mcommit 4eb865ab32178f2a7def74ff03c4cd1a0cc4e2ef[m
+Merge: c82ea61 cf5526d
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 15:27:07 2023 +0300
+
+    Merge branch 'develop' into test_the_get_started_for_free_button_ui
+
+[33mcommit cf5526d95e057e7b38fbd74fd8e66dc47a47aece[m
+Merge: 0404641 186e535
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 15:26:15 2023 +0300
+
+    Merge pull request #216 from UA-1023-TAQC/fix
+    
+    fix
+
+[33mcommit c82ea618f8df2531558e6110a185da932c6521bd[m
+Merge: ee3a370 ccfb350
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 15:17:04 2023 +0300
+
+    Merge branch 'test_the_get_started_for_free_button_ui' of https://github.com/UA-1023-TAQC/SpaceToStudyTA into test_the_get_started_for_free_button_ui
+
+[33mcommit ee3a37064d3ff234f96b590bdf8804ec79deedca[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 15:16:46 2023 +0300
+
+    put hover method to basepage
+
+[33mcommit 2f273d8dcacc525a64a1cc8ba9a4bdaf9cdba5e5[m
+Merge: 7cb2c0c b556563
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 15:10:53 2023 +0300
+
+    Merge branch 'test_the_collapse_block_ui_alignment' of https://github.com/UA-1023-TAQC/SpaceToStudyTA into test_the_collapse_block_ui_alignment
+
+[33mcommit 7cb2c0c475112b04c2c81427b363ecb7cb0605e7[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 15:07:43 2023 +0300
+
+    add variable
+
+[33mcommit 186e535b134305a359fc6ea80e590ef9270440d7[m[33m ([m[1;31morigin/fix[m[33m)[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Tue Sep 19 14:48:33 2023 +0300
+
+    fix
+
+[33mcommit 040464139faa2772facfadcd9b130c13132e8917[m
+Merge: 29f4611 41a30bc
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:47:13 2023 +0300
+
+    Merge pull request #211 from UA-1023-TAQC/test_the_collapse_block_ui_hover
+    
+    Test the collapse block UI hover
+
+[33mcommit 41a30bcbeac3a5ef616560ea783c0b6b831c255b[m
+Merge: 954b5e9 29f4611
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:46:48 2023 +0300
+
+    Merge branch 'develop' into test_the_collapse_block_ui_hover
+    
+    # Conflicts:
+    #       tests/guest/test_home_page.py
+    #       tests/guest/test_registration.py
+
+[33mcommit 8945bf2d42113d00cd505017583e16f1d6a29eab[m
+Merge: cea28a3 29f4611
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:39:08 2023 +0300
+
+    Merge branch 'develop' into test_the_collapse_block_ui_interaction
+
+[33mcommit 29f4611f45b694467e61a49bc870943b379b0ddb[m
+Merge: f421991 80a7c06
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:35:57 2023 +0300
+
+    Merge pull request #208 from UA-1023-TAQC/test_opening_of_modal_registration_window_for_tutor_and_student
+    
+    Test opening of modal registration window for tutor and student
+
+[33mcommit b556563617d8c29f443e67021a27790d1e485dbb[m
+Merge: 3a7ae06 f421991
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:34:24 2023 +0300
+
+    Merge branch 'develop' into test_the_collapse_block_ui_alignment
+
+[33mcommit f421991142aefc5a8790158206c523c0959b0d36[m
+Merge: 97d30d4 9e823df
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:33:37 2023 +0300
+
+    Merge pull request #207 from UA-1023-TAQC/198-check-the-what-can-you-do-block-test-3
+    
+    198 check the what can you do block test 3
+
+[33mcommit 9e823df02c0e36067788a4eda4cbb6d6ece716ad[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:31:40 2023 +0300
+
+    restore requirements.txt
+
+[33mcommit 3a7ae06357dcd61487aa9357f52ca7515cbfc1e3[m
+Merge: cf03b15 97d30d4
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 14:27:52 2023 +0300
+
+    remove conflicts
+
+[33mcommit c7703c3895afb97c29dce14c3779650247c133a4[m
+Author: headles <bobzakon16@gmail.com>
+Date:   Mon Sep 18 11:17:31 2023 +0300
+
+    Add test_that_controls_active_after_navigating_to_them_by_tab
+
+[33mcommit 76fe00a66aecad9f6349d79a9da3ba227c5de214[m
+Author: headles <bobzakon16@gmail.com>
+Date:   Sat Sep 16 20:27:59 2023 +0300
+
+    Add test_that_controls_active_after_navigating_to_them
+
+[33mcommit 97d30d47ab6eb3e8cf4dc540d1fe6975387ef9c9[m
+Merge: 60c6a06 320147a
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:15:10 2023 +0300
+
+    Merge pull request #204 from UA-1023-TAQC/test_the_collapse_block_ui_text
+    
+    Test the collapse block UI text
+
+[33mcommit 320147a8e19b05a7243cbbf5b99471908a8d3894[m
+Merge: b4d44ec 60c6a06
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:14:38 2023 +0300
+
+    Merge branch 'develop' into test_the_collapse_block_ui_text
+
+[33mcommit 60c6a06622b5d0a346c2f72fe2a9ec91fc48b47e[m
+Merge: bdca3bf defe462
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:14:00 2023 +0300
+
+    Merge pull request #202 from UA-1023-TAQC/test_search_field_find_by_name
+    
+    Test search field find by name
+
+[33mcommit ccfb350de73d1c34b45f363c9c4853288207f49a[m
+Merge: 6a63720 bdca3bf
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:10:25 2023 +0300
+
+    Merge branch 'develop' into test_the_get_started_for_free_button_ui
+
+[33mcommit bdca3bf500ce39dec18e4c709c85be5d29be504f[m
+Merge: ea099ef dcfc3c5
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:08:23 2023 +0300
+
+    Merge pull request #200 from UA-1023-TAQC/176-check-the-what-can-you-do-block-ui
+    
+    Add test_what_can_you_do_elements_visible
+
+[33mcommit dcfc3c59fbf25097e37858a34c7987bf9c1f80d6[m
+Merge: c78e126 ea099ef
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:07:25 2023 +0300
+
+    Merge branch 'develop' into 176-check-the-what-can-you-do-block-ui
+
+[33mcommit ea099efc2ffd9082d3625922f1a5e0dd3e4c77c6[m
+Merge: 30484f3 81fb258
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:06:41 2023 +0300
+
+    Merge pull request #169 from UA-1023-TAQC/126-create-request-as-student1
+    
+    126 create request as student
+
+[33mcommit 30484f3f78df4ef6c83b8b1ebdc20402226942cf[m
+Merge: 5c37c7b f9ddbc3
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:06:12 2023 +0300
+
+    Merge pull request #196 from UA-1023-TAQC/167-create-enroll-offer-modal-in-offer-details-page
+    
+    167 create enroll offer modal in offer details page
+
+[33mcommit f9ddbc31e4a160f016f27bf8f6c35feabc7dedf1[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 14:05:44 2023 +0300
+
+    litl fix
+
+[33mcommit 42c30fb7900c81af9fa9f85635831511787a089b[m
+Merge: cff8961 5c37c7b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 13:58:42 2023 +0300
+
+    Merge branch 'develop' into 167-create-enroll-offer-modal-in-offer-details-page
+
+[33mcommit 81fb2587de1a6a7743cf5de0bf895f8a0f02c086[m
+Merge: d75bf50 5c37c7b
+Author: Volodymyr <101971780+VolodumurBesarab@users.noreply.github.com>
+Date:   Tue Sep 19 13:50:51 2023 +0300
+
+    Merge branch 'develop' into 126-create-request-as-student1
+
+[33mcommit 5c37c7b5deda56f0fb8448cd7ed0b7d5f2a1bd2e[m
+Merge: 4227a9a f6e00fe
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 13:49:14 2023 +0300
+
+    Merge pull request #195 from vkich7/develop
+    
+    Added test 'test_guest_can_open_the_student_registration_popup'
+
+[33mcommit cd060c688e0888e47bbc8bb8fe0303fc6c89c9f0[m
+Merge: c32dafc 5e3dcf0
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 19 13:48:46 2023 +0300
+
+    Merge branch 'develop' into 125-filter-and-sorting-in-student-page-965-subtest-11
+    
+    # Conflicts:
+    #       tests/student/test_for_sorting_and_filtering_all_offers.py
+
+[33mcommit 4227a9a702b06f977101e9cadc835cecf960c906[m
+Merge: f0b96c3 d7edb4f
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 13:48:44 2023 +0300
+
+    Merge pull request #194 from UA-1023-TAQC/1069-verify-that-a-guest-can-see-the-space2Study-platform-benefits-at-the-welcoming-block
+    
+    Add test_the_list_of_collapse_items
+
+[33mcommit d7edb4f0896acc66aff86c97b3f93436971f79c8[m
+Merge: 52383b6 f0b96c3
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 13:48:21 2023 +0300
+
+    Merge branch 'develop' into 1069-verify-that-a-guest-can-see-the-space2Study-platform-benefits-at-the-welcoming-block
+
+[33mcommit f0b96c3a0584495cbf322c0f3b769df0b943d736[m
+Merge: 77b0177 457ada5
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 13:47:41 2023 +0300
+
+    Merge pull request #193 from UA-1023-TAQC/186-check-who-we-are-block-ui-test-1
+    
+    Added test_who_we_are_block_contains_video_content
+
+[33mcommit 457ada5588f4f22484bfcd37c7efbf5a5f21dda1[m
+Merge: b159718 77b0177
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 13:47:22 2023 +0300
+
+    Merge branch 'develop' into 186-check-who-we-are-block-ui-test-1
+
+[33mcommit 77b01779f5a5ca12ecdf3a6f26da4652605a0540[m
+Merge: 5e3dcf0 fe49482
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 13:46:12 2023 +0300
+
+    Merge pull request #192 from UA-1023-TAQC/190-check-who-we-are-block-test-5
+    
+    Added test_open_who_we_are_block_by_tabs
+
+[33mcommit 6a637202d4d30844ddb105573eea5b2a20cb2357[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 13:45:29 2023 +0300
+
+    update
+
+[33mcommit 09cb6e78faacb0c8f9087440ebb89876268416d7[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 13:42:20 2023 +0300
+
+    update
+
+[33mcommit 5e3dcf0b81a39af7c02a9ae5dc35ce6a7654379f[m
+Merge: d104ab7 59c8269
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 19 13:41:38 2023 +0300
+
+    Merge pull request #161 from UA-1023-TAQC/120-filter-and-sorting-in-student-page-965-subtest-6
+    
+    Created test for language filter in sidebar
+
+[33mcommit 954b5e90e14e8a5bf57a1770e1b6d9769e769464[m[33m ([m[1;31morigin/test_the_collapse_block_ui_hover[m[33m, [m[1;32mtest_the_collapse_block_ui_hover[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 11:30:34 2023 +0300
+
+    test_the_collapse_block_ui_hover
+
+[33mcommit cea28a3531af54f4c1cd967999acfcb87cd74c62[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 11:23:21 2023 +0300
+
+    add check background-color
+
+[33mcommit cff896141c3a49549ac815d02b53597b0f2461f2[m
+Author: Olha Haichenkova <olha.haichenkova@gmail.com>
+Date:   Tue Sep 19 10:34:44 2023 +0300
+
+    Added close_btn, title, description
+
+[33mcommit a79140aa3dab790810a77f96ad1b159fd74c7f3a[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 01:10:33 2023 +0300
+
+    update
+
+[33mcommit f03e8736e129b204d00bad958f96788a889d00db[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Sep 19 00:08:14 2023 +0300
+
+    test_the_collapse_block_ui_interaction
+
+[33mcommit 80a7c06b9d813aa109ef01e19c59be0671c13a7f[m[33m ([m[1;31morigin/test_opening_of_modal_registration_window_for_tutor_and_student[m[33m)[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Mon Sep 18 23:41:11 2023 +0300
+
+    added test_opening_of_modal_registration_window_for_tutor_and_student
+
+[33mcommit 53a98b5afe1a28fd0ab1d5ba0a70c72ab6f2ea7a[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Mon Sep 18 23:40:50 2023 +0300
+
+    added get_close_btn and click_close_btn
+
+[33mcommit 4408d71b2b848014378439ec879ab5753eaa80b3[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Mon Sep 18 23:40:14 2023 +0300
+
+    updated click_btn
+
+[33mcommit c9e2be257aeadbcc9062cb234a39424cb7c6e9fd[m
+Author: Olha Haichenkova <olha.haichenkova@gmail.com>
+Date:   Mon Sep 18 15:04:49 2023 +0300
+
+    Slider element added
+
+[33mcommit cf03b15be94c95ee93617d193ff9767087d7f6a4[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Sep 18 00:14:54 2023 +0300
+
+    update
+
+[33mcommit 101f603ea2696088e15812bd361083e55afbc72c[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Sep 18 00:11:18 2023 +0300
+
+    test_the_collapse_block_ui_alignment
+
+[33mcommit b4d44ec9734547a2ce07d948f60677bc3d89a080[m[33m ([m[1;31morigin/test_the_collapse_block_ui_text[m[33m, [m[1;32mtest_the_collapse_block_ui_text[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Sep 16 16:38:38 2023 +0300
+
+    update
+
+[33mcommit ffd0fb5cfb12bc206618af52afa3bb6b08c9b55a[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Sep 16 16:32:23 2023 +0300
+
+    test_the_collapse_block_ui_text
+
+[33mcommit a20ea8e413eccf20b53cdb352c9d29a93652380b[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 15:49:44 2023 +0300
+
+    update
+
+[33mcommit 31131b04db275496e03bdce65491a378bedb7778[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 15:47:09 2023 +0300
+
+    update
+
+[33mcommit defe46237fbde32db33948a234d5e2d4bd10f7a0[m[33m ([m[1;31morigin/test_search_field_find_by_name[m[33m, [m[1;32mtest_search_field_find_by_name[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 15:28:22 2023 +0300
+
+    update
+
+[33mcommit 6d4e7f8da93c6fb16b71e07607375f89a2028892[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 15:24:36 2023 +0300
+
+    update
+
+[33mcommit ae668056b40e7f4bd5e17d64234d20c4f4c19fd1[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 15:20:29 2023 +0300
+
+    update
+
+[33mcommit f959d4b103164f77bc11f432488d1dc6bb3c84b2[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 15:13:17 2023 +0300
+
+    test_search_field_find_by_name
+
+[33mcommit cd7f35568be9d67a2083e6a3d347ba945ca301cd[m
+Merge: 96af193 d9b4053
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 14:42:59 2023 +0300
+
+    Merge branch 'develop' into test_the_get_started_for_free_button_ui
+
+[33mcommit 96af1937d03a8f40ae7175cf566907a0c4f2dfc1[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 14:41:00 2023 +0300
+
+    add test test_the_get_started_for_free_button_ui
+
+[33mcommit d9b4053923e67583fabd08402b2a137523d391cd[m[33m ([m[1;32mtest_search_field_find_by_title_request[m[33m)[m
+Merge: 7c907a8 d104ab7
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Sep 15 14:00:41 2023 +0300
+
+    add uncommited files
+
+[33mcommit d104ab7d10eeb1af76cb38c33855bc1bf489ef21[m
+Merge: ed18dea 0ed9c38
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 15 13:09:09 2023 +0300
+
+    Merge pull request #199 from UA-1023-TAQC/allure
+    
+    Allure
+
+[33mcommit 0ed9c38fb829a29f79810fb012f0b3dbbf819846[m
+Merge: ab94d29 ed18dea
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 15 13:07:37 2023 +0300
+
+    Merge branch 'develop' into allure
+    
+    # Conflicts:
+    #       .gitignore
+
+[33mcommit c32dafc33e4f8a831e2f519383eb46a926b61a04[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Fri Sep 15 11:11:44 2023 +0300
+
+    Created test for clearing filters in sidebar
+
+[33mcommit 5c709a065557698a2592d3c4c5d93fcadfaa5db1[m[33m ([m[1;31morigin/167-create-enroll-offer-modal-in-offer-details-page[m[33m)[m
+Author: Olha Haichenkova <olha.haichenkova@gmail.com>
+Date:   Fri Sep 15 07:26:01 2023 +0300
+
+    test for changing price was added
+
+[33mcommit d75bf509bccfc0c6359c3a117c1cfbc5fd8323eb[m[33m ([m[1;31morigin/126-create-request-as-student1[m[33m)[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Thu Sep 14 22:13:43 2023 +0300
+
+    add if in basepage get_header
+
+[33mcommit c78e12655c2d4a7ff41072ff0d37ec452b365ffa[m[33m ([m[1;31morigin/176-check-the-what-can-you-do-block-ui[m[33m)[m
+Author: headles <bobzakon16@gmail.com>
+Date:   Thu Sep 14 20:25:43 2023 +0300
+
+    Add test_what_can_you_do_elements_visible
+
+[33mcommit 59c826950e56efb373f0f770f19ce4059ecb0646[m[33m ([m[1;31morigin/120-filter-and-sorting-in-student-page-965-subtest-6[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Thu Sep 14 19:29:39 2023 +0300
+
+    Fixed bugs to make tests work
+
+[33mcommit f6e00feab7d89c0c1358c256179cf9ff5397e0eb[m
+Author: Vasyl Kichula <vkich7@gmail.com>
+Date:   Thu Sep 14 19:01:22 2023 +0300
+
+    Just broke one line up to 3 ones
+
+[33mcommit 7c3069277fad44a1ba22d6f0dc4be4c11976abf4[m
+Author: Vasyl Kichula <vkich7@gmail.com>
+Date:   Thu Sep 14 18:56:20 2023 +0300
+
+    Added test 'test_guest_can_open_the_student_registration_popup'
+
+[33mcommit 3f41391a05c1c7fd6eabe6efc0b12194e4f98677[m
+Author: Vasyl Kichula <vkich7@gmail.com>
+Date:   Thu Sep 14 18:05:35 2023 +0300
+
+    Added test 'test_guest_can_open_the_student_registration_popup'
+
+[33mcommit b4495c626f1d358be71f596ba06ab87e13689566[m
+Author: Vasyl Kichula <vkich7@gmail.com>
+Date:   Thu Sep 14 18:04:49 2023 +0300
+
+    Added test 'test_guest_can_open_the_student_registration_popup'
+
+[33mcommit 52383b639ef5bd9d283f3434d0e9b2800027e09e[m[33m ([m[1;31morigin/1069-verify-that-a-guest-can-see-the-space2Study-platform-benefits-at-the-welcoming-block[m[33m)[m
+Author: headles <bobzakon16@gmail.com>
+Date:   Thu Sep 14 12:22:26 2023 +0300
+
+    Add test_the_list_of_collapse_items
+
+[33mcommit fe49482153e3126e3bedd951635eb8f4096ee0d5[m[33m ([m[1;31morigin/190-check-who-we-are-block-test-5[m[33m)[m
+Merge: 00226a4 e9bdbaa
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Sep 13 23:14:35 2023 +0300
+
+    Updated test_open_who_we_are_block_by_tabs
+
+[33mcommit 00226a442682163fc044d1f605d68adabc2f0f17[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Sep 13 22:53:46 2023 +0300
+
+    Added test_open_who_we_are_block_by_tabs
+
+[33mcommit b159718cd134726909658de8fa347ead852abc28[m[33m ([m[1;31morigin/186-check-who-we-are-block-ui-test-1[m[33m)[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Sep 13 23:07:29 2023 +0300
+
+    Added test_who_we_are_block_contains_video_content
+
+[33mcommit e9bdbaa9c68d46faaa9e530bf125d2e673678d05[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Sep 13 22:53:46 2023 +0300
+
+    Added test_open_who_we_are_block_by_tabs
+
+[33mcommit d651f30842e1c40ebd588431a077f464633089b0[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 13 17:22:55 2023 +0300
+
+    fixed nonworking tests
+
+[33mcommit c0c6eafa25bac3d8942928705bc8ae1870581db9[m
+Merge: 70234d2 ed18dea
+Author: Olha Haichenkova <olha.haichenkova@gmail.com>
+Date:   Wed Sep 13 15:36:48 2023 +0300
+
+    Merge branch 'develop' into 167-create-enroll-offer-modal-in-offer-details-page
+
+[33mcommit 70234d263abceb69ec49901533287061cd3299dc[m
+Author: Olha Haichenkova <olha.haichenkova@gmail.com>
+Date:   Wed Sep 13 15:32:22 2023 +0300
+
+    enrol_offer_modal was created
+
+[33mcommit 3cc8e8b4c83992c37beeab81a32900f993e0a703[m
+Merge: 3b4fc3b ed18dea
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 13 13:58:17 2023 +0300
+
+    Merge branch 'develop' into 120-filter-and-sorting-in-student-page-965-subtest-6
+    
+    # Conflicts:
+    #       SpaceToStudy/ui/pages/explore_offers/filters_sidebar_component.py
+    #       tests/student/test_for_sorting_and_filtering_all_offers.py
+
+[33mcommit ed18dea12f98cb4525ea352ea30906da45d72e84[m[33m ([m[1;31morigin/100-registration-as-student-963[m[33m)[m
+Merge: 04dea44 9c90f6d
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:49:18 2023 +0300
+
+    Merge pull request #184 from UA-1023-TAQC/123-filter-and-sorting-in-student-page-965-subtest-9
+    
+    Created test for rating filter in sidebar
+
+[33mcommit 9c90f6d8fb1c1d1d91e3f5154c3b299873582d46[m
+Merge: 90eae79 04dea44
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:48:21 2023 +0300
+
+    Merge branch 'develop' into 123-filter-and-sorting-in-student-page-965-subtest-9
+    
+    # Conflicts:
+    #       tests/student/test_for_sorting_and_filtering_all_offers.py
+
+[33mcommit 04dea443c5fd17a36b8c1a4e90e61cae08f0d3e9[m
+Merge: c5b9a50 936650b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:45:53 2023 +0300
+
+    Merge pull request #185 from UA-1023-TAQC/124-filter-and-sorting-in-student-page-965-subtest-10
+    
+    Created test for search by name filter in sidebar
+
+[33mcommit 936650ba58e94db76f7e1963e5450334452c698d[m
+Merge: 390eead c5b9a50
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:45:22 2023 +0300
+
+    Merge branch 'develop' into 124-filter-and-sorting-in-student-page-965-subtest-10
+    
+    # Conflicts:
+    #       tests/student/test_for_sorting_and_filtering_all_offers.py
+
+[33mcommit c5b9a50665d1622bdd1c4b62a179fd65b1af0394[m
+Merge: 869f70f 6be0ce8
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:40:25 2023 +0300
+
+    Merge pull request #163 from UA-1023-TAQC/159-searching-on-the-categories-page
+    
+    159 searching on the categories page
+
+[33mcommit 6be0ce8e692cbdef498ecb999434c3d79e502039[m
+Merge: 12c550c bdaf4d4
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Sep 13 13:37:19 2023 +0300
+
+    Resolved conflicts
+
+[33mcommit 869f70fae41468c62c8aa8ff3c8ef58aab39cd94[m
+Merge: 3ccd78e 998a133
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:34:29 2023 +0300
+
+    Merge pull request #183 from UA-1023-TAQC/122-filter-and-sorting-in-student-page-965-subtest-8
+    
+    Created test for price input filter in sidebar
+
+[33mcommit 3ccd78e3553c7ed44b0097b068123f6055ef7a75[m
+Merge: 89b5d45 03f718b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:32:32 2023 +0300
+
+    Merge pull request #182 from UA-1023-TAQC/test_Guest-can-open-the-tutor-registration-pop-up-at-the-What-can-you-do-block
+    
+    Test guest can open the tutor registration pop up at the what can you do block
+
+[33mcommit 89b5d456778708ca5fbbc803434e638f6d45ea5b[m
+Merge: 22b7459 9ca486a
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:30:46 2023 +0300
+
+    Merge pull request #160 from UA-1023-TAQC/116-filter-and-sorting-in-student-page-965-subtest-2
+    
+    116 filter and sorting in student page 965 subtest 2
+
+[33mcommit 9ca486a8db5873910b1698641aaf7021cbfa3bb5[m
+Merge: d166f66 22b7459
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:30:30 2023 +0300
+
+    Merge branch 'develop' into 116-filter-and-sorting-in-student-page-965-subtest-2
+
+[33mcommit 22b74598b1c545080106cefd1afbf85c4236b4a5[m
+Merge: 7cba616 788f9df
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:28:01 2023 +0300
+
+    Merge pull request #170 from UA-1023-TAQC/99-offer-details-in-student-profile-1029
+    
+    Updated /test_create_request.py
+
+[33mcommit d166f66412af733f56a9074c87e4fcc33b0f0c96[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 13 13:27:07 2023 +0300
+
+    updated according to comment
+
+[33mcommit 7cba6166269f4aaa709188a306fa7efa44b4ed82[m
+Merge: bdaf4d4 0f48f02
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Sep 13 13:21:06 2023 +0300
+
+    Merge pull request #165 from UA-1023-TAQC/verify_user_access_to_personal_cabinet
+    
+    Verify user access to personal cabinet
+
+[33mcommit 794034d9d531a2744df48e116cfde7f353482594[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 13 13:19:35 2023 +0300
+
+    updated methods with lists of offers
+
+[33mcommit 03f718b22436f86f99beaa0e4abb6f4b414b1046[m[33m ([m[1;31morigin/test_Guest-can-open-the-tutor-registration-pop-up-at-the-What-can-you-do-block[m[33m, [m[1;32mtest_Guest-can-open-the-tutor-registration-pop-up-at-the-What-can-you-do-block[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 13 13:09:00 2023 +0300
+
+    update
+
+[33mcommit 390eead63c7a3943aa17c2019545d7383544b409[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 13 11:37:00 2023 +0300
+
+    Created test for search by name filter in sidebar
+
+[33mcommit 0f48f029cc4ba19c7873a4589b2dfb61da6a76f1[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Wed Sep 13 10:59:00 2023 +0300
+
+    updated test_user_access_to_personal_cabinet
+
+[33mcommit 90eae7913a071b85e2c6a8d5bf6f3565f1897d4a[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 13 10:51:17 2023 +0300
+
+    Created test for rating filter in sidebar
+
+[33mcommit 7c907a86f0b7bcba7450c1f316bb36fb4b81acbd[m[33m ([m[1;32mnew-branch-to-save-current-commits[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 13 10:34:32 2023 +0300
+
+    add
+
+[33mcommit c0e654457ebb48d0e2b73625c77df5bc89ed40b0[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 13 10:31:11 2023 +0300
+
+    add test
+
+[33mcommit 1e82878a812f7c4b654b457447fee18d636fc950[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 13 10:30:42 2023 +0300
+
+    add test
+
+[33mcommit 998a133676e7a7a692b53321f7d080f8fabb185f[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Sep 13 10:29:01 2023 +0300
+
+    Created test for price input filter in sidebar
+
+[33mcommit 6152cc41988e457d3e45c50ab94072e5c9538ee4[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 13 10:16:56 2023 +0300
+
+    update
+
+[33mcommit b59dc2a37892c2c0c48163d3d46f2dfed4447d31[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 13 10:07:51 2023 +0300
+
+    add test
+
+[33mcommit 4c87d3a03e7e84ca54d65a9ab287f94313a19293[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Sep 13 10:01:38 2023 +0300
+
+    add test
+
+[33mcommit 788f9df325e73b5198648a2a0288955b6c801173[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 23:44:12 2023 +0300
+
+    Ubdated /test_create_request.py
+
+[33mcommit 12c550cdc228e9c116aab637a20a4e50bcc4174e[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 23:31:27 2023 +0300
+
+    Ubdated methods with import CardComponent class
+
+[33mcommit f2882d24cce8b5f0ca33d88e46fc02e0142b67d3[m
+Merge: 9790f7e bdaf4d4
+Author: Volodymyr <101971780+VolodumurBesarab@users.noreply.github.com>
+Date:   Tue Sep 12 21:06:38 2023 +0300
+
+    Merge branch 'develop' into 126-create-request-as-student1
+
+[33mcommit 3b4fc3b7f41d101798b96a028d63f4382e7bbd6a[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 12 20:00:44 2023 +0300
+
+    Updated with language list
+
+[33mcommit 2ea26b9f503465860de84e88519251ce3f2cb6b8[m[33m ([m[1;31morigin/116-filter-and-sorting-in-student-page-965-subtest-2[m[33m)[m
+Merge: 616e457 bdaf4d4
+Author: yprystai <134493661+yprystai@users.noreply.github.com>
+Date:   Tue Sep 12 18:46:51 2023 +0300
+
+    Merge branch 'develop' into 116-filter-and-sorting-in-student-page-965-subtest-2
+
+[33mcommit 616e457981dc1a8b3e0362e99fa0e672c20be82f[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 12 18:42:06 2023 +0300
+
+    decomposited in two methods
+
+[33mcommit 6a8a104e94dd4c19e70e2955a93569ac702f0306[m[33m ([m[1;31morigin/verify_user_access_to_personal_cabinet[m[33m)[m
+Author: Illia Nakonechnyi <realpeople2807@gmail.com>
+Date:   Tue Sep 12 17:22:58 2023 +0300
+
+    updated test_user_access_to_personal_cabinet
+
+[33mcommit 006fdab806e02ab3688a0b047d261d4745101d3d[m
+Author: Illia Nakonechnyi <realpeople2807@gmail.com>
+Date:   Tue Sep 12 17:22:16 2023 +0300
+
+    updated test_user_access_to_personal_cabinet
+
+[33mcommit ee2ba93c62c49ac083925c863fd49a36c71087bf[m
+Author: Illia Nakonechnyi <realpeople2807@gmail.com>
+Date:   Tue Sep 12 17:20:39 2023 +0300
+
+    updated test_user_access_to_personal_cabinet
+
+[33mcommit 9790f7eb10d53d7a867e01302ef5ec558d0221ef[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Tue Sep 12 16:15:59 2023 +0300
+
+    test_create_request_as_student done
+
+[33mcommit bdaf4d4d7f001cbb467ed502069e05c3c74329fd[m[33m ([m[1;31morigin/122-filter-and-sorting-in-student-page-965-subtest-8[m[33m)[m
+Merge: 77a9004 bdef412
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 12 15:32:42 2023 +0300
+
+    Merge pull request #166 from UA-1023-TAQC/121-filter-and-sorting-in-student-page-965-subtest-7
+    
+    Created test for dragging price filter in sideber
+
+[33mcommit 77a9004e3b75ba3f360621dadce427cf0a4026f2[m
+Merge: 678b724 3f8f583
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 12 15:30:48 2023 +0300
+
+    Merge pull request #164 from UA-1023-TAQC/162-verify-there-is-no-result-on-the-categories-page
+    
+    162 Added test_categories_page for no result
+
+[33mcommit 3f8f5836a549636a12f2d841945960572281ab63[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 15:25:28 2023 +0300
+
+    Updated tests/tutor/test_categories_page.py
+
+[33mcommit bdef412847fca5fc9425c06946b7e26f56d064a3[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 12 15:20:09 2023 +0300
+
+    Created test for dragging price filter in sideber
+
+[33mcommit 7ce2efe0f63b8d3443c54ba70f1764cb326742fb[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Tue Sep 12 15:14:28 2023 +0300
+
+    create test_create_request_as_student
+
+[33mcommit e3b8fed0e72d4f5e1d1673288f009050b3e8d6ac[m[33m ([m[1;31morigin/159-searching-on-the-categories-page[m[33m)[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 15:16:09 2023 +0300
+
+    Updated tests/tutor/test_categories_page.py
+
+[33mcommit 5e2632be69ab07a345a589e5e4ec7b1a66565cc1[m
+Merge: fea2bd5 0d2f6bd
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 15:14:11 2023 +0300
+
+    Merge branch '159-searching-on-the-categories-page' of https://github.com/UA-1023-TAQC/SpaceToStudyTA into 159-searching-on-the-categories-page
+
+[33mcommit fea2bd5d3f38a17aae6389989666d002f13fbb5e[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 15:11:43 2023 +0300
+
+    Added categories/card_component.py
+
+[33mcommit ac636f76f2a27a40a4e9706ba37a30d648efb3cf[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 15:09:36 2023 +0300
+
+    Updated tests/tutor/test_categories_page.py
+
+[33mcommit 0d2f6bd6cb6bf5a54ace36613ec152058ffd124a[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 12 14:09:05 2023 +0300
+
+    deleted tmp/my_allure_results
+
+[33mcommit a23a7dd67ebc05ff308eff1a3b680591b32024f4[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Tue Sep 12 14:08:23 2023 +0300
+
+    Update test_login_modal.py
+
+[33mcommit a29576429759cf11631dd95a7cbe4fb1f8575d87[m
+Merge: 8d2eaf5 678b724
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 12 14:07:58 2023 +0300
+
+    Merge branch 'develop' into 159-searching-on-the-categories-page
+
+[33mcommit 678b724e3863c52525435c9b72610fda23ed0743[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Sep 12 14:05:54 2023 +0300
+
+    added to .gitignofe folder /my_allure_results
+
+[33mcommit 61c4b0b1db81667e2689180fb18b0c3046f33fb5[m
+Merge: 2040cbb 8aa74d9
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Tue Sep 12 12:03:48 2023 +0300
+
+    Merge branch 'develop' into verify_user_access_to_personal_cabinet
+
+[33mcommit 2040cbbc9f11980d3c765fdc46b7c143329f3b0c[m
+Author: Illia Nakonechnyi <realpeople2807@gmail.com>
+Date:   Tue Sep 12 12:01:06 2023 +0300
+
+    updated test_user_access_to_personal_cabinet
+
+[33mcommit 851c6639d08159406833a35ee22814c746a3b71f[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 00:37:38 2023 +0300
+
+    Added test_categories_page for no result
+
+[33mcommit 8d2eaf57c946e695dec89ade73e1569791b42ce8[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 00:15:18 2023 +0300
+
+    Added test_categories_page for searching
+
+[33mcommit 5422d60b88380f7db02e511bfce150055ee98c90[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Tue Sep 12 00:11:18 2023 +0300
+
+    Added test_categories_page for searching
+
+[33mcommit eaf966189e9b90846578d3b22795463d9075a69e[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Mon Sep 11 17:39:04 2023 +0300
+
+    Created test for language filter in sidebar
+
+[33mcommit 66b362d8daeb3d2ee9b657610d968ae6026a350f[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Mon Sep 11 14:54:18 2023 +0300
+
+    Created test to change offers view to card and to list view
+
+[33mcommit ab94d2903ccdf6e1303c7d7af5475c9970f30cb1[m[33m ([m[1;31morigin/allure[m[33m)[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 15:04:26 2023 +0300
+
+    update
+
+[33mcommit 30d137665843646dbb690dcddd1177b2f3904234[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 15:04:14 2023 +0300
+
+    update
+
+[33mcommit 4cf0231d8198dab24613e69b123d3513bc716bf2[m
+Author: Illia Nakonechnyi <realpeople2807@gmail.com>
+Date:   Fri Sep 8 15:03:57 2023 +0300
+
+    added test_user_access_to_personal_cabinet,
+    change xpath sort_title
+
+[33mcommit 6ed5ad127cbde2cd1ec70045f498538b713461d4[m[33m ([m[1;31morigin/157-fix-click_inline_card_btn-on-filtering_and_sorting_componentpy-to-return-inlinecardcomponent[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Fri Sep 8 14:29:31 2023 +0300
+
+    minor fixes
+
+[33mcommit 4edd1990ba553d60ab5b6dcb549e8c83d1920c9d[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Fri Sep 8 14:11:46 2023 +0300
+
+    fix clicks on grid and inline view on filtering_and_sorting_component.py to return pages
+
+[33mcommit 8aa74d94bc35af26380dadb78fa70f1b41f89ddd[m
+Merge: 273a5b9 bc77d3b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 14:05:43 2023 +0300
+
+    Merge pull request #155 from UA-1023-TAQC/99-offer-details-in-student-profile-1029
+    
+    Finished test_offer_details
+
+[33mcommit 273a5b9c37a5287ba0fbd49ede47609a32ba514f[m
+Merge: 11ff508 752ac9b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 14:05:04 2023 +0300
+
+    Merge pull request #154 from UA-1023-TAQC/153-create-offer-details-page
+    
+    Added Offer details page
+
+[33mcommit bc77d3bf5d551d9fac7e8037605267079d4183c3[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Sep 8 14:01:12 2023 +0300
+
+    Created actual variables in test_create_request
+
+[33mcommit 11ff50864288be00674343532a7a2737f9f7f7c3[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 13:59:23 2023 +0300
+
+    added pylint
+
+[33mcommit 69fb13df53128b25ce6bd44b0754f63caaabaa09[m
+Merge: f3efd1b 477c07b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 13:49:29 2023 +0300
+
+    Merge pull request #150 from UA-1023-TAQC/119-filter-and-sorting-in-student-page-965-subtest-5
+    
+    Created test for filtering by level in sidebar
+
+[33mcommit 752ac9b018aaa244f20fe97d29e01f936db3607a[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Sep 8 13:49:21 2023 +0300
+
+    Changed methods with lists
+
+[33mcommit f3efd1b568c73b7942bbc7f101d423ea687b5f2b[m
+Merge: a6c8e76 16d2d1e
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 13:48:53 2023 +0300
+
+    Merge pull request #156 from UA-1023-TAQC/test_how_it_works_block_is_visible_guest
+    
+    test_how_it_works_block_is_visible_guest
+
+[33mcommit 477c07b21733ea0edaaf7f0977b58ba6a925c110[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Fri Sep 8 13:44:48 2023 +0300
+
+    fixed minor bugs
+
+[33mcommit a6c8e7668c24ca4941b636fdbdda82097ec1184e[m
+Merge: 9cc6b0b a345045
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 13:32:01 2023 +0300
+
+    Merge pull request #152 from UA-1023-TAQC/151-create-grid-view-card-component-for-explore-offers-page
+    
+    created grid card view component for explore offers page
+
+[33mcommit 9cc6b0b64224516209a74a6bc3db4ee2d59c4508[m
+Merge: 43cdc5b 8a460a2
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 13:18:10 2023 +0300
+
+    Merge pull request #149 from UA-1023-TAQC/test_offers_sort_price_high_low
+    
+    test_offers_sort_price_high_to_low
+
+[33mcommit 43cdc5b3cee74fb17f0ac466c6341619138f765f[m
+Merge: 4dd2e77 2893bbe
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Sep 8 13:17:19 2023 +0300
+
+    Merge pull request #141 from UA-1023-TAQC/login_modal_closure_prevention_on_outside_click
+    
+    Login modal outside click
+
+[33mcommit dabc0551f2e96c451635b1ff25dc800ed29e0944[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Sep 8 13:09:50 2023 +0300
+
+    Changed test_create_request for test Student
+
+[33mcommit 16d2d1e1cc2f8ebdbfea6616c36eef1d1e57c6af[m[33m ([m[1;31morigin/test_how_it_works_block_is_visible_guest[m[33m, [m[1;32mtest_how_it_works_block_is_visible_guest[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 7 19:03:10 2023 +0300
+
+    change file
+
+[33mcommit 86d0cca3017c1b0163834d6115d2d844e3fb6431[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Sep 7 17:51:43 2023 +0300
+
+    test_how_it_works_block_is_visible_guest
+
+[33mcommit f42aa5a7a6da032711a6342bc7b0967a3d8ff89d[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Thu Sep 7 15:18:23 2023 +0300
+
+    Finished test_offer_details
+
+[33mcommit 3088555190d303dcda6900789ff1a223c8be64d2[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Thu Sep 7 15:13:00 2023 +0300
+
+    Added Offer details page
+
+[33mcommit 2893bbe04e0e51829e47f27813857ed1fd6be3be[m
+Author: Illia Nakonechnyi <realpeople2807@gmail.com>
+Date:   Thu Sep 7 13:13:11 2023 +0300
+
+    change test_login_modal_outside_click
+
+[33mcommit 657ab9df29739f3c93747e9fb4c7846248eb62b3[m
+Merge: a98df46 4dd2e77
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Thu Sep 7 13:09:15 2023 +0300
+
+    Merge branch 'develop' into login_modal_closure_prevention_on_outside_click
+
+[33mcommit a3450454db8467da8950113f2da3954fa2703dbf[m[33m ([m[1;31morigin/151-create-grid-view-card-component-for-explore-offers-page[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 5 19:55:04 2023 +0300
+
+    created grid card view component for explore offers page
+
+[33mcommit 63295f26dbdfd42970f1f3b90802f6192e601a8a[m[33m ([m[1;31morigin/119-filter-and-sorting-in-student-page-965-subtest-5[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Sep 5 18:07:08 2023 +0300
+
+    Created test for filtering by level in sidebar
+
+[33mcommit 8a460a2bd88cb45f5788c211e3664fba9d42ea9c[m[33m ([m[1;31morigin/test_offers_sort_price_high_low[m[33m, [m[1;32mtest_offers_sort_price_high_low[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Sep 4 17:42:05 2023 +0300
+
+    update data
+
+[33mcommit cf0a58c3744946c1d1e8f6e0eaf5feb58019757b[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Sep 4 17:34:03 2023 +0300
+
+    test_offers_sort_price_high_to_low
+
+[33mcommit 4dd2e776d37e96ec729cf2eee3c899f271432016[m[33m ([m[1;31morigin/153-create-offer-details-page[m[33m)[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 15:40:23 2023 +0300
+
+    fix offers_interaction.py
+
+[33mcommit 0602f76912fa7705dc180d7a46b3342d509a214b[m
+Merge: 67ba491 6fa5c26
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 15:31:23 2023 +0300
+
+    Merge pull request #146 from UA-1023-TAQC/99-offer-details-in-student-profile-1029
+    
+    99 offer details in student profile 1029
+
+[33mcommit 67ba491fae5a64f9bfc9419e2c4360a361214a63[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 15:30:41 2023 +0300
+
+    litl fix
+
+[33mcommit dc3cc518088ce6a71393c3d56211a8c3485b94ef[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 15:27:51 2023 +0300
+
+    fix
+
+[33mcommit d68ab25ed0bf7bfd748c7c476bee87084648557b[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 15:25:38 2023 +0300
+
+    added to gitignore temp_test.py
+
+[33mcommit 6fa5c262595630132f23b229184c9b60c2596d3b[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Mon Sep 4 14:30:41 2023 +0300
+
+    Update test_create_request
+
+[33mcommit 89e5cb9c399c426cb2b2e599a372008981b5044e[m
+Merge: 8c39101 cec80c3
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 14:25:12 2023 +0300
+
+    Merge pull request #148 from UA-1023-TAQC/118-filter-and-sorting-in-student-page-965-subtest-4
+    
+    Created test for toggle between tutors offers and students requests
+
+[33mcommit cec80c3618dbfb9c4d382cd735a3a28af3ae74bd[m
+Merge: 6311be1 8c39101
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Mon Sep 4 14:23:17 2023 +0300
+
+    Merge branch 'develop' into 118-filter-and-sorting-in-student-page-965-subtest-4
+    
+    # Conflicts:
+    #       tests/student/test_for_sorting_and_filtering_all_offers.py
+
+[33mcommit 8c3910147393f450db0016d85c78aa00f022b64c[m
+Merge: 1f52f90 1fbea30
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 14:14:10 2023 +0300
+
+    Merge pull request #147 from UA-1023-TAQC/145-create-filters-sidebar-component-for-explore-offers-page
+    
+    Created filters sidebar component for explore offers page
+
+[33mcommit e506ee04db2515c5acf4fa59d7f9081e08ddacd7[m
+Merge: a647beb 1f52f90
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 14:09:42 2023 +0300
+
+    Merge branch 'develop' into 99-offer-details-in-student-profile-1029
+
+[33mcommit 1f52f90a3887c54ee618d4a312e43ba41b89247f[m
+Merge: 9f225f9 eb7a723
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 14:09:07 2023 +0300
+
+    Merge pull request #144 from UA-1023-TAQC/test_login_button_greyed_out_and_unclickable
+    
+    Verifying that the "Login" button is greyed out & non-clickable
+
+[33mcommit 9f225f9a5d6d51fee5cc38ba20aba2a27657b3c8[m
+Merge: 801b9d5 22e26d6
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 14:08:19 2023 +0300
+
+    Merge pull request #143 from UA-1023-TAQC/test_open_student_form_via_what_can_u_do_block
+    
+    Verifying opening a student form via "What can you do" block
+
+[33mcommit 22e26d66ecc00ddf09b37e362fa28758e8b98636[m
+Merge: 76f3d35 801b9d5
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 14:07:17 2023 +0300
+
+    Merge branch 'develop' into test_open_student_form_via_what_can_u_do_block
+    
+    # Conflicts:
+    #       SpaceToStudy/ui/pages/sign_up_modal/sign_up_modal.py
+    #       tests/guest/test_registration.py
+
+[33mcommit 801b9d540d2ab19332cf3affa1b03ba5462aa316[m
+Merge: d8ae420 cfbf44a
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 14:03:09 2023 +0300
+
+    Merge pull request #142 from UA-1023-TAQC/test_my_offers_sort_Price_low_high
+    
+    Test my offers sort price low_to_high
+
+[33mcommit cfbf44add260ab9b10584517f892c86e2c06d124[m
+Merge: bc59504 d8ae420
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 14:00:41 2023 +0300
+
+    Merge branch 'develop' into test_my_offers_sort_Price_low_high
+
+[33mcommit d8ae420d19e778146242f4db9892095290854d71[m
+Merge: a7f53c1 a2087ba
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:54:19 2023 +0300
+
+    Merge pull request #140 from UA-1023-TAQC/96-sign-up-as-a-tutor-button-is-active
+    
+    96 sign up as a tutor button is active
+
+[33mcommit a7f53c1089601ff932ecd186aaccf7e1fa7080f0[m
+Merge: 93253c5 7f29853
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:52:23 2023 +0300
+
+    Merge pull request #139 from UA-1023-TAQC/40-create-new-offersrequest-component
+    
+    Add class Chip and method set_language in offers_request_modal
+
+[33mcommit 93253c5db93940d509608b8be8736bfd518a991b[m
+Merge: d802b15 963034e
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:49:12 2023 +0300
+
+    Merge pull request #138 from UA-1023-TAQC/102-filter-and-sorting-in-student-page-965-subtest-1
+    
+    Created test for Student to apply filters by Category, Subject and se…
+
+[33mcommit d802b150053791c9095e17f9ea19fa38ddbd99d9[m
+Merge: 850251e e0bd3c7
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:46:07 2023 +0300
+
+    Merge pull request #137 from UA-1023-TAQC/136-create-input-with-drop-down-list
+    
+    create InputDropDownList
+
+[33mcommit 850251e511cf6c1b94ab96e6ee7082f2a94d41f0[m
+Merge: 9dd0f21 b5b4d1b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:42:47 2023 +0300
+
+    Merge pull request #133 from UA-1023-TAQC/113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988
+    
+    add test_switched_modals
+
+[33mcommit b5b4d1b26afeb22f34ceabbdfab695627ab9b644[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:40:18 2023 +0300
+
+    update RegistrationModal
+
+[33mcommit e01c9dcc49accb8c28f645ced33afe21d78a7a54[m
+Merge: ab9f725 9dd0f21
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:26:17 2023 +0300
+
+    Merge branch 'develop' into 113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988
+
+[33mcommit 9dd0f2148ad85c2e459cb3674a343dfd5f5725c7[m
+Merge: 39c846d c70cb3a
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:24:47 2023 +0300
+
+    Merge pull request #131 from UA-1023-TAQC/student-registration-modal_is_shown_for_guest
+    
+    Sign up as a tutor modal is shown for guest
+
+[33mcommit c70cb3a0edeedf316f8f2a93703412fea5d4e087[m[33m ([m[1;31morigin/student-registration-modal_is_shown_for_guest[m[33m)[m
+Merge: b264b7c 31fe3ef
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:24:02 2023 +0300
+
+    Merge branch 'student-registration-modal_is_shown_for_guest' of https://github.com/UA-1023-TAQC/SpaceToStudyTA into student-registration-modal_is_shown_for_guest
+
+[33mcommit b264b7c5ffbea5e7dc356a8e9c7d83e90dffdd49[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:23:29 2023 +0300
+
+    update RegistrationModal
+
+[33mcommit 1fbea308e4fe944fb06b9ba25332ca2cf3ddd831[m[33m ([m[1;31morigin/145-create-filters-sidebar-component-for-explore-offers-page[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Mon Sep 4 13:20:49 2023 +0300
+
+    Created filters sidebar component for explore offers page
+
+[33mcommit 31fe3efdf45120d7d23405930a2e9c9bdd38b9ac[m
+Merge: 342ea9a 39c846d
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Sep 4 13:16:24 2023 +0300
+
+    Merge branch 'develop' into student-registration-modal_is_shown_for_guest
+
+[33mcommit 7f29853b5b7802396915df5acb00c880428a57bf[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Mon Sep 4 11:41:03 2023 +0300
+
+    Chenged xpathes and method set_language
+
+[33mcommit a647bebe984977d8c60dc1254f2593e7caaeffdc[m[33m ([m[1;31morigin/99-offer-details-in-student-profile-1029[m[33m)[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Mon Sep 4 11:33:49 2023 +0300
+
+    Added part of test_offer_details and new method for set_select in input
+
+[33mcommit bc59504b5412e21ba6ee7058fe6491a45d59377a[m[33m ([m[1;31morigin/test_my_offers_sort_Price_low_high[m[33m, [m[1;32mtest_my_offers_sort_Price_low_high[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Sep 3 21:22:42 2023 +0300
+
+    remove error
+
+[33mcommit ab13ab18e232e0793e09a7bca2f45294def1e9c1[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Sep 3 21:21:28 2023 +0300
+
+    update locators
+
+[33mcommit b67454404ac53546651ddd5dd64043b0760872ac[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Sep 3 01:08:35 2023 +0300
+
+    update
+
+[33mcommit eb7a723c01516d418eee70eabc7db8834e467809[m[33m ([m[1;31morigin/test_login_button_greyed_out_and_unclickable[m[33m)[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Sat Sep 2 20:24:47 2023 +0300
+
+    Verifying that the "Login" button is greyed out & non-clickable
+
+[33mcommit d31f95ca52149e0ca338820be19106a7575f77eb[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Sep 2 19:58:00 2023 +0300
+
+    update sort
+
+[33mcommit 10233828e68514f683095c498309c2493c39fa94[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Sep 2 16:45:33 2023 +0300
+
+    add menu items
+
+[33mcommit 76f3d3556ab50e9bb08688ecf22763a1b05091c8[m[33m ([m[1;31morigin/test_open_student_form_via_what_can_u_do_block[m[33m)[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Sat Sep 2 14:52:33 2023 +0300
+
+    Verifying opening a student form via "What can you do" block
+
+[33mcommit 21f777cdc7ad2cb7528f7e000a3fabcde12f51ac[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Sep 2 14:13:15 2023 +0300
+
+    update
+
+[33mcommit 342ea9a2c7d10024d03eeae2c794abc0efc5512f[m[33m ([m[1;32mstudent-registration-modal_is_shown_for_guest[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Sep 2 13:49:03 2023 +0300
+
+    update test
+
+[33mcommit 9ccf7dd3e40ab51c8bf8c7b131c382fafc1ef267[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Sep 2 01:50:46 2023 +0300
+
+    test_offers_sort_price_low_high
+
+[33mcommit 09763f3e015c9f0b8d69cfbabafc052fec832c29[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Sep 1 18:44:13 2023 +0300
+
+    Added student package
+
+[33mcommit e0bd3c7236dc422144bad1817d1dfdfa711bc5be[m[33m ([m[1;31morigin/136-create-input-with-drop-down-list[m[33m)[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Sep 1 12:41:26 2023 +0300
+
+    Resolve conversation
+
+[33mcommit ab9f72542af065c3bf967cd064bbfb23fe904b3a[m[33m ([m[1;31morigin/113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988[m[33m)[m
+Merge: 720a7b5 9042736
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Sep 1 12:25:01 2023 +0300
+
+    Merge remote-tracking branch 'origin/113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988' into 113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988
+    
+    # Conflicts:
+    #       SpaceToStudy/ui/pages/login_modal/login_modal.py
+    #       SpaceToStudy/ui/pages/sign_up_modal/sign_up_modal.py
+
+[33mcommit 720a7b5916318c76c7ce5896af286f6b5d3ea3b8[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Sep 1 12:20:50 2023 +0300
+
+    improve code
+
+[33mcommit 6311be13b63e89cb029345526c5866e19e3280d6[m[33m ([m[1;31morigin/118-filter-and-sorting-in-student-page-965-subtest-4[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Fri Sep 1 11:43:13 2023 +0300
+
+    Created test for toggle between tutors offers and students requests
+
+[33mcommit a98df4682f9f09df9bf8e7af56c42c7e5c81a2a5[m[33m ([m[1;31morigin/login_modal_closure_prevention_on_outside_click[m[33m)[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Fri Sep 1 10:01:32 2023 +0300
+
+    add:
+    LoginModalTestCase class,test_login_modal_outside_click method;
+
+[33mcommit 7b2727e7e988857ecb22895c2f7cb9131d19d5bc[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Fri Sep 1 10:01:02 2023 +0300
+
+    add:
+    get_login_modal method in HeaderUnauthorizedComponent;
+    is_open, outside_click methods in LoginModal
+
+[33mcommit a2087ba2a6c6872acf27fffb33291e086342355e[m[33m ([m[1;31morigin/96-sign-up-as-a-tutor-button-is-active[m[33m)[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Sep 1 00:48:41 2023 +0300
+
+    Added test for tutor sign up btn and methods get_first/last_name to value_provider
+
+[33mcommit c3aabf68da67896dd71114e5558e6d1bccae9e31[m
+Merge: b5c6446 39c846d
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Thu Aug 31 23:17:22 2023 +0300
+
+    Merge branch 'develop' into 96-sign-up-as-a-tutor-button-is-active
+    
+    # Conflicts:
+    #       tests/guest/test_registration.py
+
+[33mcommit 963034eded87bcf022749350607d580ac3f1a83e[m[33m ([m[1;31morigin/102-filter-and-sorting-in-student-page-965-subtest-1[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Thu Aug 31 20:13:21 2023 +0300
+
+    Fixed test according to comments
+
+[33mcommit 44bf9dbc5b58083a5a37237cf2c16fad1637aa97[m[33m ([m[1;31morigin/40-create-new-offersrequest-component[m[33m)[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Aug 30 23:50:17 2023 +0300
+
+    Changed xpathes and chip methods
+
+[33mcommit 9042736110bd8ecfb866f3076d15e3a98c56386d[m
+Merge: 2774a43 39c846d
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 30 13:58:49 2023 +0300
+
+    Merge branch 'develop' into 113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988
+    
+    # Conflicts:
+    #       SpaceToStudy/ui/pages/home_page/home_guest.py
+    #       SpaceToStudy/ui/pages/sign_up_modal/sign_up_modal.py
+
+[33mcommit 616a7daf9ba192d7a71bd29be5ad7983139b3a0f[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Aug 30 13:54:40 2023 +0300
+
+    Add class Chip and method set_language in offers_request_modal
+
+[33mcommit 39c846d06fb5546624522f3f501b3e0924319a4e[m[33m ([m[1;31morigin/101-login-as-student-and-fill-in-the-information-according-to-the-stepers-964[m[33m)[m
+Merge: 1224149 787f840
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 30 13:52:34 2023 +0300
+
+    Merge pull request #132 from UA-1023-TAQC/negative_test_sign_up_tutor_long-password
+    
+    Negative test sign up tutor long password
+
+[33mcommit 787f840ed02fed8221ccb912808d217dd2bbb5d6[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 30 13:52:15 2023 +0300
+
+    litl fix
+
+[33mcommit 7ce933bd9319413b0cc92eb0a12a91ce7d903b4a[m
+Merge: 120cd9d 1224149
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 30 13:49:41 2023 +0300
+
+    Merge branch 'develop' into negative_test_sign_up_tutor_long-password
+    
+    # Conflicts:
+    #       tests/guest/test_registration.py
+
+[33mcommit c2f535d33b036e335c25d79f06fb4bae5198194f[m
+Merge: 55700c0 1224149
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 30 13:45:20 2023 +0300
+
+    Merge branch 'develop' into student-registration-modal_is_shown_for_guest
+    
+    # Conflicts:
+    #       tests/guest/test_registration.py
+
+[33mcommit 12241490439186693e2851bed783bedee2f5fa4a[m
+Merge: b70a487 3ba91e2
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 30 13:43:01 2023 +0300
+
+    Merge pull request #130 from UA-1023-TAQC/sign_up_tutor_invalid_password
+    
+    Negative test Sign up tutor invalid password
+
+[33mcommit 3ba91e29b31b93fb910f44437d68cc21770d9665[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 30 13:42:28 2023 +0300
+
+    litl fix
+
+[33mcommit b5c64467d5b0458a61b2954a5c298649793e4f7f[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Aug 30 13:06:52 2023 +0300
+
+    Add test for Tutor SignUp button
+
+[33mcommit 739780562ff09b33bef8bbbdcb86928c387c5fc1[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Wed Aug 30 12:54:15 2023 +0300
+
+    Created test for Student to apply filters by Category, Subject and search tutor's name by text input
+
+[33mcommit 057aede9eaf0da9b581e528695768e40b89df4c1[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Wed Aug 30 12:17:00 2023 +0300
+
+    create InputDropDownList
+
+[33mcommit 8632190929ed99d8d364c46771763fccd68250f3[m[33m ([m[1;31morigin/sign_up_tutor_invalid_password[m[33m, [m[1;32msign_up_tutor_invalid_password[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Aug 30 10:32:06 2023 +0300
+
+     update code
+
+[33mcommit 2774a43df94235a7ccccc4484386aff63a4f6aa1[m
+Merge: 473553d b70a487
+Author: VolodumurBesarab <101971780+VolodumurBesarab@users.noreply.github.com>
+Date:   Tue Aug 29 14:04:40 2023 +0300
+
+    Merge branch 'develop' into 113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988
+
+[33mcommit 55700c01fe996c7873564aeb901eb130121a327f[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Aug 29 11:56:11 2023 +0300
+
+    update test
+
+[33mcommit 120cd9d08ffdc7e1cf1dfacc1d74461d18be8673[m[33m ([m[1;31morigin/negative_test_sign_up_tutor_long-password[m[33m, [m[1;32mnegative_test_sign_up_tutor_long-password[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Aug 29 11:44:06 2023 +0300
+
+    remove unnecessary import
+
+[33mcommit 5e2ee60bf25efeef4172d21fed5975da20ad1c98[m
+Merge: d4ec565 59fcdbe
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Aug 29 11:32:00 2023 +0300
+
+    update
+
+[33mcommit d4ec565d499f15abc95fb43a50b9c31560e12e62[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Aug 29 11:06:34 2023 +0300
+
+    update xpath
+
+[33mcommit 1884ba0b08ea63d75c2b79e5e4807050fcacde45[m
+Merge: f4d751b b70a487
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 28 15:57:54 2023 +0300
+
+    Merge branch 'develop' of https://github.com/UA-1023-TAQC/SpaceToStudyTA into develop
+
+[33mcommit f4d751b8e6d1f5dd25bd9a588d4bd551430cf173[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 28 15:57:14 2023 +0300
+
+     update value_provider
+
+[33mcommit 59fcdbe9fa10e4a08e462efe89b5c725a319460f[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 28 15:11:57 2023 +0300
+
+    update
+
+[33mcommit 68e6bac02cf50faab1b8095420e3ee9af3d90035[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 15:11:26 2023 +0300
+
+    update
+
+[33mcommit 65b0ccacf6a42af257809279af912dec6d7172c8[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 12:06:55 2023 +0300
+
+    add negative test sign up tutor
+
+[33mcommit 0b3d3ef7524f408b1793bd1bc31f39240560da0b[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 00:13:32 2023 +0300
+
+    update
+
+[33mcommit b70a487026847ac8a09f596e4e81235bdadb6076[m
+Merge: ae77870 921ea8c
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 28 14:30:48 2023 +0300
+
+    Merge pull request #135 from UA-1023-TAQC/134-set-_login-function-in-test_runners-module-to-provide-ability-to-run-tests-as-logged-in-student-or-tutor
+    
+    set-_login-function-in-test_runners-module
+
+[33mcommit 921ea8cc58a76bcac43fdd6824a67e025804b9aa[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 28 14:26:10 2023 +0300
+
+    impl _login in test_runers.py
+
+[33mcommit 473553d11d86d1118612e9af1ef9a323fe2fb925[m
+Merge: 9077489 24378a2
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Aug 28 13:39:46 2023 +0300
+
+    Merge remote-tracking branch 'origin/113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988' into 113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988
+    
+    # Conflicts:
+    #       tests/guest/test_home_page.py
+
+[33mcommit 907748974603ec06f39ba50522ff7ed1a57eaf6f[m
+Merge: 5f02944 c1bd0dc
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Aug 28 02:25:53 2023 +0300
+
+    Merge remote-tracking branch 'origin/113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988' into 113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988
+
+[33mcommit 61c910aed61227691c44014bc2eea8bffc9f4f12[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Mon Aug 28 10:37:44 2023 +0300
+
+    set-_login-function-in-test_runners-module
+
+[33mcommit 24378a28eaccd028847f4bcf901186b7be3bcdff[m
+Merge: 5f02944 c1bd0dc
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Aug 28 02:25:53 2023 +0300
+
+    Merge remote-tracking branch 'origin/113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988' into 113-sign-up-as-a-tutor-popup-verify-that-a-guest-can-log-in-as-a-mentor-clicking-highlighted-underlined-text-log-in-at-the-tutor-sign-up-pop-up-988
+    
+    # Conflicts:
+    #       SpaceToStudy/ui/pages/sign_up_modal/sign_up_modal.py
+    #       tests/guest/test_home_page.py
+
+[33mcommit 5f02944a215d8aefbc45edd58da8aae08817ec74[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Aug 28 02:14:48 2023 +0300
+
+    add test_switched_modals
+
+[33mcommit c1bd0dc988d11e982970baee48f661186db8205f[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Aug 28 02:14:48 2023 +0300
+
+    add test_switched_modals
+
+[33mcommit 4b9e272cb6afe41e933373155a059ff282ecdaef[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 22:02:17 2023 +0300
+
+    test_registration_tutor_too_long_password
+
+[33mcommit 9ba239c982bf3cfdbebe4b2e803d1e1acad4ed40[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 15:15:18 2023 +0300
+
+    update
+
+[33mcommit 7c8fe38ae8bbe9768e38fb0d3d3047ae33f52842[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 15:11:26 2023 +0300
+
+    update
+
+[33mcommit a9959a3e658f8120c8209cab5cb892094a2fc63c[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 15:05:13 2023 +0300
+
+    test_registration_modal_student_is_shown_for_guest
+
+[33mcommit 261ea0287c4f9e6d5e52f055bc79827f41c49974[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 12:06:55 2023 +0300
+
+    add negative test sign up tutor
+
+[33mcommit 2fe449d6b8d2b7ce3f3896683e9e582b5e7df8e9[m
+Merge: 47e7add ae77870
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 00:13:48 2023 +0300
+
+    Merge branch 'develop' of https://github.com/UA-1023-TAQC/SpaceToStudyTA into develop
+
+[33mcommit 47e7adde3a5b837fb0ed49fc674a9067a6e7cfc0[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 27 00:13:32 2023 +0300
+
+    update
+
+[33mcommit ae778709659cb0e4ab08a8ed70a85ded5a20a3ce[m
+Merge: 015c2a2 836eced
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 25 15:02:22 2023 +0300
+
+    Merge pull request #129 from UA-1023-TAQC/testrunner/init
+    
+    init test runners
+
+[33mcommit 836eced58dc0ddd71a2e4098456e728d4a93c4f1[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 25 14:59:01 2023 +0300
+
+    init test runners
+
+[33mcommit 015c2a29494031ffc6edacafb4635f18d5d21681[m
+Merge: 1de4bf0 764a991
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 14:49:44 2023 +0300
+
+    Merge pull request #95 from UA-1023-TAQC/issue/template
+    
+    added test_case_template.md
+
+[33mcommit 764a991151bf62ce1757005989daca0e6c17c943[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 14:49:09 2023 +0300
+
+    added test_case_template.md
+
+[33mcommit 1de4bf006c3354549af4569b411ffc670577874e[m
+Merge: c18392e 02230bf
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 13:38:41 2023 +0300
+
+    Merge pull request #89 from UA-1023-TAQC/74-create-my-cooperations-modal-component
+    
+    Created modal component in my cooperations
+
+[33mcommit c18392e82551cccc6112d3cd2f978d34e7eceba6[m
+Merge: 6d0c801 8b3ab99
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 13:36:50 2023 +0300
+
+    Merge pull request #86 from UA-1023-TAQC/45-create-my-resources-page
+    
+    Created my resources page
+
+[33mcommit 02230bf61ade720b75478040c8d04c5248dba498[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 22 13:30:39 2023 +0300
+
+    Fixed according to comments in pull request
+
+[33mcommit 8b3ab9917dcf49ffe8184c336abb74bf8b7cad91[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 22 13:25:40 2023 +0300
+
+    Fixed according to comments
+
+[33mcommit 6d0c8013ba5561c937fa334c95b1ed564ed0b41d[m
+Merge: 793b57d 36d1b4d
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 13:24:38 2023 +0300
+
+    Merge pull request #94 from UA-1023-TAQC/26-create-login-modal
+    
+    added Button element, updated Input element, added sign in modalobjec…
+
+[33mcommit 36d1b4df741bba8f9d4ddee49b03fbeed5ff6301[m
+Merge: 8930ec1 793b57d
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 13:24:19 2023 +0300
+
+    Merge branch 'develop' into 26-create-login-modal
+
+[33mcommit 793b57d6303f557c5716e2af8d79b1dd7553ee15[m
+Merge: 29a2d2e 09fc6ea
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 13:22:55 2023 +0300
+
+    Merge pull request #93 from UA-1023-TAQC/92-create-new-lesson-page
+    
+    Created new lesson page
+
+[33mcommit 29a2d2eb4d16fadb95f3919009fb3b50960bd7d8[m
+Merge: 4ea74d5 9f95ae3
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 13:22:31 2023 +0300
+
+    Merge pull request #91 from UA-1023-TAQC/90-create-table-row-component-for-lessons-on-my-resources-page
+    
+    Created table row component for lessons on my resources page
+
+[33mcommit 4ea74d592359b14a3f0b02455f882a6ab10d9aee[m
+Merge: 7cdd6e9 9209983
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 13:19:10 2023 +0300
+
+    Merge pull request #88 from UA-1023-TAQC/44-create-grid-card-component-for-offers-page
+    
+    create grid_card_component
+
+[33mcommit 7cdd6e99e37566e2a2063e64ebbfe6c990024a28[m
+Merge: ee245da c730cbc
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Tue Aug 22 13:18:45 2023 +0300
+
+    Merge pull request #87 from UA-1023-TAQC/43-create-inline-card-component-for-offers-page
+    
+    Created inline component for offers page
+
+[33mcommit 09fc6eaed24a93a154e23754926730a26c646193[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 22 12:10:08 2023 +0300
+
+    Created new lesson page
+
+[33mcommit 9f95ae3bacbba8c036f6d64678f766998d51cd8d[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 22 11:37:43 2023 +0300
+
+    Created table row component for lessons on my resources page
+
+[33mcommit b7ce4a1213d9fea3951a33f1b9e10cd4c4816b55[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 22 11:12:02 2023 +0300
+
+    Created modal component in my cooperations and fixed bugs in my cooperations page
+
+[33mcommit 8930ec187dc7a520d8fdd7c85ca49ce54b9bcbfa[m
+Author: Olenka Mysko <olenamys@gmail.com>
+Date:   Mon Aug 21 12:59:21 2023 +0300
+
+    added Button element, updated Input element, added sign in modalobjects page
+
+[33mcommit 92099834ec2db832922ed181002e99920deec03a[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Aug 21 12:47:53 2023 +0300
+
+    create grid_card_component
+
+[33mcommit c730cbc141e0d50d34415242c070597a09589b7c[m[33m ([m[1;31morigin/43-create-inline-card-component-for-offers-page[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Sun Aug 20 21:52:55 2023 +0300
+
+    Created inline component for offers page
+
+[33mcommit 32a1e40969ecae38259d8a666a92821426d695f4[m[33m ([m[1;31morigin/45-create-my-resources-page[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Sun Aug 20 21:18:05 2023 +0300
+
+    Creted my resources page
+
+[33mcommit ee245da12cda419910db8b16afcc90d94bc4d331[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 14:32:02 2023 +0300
+
+    update requirements.txt
+
+[33mcommit b61fa7a43f7c27d6e10dcdad435327c8a8591f94[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:12:49 2023 +0300
+
+    code reformat
+
+[33mcommit f5616266d0c4ca42d189f3c87c4660fd3932e168[m
+Merge: d48e164 fbe44db
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:09:01 2023 +0300
+
+    Merge pull request #82 from UA-1023-TAQC/rewrite_my_profile_page
+    
+    Rewrite my profile page
+
+[33mcommit d48e1644f9159896da10f406703d458568c673ed[m
+Merge: 91aae41 0e1cf60
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:08:31 2023 +0300
+
+    Merge pull request #80 from UA-1023-TAQC/sign_up_modal_refactoring
+    
+    Sign_up_modal refactoring and elements included
+
+[33mcommit 91aae41911ac16f50bbbbcae3875f788f2b44c9f[m
+Merge: 202c363 e58edb0
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:08:05 2023 +0300
+
+    Merge pull request #81 from UA-1023-TAQC/29-create-starline-element-for-review-component
+    
+    Created starline element for review component
+
+[33mcommit 202c36347801ee694bc7fad0b5954a5b6bc58f59[m
+Merge: fdb2703 70c69ef
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:07:28 2023 +0300
+
+    Merge pull request #85 from UA-1023-TAQC/40-create-new-offersrequest-component
+    
+    40 create new offersrequest component
+
+[33mcommit fdb27039859ba051be15eddf0502b90631a1215e[m
+Merge: 43c8a99 0a57192
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:06:26 2023 +0300
+
+    Merge pull request #84 from UA-1023-TAQC/83-nonrelevant-xpath-on-my-cooperations-page-line-39-40
+    
+    Removed nonrelevant xpath
+
+[33mcommit 43c8a99cbb7bf27c0c366335e4894009adbbee1c[m
+Merge: cc8357b 9c14653
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:05:46 2023 +0300
+
+    Merge pull request #79 from UA-1023-TAQC/page_for_offers
+    
+    Page for offers
+
+[33mcommit cc8357b4e169caac5703b62e9ca628873dccee13[m
+Merge: 3ca19c5 486f2f5
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:05:03 2023 +0300
+
+    Merge pull request #78 from UA-1023-TAQC/44-create-grid-card-component-for-offers-page
+    
+    add grid card component tutor
+
+[33mcommit 3ca19c5c3e2e2bfa884c54f365004c11ab3531e0[m
+Merge: 108fa70 fdfcda8
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:04:17 2023 +0300
+
+    Merge pull request #70 from UA-1023-TAQC/Create-How-it-works-item-component-Student#69
+    
+    Fix How-it-works-item-component-Student#69
+
+[33mcommit fdfcda8313062d6383d537a1790846e4a4e49e19[m
+Merge: ec51f88 108fa70
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 18 13:04:11 2023 +0300
+
+    Merge branch 'develop' into Create-How-it-works-item-component-Student#69
+
+[33mcommit 70c69efe392146270b5c00b2e22a2af2e4fe3a30[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Aug 18 12:34:01 2023 +0300
+
+    Add method for checking is dripdown list of language open
+
+[33mcommit fbe44db1806bd8e82283cd69e0286606fc9a6dd8[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Aug 18 12:22:33 2023 +0300
+
+    fix bug
+
+[33mcommit 0a5719212c69d96b03d56606b29f682a7812073d[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Fri Aug 18 11:58:56 2023 +0300
+
+    Removed nonrelevant xpath
+
+[33mcommit d5208d4a7b89482a10dc85c4929ef496c1502631[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Aug 18 00:24:02 2023 +0300
+
+    small fix
+
+[33mcommit a231b8d301fd947b83e22b555152248b46de700d[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Aug 18 00:22:20 2023 +0300
+
+    Add checkbox elem
+
+[33mcommit 73ac00e60e50f67348e32e85be1a0cf4b34f770b[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Aug 18 00:21:42 2023 +0300
+
+    rewrite my profile
+
+[33mcommit e58edb0a735be49c7c8782ebb94c2d6eb98b1076[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Thu Aug 17 23:09:05 2023 +0300
+
+    Created starline element for review component
+
+[33mcommit de5d7c631e9d407c1ebc63fad0e57cd3b84ded8a[m
+Merge: b5c6da7 108fa70
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Thu Aug 17 22:57:21 2023 +0300
+
+    Merge branch 'develop' into 40-create-new-offersrequest-component
+
+[33mcommit 0e1cf6055f7447f9379f0ebbb3aa3613c415d96a[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Thu Aug 17 22:04:25 2023 +0300
+
+    refactoring sign_up_modal and elements included
+
+[33mcommit 9c14653b41780011bac7d0d9c6af7448c51ed3b7[m
+Author: Illia Nakonechnyi <realpeople2807@gmail.com>
+Date:   Thu Aug 17 18:14:09 2023 +0300
+
+    change explore offers page + search by tutor name component,
+    add filtering and sorting component
+
+[33mcommit 41611fe37483c043f8618f8ae1c216b745bb95f1[m
+Author: Illia Nakonechnyi <realpeople2807@gmail.com>
+Date:   Thu Aug 17 16:05:24 2023 +0300
+
+    add left arrow webelement
+
+[33mcommit b5c6da75a9db1214a5f6d47feef2dcab8981b02e[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Thu Aug 17 15:52:07 2023 +0300
+
+    add textarea elem
+
+[33mcommit ec51f88b29d1abaa9c0c9ab34707af26fd98f47b[m[33m ([m[1;31morigin/Create-How-it-works-item-component-Student#69[m[33m, [m[1;32mCreate-How-it-works-item-component-Student#69[m[33m)[m
+Merge: 9072fb3 bd1b5e9
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 17 13:16:44 2023 +0300
+
+    fix component
+
+[33mcommit 9072fb3ad0eaee42df6281f09367bc88cbbc1c6c[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 17 12:38:23 2023 +0300
+
+    fix component
+
+[33mcommit 91fa1524dfc02f1f6ea770cfe7233b63a4ce1eeb[m[33m ([m[1;31morigin/page_for_offers[m[33m)[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Wed Aug 16 18:44:52 2023 +0300
+
+    add explore offers page, search by tutor name component, student private lesson component
+
+[33mcommit 486f2f50a601c925cafd4d02c00084bc761de10d[m[33m ([m[1;31morigin/44-create-grid-card-component-for-offers-page[m[33m)[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Wed Aug 16 16:09:14 2023 +0300
+
+    now cardomponent extends baseomponent
+
+[33mcommit 108fa70e97150ee91642117bebbf291cd8e7c08a[m
+Merge: 3fbe04c e743c11
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 14:15:06 2023 +0300
+
+    Merge pull request #77 from UA-1023-TAQC/41-create-page-for-subject
+    
+    created page for subjects
+
+[33mcommit 3fbe04c66a47db789a884df7240438c778932a5f[m
+Merge: db24a8c 7ee1ebe
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 14:14:41 2023 +0300
+
+    Merge pull request #76 from UA-1023-TAQC/38-create-page-for-categories
+    
+    Created page for categories
+
+[33mcommit db24a8c0ed2a596adea5c0a9ee6b081c9692fa98[m
+Merge: 53d80f0 1368b24
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 14:14:15 2023 +0300
+
+    Merge pull request #75 from UA-1023-TAQC/32-create-my-cooperations-page
+    
+    added sorting button and relevant methods
+
+[33mcommit 53d80f027a018382b5a62e3eb73683e7095c0e04[m
+Merge: bdf841e a2c2330
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 14:12:05 2023 +0300
+
+    Merge pull request #73 from UA-1023-TAQC/my_profile_refactor
+    
+    Optimize file placement
+
+[33mcommit bdf841ec8a67404b5a77280f0a4c3b668d872239[m
+Merge: d8f8b63 6fc8e68
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 14:11:35 2023 +0300
+
+    Merge pull request #72 from UA-1023-TAQC/Create-questions-component-for-home-page-student#68
+    
+    add questions_component
+
+[33mcommit 6fc8e68789b9da2d95b06b69b0b80517cfeaada3[m
+Merge: 028ec52 d8f8b63
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 14:10:00 2023 +0300
+
+    Merge branch 'develop' into Create-questions-component-for-home-page-student#68
+
+[33mcommit d8f8b63d11fc9c543bd16f89dc3772bb320a9fb6[m
+Merge: 22d4640 aee4da5
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 14:09:02 2023 +0300
+
+    Merge pull request #71 from UA-1023-TAQC/create_search_input#46
+    
+    fix search input
+
+[33mcommit aee4da5b9abd8f83061cd4ae93f63b22f663c85d[m
+Merge: 0b8917e 22d4640
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 14:08:35 2023 +0300
+
+    Merge branch 'develop' into create_search_input#46
+
+[33mcommit bd1b5e9f7ab68cbeda0bd61bef4c3aac6a35fb15[m
+Merge: 227c1f0 22d4640
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 13:56:13 2023 +0300
+
+    Merge branch 'develop' into Create-How-it-works-item-component-Student#69
+
+[33mcommit 22d4640cbda5e7ae50cea21d1f3ad20c5496ef44[m
+Merge: cc281b7 1945e26
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 13:51:45 2023 +0300
+
+    Merge pull request #67 from UA-1023-TAQC/Create-image-element#20
+    
+    Create image element#20
+
+[33mcommit cc281b79f5d6ad9c049443ecbb4bddafe92305c9[m
+Merge: d72ee88 af8b1c6
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 13:50:38 2023 +0300
+
+    Merge pull request #62 from UA-1023-TAQC/input_with_image
+    
+    Created an input with image
+
+[33mcommit d72ee885dcda7307ef35be56cbd3c312c56ee788[m
+Merge: 846179b 4514999
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 13:49:54 2023 +0300
+
+    Merge pull request #61 from UA-1023-TAQC/34-create-card-component-for-my-cooperations-page
+    
+    Created card component for my cooperations page
+
+[33mcommit 846179b6679ead4c118be93220c72fcea13ba64e[m
+Merge: 1282841 a24de28
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 16 13:49:05 2023 +0300
+
+    Merge pull request #60 from UA-1023-TAQC/33-create-table-row-component-for-my-cooperations-page
+    
+    Created table row component for my cooperations page
+
+[33mcommit ef7ef5dc0234e0f4d2b8d97b3412021f8b9812ed[m
+Merge: 2b699ed 1282841
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Aug 16 13:13:19 2023 +0300
+
+    Merge branch 'develop' into 40-create-new-offersrequest-component
+
+[33mcommit 2b699ed3a4bed679bacb704b8c91cf63699a4ab4[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Aug 16 13:08:31 2023 +0300
+
+    improve offers_request_modal
+
+[33mcommit 082a14760ac605435534c0b4df3c8221da9deeef[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Wed Aug 16 11:25:42 2023 +0300
+
+    add grid card component tutor
+
+[33mcommit e743c11ec2cb658230f76e99d762346727f8568f[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 15 19:31:51 2023 +0300
+
+    created page for subjects
+
+[33mcommit 7ee1ebecdf40c1c0f20eb1b74a12a4e910fdbceb[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 15 18:57:38 2023 +0300
+
+    Created page for categories
+
+[33mcommit 4514999477e35ea7ce7c077bef0ed9a84e731c8b[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 15 18:05:06 2023 +0300
+
+    fixed methods using node
+
+[33mcommit a24de28c4c65a2d9d4961e80fb549a822f9b6e55[m
+Merge: a9ae425 887f235
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 15 17:50:14 2023 +0300
+
+    Merge branch '33-create-table-row-component-for-my-cooperations-page' of https://github.com/UA-1023-TAQC/SpaceToStudyTA into 33-create-table-row-component-for-my-cooperations-page
+
+[33mcommit a2c2330b672f7f71cf9b247d33f026b477bdf43e[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Tue Aug 15 17:49:43 2023 +0300
+
+    Optimize file placement
+
+[33mcommit a9ae425945b5f9fe51fd0fe1cb7ec986ec9ad09c[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 15 17:49:33 2023 +0300
+
+    fixed methods using node
+
+[33mcommit 1368b24030e28f1fc6e340271873df3b16cae75c[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Tue Aug 15 17:26:10 2023 +0300
+
+    added sorting button and relevant methods
+
+[33mcommit 028ec52e7d555eae75a215dfdfc12b74f7fab3f0[m[33m ([m[1;31morigin/Create-questions-component-for-home-page-student#68[m[33m, [m[1;32mCreate-questions-component-for-home-page-student#68[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Aug 15 17:09:20 2023 +0300
+
+    add questions_component
+
+[33mcommit 0b8917eeac43c882f8b1aeb7e9176b50eb037134[m[33m ([m[1;31morigin/create_search_input#46[m[33m, [m[1;32mcreate_search_input#46[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Tue Aug 15 13:35:24 2023 +0300
+
+    fix search input
+
+[33mcommit 227c1f01283d8abdda6670403b9235769fa47153[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 14 22:07:00 2023 +0300
+
+    How-it-works-item-component-Student#69
+
+[33mcommit 1945e266b3745e5b25773418ac49d0c70f6eff07[m[33m ([m[1;31morigin/Create-image-element#20[m[33m, [m[1;32mCreate-image-element#20[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 14 21:48:20 2023 +0300
+
+    update
+
+[33mcommit 1399c2219682ce70beddf884334c79b48ef1f9a3[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 14 19:09:30 2023 +0300
+
+    add img
+
+[33mcommit 887f235b7ca5bbb34c47bd449f8b88ac3d7e6a7a[m[33m ([m[1;31morigin/33-create-table-row-component-for-my-cooperations-page[m[33m)[m
+Merge: ae7c351 1282841
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:47:02 2023 +0300
+
+    Merge branch 'develop' into 33-create-table-row-component-for-my-cooperations-page
+
+[33mcommit 12828418efe0f55bbb50e1a293e4cd9c9d3a2336[m[33m ([m[1;31morigin/26-create-login-modal[m[33m)[m
+Merge: df5838a e55625b
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:42:56 2023 +0300
+
+    Merge pull request #64 from UA-1023-TAQC/predev
+    
+    Predev
+
+[33mcommit e55625b77c521fed188592de7554e49897890184[m
+Merge: 62c26b5 582bd80
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:41:17 2023 +0300
+
+    Merge pull request #63 from UA-1023-TAQC/Create-button-element#19
+    
+    create buttons on homepage
+
+[33mcommit 582bd804ae9c0b54d865243a2b8f0827540e7d82[m
+Merge: 7c3a384 62c26b5
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:35:35 2023 +0300
+
+    Merge branch 'predev' into Create-button-element#19
+
+[33mcommit 62c26b5ab9079cdfbab37e5b62965ff9f8f6311a[m
+Merge: 4be24e8 88b7573
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:14:49 2023 +0300
+
+    Merge pull request #59 from UA-1023-TAQC/32-create-my-cooperations-page
+    
+    32 create my cooperations page
+
+[33mcommit 4be24e8791690690567295d5d5a24a81ddf99d6c[m
+Merge: df5838a 92b7562
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:12:47 2023 +0300
+
+    Merge pull request #58 from UA-1023-TAQC/collapse_component_for_home_page_guest_#16
+    
+    collapse_component_for_home_page_guest_#16
+
+[33mcommit 92b75623ca69188740153c87c3b4b72b8c93959f[m
+Merge: 3d281be df5838a
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:10:12 2023 +0300
+
+    Merge branch 'predev' into collapse_component_for_home_page_guest_#16
+
+[33mcommit df5838a66ea45749353a4df9805fc5da9da43ba3[m
+Merge: 3639eff 88dcb61
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:03:27 2023 +0300
+
+    Merge pull request #56 from UA-1023-TAQC/fix_header
+    
+    Fix header component
+
+[33mcommit 88dcb611597f973885baf9e7874b2cec5edef87d[m
+Merge: 43d215e f46fb73
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:02:19 2023 +0300
+
+    Merge branch 'predev' into fix_header
+
+[33mcommit f46fb7327bf54926655a80f1394d13a86c8ec7bc[m
+Merge: 3b22c8f 9a3e848
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 14:00:32 2023 +0300
+
+    Merge pull request #54 from UA-1023-TAQC/create_link_elements
+    
+    link elements
+
+[33mcommit 9a3e8489dfbce8832814d7381513a2a858ffad42[m
+Merge: d12905c 3b22c8f
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 13:58:08 2023 +0300
+
+    Merge branch 'predev' into create_link_elements
+
+[33mcommit 3b22c8f32cc7296ef59848148ce8b65364754e54[m
+Merge: f6eea3f 19d204c
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 13:56:01 2023 +0300
+
+    Merge pull request #51 from UA-1023-TAQC/card_component_for_home_page_guest_#17
+    
+    Card component for home page guest #17
+
+[33mcommit 19d204c39ce8f99369156dc0090509bfdb7ff9ac[m
+Merge: 14bb397 f6eea3f
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 13:54:09 2023 +0300
+
+    Merge branch 'predev' into card_component_for_home_page_guest_#17
+
+[33mcommit f6eea3f09162e2abd4b4c67a39135acb2b84dc5b[m
+Merge: c2d4620 10b5e11
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 13:51:07 2023 +0300
+
+    Merge pull request #50 from UA-1023-TAQC/footer_component#14
+    
+    Footer component#14
+
+[33mcommit 10b5e113a5af1e784c0d0f52226ed80e2db65e29[m
+Merge: e6c360b c2d4620
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 13:48:00 2023 +0300
+
+    Merge branch 'predev' into footer_component#14
+    
+    # Conflicts:
+    #       SpaceToStudy/ui/pages/base_page.py
+
+[33mcommit e6c360b5ba867955f08d38513ef504ca17091aba[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 13:46:52 2023 +0300
+
+    added footer to BasePage
+
+[33mcommit c2d46202f647f880137f5f895f4b0cf1f1bcb4d2[m
+Merge: 0bea49c c78d08a
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 13:41:20 2023 +0300
+
+    Merge pull request #49 from UA-1023-TAQC/create_how_it_works_item_component_#18
+    
+    Create how it works item component #18
+
+[33mcommit 0bea49c746c2504fc3200cae490c2d28b72a70df[m
+Merge: 12536d8 3b52e92
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Aug 14 13:29:48 2023 +0300
+
+    Merge pull request #48 from UA-1023-TAQC/create_search_input#46
+    
+    Create search input#46
+
+[33mcommit 7c3a3845252538153202c1fe5bbae3ac60c7934d[m[33m ([m[1;31morigin/Create-button-element#19[m[33m, [m[1;32mCreate-button-element#19[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 14 13:19:31 2023 +0300
+
+    delete old code
+
+[33mcommit d12905cf6d3d3c9ee51328ee27220d979ed368b0[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Mon Aug 14 12:59:02 2023 +0300
+
+    refactor link file and registration modal
+
+[33mcommit 94fb0efec7ab84eb7ee9cc0cfe50287ec086d99f[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 14 12:03:09 2023 +0300
+
+    update
+
+[33mcommit d33f4605772fbfaabf568726a591ab592be767b9[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 14 11:44:12 2023 +0300
+
+    add buttons on homepage
+
+[33mcommit 591bde450e00e3086c8e4f8934c9b40468af988f[m[33m ([m[1;31morigin/footer_component#14[m[33m, [m[1;32mfooter_component#14[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 14 10:58:42 2023 +0300
+
+    update
+
+[33mcommit af8b1c68d5e3321c4a46683c7cc87b0dc08d0099[m[33m ([m[1;31morigin/input_with_image[m[33m)[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Mon Aug 14 10:56:22 2023 +0300
+
+    checkbox element
+
+[33mcommit afb343db9f0c6c7aeadea8982977983e958d9eef[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Mon Aug 14 10:54:16 2023 +0300
+
+    add component
+
+[33mcommit c2fa2c8c03b1138359904d0cc61bcfe5b82b2891[m[33m ([m[1;31morigin/34-create-card-component-for-my-cooperations-page[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Sun Aug 13 21:38:19 2023 +0300
+
+    Created card component for my cooperations page
+
+[33mcommit ae7c35188156d627ba589e97230a4f989e741bd5[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Sun Aug 13 21:32:47 2023 +0300
+
+    Created table row component for my cooperations page
+
+[33mcommit 88b7573a66b8f5945cbf8e4a77308d2e7db15618[m[33m ([m[1;31morigin/32-create-my-cooperations-page[m[33m)[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Sun Aug 13 21:28:29 2023 +0300
+
+    Added methods to enable sorting on my cooperations page
+
+[33mcommit 886440a2a1c45eed60ead7365cf6fad55eae23e9[m
+Author: Yaroslav Prystai <yaroslav.prystai@gmail.com>
+Date:   Sun Aug 13 21:09:44 2023 +0300
+
+    Created my cooperations page
+
+[33mcommit 14bb3978e875b6af69036db6c5a577bb87938770[m[33m ([m[1;31morigin/card_component_for_home_page_guest_#17[m[33m, [m[1;32mcard_component_for_home_page_guest_#17[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 01:56:32 2023 +0300
+
+    add component
+
+[33mcommit e51476a506996a35a1da39d62c7344888d3d5a27[m
+Merge: 13af61e 12536d8
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 01:37:15 2023 +0300
+
+    Merge branch 'predev' into card_component_for_home_page_guest_#17
+
+[33mcommit 3b52e92099e144c08c52a2da8f44dbb389e8a1bd[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 01:36:37 2023 +0300
+
+    add get text btn
+
+[33mcommit c78d08a9971acab83d74804d3d81e0a98780eeba[m[33m ([m[1;31morigin/create_how_it_works_item_component_#18[m[33m, [m[1;32mcreate_how_it_works_item_component_#18[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 01:27:16 2023 +0300
+
+    update
+
+[33mcommit 211a411aad6dd3e7d1c98ed0d1b2701261f346e4[m
+Merge: 3cd4b31 12536d8
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 01:19:29 2023 +0300
+
+    Merge branch 'predev' into create_how_it_works_item_component_#18
+
+[33mcommit e8156d48197ab60194bef78185446fca9eefbf69[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 01:18:27 2023 +0300
+
+     add component
+
+[33mcommit e3be65014d2945044fa437fbc37a0e2f6b14a2a8[m
+Merge: 8811fcd 12536d8
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 00:59:37 2023 +0300
+
+    Merge branch 'predev' into create_search_input#46
+
+[33mcommit 12536d8c50d4b84daad837d9149526ce50309dc8[m[33m ([m[1;31morigin/predev[m[33m, [m[1;32mfooter_for_student[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 00:48:35 2023 +0300
+
+    update
+
+[33mcommit 3d281be9213efb61251003079e67db7ca69ab40a[m[33m ([m[1;31morigin/collapse_component_for_home_page_guest_#16[m[33m, [m[1;32mcollapse_component_for_home_page_guest_#16[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 00:44:58 2023 +0300
+
+    add component
+
+[33mcommit 3cd4b31424e141a28e1dd0ed47ff2921cd166540[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 00:26:42 2023 +0300
+
+    update
+
+[33mcommit bef1c3799cd5b3e712c5900fd42bb11c6923f1b1[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sun Aug 13 00:23:27 2023 +0300
+
+    add component
+
+[33mcommit de5c6da2463a6e70ade1c34e9ce8461cf7bf8e8b[m[33m ([m[1;32mpredev[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Aug 12 00:05:50 2023 +0300
+
+    update
+
+[33mcommit 731f50130ccbc3d3e75ce974f66801be6e27818a[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Aug 11 23:35:39 2023 +0300
+
+    add components
+
+[33mcommit 43d215ec54ff1eb7f4b404730aba548ea93de19e[m[33m ([m[1;31morigin/fix_header[m[33m)[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Fri Aug 11 16:08:26 2023 +0300
+
+    fixed header component
+
+[33mcommit ddd868db46662a3ae63430506a606b156c5a2a30[m
+Merge: 423c2cc cd7b7c4
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 11 15:19:48 2023 +0300
+
+    Merge pull request #47 from UA-1023-TAQC/collapse_component_for_home_page_guest_#16
+    
+    Collapse component for home page guest #16
+
+[33mcommit cd7b7c4d01612e3248044e6720c7e1c3bf0b610e[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 11 15:08:06 2023 +0300
+
+    update
+
+[33mcommit 423c2cc3747ff349a6ec4e74666e7ec666b78952[m
+Merge: a5f6452 2fa66e1
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 11 13:11:31 2023 +0300
+
+    Merge pull request #9 from UA-1023-TAQC/4_my_profile
+    
+    4 my profile
+
+[33mcommit b337b66d231f9851e65c8bb69503c546f3c459f5[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Aug 11 13:03:27 2023 +0300
+
+    Create offers/request modal
+
+[33mcommit 9e3de9d56ebf46fd0064c4c8499bf72350e02603[m[33m ([m[1;31morigin/create_link_elements[m[33m)[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Fri Aug 11 12:07:38 2023 +0300
+
+    link elements
+
+[33mcommit a5f6452d4990982e4c165e376789b0eb41f1587b[m
+Merge: 9f814ae 1399e47
+Author: Anastasiia Mashchenko <127224608+Anastasiia3795@users.noreply.github.com>
+Date:   Fri Aug 11 12:00:08 2023 +0300
+
+    Merge pull request #53 from UA-1023-TAQC/30-create-header-component-for-tutor
+    
+    Added header component for tutor
+
+[33mcommit 1399e47ea46275fc1172e56c99d3e26212c5a448[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Aug 11 11:59:21 2023 +0300
+
+    Changed mistake with class name
+
+[33mcommit 9f814aed2dd33e4d05e78c11af52fc8fccd5d506[m
+Merge: 42a3285 cbf6639
+Author: Anastasiia Mashchenko <127224608+Anastasiia3795@users.noreply.github.com>
+Date:   Fri Aug 11 11:56:46 2023 +0300
+
+    Merge pull request #52 from UA-1023-TAQC/31-create-header-component-for-student
+    
+    Added header component for student
+
+[33mcommit 8e2e899902580fa53be2ac2d400373cc6ff08a26[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Aug 11 11:55:14 2023 +0300
+
+    Added header component for tutor
+
+[33mcommit cbf663966163eaaceb009b81f674e1bbe3cc6da0[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Fri Aug 11 11:46:09 2023 +0300
+
+    Added header component for student
+
+[33mcommit 92739452c46668adbd506fbf01758c462f1cc777[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 18:09:38 2023 +0300
+
+    update
+
+[33mcommit 8811fcd5fdfa92c4d3ee18fa1a08997f4d9403ce[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 18:04:55 2023 +0300
+
+    update
+
+[33mcommit b08c92ec6109941af7dbd3dd5f6b9f2ac507991c[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 18:03:32 2023 +0300
+
+    update
+
+[33mcommit 74619b36c0763b048f6eb6ff9d0b2011cda066f9[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 18:02:11 2023 +0300
+
+    update
+
+[33mcommit 13af61ee96dc9c2240b800b6b4a82677a046989e[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 17:32:25 2023 +0300
+
+    add card component home page
+
+[33mcommit e1aa72d9f9b235f5d05c0cd4dfbff723dfc522d4[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 16:11:05 2023 +0300
+
+    add footer
+
+[33mcommit eadbe6bec21d4588ab84df4e019fca1c59684400[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 15:30:14 2023 +0300
+
+    add how it works
+
+[33mcommit 2fa66e1c0da25e0f9fb67b7ddebb783538ca9038[m
+Merge: 42a3285 984329f
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Thu Aug 10 14:41:48 2023 +0300
+
+    Merge branch '4_my_profile' into predev
+    
+    # Conflicts:
+    #       SpaceToStudy/ui/elements/input.py
+
+[33mcommit 251e0bee94adf37aa53b39c244f9b91da7105c79[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 11:40:32 2023 +0300
+
+    add search input
+
+[33mcommit 482143884a3644273f830ca31edda543a2339287[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Thu Aug 10 10:59:15 2023 +0300
+
+     add collapse component
+
+[33mcommit 42a3285a649f27f39478032bc3b179c083bb95f0[m
+Merge: 32fc91a 0850ee7
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 9 14:42:17 2023 +0300
+
+    Merge pull request #10 from UA-1023-TAQC/registration_window
+    
+    Create page "registration_modal"
+
+[33mcommit 32fc91a1903f5c3bfd0119c94f2a018079b272a2[m
+Merge: 14ab195 7724d39
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Wed Aug 9 14:40:33 2023 +0300
+
+    Merge pull request #11 from UA-1023-TAQC/header
+    
+    add header
+
+[33mcommit 14ab195213d3fc6b377ebd40384aa8b7ee577385[m
+Merge: 46d4b42 36b0f50
+Author: Anastasiia Mashchenko <127224608+Anastasiia3795@users.noreply.github.com>
+Date:   Wed Aug 9 12:06:33 2023 +0300
+
+    Merge pull request #12 from UA-1023-TAQC/my_offers_page
+    
+    Changed the code according to the typing
+
+[33mcommit 36b0f50f344fd889bddbdf7e0833cd7dfca3c960[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Aug 9 11:55:29 2023 +0300
+
+    Changed the code according to the typing
+
+[33mcommit 46d4b42911eebeefd35f8e23d3b64e775abda233[m
+Merge: 941105c 1fb8ab9
+Author: Anastasiia Mashchenko <127224608+Anastasiia3795@users.noreply.github.com>
+Date:   Wed Aug 9 11:08:57 2023 +0300
+
+    Merge pull request #5 from UA-1023-TAQC/my_offers_page
+    
+    Add "my offers" page
+
+[33mcommit 1fb8ab9d4940d02d2cbacb5126e07e973ce0fe56[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Wed Aug 9 11:07:33 2023 +0300
+
+    Change noda to node
+
+[33mcommit 7724d396126caf989bc8935d4e49b0e4e57be045[m
+Author: Illia Nakonechnyi <92325403+Naccarato21@users.noreply.github.com>
+Date:   Wed Aug 9 10:58:04 2023 +0300
+
+    add header component
+
+[33mcommit 984329f130c0dcac5a043140c955243c4583df46[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Tue Aug 8 14:01:23 2023 +0300
+
+    Remove coments
+
+[33mcommit 733f5b2393b2cbe87caefa2a6ba8b222ad36e842[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Tue Aug 8 13:56:15 2023 +0300
+
+    Performed text replacement from 'noda' to 'node'
+
+[33mcommit fe4068392aa4315cb8afde683fd79316d19c7487[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Tue Aug 8 13:51:18 2023 +0300
+
+    An attempt to enhance code quality
+
+[33mcommit 0ccd410149407e93597652a22983b4f03d440a6f[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Tue Aug 8 12:19:22 2023 +0300
+
+    refactor profile_info as page
+
+[33mcommit 0850ee7abf38f10eff49fac6a3ab1932ce6e8722[m
+Author: zakotiukk <zakotiukk@gmail.com>
+Date:   Mon Aug 7 11:17:26 2023 +0300
+
+    registration modal
+
+[33mcommit 17f2f3495267d0a57484849be4e9ddc3ca292c1f[m
+Merge: 6361315 941105c
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Aug 5 00:13:52 2023 +0300
+
+    Merge branch 'predev' of https://github.com/UA-1023-TAQC/SpaceToStudyTA into predev
+
+[33mcommit 63613156edb68fa892cd8d6564e970b0b665f26c[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Sat Aug 5 00:13:44 2023 +0300
+
+    update
+
+[33mcommit 941105cd612eb2075c44d53c4a79177aaed7fcbc[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Aug 4 14:02:26 2023 +0300
+
+    added base component
+
+[33mcommit 755f9aa3677e6b7d4e6f769a07a513498fbfd468[m
+Merge: 3639eff aa3d756
+Author: Natali-natali <51964116+Natali-natali@users.noreply.github.com>
+Date:   Fri Aug 4 11:35:11 2023 +0200
+
+    Merge pull request #8 from UA-1023-TAQC/home_page
+    
+    homePage
+
+[33mcommit d889909e2b0c10224c78cd962b77c4c24d5796c9[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Jul 31 02:43:16 2023 +0300
+
+    small fix
+
+[33mcommit 8e160a38eec7cfc27268331eab370caf3cce7800[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Jul 31 02:36:18 2023 +0300
+
+    remove test my profile
+
+[33mcommit 1292391a7d15c9f0fdb11a293a83685e34f15f31[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Jul 31 02:33:27 2023 +0300
+
+    add test my profile to commit history
+
+[33mcommit fc8a4fc9d8975069ff355f6223feafb0daa34c80[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Jul 31 02:31:13 2023 +0300
+
+    complete student_reviews
+
+[33mcommit 0c3f82cf0ce0acd8c2716fd923fccd87e9ba86c1[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Jul 28 22:11:04 2023 +0300
+
+    create student_reviews
+
+[33mcommit 8a5be495a13346a4e6ca78f3cf26a0a6230d758d[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Jul 28 20:37:44 2023 +0300
+
+    small fix
+
+[33mcommit 9d42f0a0fb15117216db35f0622c132889ea12c3[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Jul 28 20:36:33 2023 +0300
+
+    add video_presentation
+
+[33mcommit 46842ca276a3a79fba50edcefd01bd41b3e0fb3d[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Fri Jul 28 10:43:28 2023 +0300
+
+    add profile_completeness
+
+[33mcommit aa3d7563f0f0cf0ff94e0f606f9fc8ed3907bf56[m[33m ([m[1;31morigin/home_page[m[33m, [m[1;32mhome_page[m[33m)[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Jul 28 01:47:49 2023 +0300
+
+    update
+
+[33mcommit da57d4b8ba51f93117d00bc73420820456fae5b8[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Fri Jul 28 01:08:20 2023 +0300
+
+    update
+
+[33mcommit 0cba0452f3aaa99cdef49ab173f64988ec230caa[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Thu Jul 27 22:24:17 2023 +0300
+
+    refactor profile_info
+
+[33mcommit 81bac0edb7a2371d47e38c147065995a37b8cfa4[m
+Author: Natali-natali <rozdilska.n@gmail.com>
+Date:   Wed Jul 26 01:40:04 2023 +0300
+
+    add pages
+
+[33mcommit 3b1c243464590b08306292693903547a97aa5581[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Mon Jul 24 22:43:26 2023 +0300
+
+    add function in profile_info
+
+[33mcommit d8a782d4bd2396ce153b515de20bf17ebac62cc1[m
+Author: Volodumur Besarab <volodumur911@gmail.com>
+Date:   Sat Jul 22 21:31:34 2023 +0300
+
+    add tests name_surname & days_in_spase2study_text
+
+[33mcommit 5aae66be71bc0a8ce47e50731225b050df5a9888[m
+Author: Anastasiia <maschenkonastya@gmail.com>
+Date:   Sat Jul 22 21:30:10 2023 +0300
+
+    Add My Offers page
+
+[33mcommit 3639eff5578f927116ebffa8c047f30b8b299eaa[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Fri Jul 21 16:25:15 2023 +0300
+
+    added first page and element
+
+[33mcommit d3912db4b858ae6237a9125c492aa9bb996d9c1a[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Jul 17 14:27:13 2023 +0300
+
+    init project
+
+[33mcommit b63ea1646b8921ad178e3aea957687b2cda5895d[m
+Author: Liubomyr Halamaha <galamagal86@gmail.com>
+Date:   Mon Jul 17 13:21:57 2023 +0300
+
+    Initial commit

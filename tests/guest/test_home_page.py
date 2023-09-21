@@ -154,8 +154,6 @@ class HomePageTestCase(BaseTestRunner):
         width = width_block.size['width']
         self.assertEqual(540, width)
 
-
-
     def test_the_collapse_block_ui_text(self):
         flexible_location = "Flexible Location"
         individual_time = "Individual Time"
