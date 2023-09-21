@@ -29,8 +29,8 @@ POPULAR_CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/d
 GO_TO_CATEGORIES_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/div[2]/button")
 
 SCROLL_UP_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[3]/button")
-GRID_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=2]")
-INLINE_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
+GRID_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
+INLINE_CARD = (By.XPATH, "//*[@class='MuiBox-root css-1txvgu3'][count(div/div)=5]")
 
 
 class ExploreOffersPage(BasePage):
