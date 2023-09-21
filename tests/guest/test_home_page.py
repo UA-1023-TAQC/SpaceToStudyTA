@@ -224,7 +224,7 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(55, 71, 79, 1)", background_fourth_el)
 
     def test_the_collapse_block_ui_resize(self):
-        (HomePageGuest(self.driver).driver.set_window_size(820, 1080))
+        (HomePageGuest(self.driver).driver.set_window_size(899, 1080))
         width_tablet = (HomePageGuest(self.driver).get_collapse_block().size['width'])
         self.assertEqual(229, width_tablet)
 
