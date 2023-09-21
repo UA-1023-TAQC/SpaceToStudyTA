@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.explore_offers.student_private_lesson_component import StudentPrivateLessonComponent
@@ -11,6 +12,7 @@ class TutorPrivateLessonComponent(StudentPrivateLessonComponent):
     def __init__(self, node):
         super().__init__(node)
 
+    @allure.step("Click on the create request button")
     def click_create_request_btn(self) -> OffersRequestModal:
         self.get_create_request_btn().click()
         return OffersRequestModal(self.node.find_element(*CREATE_REQUEST_MODAL))

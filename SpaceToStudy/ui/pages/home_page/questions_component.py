@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -18,27 +19,33 @@ class QuestionsComponent(BaseComponent):
         self._description_items = None
         self._title_items = None
 
+    @allure.step("Get the name of questions block")
     def get_name_questions_block(self) -> str:
         if not self._name_questions_block:
             self._name_questions_block = self.node.find_element(*NAME_QUESTIONS_BLOCK)
         return self._name_questions_block.text
 
+    @allure.step("Get text from the description of questions block")
     def get_description_questions_block(self) -> str:
         if not self._description_questions_block:
             self._description_questions_block = self.node.find_element(*DESCRIPTION_QUESTIONS_BLOCK)
         return self._description_questions_block.text
 
+    @allure.step("Get the title of items")
     def get_title_items(self) -> WebElement:
         if not self._title_items:
             self._title_items = self.node.find_element(*HOW_TO_FIND_A_TUTOR_ITEM_TITLE)
         return self._title_items
 
+    @allure.step("Get the text of title items")
     def get_text_title_items(self) -> str:
         return self.get_title_items().text
 
+    @allure.step("Click on title items")
     def click_title_items(self):
         return self.get_title_items().click()
 
+    @allure.step("Get the description of items")
     def get_description_items(self) -> str:
         if not self._description_items:
             self._description_items = self.node.find_element(*HOW_TO_FIND_A_TUTOR_ITEM_DESCRIPTION)
