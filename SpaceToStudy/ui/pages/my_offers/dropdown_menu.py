@@ -9,7 +9,6 @@ HIGH_LOW = (By.XPATH, "./li[3]")
 
 
 class DropdownMenu:
-
     @allure.step("Init a dropdown menu for offers sorting when offers are displayed in the card format on the My Offers page")
     def __init__(self, node):
         self.node = node
