@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -13,11 +14,14 @@ class RatingProgressBar(BaseComponent):
         super().__init__(node)
         self.node = node
 
+    @allure.step("Get the rating progress bar name in 'What students say' block on 'My Profile' page")
     def get_rating_progress_bar_name_text(self) -> str:
         return self.node.find_element(*NAME).text
 
+    @allure.step("Get the rating progress bar vote counter in 'What students say' block on 'My Profile' page")
     def get_rating_progress_bar_vote_counter_text(self) -> str:
         return self.node.find_element(*COUNTER).text
 
+    @allure.step("Get the rating progress bar completion WebElement in 'What students say' block on 'My Profile' page")
     def get_rating_progress_bar_completion(self) -> WebElement:
         return self.node.find_element(*PROGRESS_BAR_COMPLETION)

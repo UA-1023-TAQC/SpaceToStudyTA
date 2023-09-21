@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -13,11 +14,14 @@ class ProfileCompletionStepsComponent(BaseComponent):
         super().__init__(node)
         self.node = node
 
+    @allure.step("Get the profile completion step title in 'Complete your profile' block on 'My Profile' page")
     def get_profile_completion_step_title(self) -> str:
         return self.node.find_element(*TITLE).text
 
+    @allure.step("Get the profile completion step icon in 'Complete your profile' block on 'My Profile' page")
     def get_profile_completion_step_icon(self) -> WebElement:
         return self.node.find_element(*ICON)
 
+    @allure.step("Get the profile completion step description in 'Complete your profile' block on 'My Profile' page")
     def get_profile_completion_step_description(self) -> str:
         return self.node.find_element(*DESCRIPTION).text
