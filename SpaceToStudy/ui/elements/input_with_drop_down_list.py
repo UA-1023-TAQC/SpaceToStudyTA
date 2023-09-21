@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -9,12 +10,14 @@ class InputDropDownList(Input):
         super().__init__(node)
         self.default_press_count = 1
 
+    @allure.step("User presses a key on the keyboard {press_count} times without releasing it")
     def press_down_button(self, press_count: int):
         self.default_press_count = press_count
         for _ in range(self.default_press_count):
             self.get_input().send_keys(Keys.DOWN)
         return self
 
+    @allure.step("User releases a key {press_count} times from the keyboard")
     def press_up_button(self, press_count: int):
         self.default_press_count = press_count
         self.get_input().click()
@@ -22,6 +25,7 @@ class InputDropDownList(Input):
             self.get_input().send_keys(Keys.UP)
         return self
 
+    @allure.step("User presses enter on the keyboard")
     def press_enter_button(self):
         self.get_input().send_keys(Keys.ENTER)
         return self

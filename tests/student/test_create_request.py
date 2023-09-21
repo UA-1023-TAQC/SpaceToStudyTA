@@ -5,12 +5,14 @@ from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
-from SpaceToStudy.ui.pages.header.header_component import HeaderComponen
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
-from SpaceToStudy.ui.pages.offers_request_modal.offers_request_modal import OffersRequestModal, FirstBlock, SecondBlock, \
-    ThirdBlock
+from SpaceToStudy.ui.pages.offers_request_modal.offers_request_modal import(OffersRequestModal,
+                                                                            FirstBlock,
+                                                                            SecondBlock,
+                                                                            ThirdBlock)
 from tests.test_runners import BaseTestRunner, TestRunnerWithStudent
 from tests.value_provider import ValueProvider
 

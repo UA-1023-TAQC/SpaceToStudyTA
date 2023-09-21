@@ -1,12 +1,7 @@
 import unittest
-from time import sleep
-
-from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
-from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
-from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
@@ -89,7 +84,7 @@ class RegistrationTestCase(BaseTestRunner):
 
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
-                                .click_button_get_started_for_free())
+                                .click_started_for_free())
         start_student = get_started_for_free\
             .get_card_learn_from_experts()\
             .click_btn()
