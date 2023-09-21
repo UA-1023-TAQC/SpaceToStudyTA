@@ -1,5 +1,6 @@
 from time import sleep
 
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -64,11 +65,13 @@ class HomePageGuest(BasePage):
         self._collapse_items = None
         self._collapse_block = None
 
+    @allure.step("Get collapse block")
     def get_collapse_block(self) -> WebElement:
         if not self._collapse_block:
             self._collapse_block = self.driver.find_element(*COLLAPSE_BLOCK)
         return self._collapse_block
 
+    @allure.step("Get list items in collapse block")
     def get_collapse_list_items_block(self) -> list[CollapseItem]:
         if self._collapse_items is None:
             _collapse_items = self.driver.find_elements(*COLLAPSE_BLOCK_ITEMS)
@@ -77,143 +80,170 @@ class HomePageGuest(BasePage):
                 self._collapse_items.append(CollapseItem(collapse_item))
         return self._collapse_items
 
-
+    @allure.step("Get flexible location")
     def get_flexible_location(self) -> CollapseItem:
         if not self._flexible_location:
             _flexible_location = self.driver.find_element(*COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
             self._flexible_location = CollapseItem(_flexible_location)
         return self._flexible_location
 
+    @allure.step("Click flexible location")
     def click_flexible_location(self):
         self.get_flexible_location().click()
         return self
 
+    @allure.step("Get individual time")
     def get_individual_time(self) -> CollapseItem:
         if not self._individual_time:
             _individual_time = self.driver.find_element(*COLLAPSE_BLOCK_INDIVIDUAL_TIME)
             self._individual_time = CollapseItem(_individual_time)
         return self._individual_time
 
+    @allure.step("Click individual time")
     def click_individual_time(self):
         self.get_individual_time().click()
         return self
 
+    @allure.step("Get free choice of tutors")
     def get_free_choice_of_tutors(self) -> CollapseItem:
         if not self._free_choice_of_tutors:
             _free_choice_of_tutors = self.driver.find_element(*COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS)
             self._free_choice_of_tutors = CollapseItem(_free_choice_of_tutors)
         return self._free_choice_of_tutors
 
+    @allure.step("Click free choice of tutors")
     def click_free_choice_of_tutors(self):
         self.get_free_choice_of_tutors().click()
         return self
 
+    @allure.step("Get digital communication")
     def get_digital_communication(self) -> CollapseItem:
         if not self._digital_communication:
             _digital_communication = self.driver.find_element(*COLLAPSE_BLOCK_DIGITAL_COMMUNICATION)
             self._digital_communication = CollapseItem(_digital_communication)
         return self._digital_communication
 
+    @allure.step("Click digital communication")
     def click_digital_communication(self):
         self.get_digital_communication().click()
         return self
 
+    @allure.step("Get sign up items")
     def get_sign_up_items(self) -> HowItWorksComponent:
         if not self._sign_up:
             _sign_up = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SIGN_UP)
             self._sign_up = HowItWorksComponent(_sign_up)
         return self._sign_up
 
+    @allure.step("Get select a tutor items")
     def get_select_a_tutor_items(self) -> HowItWorksComponent:
         if not self._select_a_tutor:
             _select_a_tutor = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR)
             self._select_a_tutor = HowItWorksComponent(_select_a_tutor)
         return self._select_a_tutor
 
+    @allure.step("Get send request items")
     def get_send_request_items(self) -> HowItWorksComponent:
         if not self._send_request:
             _send_request = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SEND_REQUEST)
             self._send_request = HowItWorksComponent(_send_request)
         return self._send_request
 
+    @allure.step("Get start learning items")
     def get_start_learning_items(self) -> WebElement:
         if not self._start_learning:
             node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
             self._start_learning = HowItWorksComponent(node)
         return self._start_learning
 
+    @allure.step("Get how it works block")
     def get_how_it_works_block(self) -> HowItWorksComponent:
         if not self._how_it_works_block:
             _how_it_works_block = self.driver.find_element(*HOW_IT_WORKS_BLOCK)
             self._how_it_works_block = HowItWorksComponent(_how_it_works_block)
         return self._how_it_works_block
 
+    @allure.step("Get checkbox how it works block")
     def get_checkbox_how_it_works_block(self) -> HowItWorksComponent:
         if not self._checkbox_how_it_works_block:
             return self.driver.find_element(*CHECKBOX_HOW_IT_WORKS_BLOCK)
 
+    @allure.step("Click checkbox how it works block")
     def click_checkbox_how_it_works_block(self):
         self.get_checkbox_how_it_works_block().click()
         return self
 
+    @allure.step("Get card learn from experts")
     def get_card_learn_from_experts(self) -> CardComponent:
         if not self._card_learn_from_experts:
             self._card_learn_from_experts = CardComponent(self.driver.find_element(*CARD_COMPONENT_LEARN_FROM_EXPERTS))
         return self._card_learn_from_experts
 
+    @allure.step("Click become a student ")
     def click_become_a_student(self) -> RegistrationModal:
         self.get_card_learn_from_experts().click_btn()
         return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
 
+    @allure.step("Get card share your experience")
     def get_card_share_your_experience(self) -> CardComponent:
         if not self._card_share_your_experience:
             self._card_share_your_experience = CardComponent(self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE))
         return self._card_share_your_experience
 
+    @allure.step("Click become a tutor")
     def click_become_a_tutor(self) -> RegistrationModal:
         self.get_card_share_your_experience().click_btn()
         return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
 
+    @allure.step("Get text in button \"get started for free\"")
     def get_text_button_get_started_for_free(self) -> str:
         return self.get_button_get_started_for_free().text
 
+    @allure.step("Click button get started for free")
     def click_button_get_started_for_free(self):
         self.get_button_get_started_for_free().click()
         return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
 
+    @allure.step("Get button become a student or tutor")
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
 
+    @allure.step("Get text in button \"become a student or tutor\"")
     def get_text_button_become_a_student_tutor(self) -> str:
         return self.get_button_become_a_student_tutor().text
 
+    @allure.step("Get text in button \"become a student or tutor\"")
     def click_button_become_a_student_tutor(self):
         self.get_button_become_a_student_tutor().click()
         node = self.driver.find_element(*SIGN_UP_MODAL)
         sleep(1)
         return RegistrationModal(node)
 
+    @allure.step("Get button \"get started for free\"")
     def get_button_get_started_for_free(self) -> WebElement:
         if not self._button_get_started_for_free:
             self._button_get_started_for_free = self.driver.find_element(*BUTTON_GET_STARTED_FOR_FREE)
         return self._button_get_started_for_free
 
+    @allure.step("Click button \"get started for free\"")
     def click_started_for_free(self):
         self.get_button_get_started_for_free().click()
         sleep(1)
         return self
 
+    @allure.step("Get map image")
     def get_img_map(self) -> WebElement:
         if not self._img_map:
             self._img_map = self.driver.find_element(*IMG_MAP)
         return self._img_map
 
+    @allure.step("Get main banner")
     def get_main_banner(self) -> WebElement:
         if not self._main_banner:
             self._main_banner = self.driver.find_element(*MAIN_BANNER)
         return self._main_banner
 
-
+    @allure.step("Get who we are block")
     def get_who_we_are_block(self) -> WhoWeAreBlock:
         if not self._who_we_are_block:
             node = self.driver.find_element(*WHO_WE_ARE_BLOCK)
