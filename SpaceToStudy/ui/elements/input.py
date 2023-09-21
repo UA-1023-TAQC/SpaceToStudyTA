@@ -25,7 +25,7 @@ class Input(BaseElement):
             self._input = self.node.find_element(*INPUT)
         return self._input
 
-    @allure.step("Set text into input element")
+    @allure.step("Set {text} text into input element")
     def set_text(self, text):
         self.get_input().send_keys(text)
 

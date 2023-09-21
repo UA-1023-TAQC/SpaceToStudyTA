@@ -10,14 +10,14 @@ class InputDropDownList(Input):
         super().__init__(node)
         self.default_press_count = 1
 
-    @allure.step("User presses a key on the keyboard without releasing it")
+    @allure.step("User presses a key on the keyboard {press_count} times without releasing it")
     def press_down_button(self, press_count: int):
         self.default_press_count = press_count
         for _ in range(self.default_press_count):
             self.get_input().send_keys(Keys.DOWN)
         return self
 
-    @allure.step("User releases a key from the keyboard")
+    @allure.step("User releases a key {press_count} times from the keyboard")
     def press_up_button(self, press_count: int):
         self.default_press_count = press_count
         self.get_input().click()
