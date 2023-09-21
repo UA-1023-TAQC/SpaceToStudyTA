@@ -1,9 +1,8 @@
 from time import sleep
-from selenium.webdriver import Keys
-
-from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest, BUTTON_GET_STARTED_FOR_FREE
 from tests.test_runners import BaseTestRunner
@@ -222,4 +221,38 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(236, 239, 241, 1)", hover_second_el)
         self.assertEqual("rgba(236, 239, 241, 1)", hover_third_el)
         self.assertEqual("rgba(55, 71, 79, 1)", background_fourth_el)
+
+    def test_the_collapse_block_ui_tab(self):
+        # check tab
+        (HeaderUnauthorizedComponent(self.driver).tab_key(6))
+        sleep(2)
+        first_el_tab = (HomePageGuest(self.driver)
+                        .get_collapse_list_items_block()[0]
+                        .get_background_el_with_tab()
+                        .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(7))
+        sleep(2)
+        second_el_tab = (HomePageGuest(self.driver)
+                         .get_collapse_list_items_block()[1]
+                         .get_background_el_with_tab()
+                         .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(8))
+        sleep(2)
+        third_el_tab = (HomePageGuest(self.driver)
+                        .get_collapse_list_items_block()[2]
+                        .get_background_el_with_tab()
+                        .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(9))
+        sleep(2)
+        fourth_el_tab = (HomePageGuest(self.driver)
+                         .get_collapse_list_items_block()[3]
+                         .get_background_el_with_tab()
+                         .value_of_css_property("background-color"))
+        self.assertEqual("rgba(0, 0, 0, 0.12)", first_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)",second_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
+
+
+
 

@@ -7,6 +7,7 @@ from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 TITLE_COLLAPSE_ITEM = (By.XPATH, "./div[1]/div/h6")
 DESCRIPTION_COLLAPSE_ITEM = (By.XPATH, ".//p")
+TAB_ELEMENT = (By.XPATH, "./div[1]")
 
 
 class CollapseItem(BaseComponent):
@@ -42,3 +43,8 @@ class CollapseItem(BaseComponent):
     @allure.step("Click element")
     def click(self):
         self.node.click()
+
+    def get_background_el_with_tab(self) -> WebElement:
+        return self.node.find_element(*TAB_ELEMENT)
+
+
