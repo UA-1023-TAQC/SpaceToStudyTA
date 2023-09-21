@@ -37,3 +37,6 @@ class BasePage:
         wait = WebDriverWait(self.driver, 10)
         wait.until(EC.element_to_be_clickable(hover_el))
         return hover_el
+
+    def set_size_window(self, width, height):
+        self.driver.set_window_size(width, height)
