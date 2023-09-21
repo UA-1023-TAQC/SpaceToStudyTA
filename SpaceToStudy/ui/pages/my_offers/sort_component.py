@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -14,19 +15,23 @@ class SortComponent(BaseComponent):
         self._low_high = None
         self._high_low = None
 
+    @allure.step("Get low high")
     def get_low_high(self) -> WebElement:
         if not self._low_high:
             self._low_high = self.node.find_element(*LOW_HIGH)
         return self._low_high
 
+    @allure.step("Click low high")
     def click_low_high(self):
         self.get_low_high().click()
 
+    @allure.step("Get high low")
     def get_high_low(self) -> WebElement:
         if not self._high_low:
             self._high_low = self.node.find_element(*HIGH_LOW)
         return self._high_low
 
+    @allure.step("Click high low")
     def click_high_low(self):
         self.get_high_low().click()
 

@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -41,71 +42,85 @@ class HowItWorksComponentStudent(BaseComponent):
         self._title_write_feedback_student = None
         self._description_write_feedback_student = None
 
+    @allure.step("Get the block name")
     def get_block_name_student(self) -> str:
         if not self._block_name_student:
             self._block_name_student = self.node.find_element(*BLOCK_NAME)
         return self._block_name_student.text
 
+    @allure.step("Get the 'Four Steps' text")
     def get_four_steps(self) -> str:
         if not self._four_steps:
             self._four_steps = self.node.find_element(*FOUR_STEPS)
         return self._four_steps.text
 
+    @allure.step("Get the image for 'Select a Tutor'")
     def get_image_select_a_tutor_student(self) -> WebElement:
         if not self._img_select_a_tutor_student:
             self._img_select_a_tutor_student = self.node.find_element(*ITEM_SELECT_A_TUTOR_IMG)
         return self._img_select_a_tutor_student
 
+    @allure.step("Get text from the title of 'Select a Tutor'")
     def get_title_select_a_tutor_student(self) -> str:
         if not self._title_select_a_tutor_student:
             self._title_select_a_tutor_student = self.node.find_element(*ITEM_SELECT_A_TUTOR_TITLE)
         return self._title_select_a_tutor_student.text
 
+    @allure.step("Get text from the description of 'Select a Tutor'")
     def get_description_select_a_tutor_student(self) -> str:
         if not self._description_select_a_tutor_student:
             self._description_select_a_tutor_student = self.node.find_element(*ITEM_SELECT_A_TUTOR_DESCRIPTION)
         return self._description_select_a_tutor_student.text
 
+    @allure.step("Get an image from 'Send Request'")
     def get_image_send_request_student(self) -> WebElement:
         if not self._img_send_request_student:
             self._img_send_request_student = self.node.find_element(*ITEM_SEND_REQUEST_IMG)
         return self._img_send_request_student
 
+    @allure.step("Get text the title from 'Send Request'")
     def get_title_send_request_student(self) -> str:
         if not self._title_send_request_student:
             self._title_send_request_student = self.node.find_element(*ITEM_SEND_REQUEST_TITLE)
         return self._title_send_request_student.text
 
+    @allure.step("Get text the description from 'Send Request'")
     def get_description_send_request_student(self) -> str:
         if not self._description_send_request_student:
             self._description_send_request_student = self.node.find_element(*ITEM_SEND_REQUEST_DESCRIPTION)
         return self._description_send_request_student.text
 
+    @allure.step("Get the image for 'Start Learning'")
     def get_image_start_learning_student(self) -> WebElement:
         if not self._img_start_learning_student:
             self._img_start_learning_student = self.node.find_element(*ITEM_START_LEARNING_IMG)
         return self._img_start_learning_student
 
+    @allure.step("Get text the title from 'Start Learning'")
     def get_title_start_learning_student(self) -> str:
         if not self._title_start_learning_student:
             self._title_start_learning_student = self.node.find_element(*ITEM_START_LEARNING_TITLE)
         return self._title_start_learning_student.text
 
+    @allure.step("Get text the description from 'Start Learning'")
     def get_description_start_learning_student(self) -> str:
         if not self._description_start_learning_student:
             self._description_start_learning_student = self.node.find_element(*ITEM_START_LEARNING_DESCRIPTION)
         return self._description_start_learning_student.text
 
+    @allure.step("Get the image from 'Write Feedback'")
     def get_image_write_feedback_student(self) -> WebElement:
         if not self._img_write_feedback_student:
             self._img_write_feedback_student = self.node.find_element(*ITEM_WRITE_FEEDBACK_IMG)
         return self._img_write_feedback_student
 
+    @allure.step("Get text the title from 'Write Feedback'")
     def get_title_write_feedback_student(self) -> str:
         if not self._title_write_feedback_student:
             self._title_write_feedback_student = self.node.find_element(*ITEM_WRITE_FEEDBACK_TITLE)
         return self._title_write_feedback_student.text
 
+    @allure.step("Get text the description from 'Write Feedback'")
     def get_description_write_feedback_student(self) -> str:
         if not self._description_write_feedback_student:
             self._description_write_feedback_student = self.node.find_element(*ITEM_WRITE_FEEDBACK_DESCRIPTION)

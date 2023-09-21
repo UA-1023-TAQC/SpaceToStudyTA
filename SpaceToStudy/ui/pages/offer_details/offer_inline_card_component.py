@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -16,12 +17,15 @@ class OfferInlineCardComponent(InlineCardComponent):
         super().__init__(node)
         self._enroll_offer_btn = None
 
+    @allure.step("Get enroll button on offer details page")
     def get_enroll_offer_btn(self) -> WebElement:
         return self.node.find_element(*ENROLL_OFFER_BTN)
 
+    @allure.step("Get name of enroll button on offer details page")
     def get_enroll_offer_btn_text(self) -> str:
         return self.node.find_element(*ENROLL_OFFER_BTN).text
 
+    @allure.step("Click on enroll button on offer details page")
     def click_enroll_offer_btn(self) -> EnrollOfferModal:
         self.get_enroll_offer_btn().click()
         node = self.node.find_element(*ENROLL_OFFER_MODAL)

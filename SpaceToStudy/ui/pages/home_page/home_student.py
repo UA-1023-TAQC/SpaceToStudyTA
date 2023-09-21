@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -36,6 +37,7 @@ class HomePageStudent(BasePage):
         self._img_search_block = None
         self._how_it_works_block_student = None
 
+    @allure.step("Get categories")
     def get_categories(self) -> tuple[CategoryComponent]:
         if self._categories is None:
             categories = self.driver.find_elements(*CATEGORIES)
@@ -45,42 +47,51 @@ class HomePageStudent(BasePage):
 
         return self._categories
 
+    @allure.step("Get search input")
     def get_search_input(self) -> SearchTutorComponent:
         if not self._search_tutor:
             _search_tutor = self.driver.find_element(*SEARCH_INPUT_BLOCK)
             self._search_tutor = SearchTutorComponent(_search_tutor)
         return self._search_tutor
 
+    @allure.step("Get button \"go to categories\"")
     def get_button_go_to_categories(self) -> WebElement:
         if not self._button_go_to_categories:
             self._button_go_to_categories = self.driver.find_element(*BUTTON_GO_TO_CATEGORIES)
         return self._button_go_to_categories
 
+    @allure.step("Get text button \"go to categories\"")
     def get_text_button_go_to_categories(self) -> str:
         return self.get_button_go_to_categories().text
 
+    @allure.step("Click button \"go to categories\"")
     def click_button_go_to_categories(self):
         self.get_button_go_to_categories().click()
         return CategoriesPage(self.driver)
 
+    @allure.step("Get button \"find tutor\"")
     def get_button_find_tutor(self) -> WebElement:
         if not self._button_find_tutor:
             self._button_find_tutor = self.driver.find_element(*BUTTON_FIND_TUTOR)
         return self._button_find_tutor
 
+    @allure.step("Get text button \"find tutor\"")
     def get_text_button_find_tutor(self) -> str:
         return self.get_button_find_tutor().text
 
+    @allure.step("Click button \"find tutor\"")
     def click_button_find_tutor(self):
         self.get_button_find_tutor().click()
         return self
 
+    @allure.step("Get questions block")
     def get_questions_block(self) -> QuestionsComponent:
         if not self._questions_block:
             _questions_block = self.driver.find_element(*QUESTIONS_BLOCK)
             self._questions_block = QuestionsComponent(_questions_block)
         return self._questions_block
 
+    @allure.step("Get questions items")
     def get_questions_items(self) -> list[QuestionsComponent]:
         if self._questions_items is None:
             _questions_items = self.driver.find_elements(*QUESTIONS_ITEMS)
@@ -89,11 +100,13 @@ class HomePageStudent(BasePage):
                 self._questions_items.append(CategoryComponent(questions_item))
         return self._questions_items
 
+    @allure.step("Get image search block")
     def get_img_search_block(self) -> WebElement:
         if not self._img_search_block:
             self._img_search_block = self.driver.find_element(*IMG_SEARCH_BLOCK)
         return self._img_search_block
 
+    @allure.step("Get how it works block in student page")
     def get_how_it_works_block_student(self) -> HowItWorksComponentStudent:
         if not self._how_it_works_block_student:
             _how_it_works_block_student = self.driver.find_element(*HOW_IT_WORKS_BLOCK_STUDENT)
