@@ -21,7 +21,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
                                            .get_students_requests()
                                            .value_of_css_property("color"))
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
-        self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)" )
+        self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
     def test_search_field_find_by_title(self):
         search_result = (HomePageStudent(self.driver)
@@ -47,3 +47,11 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
 
+
+    def test_student_can_see_tutors_offers_at_the_home_page(self):
+        (HomePageStudent(self.driver)
+         .get_search_input()
+         .click_find_tutor_btn())
+        list_of_offers = (ExploreOffersPage(self.driver)
+                          .get_list_of_offers_grid_card())
+        self.assertIsNotNone(list_of_offers, "There are no offers")

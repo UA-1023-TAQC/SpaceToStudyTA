@@ -9,7 +9,7 @@ from SpaceToStudy.ui.pages.explore_offers.inline_card_component import InlineCar
 # from SpaceToStudy.ui.pages.explore_offers.offer_and_request_component import OfferAndRequestComponent
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.explore_offers.student_private_lesson_component import StudentPrivateLessonComponent
-from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
+
 
 STUDENT_FOR_PRIVATE_LESSONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 
@@ -29,8 +29,8 @@ POPULAR_CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/d
 GO_TO_CATEGORIES_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/div[2]/button")
 
 SCROLL_UP_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[3]/button")
-GRID_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=2]")
-INLINE_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
+GRID_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
+INLINE_CARD = (By.XPATH, "//*[@class='MuiBox-root css-1txvgu3'][count(div/div)=5]")
 
 
 class ExploreOffersPage(BasePage):
@@ -42,8 +42,6 @@ class ExploreOffersPage(BasePage):
         self._student_for_private_lessons_block = None
         self._search_by_tutor_name_block = None
         self._filtering_and_sorting_block = None
-        # self._offer_and_request_block = None
-        self._popular_categories_cards = None
 
     @allure.step("Get student for private lessons block")
     def get_student_for_private_lessons_block(self):

@@ -8,20 +8,20 @@ import re
 
 
 PERSON_ICON = (By.XPATH, './div/div[1]/a/div/svg')
-PERSON_NAME = (By.XPATH, './div/div[1]/div/a/p')
-STARLINE_ELEMENT = (By.XPATH, './div/div[1]/div/div')
-REVIEWS_LINE = (By.XPATH, './div/div[1]/div/p')
-OFFER_TITLE = (By.XPATH, './div/div[2]/h6')
-SUBJECT_LABEL = (By.XPATH, './div/div[2]/div[1]/div[1]/span/p')
-LEVEL_LABEL = (By.XPATH, './div/div[2]/div[1]/div[2]/span/p')
-OFFER_DETAILS = (By.XPATH, './div/div[2]/p')
-LANGUAGES = (By.XPATH, './div/div[2]/div[2]/p')
-PRICE_VALUE = (By.XPATH, './div/div[3]/div[1]/div/h6')
+PERSON_NAME = (By.XPATH, './div/div/a/p')
+STARLINE_ELEMENT = (By.XPATH, './div/div/div')
+REVIEWS_LINE = (By.XPATH, './div/div/p')
+OFFER_TITLE = (By.XPATH, './div[2]/h6')
+SUBJECT_LABEL = (By.XPATH, './div[2]/div/div[1]/span/p')
+LEVEL_LABEL = (By.XPATH, './div[2]/div/div[2]/span/p')
+OFFER_DETAILS = (By.XPATH, './div/p')
+LANGUAGES = (By.XPATH, './div/div[2]/p')
+PRICE_VALUE = (By.XPATH, './div[3]/div[1]/div/h6')
 
-PERIOD_FOR_PRICE = (By.XPATH, './div/div[3]/div[1]/div/p')
+PERIOD_FOR_PRICE = (By.XPATH, './div[3]/div[1]/div/p')
 VIEW_DETAILS_BTN = (By.XPATH, './/a[contains(text(), "View details")]')
 SEND_MESSAGE_BTN = (By.XPATH, './/button[contains(text(), "Send message")]')
-ADD_TO_BOOKMARKS_BTN = (By.XPATH, './/button[data-testid="iconButton"]')
+ADD_TO_BOOKMARKS_BTN = (By.XPATH, './/button[@data-testid="iconButton"]')
 
 
 class InlineCardComponent(BaseComponent):
