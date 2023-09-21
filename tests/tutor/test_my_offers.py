@@ -10,7 +10,7 @@ class MyOffers(TestRunnerWithTutor):
     def test_offers_sort_price_low_high(self):
         menu = HeaderAuthorizedComponent(self.driver)
         (menu.get_user_menu()
-         .click_get_account()
+         .click_account()
          .click_menu_items_my_offers())
         offers = MyOffersPage(self.driver)
         (offers
@@ -25,7 +25,7 @@ class MyOffers(TestRunnerWithTutor):
     def test_offers_sort_price_high_low(self):
         menu = HeaderAuthorizedComponent(self.driver)
         (menu.get_user_menu()
-         .click_get_account()
+         .click_account()
          .click_menu_items_my_offers())
         offers = MyOffersPage(self.driver)
         (offers
