@@ -44,7 +44,7 @@ class TableRowComponent(BaseComponent):
     def get_subject_label(self) -> str:
         return self.node.find_element(*SUBJECT_LABEL).text
 
-    @allure.step("Get a Level of the skill for offer in the offers table on my cooperations page")
+    @allure.step("Get a skill Level for offer in the offers table on my cooperations page")
     def get_level_label(self) -> str:
         return self.node.find_element(*LEVEL_LABEL).text
 

@@ -41,10 +41,6 @@ PRICE_HIGH_LOW_OPTION = (By.XPATH, '//*[@id="menu-"]/div[3]/ul/li[4]')
 
 
 class MyCooperationsPage(BasePage):
-    @allure.step("Init my cooperation page")
-    def __init__(self, driver):
-        super().__init__(driver)
-
     @allure.step("Get the link to my cooperations page in the main navigation in the header by clicking the account icon")
     def get_main_navigation_link(self) -> WebElement:
         return self.driver.find_element(*MAIN_NAVIGATION_LINK)
