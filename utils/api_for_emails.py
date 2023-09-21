@@ -46,6 +46,13 @@ class TemporaryMailGenerator:
         mailbox.hashed_email = self.get_hashed_email(email)
         return mailbox
 
+    def get_domains(self):
+        url = "https://api.apilayer.com/temp_mail/domains"
+        response = requests.request("GET", url, headers=self._api.headers, data=self._api.payload)
+        status_code = response.status_code
+        self._domain = response.text
+        return status_code, self._domain
+
     @staticmethod
     def get_hashed_email(email):
         hashed_email = hashlib.md5(email.encode('utf-8')).hexdigest()
