@@ -59,17 +59,17 @@ class SearchByTutorNameComponent(BaseComponent):
         self.get_search_btn().click()
         return self
 
-    @allure.step("Set categories input")
+    @allure.step("Set {text} into the categories input")
     def set_categories_input(self, text):
         self.get_categories_input().send_keys(text)
         return self
 
-    @allure.step("Set subjects input")
+    @allure.step("Set {text} into the subjects input")
     def set_subjects_input(self, text):
         self.get_subjects_input().send_keys(text)
         return self
 
-    @allure.step("Set search by tutor name input")
+    @allure.step("Set {text} into the search by tutor name input")
     def set_search_by_tutor_name_input(self, text):
         self.get_search_by_tutor_name_input().send_keys(text)
         return self
