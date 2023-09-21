@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -14,19 +15,23 @@ class Checkbox(BaseElement):
         self._name_of_checkbox = None
         self._checkbox_input = None
 
+    @allure.step("Click the checkbox input element")
     def set_check(self):
         self.get_checkbox_input().click()
 
+    @allure.step("Get text the checkbox input element")
     def get_name_of_checkbox(self) -> str:
         if not self._name_of_checkbox:
             self._name_of_checkbox = self.node.find_element(*NAME_OF_CHECKBOX)
         return self._name_of_checkbox.text
 
+    @allure.step("Get the checkbox input element")
     def get_checkbox_input(self) -> WebElement:
         if not self._checkbox_input:
             self._checkbox_input = self.node.find_element(*CHECKBOX_INPUT)
         return self._checkbox_input
 
+    @allure.step("Check if the checkbox input element is selected")
     def is_checked(self) -> bool:
         if self.node.find_element(*CHECKBOX_SVG).get_attribute("data-testid") == "CheckBoxIcon":
             return True

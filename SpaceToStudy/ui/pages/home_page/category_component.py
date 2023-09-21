@@ -1,3 +1,5 @@
+import allure
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -15,20 +17,24 @@ class CategoryComponent(BaseComponent):
         self.name = None
         self.offers = None
 
+    @allure.step("Click element")
     def click(self):
         self.node.click()
         return
 
+    @allure.step("Get image")
     def get_image(self) -> WebElement:
         if not self.image:
             self.image = self.node.find_element(*IMAGE)
         return self.image
 
+    @allure.step("Get name")
     def get_name(self) -> str:
         if not self.name:
             self.name = self.node.find_element(*NAME)
         return self.name.text
 
+    @allure.step("Get offers text")
     def get_offers(self) -> str:
         if not self.offers:
             self.offers = self.node.find_element(*OFFERS)

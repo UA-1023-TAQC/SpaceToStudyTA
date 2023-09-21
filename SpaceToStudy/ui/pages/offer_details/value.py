@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -13,11 +14,13 @@ class Value(BaseComponent):
         self._text = None
         self._img = None
 
+    @allure.step("Get value name of component in 'General info' in offer details page")
     def get_text(self) -> str:
         if not self._text:
             self._text = self.node.find_element(*TEXT)
         return self._text.text
 
+    @allure.step("Get value image of component in 'General info' in offer details page")
     def get_img(self) -> WebElement:
         if not self._img:
             self._img = self.node.find_element(*IMG)

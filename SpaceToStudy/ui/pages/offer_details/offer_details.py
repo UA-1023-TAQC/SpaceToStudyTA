@@ -1,3 +1,4 @@
+import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
@@ -39,54 +40,64 @@ class OfferDetailsPage(BasePage):
         self._enroll_offer_btn = None
         self._is_request_sent_successfully = None
 
+    @allure.step("Get title of offer details page")
     def get_title(self) -> str:
         if not self._title:
             self._title = self.driver.find_element(*TITLE)
         return self._title.text
 
+    @allure.step("Get description of offer details page")
     def get_desc(self) -> str:
         if not self._desc:
             self._desc = self.driver.find_element(*DESC)
         return self._desc.text
 
+    @allure.step("Get image of offer details page")
     def get_img(self) -> WebElement:
         if not self._img:
             self._img = self.driver.find_element(*IMG)
         return self._img
 
+    @allure.step("Get offer inline card on offer details page")
     def get_offer_inline_card_component(self) -> OfferInlineCardComponent:
         if not self._offer_inline_card_component:
             node = self.driver.find_element(*OFFER_INLINE_CARD_COMPONENT)
             self._offer_inline_card_component = OfferInlineCardComponent(node)
         return self._offer_inline_card_component
 
+    @allure.step("Get title of 'About offer' component on offer details page")
     def get_about_offer_title(self) -> str:
         if not self._about_offer_title:
             self._about_offer_title = self.driver.find_element(*ABOUT_OFFER_TITLE)
         return self._about_offer_title
 
+    @allure.step("Get description of 'About offer' component on offer details page")
     def get_about_offer_desc(self) -> str:
         if not self._about_offer_desc:
             self._about_offer_desc = self.driver.find_element(*ABOUT_OFFER_DESC)
         return self._about_offer_desc.text
 
+    @allure.step("Get 'General information' component on offer details page")
     def get_general_info_component(self) -> GeneralInfoComponent:
         if not self._general_info_component:
             node = self.driver.find_element(*GENERAL_INFO_COMPONENT)
             self._general_info_component = GeneralInfoComponent(node)
         return self._general_info_component
 
+    @allure.step("Get 'Frequently asked questions' component on offer details page")
     def get_frequently_asked_questions_component(self) -> FrequentlyAskedQuestions:
         if not self._frequently_asked_questions_component:
             node = self.driver.find_element(*FREQUENTLY_ASKED_QUESTIONS)
             self._frequently_asked_questions_component = FrequentlyAskedQuestions(node)
         return self._frequently_asked_questions_component
 
+    @allure.step("Get 'What students say' component on offer details page")
     def get_what_students_say_component(self) -> WebElement:
         if not self._what_students_say_component:
             self._what_students_say_component = self.driver.find_element(*WHAT_STUDENTS_SAY_COMPONENT)
         return self._what_students_say_component
 
+    @allure.step("Check that request was sent successfully on offer details page")
     def is_request_sent_successfully(self) -> bool:
         try:
             (WebDriverWait(self.driver, 10)
