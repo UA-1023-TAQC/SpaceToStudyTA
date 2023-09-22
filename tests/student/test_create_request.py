@@ -1,10 +1,8 @@
 import unittest
-from time import sleep
 
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
-from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
@@ -56,7 +54,7 @@ class CreateRequestTestCase(BaseTestRunner):
         (OffersRequestModal(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/form"))
          .click_add_to_draft_btn())
 
-        inline_card = OfferDetailsPage(self.driver).get_inline_card_component()
+        inline_card = OfferDetailsPage(self.driver).get_offer_inline_card_component()
         student_name_expected = (f"{ValueProvider.get_student_first_name()} "
                                  f"{ValueProvider.get_student_last_name()[0]}.")
         student_name_actual = inline_card.get_person_name()
@@ -70,7 +68,7 @@ class CreateRequestTestCase(BaseTestRunner):
         self.assertEqual(str.upper(subject), card_subject_actual)
         self.assertEqual(str.upper("Beginner"), card_level_actual)
         self.assertEqual(language, card_language_actual)
-        self.assertEqual(f"{price} UAH", card_price_actual)
+        self.assertEqual(float(price), card_price_actual)
 
         general_info_component = OfferDetailsPage(self.driver).get_general_info_component()
         offer_desc_actual = OfferDetailsPage(self.driver).get_about_offer_desc()
@@ -104,10 +102,6 @@ class CreateRequestTestCase(BaseTestRunner):
                          .get_answer())
         self.assertEqual(question, question_actual)
         self.assertEqual(answer, answer_actual)
-
-    def tearDown(self):
-        self.driver.quit()
-
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
@@ -156,7 +150,7 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         third_block.click_add_question_btn()
         offers_request_modal.click_add_to_draft_btn()
 
-        inline_card_component = OfferDetailsPage(self.driver).get_inline_card_component()
+        inline_card_component = OfferDetailsPage(self.driver).get_offer_inline_card_component()
         expected_title = inline_card_component.get_offer_title()
         expected_subject_label = inline_card_component.get_subject_label()
         expected_price_value = inline_card_component.get_price_value()
