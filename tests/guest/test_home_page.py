@@ -194,9 +194,7 @@ class HomePageTestCase(BaseTestRunner):
          .get_card_learn_from_experts()
          .get_btn()
          .send_keys(Keys.TAB))
-        focus_styles = (HomePageGuest(self.driver)
-                        .get_card_share_your_experience()
-                        .get_tub_animation())
+        focus_styles = (HomePageGuest(self.driver).get_tub_animation())
         self.assertTrue(focus_styles, "There is no animation")
 
     def test_the_collapse_block_ui_hover(self):
