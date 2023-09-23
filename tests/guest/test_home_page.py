@@ -1,10 +1,11 @@
 from time import sleep
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
-from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest, BUTTON_GET_STARTED_FOR_FREE
+from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest, BUTTON_GET_STARTED_FOR_FREE, \
+    COLLAPSE_BLOCK_FLEXIBLE_LOCATION, COLLAPSE_BLOCK_INDIVIDUAL_TIME, COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS, \
+    COLLAPSE_BLOCK_DIGITAL_COMMUNICATION
 from tests.test_runners import BaseTestRunner
 
 
@@ -185,7 +186,6 @@ class HomePageTestCase(BaseTestRunner):
                             .get_btn())
         button_before_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
         (HomePageGuest(self.driver).hover(become_a_student))
-        sleep(1)
         button_after_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
         self.assertNotEqual(button_before_it_is_hovered_over, button_after_it_is_hovered_over, "The button hasn't changed")
 

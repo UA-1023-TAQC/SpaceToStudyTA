@@ -1,3 +1,5 @@
+from time import sleep
+
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.test_runners import TestRunnerWithStudent
@@ -55,3 +57,19 @@ class TestHomePageStudent(TestRunnerWithStudent):
         list_of_offers = (ExploreOffersPage(self.driver)
                           .get_list_of_offers_grid_card())
         self.assertIsNotNone(list_of_offers, "There are no offers")
+
+    def test_the_ui_welcoming_block_resize(self):
+        HomePageStudent(self.driver).set_size_window(899, 1080)
+        tablet_input_block = (HomePageStudent(self.driver).get_search_input().node.size['width'])
+        tablet_input = (HomePageStudent(self.driver).get_search_input().get_input().size['width'])
+        tablet_find_tutor_btn = (HomePageStudent(self.driver).get_search_input().get_find_tutor_btn().size['width'])
+        self.assertEqual(777, tablet_input_block, "The item is not the right size")
+        self.assertEqual(563, tablet_input, "The item is not the right size")
+        self.assertEqual(130, tablet_find_tutor_btn, "The item is not the right size")
+        HomePageStudent(self.driver).set_size_window(599, 1080)
+        mobile_input_block = (HomePageStudent(self.driver).get_search_input().node.size['width'])
+        mobile_input = (HomePageStudent(self.driver).get_search_input().get_input().size['width'])
+        mobile_find_tutor_btn = (HomePageStudent(self.driver).get_search_input().get_find_tutor_btn().size['width'])
+        self.assertEqual(493,  mobile_input_block, "The item is not the right size")
+        self.assertEqual(445, mobile_input, "The item is not the right size")
+        self.assertEqual(493, mobile_find_tutor_btn, "The item is not the right size")
