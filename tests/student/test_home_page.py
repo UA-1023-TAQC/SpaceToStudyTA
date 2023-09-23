@@ -1,8 +1,11 @@
-from time import sleep
+
+import allure
 
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.test_runners import TestRunnerWithStudent
+
+TEST_CASE_219 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/219"
 
 
 class TestHomePageStudent(TestRunnerWithStudent):
@@ -48,8 +51,6 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
-
-
     def test_student_can_see_tutors_offers_at_the_home_page(self):
         (HomePageStudent(self.driver)
          .get_search_input()
@@ -58,6 +59,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
                           .get_list_of_offers_grid_card())
         self.assertIsNotNone(list_of_offers, "There are no offers")
 
+    @allure.testcase(TEST_CASE_219)
     def test_the_ui_welcoming_block_resize(self):
         HomePageStudent(self.driver).set_size_window(899, 1080)
         tablet_input_block = (HomePageStudent(self.driver).get_search_input().node.size['width'])
@@ -70,6 +72,6 @@ class TestHomePageStudent(TestRunnerWithStudent):
         mobile_input_block = (HomePageStudent(self.driver).get_search_input().node.size['width'])
         mobile_input = (HomePageStudent(self.driver).get_search_input().get_input().size['width'])
         mobile_find_tutor_btn = (HomePageStudent(self.driver).get_search_input().get_find_tutor_btn().size['width'])
-        self.assertEqual(493,  mobile_input_block, "The item is not the right size")
+        self.assertEqual(493, mobile_input_block, "The item is not the right size")
         self.assertEqual(445, mobile_input, "The item is not the right size")
         self.assertEqual(493, mobile_find_tutor_btn, "The item is not the right size")
