@@ -35,6 +35,12 @@ class CollapseItem(BaseComponent):
     def get_color_of_title(self):
         return self.node.find_element(*TITLE_COLLAPSE_ITEM).value_of_css_property("color")
 
+    def get_description_value_of_css(self, value):
+        return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).value_of_css_property(value)
+
+    def get_description(self) -> str:
+        return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).text
+
     @allure.step("Check if element is expanded")
     def is_expanded(self) -> bool:
         aria_expanded = self.node.find_element(By.XPATH, ".//div[@aria-expanded]").get_attribute("aria-expanded")
@@ -46,5 +52,6 @@ class CollapseItem(BaseComponent):
 
     def get_background_el_with_tab(self) -> WebElement:
         return self.node.find_element(*TAB_ELEMENT)
+
 
 

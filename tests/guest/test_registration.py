@@ -97,6 +97,5 @@ class RegistrationTestCase(BaseTestRunner):
             .get_text_title_modal()
         self.assertEqual(title_tutor, "Sign up as a tutor")
 
-
 if __name__ == '__main__':
     unittest.main(verbosity=2)

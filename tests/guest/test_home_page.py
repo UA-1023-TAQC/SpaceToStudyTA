@@ -4,6 +4,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
+from SpaceToStudy.ui.pages.home_page.home_guest import (HomePageGuest,
+                                                        COLLAPSE_BLOCK_DIGITAL_COMMUNICATION,
+                                                        COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS,
+                                                        COLLAPSE_BLOCK_INDIVIDUAL_TIME,
+                                                        COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest, BUTTON_GET_STARTED_FOR_FREE
 from tests.test_runners import BaseTestRunner
 
@@ -41,6 +46,69 @@ class HomePageTestCase(BaseTestRunner):
                        .get_checkbox_share_your_experience()
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
+
+    def test_the_collapse_block_ui_interaction(self):
+        # check if first element is opened by default
+        default_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[0].is_expanded())
+        individual_time_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[1].is_expanded())
+        individual_free_choice_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[2].is_expanded())
+        digital_communication_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[3].is_expanded())
+        self.assertTrue(default_el, "Element is not opened")
+        self.assertFalse(individual_time_el, "Element is opened")
+        self.assertFalse(individual_free_choice_el, "Element is opened")
+        self.assertFalse(digital_communication_el, "Element is opened")
+
+        # check if guest can open a description to any of four items in the list and change text color and background
+        (HomePageGuest(self.driver).click_individual_time())
+        background_color = (HomePageGuest(self.driver).get_individual_time().node
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
+        sleep(2)
+        color_description = (HomePageGuest(self.driver)
+                             .get_individual_time()
+                             .get_description_value_of_css("color"))
+        self.assertEqual("rgba(255, 255, 255, 1)",color_description)
+        color_title = (HomePageGuest(self.driver)
+                       .get_individual_time()
+                       .get_color_of_title())
+        self.assertEqual("rgba(255, 255, 255, 1)",color_title)
+        is_second_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        for result in is_second_el_open[:1] + is_second_el_open[2:]:
+            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
+
+        (HomePageGuest(self.driver).click_free_choice_of_tutors())
+        sleep(2)
+        background_color = (HomePageGuest(self.driver).get_free_choice_of_tutors().node
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
+        color_description = (HomePageGuest(self.driver)
+                             .get_free_choice_of_tutors()
+                             .get_description_value_of_css("color"))
+        self.assertEqual("rgba(255, 255, 255, 1)", color_description)
+        color_title = (HomePageGuest(self.driver)
+                       .get_free_choice_of_tutors()
+                       .get_color_of_title())
+        self.assertEqual("rgba(255, 255, 255, 1)", color_title)
+        is_third_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        for result in is_third_el_open[:2] + is_third_el_open[3:]:
+            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
+
+        (HomePageGuest(self.driver).click_digital_communication())
+        sleep(2)
+        background_color = (HomePageGuest(self.driver).get_digital_communication().node
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
+        color_description = (HomePageGuest(self.driver)
+                             .get_digital_communication()
+                             .get_description_value_of_css("color"))
+        self.assertEqual("rgba(255, 255, 255, 1)", color_description)
+        color_title = (HomePageGuest(self.driver)
+                       .get_digital_communication()
+                       .get_color_of_title())
+        self.assertEqual("rgba(255, 255, 255, 1)", color_title)
+        is_fourth_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        for result in is_fourth_el_open[:3]:
+            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
 
     def test_the_get_started_for_free_button_ui(self):
         button_is_displayed = (HomePageGuest(self.driver)
@@ -85,8 +153,6 @@ class HomePageTestCase(BaseTestRunner):
         width_block = (HomePageGuest(self.driver).get_collapse_block())
         width = width_block.size['width']
         self.assertEqual(540, width)
-
-
 
     def test_the_collapse_block_ui_text(self):
         flexible_location = "Flexible Location"
