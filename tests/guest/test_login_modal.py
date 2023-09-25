@@ -1,5 +1,7 @@
 from time import sleep
 
+import allure
+
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
@@ -10,6 +12,7 @@ from tests.value_provider import ValueProvider
 
 class LoginModalTestCase(BaseTestRunner):
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/97")
     def test_login_modal_outside_click(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()
@@ -26,6 +29,7 @@ class LoginModalTestCase(BaseTestRunner):
                          "Button background color is not as expected")
         self.assertFalse(button.is_enabled_button(), "The button must be disabled")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/114")
     def test_user_access_to_personal_cabinet(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()

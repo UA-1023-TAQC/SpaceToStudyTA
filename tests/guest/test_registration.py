@@ -1,5 +1,7 @@
 import unittest
 
+import allure
+
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
@@ -82,6 +84,7 @@ class RegistrationTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/174")
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
                                 .click_started_for_free())
