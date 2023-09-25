@@ -4,6 +4,8 @@ from tests.test_runners import TestRunnerWithStudent
 
 
 class TestHomePageStudent(TestRunnerWithStudent):
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/282")
     def test_search_field_find_by_name(self):
         search_result = (HomePageStudent(self.driver)
                          .get_search_input()
@@ -23,6 +25,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/168")
     def test_search_field_find_by_category(self):
         search_result = (HomePageStudent(self.driver)
                          .get_search_input()
@@ -46,6 +49,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/281")
     def test_search_field_find_by_title(self):
         search_result = (HomePageStudent(self.driver)
                          .get_search_input()
