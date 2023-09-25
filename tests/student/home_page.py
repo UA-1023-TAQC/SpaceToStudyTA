@@ -23,6 +23,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/217")
     def test_search_field_with_invalid_data(self):
         search_result = (HomePageStudent(self.driver)
                          .get_search_input()
