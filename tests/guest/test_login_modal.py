@@ -29,7 +29,7 @@ class LoginModalTestCase(BaseTestRunner):
                          "Button background color is not as expected")
         self.assertFalse(button.is_enabled_button(), "The button must be disabled")
 
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/114")
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/114')
     def test_user_access_to_personal_cabinet(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()
@@ -45,7 +45,7 @@ class LoginModalTestCase(BaseTestRunner):
         authorize.click_login_button()
         name_surname = (HeaderAuthorizedComponent(self.driver)
                         .get_user_menu()
-                        .click_get_account()
+                        .click_account()
                         .click_menu_items_my_profile()
                         .get_name_surname_text())
         full_name = ValueProvider.get_tutor_first_name() + " " + ValueProvider.get_tutor_last_name()
