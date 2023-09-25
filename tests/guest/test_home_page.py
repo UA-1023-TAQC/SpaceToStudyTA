@@ -1,4 +1,6 @@
 from time import sleep
+
+import allure
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -11,6 +13,10 @@ from SpaceToStudy.ui.pages.home_page.home_guest import (HomePageGuest,
                                                         COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest, BUTTON_GET_STARTED_FOR_FREE
 from tests.test_runners import BaseTestRunner
+
+TEST_CASE_176 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/176"
+TEST_CASE_175 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/175"
+TEST_CASE_198 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/198"
 
 
 class HomePageTestCase(BaseTestRunner):
@@ -67,11 +73,11 @@ class HomePageTestCase(BaseTestRunner):
         color_description = (HomePageGuest(self.driver)
                              .get_individual_time()
                              .get_description_value_of_css("color"))
-        self.assertEqual("rgba(255, 255, 255, 1)",color_description)
+        self.assertEqual("rgba(255, 255, 255, 1)", color_description)
         color_title = (HomePageGuest(self.driver)
                        .get_individual_time()
                        .get_color_of_title())
-        self.assertEqual("rgba(255, 255, 255, 1)",color_title)
+        self.assertEqual("rgba(255, 255, 255, 1)", color_title)
         is_second_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
         for result in is_second_el_open[:1] + is_second_el_open[2:]:
             self.assertFalse(result.get_description().is_displayed(), "Element is selected")
@@ -193,6 +199,7 @@ class HomePageTestCase(BaseTestRunner):
                           .get_description())
         self.assertIn(description_dc, description)
 
+    @allure.testcase(TEST_CASE_176)
     def test_what_can_you_do_elements_visible(self):
         (HeaderUnauthorizedComponent(self.driver)
          .get_navigate_links()[0]
@@ -206,6 +213,7 @@ class HomePageTestCase(BaseTestRunner):
                                .get_btn())
         self.assertIsNotNone(become_tutor_button, "The 'Become a tutor' button is not found")
 
+    @allure.testcase(TEST_CASE_175)
     def test_the_list_of_collapse_items(self):
         flexible_location_item = (HomePageGuest(self.driver)
                                   .get_flexible_location())
@@ -241,6 +249,7 @@ class HomePageTestCase(BaseTestRunner):
         title = (HomePageGuest(self.driver).get_who_we_are_block().get_title())
         self.assertEqual("Who we are", title)
 
+    @allure.testcase(TEST_CASE_198)
     def test_that_controls_active_after_navigating_to_them(self):
         sleep(3)
         (HeaderUnauthorizedComponent(self.driver)
@@ -253,8 +262,10 @@ class HomePageTestCase(BaseTestRunner):
         ActionChains(self.driver).move_to_element(become_a_student).perform()
         sleep(5)
         button_after_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
-        self.assertNotEqual(button_before_it_is_hovered_over, button_after_it_is_hovered_over, "The button hasn't changed")
+        self.assertNotEqual(button_before_it_is_hovered_over, button_after_it_is_hovered_over,
+                            "The button hasn't changed")
 
+    @allure.testcase(TEST_CASE_198)
     def test_that_controls_active_after_navigating_to_them_by_tab(self):
         (HomePageGuest(self.driver)
          .get_card_learn_from_experts()
@@ -339,6 +350,6 @@ class HomePageTestCase(BaseTestRunner):
                          .get_background_el_with_tab()
                          .value_of_css_property("background-color"))
         self.assertEqual("rgba(0, 0, 0, 0.12)", first_el_tab)
-        self.assertEqual("rgba(0, 0, 0, 0.12)",second_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", second_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)

@@ -1,6 +1,10 @@
+import allure
+
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.test_runners import TestRunnerWithStudent
+
+TEST_CASE_218 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/218"
 
 
 class TestHomePageStudent(TestRunnerWithStudent):
@@ -32,8 +36,8 @@ class TestHomePageStudent(TestRunnerWithStudent):
         for result in search_result:
             self.assertIn("CYBERSECURITY", result.get_subject_label())
         count_of_filters = (ExploreOffersPage(self.driver)
-                                   .get_filtering_and_sorting_block()
-                                   .get_filter_quantity_number())
+                            .get_filtering_and_sorting_block()
+                            .get_filter_quantity_number())
         tutors_offers_is_active = (ExploreOffersPage(self.driver)
                                    .get_filtering_and_sorting_block()
                                    .get_tutors_offers()
@@ -44,7 +48,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
                                            .value_of_css_property("color"))
         self.assertEqual(count_of_filters, 1)
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
-        self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)")
+        self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
     def test_search_field_find_by_title(self):
         search_result = (HomePageStudent(self.driver)
@@ -69,8 +73,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
-
-
+    @allure.testcase(TEST_CASE_218)
     def test_student_can_see_tutors_offers_at_the_home_page(self):
         (HomePageStudent(self.driver)
          .get_search_input()
