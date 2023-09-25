@@ -6,6 +6,8 @@ from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
 
+from time import sleep
+
 
 class RegistrationTestCase(BaseTestRunner):
 
@@ -96,6 +98,15 @@ class RegistrationTestCase(BaseTestRunner):
             .click_btn()\
             .get_text_title_modal()
         self.assertEqual(title_tutor, "Sign up as a tutor")
+
+
+    def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
+        get_what_can_you_do_block = (HomePageGuest(self.driver)
+                                     .get_header()
+                                     .get_navigate_links()[0]
+                                     .click()
+        )
+        sleep(10)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
