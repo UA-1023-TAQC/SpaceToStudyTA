@@ -7,7 +7,7 @@ from tests.value_provider import ValueProvider
 
 class TestExploreOffersPageStudent(TestRunnerWithStudent):
 
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/215")
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/215')
     def test_find_tutor_or_category_by_name(self):
         part = " ".join([ValueProvider.get_tutor_first_name(), ValueProvider.get_tutor_last_name()])
         name_tutor = (HomePageStudent(self.driver)

@@ -12,7 +12,7 @@ from tests.value_provider import ValueProvider
 
 class LoginModalTestCase(BaseTestRunner):
 
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/97")
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/97')
     def test_login_modal_outside_click(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()
