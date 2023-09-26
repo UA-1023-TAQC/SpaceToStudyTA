@@ -49,6 +49,22 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
             .get_list_of_offers_inline_card()
         self.assertNotEqual(len(list_of_offers), 0)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/117")
+    def test_offers_sort_price_high_low(self):
+        menu = HeaderAuthorizedComponent(self.driver)
+        (menu.get_user_menu()
+         .click_get_account()
+         .click_menu_items_my_offers())
+        offers = MyOffersPage(self.driver)
+        (offers
+         .get_offers_interaction()
+         .click_grid_btn()
+         .click_get_sort()
+         .click_high_low())
+        expected = sorted(offers.get_list_prices(), reverse=True)
+        actual = offers.get_list_prices()
+        self.assertEqual(expected, actual)
+
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/118")
     def test_toggle_between_tutors_offers_and_students_requests(self):
         explore_offers_page = ExploreOffersPage(self.driver)
