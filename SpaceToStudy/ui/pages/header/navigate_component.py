@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 
 NAME = (By.XPATH, "./a")
 
@@ -22,3 +24,21 @@ class NavigateComponent(BaseComponent):
         if not self.name:
             self.name = self.node.find_element(*NAME)
             return self.name.text
+
+    @allure.step("Click 'What can you do' button in header")
+    def click_what_can_you_do(self):
+        navigate_links = HeaderComponent.get_navigate_links()
+        navigate_links[0].click()
+        return HomePageGuest.get_what_can_u_do_block()
+
+    @allure.step("Click 'How it works' button in header")
+    def click_how_it_works(self):
+        navigate_links = HeaderComponent.get_navigate_links()
+        navigate_links[1].click()
+        return HomePageGuest.get_how_it_works_block()
+
+    @allure.step("Click 'Who we are' button in header")
+    def click_who_we_are(self):
+        navigate_links = HeaderComponent.get_navigate_links()
+        navigate_links[2].click()
+        return HomePageGuest.get_who_we_are_block()

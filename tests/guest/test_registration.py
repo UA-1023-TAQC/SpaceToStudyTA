@@ -101,12 +101,14 @@ class RegistrationTestCase(BaseTestRunner):
 
 
     def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
-        get_what_can_you_do_block = (HomePageGuest(self.driver)
+        what_can_you_do_block = (HomePageGuest(self.driver)
                                      .get_header()
                                      .get_navigate_links()[0]
-                                     .click()
-        )
-        sleep(10)
+                                     .click())
+        sleep(5)
+        list_of_elements_full_screen = what_can_you_do_block.get_the_list_of_what_can_you_do_elements()
+        print(list_of_elements_full_screen)
+        
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

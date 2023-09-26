@@ -73,7 +73,6 @@ class HomePageGuest(BasePage):
         self._collapse_block = None
         self._collapse_items_mobile = None
 
-
     @allure.step("Get map image")
     def get_img_map(self) -> WebElement:
         if not self._img_map:
@@ -173,6 +172,10 @@ class HomePageGuest(BasePage):
         self.get_button_get_started_for_free().click()
         return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
     
+    @allure.step("Get the 'What can you do' block")
+    def get_what_can_u_do_block(self):
+        return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
+    
     @allure.step("Get a 'What can you do' block title")
     def get_what_can_u_do_title(self) -> WebElement:
         if not self._what_can_u_do_title:
@@ -220,7 +223,7 @@ class HomePageGuest(BasePage):
         return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
     
     @allure.step("Get the list of web elements for 'What can you do' block")
-    def get_the_list_of_what_can_you_do_elements(self) -> list:
+    def get_the_list_of_what_can_u_do_elements(self) -> list:
         return [self.get_what_can_u_do_title,
                 self.get_what_can_u_do_description,
                 self.get_card_learn_from_experts,
