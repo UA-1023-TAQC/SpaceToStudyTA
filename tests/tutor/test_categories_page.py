@@ -46,5 +46,6 @@ class CategoriesPageTestCase(BaseTestRunner):
         result_text = CategoriesPage(self.driver).get_no_result_title()
         self.assertEqual("Sorry, no results found", result_text)
 
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

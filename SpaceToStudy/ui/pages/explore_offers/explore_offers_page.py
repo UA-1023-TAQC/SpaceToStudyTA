@@ -6,7 +6,6 @@ from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.explore_offers.filtering_and_sorting_component import FilteringAndSortingComponent
 from SpaceToStudy.ui.pages.explore_offers.grid_card_component import GridCardComponent
 from SpaceToStudy.ui.pages.explore_offers.inline_card_component import InlineCardComponent
-# from SpaceToStudy.ui.pages.explore_offers.offer_and_request_component import OfferAndRequestComponent
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.explore_offers.student_private_lesson_component import StudentPrivateLessonComponent
 
@@ -29,8 +28,9 @@ POPULAR_CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/d
 GO_TO_CATEGORIES_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[7]/div[2]/button")
 
 SCROLL_UP_BTN = (By.XPATH, "/html/body/div/div/div[2]/div[3]/button")
-GRID_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
-INLINE_CARD = (By.XPATH, "//*[@class='MuiBox-root css-1txvgu3'][count(div/div)=5]")
+GRID_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=2]")
+INLINE_CARD = (By.XPATH, "//*[@data-testid='OfferContainer']/div[count(div/div)=3]")
+NOTIFICATION_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[6]")
 
 
 class ExploreOffersPage(BasePage):
@@ -42,6 +42,9 @@ class ExploreOffersPage(BasePage):
         self._student_for_private_lessons_block = None
         self._search_by_tutor_name_block = None
         self._filtering_and_sorting_block = None
+        # self._offer_and_request_block = None
+        self._popular_categories_cards = None
+        self._notification_block = None
 
     @allure.step("Get student for private lessons block")
     def get_student_for_private_lessons_block(self):
@@ -80,23 +83,6 @@ class ExploreOffersPage(BasePage):
             self._filtering_and_sorting_block = FilteringAndSortingComponent(node)
             return self._filtering_and_sorting_block
 
-    # def get_offer_and_request_block(self) -> tuple[OfferAndRequestComponent]:
-    #     if self._offer_and_request_block is None:
-    #         navigate_links = self.driver.find_elements(*OFFER_AND_REQUEST_BLOCK)
-    #         self._offer_and_request_block = []
-    #         for element in navigate_links:
-    #             self._offer_and_request_block.append(OfferAndRequestComponent(element))
-    #     return self._offer_and_request_block
-
-    @allure.step("Get popular categories cards")
-    def get_popular_categories_cards(self) -> tuple[CategoryComponent]:
-        if self._popular_categories_cards is None:
-            navigate_links = self.driver.find_elements(*OFFER_AND_REQUEST_BLOCK)
-            self._popular_categories_cards = []
-            for element in navigate_links:
-                self._popular_categories_cards.append(CategoryComponent(element))
-        return self._popular_categories_cards
-
     @allure.step("Get go to categories button")
     def get_go_to_categories_btn(self) -> WebElement:
         return self.driver.find_element(*GO_TO_CATEGORIES_BTN)
@@ -128,3 +114,9 @@ class ExploreOffersPage(BasePage):
         offers = self.driver.find_elements(*INLINE_CARD)
         self._list_of_offers_inline_card = [InlineCardComponent(offer) for offer in offers]
         return self._list_of_offers_inline_card
+
+    def get_notification_block_with_no_results(self) -> FilteringAndSortingComponent:
+        if not self._notification_block:
+            _notification_block = self.driver.find_element(*NOTIFICATION_BLOCK)
+            self._notification_block = FilteringAndSortingComponent(_notification_block)
+        return self._notification_block
