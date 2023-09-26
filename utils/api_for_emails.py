@@ -37,26 +37,24 @@ class TemporaryMailGenerator:
     # if the above domains are not available
     def get_domains(self):
         url = "https://api.apilayer.com/temp_mail/domains"
-        response = requests.request("GET", url, headers=MailBox.headers, data=MailBox.payload)
+        response = requests.request("GET", url, headers=ValueProvider.get_api_key_for_emails(), data={})
         if response.status_code == 200:
             self.domain = json.loads(response.text)
-            print(self.domain)
         return self.domain
 
     def generate_email_address(self, number_of_symbols=10):
         name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=number_of_symbols))
-        domain = random.choice(self.get_domains())
+        domain = random.choice(self.domain)
         email_address = f"{name}{domain}"
         return email_address
 
 
 class MailBox:
-    payload = {}
-    headers = {
-        "apikey": ValueProvider.get_api_key_for_emails()
-    }
-
     def __init__(self, email):
+        self.payload = {}
+        self.headers = {
+            "apikey": ValueProvider.get_api_key_for_emails()
+        }
         self.email = email
         self.hashed_email = get_hashed_email(email)
         self.letters = []
@@ -97,20 +95,14 @@ class Letter:
     def get_link_from_letter(self) -> str:
         letter_in_html = BeautifulSoup(self.mail_html, 'html.parser')
         link_element = letter_in_html.find('a', href=True)
-        if link_element:
-            link = link_element['href']
-        else:
-            link = None
+        link = link_element['href'] if link_element else None
         return link
 
     def get_sender_email(self) -> str:
         sender = self.mail_from
         email_pattern = r'<([^>]+)>'
-        match = re.search(email_pattern, sender)
-        if match:
-            email = match.group(1)
-        else:
-            email = None
+        matched_email = re.search(email_pattern, sender)
+        email = matched_email.group(1) if matched_email else None
         return email
 
 
