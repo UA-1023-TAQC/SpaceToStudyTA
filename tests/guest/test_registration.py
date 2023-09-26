@@ -1,5 +1,7 @@
 import unittest
 
+import allure
+
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
@@ -72,6 +74,31 @@ class RegistrationTestCase(BaseTestRunner):
         HomePageGuest(self.driver).click_button_become_a_student_tutor()
         modal = RegistrationModal(self.driver).get_title_text()
         self.assertTrue(modal, "Sign up as a student")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/181",
+                     "Verify that a Guest can open the tutor registration pop-up at the How it works block")
+    def test_guest_can_open_the_tutor_registration_popup(self):
+        how_it_works_block_is_displayed = (HomePageGuest(self.driver)
+                                           .get_how_it_works_block()
+                                           .is_displayed_how_it_works_block())
+        self.assertTrue(how_it_works_block_is_displayed, "'How it works' block isn't displayed")
+
+        share_your_experience_title_color = (HomePageGuest(self.driver)
+                                             .click_checkbox_switch_how_it_works_block()
+                                             .get_share_your_experience_how_it_works_block()
+                                             .value_of_css_property("color"))
+        self.assertEqual("rgba(38, 50, 56, 1)", share_your_experience_title_color,
+                         "'Share your Experience' option isn't active")
+
+        button_become_a_tutor_text = (HomePageGuest(self.driver)
+                                      .get_text_button_become_a_student_tutor())
+        self.assertEqual(button_become_a_tutor_text, "Become a tutor",
+                         "Button's name differs from 'Become a tutor'")
+
+        registration_modal_title = (HomePageGuest(self.driver)
+                                    .click_button_become_a_student_tutor().get_text_title_modal())
+        self.assertEqual(registration_modal_title, "Sign up as a tutor",
+                         "Modal's name differs from 'Sign up as a tutor'")
 
     def test_open_tutor_registration_modal_at_what_can_you_do_block(self):
         block_is_displayed = (HomePageGuest(self.driver)

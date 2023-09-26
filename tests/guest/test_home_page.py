@@ -16,7 +16,7 @@ from tests.test_runners import BaseTestRunner
 class HomePageTestCase(BaseTestRunner):
     def test_switched_modals(self):
         button_become_a_student_text = (HomePageGuest(self.driver)
-                                        .click_checkbox_how_it_works_block()
+                                        .click_checkbox_switch_how_it_works_block()
                                         .get_text_button_become_a_student_tutor())
         self.assertEquals(button_become_a_student_text, "Become a tutor")
         registration_modal = (HomePageGuest(self.driver)
