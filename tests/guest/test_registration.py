@@ -113,6 +113,16 @@ class RegistrationTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/177")
+    def test_open_student_registration_modal_at_what_can_you_do_block(self):
+        block_is_displayed = (HomePageGuest(self.driver)
+                              .get_header()
+                              .get_navigate_links()[0]
+                              .click()
+                              .click_become_a_student()
+                              .is_displayed())
+        self.assertTrue(block_is_displayed, "Element not displayed!")
+
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/174')
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
