@@ -21,12 +21,19 @@ GRID_CARD_BTN = (By.XPATH, './div[3]/div[2]/button[2]')
 
 FILTERS_SIDEBAR_COMPONENT = (By.XPATH, "/html/body/div[2]/div[3]")
 
+NOTIFICATIONS_IMG = (By.XPATH, ".//img")
+NOTIFICATIONS_TEXT = (By.XPATH, "./div/div/div/p")
+NOTIFICATIONS_SUBTEXT = (By.XPATH, "./div/div/div/span")
+
 
 class FilteringAndSortingComponent(BaseComponent):
 
     def __init__(self, node):
         super().__init__(node)
         self._filters_sidebar_component = None
+        self._notifications_img = None
+        self._notifications_text = None
+        self._notifications_subtext = None
 
     @allure.step("Get filters svg")
     def get_filters_svg(self) -> WebElement:
@@ -115,3 +122,18 @@ class FilteringAndSortingComponent(BaseComponent):
         if not self._filters_sidebar_component:
             self._filters_sidebar_component = FiltersSidebarComponent(new_node)
             return self._filters_sidebar_component
+
+    def get_notifications_img(self) -> WebElement:
+        if not self._notifications_img:
+            self._notifications_img = self.node.find_element(*NOTIFICATIONS_IMG)
+        return self._notifications_img
+
+    def get_notifications_text(self) -> str:
+        if not self._notifications_text:
+            self._notifications_text = self.node.find_element(*NOTIFICATIONS_TEXT)
+        return self._notifications_text.text
+
+    def get_notifications_subtext(self) -> str:
+        if not self._notifications_subtext:
+            self._notifications_subtext = self.node.find_element(*NOTIFICATIONS_SUBTEXT)
+        return self._notifications_subtext.text

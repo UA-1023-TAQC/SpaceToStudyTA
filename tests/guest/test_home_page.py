@@ -4,6 +4,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
+from SpaceToStudy.ui.pages.home_page.home_guest import (COLLAPSE_BLOCK_DIGITAL_COMMUNICATION,
+                                                        COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS,
+                                                        COLLAPSE_BLOCK_INDIVIDUAL_TIME,
+                                                        COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
+
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest, BUTTON_GET_STARTED_FOR_FREE
 from tests.test_runners import BaseTestRunner
 
@@ -11,7 +16,7 @@ from tests.test_runners import BaseTestRunner
 class HomePageTestCase(BaseTestRunner):
     def test_switched_modals(self):
         button_become_a_student_text = (HomePageGuest(self.driver)
-                                        .click_checkbox_how_it_works_block()
+                                        .click_checkbox_switch_how_it_works_block()
                                         .get_text_button_become_a_student_tutor())
         self.assertEquals(button_become_a_student_text, "Become a tutor")
         registration_modal = (HomePageGuest(self.driver)
@@ -23,6 +28,7 @@ class HomePageTestCase(BaseTestRunner):
                              .get_title_text())
         self.assertEquals(login_modal_title, "Welcome back")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/105")
     def test_how_it_works_block_is_visible_guest(self):
         (HeaderUnauthorizedComponent(self.driver)
          .get_navigate_links()[1]
@@ -42,6 +48,71 @@ class HomePageTestCase(BaseTestRunner):
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/209")
+    def test_the_collapse_block_ui_interaction(self):
+        # check if first element is opened by default
+        default_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[0].is_expanded())
+        individual_time_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[1].is_expanded())
+        individual_free_choice_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[2].is_expanded())
+        digital_communication_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[3].is_expanded())
+        self.assertTrue(default_el, "Element is not opened")
+        self.assertFalse(individual_time_el, "Element is opened")
+        self.assertFalse(individual_free_choice_el, "Element is opened")
+        self.assertFalse(digital_communication_el, "Element is opened")
+
+        # check if guest can open a description to any of four items in the list and change text color and background
+        (HomePageGuest(self.driver).click_individual_time())
+        background_color = (HomePageGuest(self.driver).get_individual_time().node
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
+        sleep(2)
+        color_description = (HomePageGuest(self.driver)
+                             .get_individual_time()
+                             .get_description_value_of_css("color"))
+        self.assertEqual("rgba(255, 255, 255, 1)",color_description)
+        color_title = (HomePageGuest(self.driver)
+                       .get_individual_time()
+                       .get_color_of_title())
+        self.assertEqual("rgba(255, 255, 255, 1)",color_title)
+        is_second_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        for result in is_second_el_open[:1] + is_second_el_open[2:]:
+            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
+
+        (HomePageGuest(self.driver).click_free_choice_of_tutors())
+        sleep(2)
+        background_color = (HomePageGuest(self.driver).get_free_choice_of_tutors().node
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
+        color_description = (HomePageGuest(self.driver)
+                             .get_free_choice_of_tutors()
+                             .get_description_value_of_css("color"))
+        self.assertEqual("rgba(255, 255, 255, 1)", color_description)
+        color_title = (HomePageGuest(self.driver)
+                       .get_free_choice_of_tutors()
+                       .get_color_of_title())
+        self.assertEqual("rgba(255, 255, 255, 1)", color_title)
+        is_third_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        for result in is_third_el_open[:2] + is_third_el_open[3:]:
+            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
+
+        (HomePageGuest(self.driver).click_digital_communication())
+        sleep(2)
+        background_color = (HomePageGuest(self.driver).get_digital_communication().node
+                            .value_of_css_property("background-color"))
+        self.assertEqual("rgba(55, 71, 79, 1)", background_color)
+        color_description = (HomePageGuest(self.driver)
+                             .get_digital_communication()
+                             .get_description_value_of_css("color"))
+        self.assertEqual("rgba(255, 255, 255, 1)", color_description)
+        color_title = (HomePageGuest(self.driver)
+                       .get_digital_communication()
+                       .get_color_of_title())
+        self.assertEqual("rgba(255, 255, 255, 1)", color_title)
+        is_fourth_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
+        for result in is_fourth_el_open[:3]:
+            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/191")
     def test_the_get_started_for_free_button_ui(self):
         button_is_displayed = (HomePageGuest(self.driver)
                                .get_button_get_started_for_free()
@@ -67,6 +138,7 @@ class HomePageTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/206")
     def test_the_collapse_block_ui_alignment(self):
         # check the coordinates of X
         margin_between_elements = 68
@@ -86,8 +158,7 @@ class HomePageTestCase(BaseTestRunner):
         width = width_block.size['width']
         self.assertEqual(540, width)
 
-
-
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/203")
     def test_the_collapse_block_ui_text(self):
         flexible_location = "Flexible Location"
         individual_time = "Individual Time"
@@ -98,22 +169,22 @@ class HomePageTestCase(BaseTestRunner):
         title_fl = (HomePageGuest(self.driver)
                     .get_flexible_location()
                     .get_title())
-        self.assertIn(flexible_location, title_fl)
+        self.assertEqual(flexible_location, title_fl)
         description_fl = (HomePageGuest(self.driver)
                           .get_flexible_location().get_description())
-        self.assertIn(description_fl, description)
+        self.assertEqual(description_fl, description)
         title_it = (HomePageGuest(self.driver)
                     .get_individual_time()
                     .get_title())
-        self.assertIn(individual_time, title_it)
+        self.assertEqual(individual_time, title_it)
         description_it = (HomePageGuest(self.driver)
                           .get_individual_time()
                           .get_description())
-        self.assertIn(description_it, description)
+        self.assertEqual(description_it, description)
         title_fc = (HomePageGuest(self.driver)
                     .get_free_choice_of_tutors()
                     .get_title())
-        self.assertIn(free_choice, title_fc)
+        self.assertEqual(free_choice, title_fc)
         description_fc = (HomePageGuest(self.driver)
                           .get_free_choice_of_tutors()
                           .get_description())
@@ -121,7 +192,7 @@ class HomePageTestCase(BaseTestRunner):
         title_dc = (HomePageGuest(self.driver)
                     .get_digital_communication()
                     .get_title())
-        self.assertIn(digital_communication, title_dc)
+        self.assertEqual(digital_communication, title_dc)
         description_dc = (HomePageGuest(self.driver)
                           .get_digital_communication()
                           .get_description())
@@ -197,6 +268,7 @@ class HomePageTestCase(BaseTestRunner):
         focus_styles = (HomePageGuest(self.driver).get_tub_animation())
         self.assertTrue(focus_styles, "There is no animation")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/212")
     def test_the_collapse_block_ui_hover(self):
         # check hover elements
         get_first_el = self.driver.find_element(*COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
@@ -220,6 +292,7 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(236, 239, 241, 1)", hover_third_el)
         self.assertEqual("rgba(55, 71, 79, 1)", background_fourth_el)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/273")
     def test_the_collapse_block_ui_resize(self):
         HomePageGuest(self.driver).set_size_window(899, 1080)
         width_tablet = (HomePageGuest(self.driver).get_collapse_block().size['width'])
@@ -244,6 +317,7 @@ class HomePageTestCase(BaseTestRunner):
         self.assertTrue(is_hidden_third_el, "Third element is not hidden")
         self.assertTrue(is_hidden_fourth_el, "Fourth element is not hidden")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/173")
     def test_the_collapse_block_ui_tab(self):
         # check tab
         (HeaderUnauthorizedComponent(self.driver).tab_key(6))

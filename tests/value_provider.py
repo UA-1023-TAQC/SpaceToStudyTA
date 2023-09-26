@@ -41,3 +41,7 @@ class ValueProvider:
     @classmethod
     def get_base_url(cls) -> str:
         return os.getenv("BASE_URL")
+
+    @classmethod
+    def get_api_key_for_emails(cls) -> str:
+        return os.getenv("API_KEY_FOR_EMAILS")
