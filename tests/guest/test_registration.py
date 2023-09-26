@@ -20,7 +20,7 @@ class RegistrationTestCase(BaseTestRunner):
                      .set_last_name("test")
                      .set_email("test@gmail.com")
                      .set_password("@#$%//////")
-                     .click_sign_up_btn())
+                     .set_confirm_password("@#$%//////"))
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
@@ -41,7 +41,7 @@ class RegistrationTestCase(BaseTestRunner):
                      .set_last_name("test")
                      .set_email("test@gmail.com")
                      .set_password("11111111111111111111111111q")
-                     .click_sign_up_btn())
+                     .set_confirm_password("11111111111111111111111111q"))
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
 
@@ -111,7 +111,7 @@ class RegistrationTestCase(BaseTestRunner):
                               .click()
                               .click_become_a_tutor()
                               .is_displayed())
-        self.assertTrue(block_is_displayed, "Element not displayed!")
+        self.assertTrue(block_is_displayed, "Registration modal is not displayed!")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/177")
     def test_open_student_registration_modal_at_what_can_you_do_block(self):
@@ -121,7 +121,7 @@ class RegistrationTestCase(BaseTestRunner):
                               .click()
                               .click_become_a_student()
                               .is_displayed())
-        self.assertTrue(block_is_displayed, "Element not displayed!")
+        self.assertTrue(block_is_displayed, "Registration modal is not displayed!")
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/174')
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
