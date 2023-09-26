@@ -23,7 +23,8 @@ BUTTON_GET_STARTED_FOR_FREE = (By.XPATH, "//a[contains(text(), 'Get started for 
 BECOME_A_TUTOR_OR_STUDENT_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/button")
 
 HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div")
-
+HOW_IT_WORKS_BLOCK_SHARE_YOUR_EXPERIENCE = (By.XPATH,
+                                            "//div[@id='how-it-works']//h6[contains(text(), 'Share your Experience')]")
 HOW_IT_WORKS_BLOCK_SIGN_UP = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[2]")
 HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[3]")
 HOW_IT_WORKS_BLOCK_SEND_REQUEST = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[4]")
@@ -42,7 +43,6 @@ COLLAPSE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/div"
 
 WHAT_CAN_U_DO_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 WHO_WE_ARE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[4]")
-
 
 
 class HomePageGuest(BasePage):
@@ -83,7 +83,6 @@ class HomePageGuest(BasePage):
                 self._collapse_items.append(CollapseItem(collapse_item))
         return self._collapse_items
 
-
     def get_collapse_list_items_block_mobile_size_screen(self) -> list[CollapseItem]:
         if self._collapse_items_mobile is None:
             _collapse_items_mobile = self.driver.find_elements(*COLLAPSE_BLOCK_ITEMS_MOBILE)
@@ -91,8 +90,6 @@ class HomePageGuest(BasePage):
             for collapse_item in _collapse_items_mobile:
                 self._collapse_items_mobile.append(CollapseItem(collapse_item))
         return self._collapse_items_mobile
-
-
 
     @allure.step("Get flexible location")
     def get_flexible_location(self) -> CollapseItem:
@@ -182,10 +179,19 @@ class HomePageGuest(BasePage):
         if not self._checkbox_how_it_works_block:
             return self.driver.find_element(*CHECKBOX_HOW_IT_WORKS_BLOCK)
 
+    @allure.step("Get checkbox switch WebElement in 'How it works' block")
+    def get_checkbox_switch_how_it_works_block(self) -> WebElement:
+        if not self._checkbox_how_it_works_block:
+            return self.driver.find_element(*CHECKBOX_HOW_IT_WORKS_BLOCK)
+
     @allure.step("Click checkbox how it works block")
-    def click_checkbox_how_it_works_block(self):
-        self.get_checkbox_how_it_works_block().click()
+    def click_checkbox_switch_how_it_works_block(self):
+        self.get_checkbox_switch_how_it_works_block().click()
         return self
+
+    @allure.step("Get 'Share your experience' WebElement in 'How it works' block")
+    def get_share_your_experience_how_it_works_block(self) -> WebElement:
+        return self.driver.find_element(*HOW_IT_WORKS_BLOCK_SHARE_YOUR_EXPERIENCE)
 
     @allure.step("Get card learn from experts")
     def get_card_learn_from_experts(self) -> CardComponent:
@@ -201,13 +207,14 @@ class HomePageGuest(BasePage):
     @allure.step("Get card share your experience")
     def get_card_share_your_experience(self) -> CardComponent:
         if not self._card_share_your_experience:
-            self._card_share_your_experience = CardComponent(self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE))
+            self._card_share_your_experience = CardComponent(
+                self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE))
         return self._card_share_your_experience
 
     @allure.step("Click become a tutor")
     def click_become_a_tutor(self) -> RegistrationModal:
         self.get_card_share_your_experience().click_btn()
-        return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
+        return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
 
     @allure.step("Get text in button \"get started for free\"")
     def get_text_button_get_started_for_free(self) -> str:
@@ -226,7 +233,7 @@ class HomePageGuest(BasePage):
     def get_text_button_become_a_student_tutor(self) -> str:
         return self.get_button_become_a_student_tutor().text
 
-    @allure.step("Get text in button \"become a student or tutor\"")
+    @allure.step("Click button \"become a student or tutor\"")
     def click_button_become_a_student_tutor(self):
         self.get_button_become_a_student_tutor().click()
         node = self.driver.find_element(*SIGN_UP_MODAL)
