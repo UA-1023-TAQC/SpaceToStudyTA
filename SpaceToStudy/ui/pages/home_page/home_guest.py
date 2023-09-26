@@ -163,6 +163,10 @@ class HomePageGuest(BasePage):
         if not self._button_get_started_for_free:
             self._button_get_started_for_free = self.driver.find_element(*BUTTON_GET_STARTED_FOR_FREE)
         return self._button_get_started_for_free
+    
+    @allure.step("Get text in button \"get started for free\"")
+    def get_text_button_get_started_for_free(self) -> str:
+        return self.get_button_get_started_for_free().text
 
     @allure.step("Click button \"get started for free\"")
     def click_button_get_started_for_free(self):
@@ -188,16 +192,10 @@ class HomePageGuest(BasePage):
         return self._card_learn_from_experts
 
     @allure.step("Get become a student button")
-    def get_become_a_student(self) -> WebElement:
+    def get_become_a_student_btn(self) -> WebElement:
         if not self._become_a_student_btn:
             self._become_a_student_btn = self.driver.find_element(*BECOME_A_STUDENT_BUTTON)
         return self._become_a_student_btn
-    
-    @allure.step("Get become a tutor button")
-    def get_become_a_tutor(self) -> WebElement:
-        if not self._become_a_tutor_btn:
-            self._become_a_tutor_btn = self.driver.find_element(*BECOME_A_TUTOR_BUTTON)
-        return self._become_a_tutor_btn
 
     @allure.step("Click become a student ")
     def click_become_a_student(self) -> RegistrationModal:
@@ -210,14 +208,25 @@ class HomePageGuest(BasePage):
             self._card_share_your_experience = CardComponent(self.driver.find_element(*CARD_COMPONENT_SHARE_YOUR_EXPERIENCE))
         return self._card_share_your_experience
 
+    @allure.step("Get become a tutor button")
+    def get_become_a_tutor_btn(self) -> WebElement:
+        if not self._become_a_tutor_btn:
+            self._become_a_tutor_btn = self.driver.find_element(*BECOME_A_TUTOR_BUTTON)
+        return self._become_a_tutor_btn
+
     @allure.step("Click become a tutor")
     def click_become_a_tutor(self) -> RegistrationModal:
         self.get_card_share_your_experience().click_btn()
         return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
-
-    @allure.step("Get text in button \"get started for free\"")
-    def get_text_button_get_started_for_free(self) -> str:
-        return self.get_button_get_started_for_free().text
+    
+    @allure.step("Get the list of web elements for 'What can you do' block")
+    def get_the_list_of_what_can_you_do_elements(self) -> list:
+        return [self.get_what_can_u_do_title,
+                self.get_what_can_u_do_description,
+                self.get_card_learn_from_experts,
+                self.get_become_a_student_btn,
+                self.get_card_share_your_experience,
+                self.get_become_a_tutor_btn]
 
     @allure.step("Get how it works block")
     def get_how_it_works_block(self) -> HowItWorksComponent:
