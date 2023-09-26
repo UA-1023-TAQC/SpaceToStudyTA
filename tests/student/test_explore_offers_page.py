@@ -16,7 +16,7 @@ class TestExploreOffersPageStudent(TestRunnerWithStudent):
                       .click_find_tutor_btn()
                       .get_filtering_and_sorting_block()
                       .click_grid_card_btn()
-                      .get_list_of_offers_grid_card()[0]
-                      .get_person_name_text()
+                      .get_list_of_offers_grid_card()
                       )
-        self.assertIn(part, name_tutor)
+        for result in name_tutor:
+            self.assertIn(part, result.get_person_name_text())

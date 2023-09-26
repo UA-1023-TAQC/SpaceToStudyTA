@@ -1,6 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
@@ -40,8 +42,8 @@ class GridCardComponent(BaseComponent):
     def get_person_name(self):
         return self.node.find_element(*PERSON_NAME)
 
-    @allure.step("Get text of person's name")
     def get_person_name_text(self) -> str:
+        WebDriverWait(self.node, 10).until(EC.visibility_of_element_located(PERSON_NAME))
         return self.node.find_element(*PERSON_NAME).text
 
     @allure.step("Click on person's name")
