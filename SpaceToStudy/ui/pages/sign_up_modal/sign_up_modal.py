@@ -237,9 +237,9 @@ class RegistrationModal(BaseComponent):
     @allure.step("Get 'Sign up with Google' button text")
     def get_sign_up_with_google_btn_text(self) -> str:
         iframe = self.get_sign_up_with_google_iframe()
-        self.node.switch_to.frame(iframe)
-        button_text = self.node.find_element(*SIGN_UP_WITH_GOOGLE_BTN).text
-        self.node.switch_to.default_content()
+        self.node.parent.switch_to.frame(iframe)
+        button_text = self.node.parent.find_element(*SIGN_UP_WITH_GOOGLE_BTN).text
+        self.node.parent.switch_to.default_content()
         return button_text
 
     def get_title_text(self) -> WebElement:
