@@ -109,6 +109,7 @@ class RegistrationTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/174')
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
                                 .click_started_for_free())
@@ -123,6 +124,7 @@ class RegistrationTestCase(BaseTestRunner):
             .click_btn()\
             .get_text_title_modal()
         self.assertEqual(title_tutor, "Sign up as a tutor")
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
