@@ -79,14 +79,6 @@ class ExploreOffersPage(BasePage):
             self._filtering_and_sorting_block = FilteringAndSortingComponent(node)
             return self._filtering_and_sorting_block
 
-    # def get_offer_and_request_block(self) -> tuple[OfferAndRequestComponent]:
-    #     if self._offer_and_request_block is None:
-    #         navigate_links = self.driver.find_elements(*OFFER_AND_REQUEST_BLOCK)
-    #         self._offer_and_request_block = []
-    #         for element in navigate_links:
-    #             self._offer_and_request_block.append(OfferAndRequestComponent(element))
-    #     return self._offer_and_request_block
-
     @allure.step("Get go to categories button")
     def get_go_to_categories_btn(self) -> WebElement:
         return self.driver.find_element(*GO_TO_CATEGORIES_BTN)
