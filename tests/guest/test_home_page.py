@@ -14,10 +14,6 @@ from SpaceToStudy.ui.pages.home_page.home_guest import (COLLAPSE_BLOCK_DIGITAL_C
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest, BUTTON_GET_STARTED_FOR_FREE
 from tests.test_runners import BaseTestRunner
 
-TEST_CASE_176 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/176"
-TEST_CASE_175 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/175"
-TEST_CASE_198 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/198"
-
 
 class HomePageTestCase(BaseTestRunner):
     def test_switched_modals(self):
@@ -204,7 +200,7 @@ class HomePageTestCase(BaseTestRunner):
                           .get_description())
         self.assertIn(description_dc, description)
 
-    @allure.testcase(TEST_CASE_176)
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/176")
     def test_what_can_you_do_elements_visible(self):
         (HeaderUnauthorizedComponent(self.driver)
          .get_navigate_links()[0]
@@ -218,7 +214,7 @@ class HomePageTestCase(BaseTestRunner):
                                .get_btn())
         self.assertIsNotNone(become_tutor_button, "The 'Become a tutor' button is not found")
 
-    @allure.testcase(TEST_CASE_175)
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/175")
     def test_the_list_of_collapse_items(self):
         flexible_location_item = (HomePageGuest(self.driver)
                                   .get_flexible_location())
@@ -254,7 +250,7 @@ class HomePageTestCase(BaseTestRunner):
         title = (HomePageGuest(self.driver).get_who_we_are_block().get_title())
         self.assertEqual("Who we are", title)
 
-    @allure.testcase(TEST_CASE_198)
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/198")
     def test_that_controls_active_after_navigating_to_them(self):
         sleep(3)
         (HeaderUnauthorizedComponent(self.driver)
@@ -270,7 +266,7 @@ class HomePageTestCase(BaseTestRunner):
         self.assertNotEqual(button_before_it_is_hovered_over, button_after_it_is_hovered_over,
                             "The button hasn't changed")
 
-    @allure.testcase(TEST_CASE_198)
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/198")
     def test_that_controls_active_after_navigating_to_them_by_tab(self):
         (HomePageGuest(self.driver)
          .get_card_learn_from_experts()

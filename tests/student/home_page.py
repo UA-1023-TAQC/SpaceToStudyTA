@@ -4,7 +4,6 @@ from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffe
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.test_runners import TestRunnerWithStudent
 
-TEST_CASE_218 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/218"
 
 
 class TestHomePageStudent(TestRunnerWithStudent):
@@ -101,7 +100,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
-    @allure.testcase(TEST_CASE_218)
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/218")
     def test_student_can_see_tutors_offers_at_the_home_page(self):
         (HomePageStudent(self.driver)
          .get_search_input()
