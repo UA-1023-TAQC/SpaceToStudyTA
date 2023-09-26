@@ -56,9 +56,9 @@ class MailBox:
         "apikey": ValueProvider.get_api_key_for_emails()
     }
 
-    def __init__(self, email=None, hashed_email=None):
+    def __init__(self, email):
         self.email = email
-        self.hashed_email = hashed_email
+        self.hashed_email = get_hashed_email(email)
         self.letters = []
 
     def __str__(self):
