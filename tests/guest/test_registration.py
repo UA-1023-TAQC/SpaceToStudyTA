@@ -11,6 +11,7 @@ from tests.value_provider import ValueProvider
 
 class RegistrationTestCase(BaseTestRunner):
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/110")
     def test_registration_password_without_alphabetic_numeric_character(self):
         registration = (HomePageGuest(self.driver)
                         .click_started_for_free()
@@ -23,6 +24,7 @@ class RegistrationTestCase(BaseTestRunner):
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/104")
     def test_registration_modal_student_is_shown_for_guest(self):
         is_displayed = (HomePageGuest(self.driver)
                         .click_started_for_free()
@@ -30,6 +32,7 @@ class RegistrationTestCase(BaseTestRunner):
                         .is_displayed())
         self.assertTrue(is_displayed, "Element not displayed!")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/109")
     def test_registration_tutor_too_long_password(self):
         registration = (HomePageGuest(self.driver)
                         .click_started_for_free()
@@ -100,6 +103,7 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(registration_modal_title, "Sign up as a tutor",
                          "Modal's name differs from 'Sign up as a tutor'")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/171")
     def test_open_tutor_registration_modal_at_what_can_you_do_block(self):
         block_is_displayed = (HomePageGuest(self.driver)
                               .get_header()

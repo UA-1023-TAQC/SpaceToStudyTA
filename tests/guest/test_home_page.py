@@ -4,11 +4,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
-from SpaceToStudy.ui.pages.home_page.home_guest import (HomePageGuest,
-                                                        COLLAPSE_BLOCK_DIGITAL_COMMUNICATION,
+from SpaceToStudy.ui.pages.home_page.home_guest import (COLLAPSE_BLOCK_DIGITAL_COMMUNICATION,
                                                         COLLAPSE_BLOCK_FREE_CHOICE_OF_TUTORS,
                                                         COLLAPSE_BLOCK_INDIVIDUAL_TIME,
                                                         COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
+
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest, BUTTON_GET_STARTED_FOR_FREE
 from tests.test_runners import BaseTestRunner
 
@@ -28,6 +28,7 @@ class HomePageTestCase(BaseTestRunner):
                              .get_title_text())
         self.assertEquals(login_modal_title, "Welcome back")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/105")
     def test_how_it_works_block_is_visible_guest(self):
         (HeaderUnauthorizedComponent(self.driver)
          .get_navigate_links()[1]
@@ -47,6 +48,7 @@ class HomePageTestCase(BaseTestRunner):
                        .value_of_css_property("color"))
         self.assertEqual("rgba(96, 125, 139, 1)", block_share)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/209")
     def test_the_collapse_block_ui_interaction(self):
         # check if first element is opened by default
         default_el = (HomePageGuest(self.driver).get_collapse_list_items_block()[0].is_expanded())
@@ -110,6 +112,7 @@ class HomePageTestCase(BaseTestRunner):
         for result in is_fourth_el_open[:3]:
             self.assertFalse(result.get_description().is_displayed(), "Element is selected")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/191")
     def test_the_get_started_for_free_button_ui(self):
         button_is_displayed = (HomePageGuest(self.driver)
                                .get_button_get_started_for_free()
@@ -135,6 +138,7 @@ class HomePageTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/206")
     def test_the_collapse_block_ui_alignment(self):
         # check the coordinates of X
         margin_between_elements = 68
@@ -154,6 +158,7 @@ class HomePageTestCase(BaseTestRunner):
         width = width_block.size['width']
         self.assertEqual(540, width)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/203")
     def test_the_collapse_block_ui_text(self):
         flexible_location = "Flexible Location"
         individual_time = "Individual Time"
@@ -265,6 +270,7 @@ class HomePageTestCase(BaseTestRunner):
                         .get_tub_animation())
         self.assertTrue(focus_styles, "There is no animation")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/212")
     def test_the_collapse_block_ui_hover(self):
         # check hover elements
         get_first_el = self.driver.find_element(*COLLAPSE_BLOCK_FLEXIBLE_LOCATION)
@@ -288,6 +294,7 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(236, 239, 241, 1)", hover_third_el)
         self.assertEqual("rgba(55, 71, 79, 1)", background_fourth_el)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/273")
     def test_the_collapse_block_ui_resize(self):
         HomePageGuest(self.driver).set_size_window(899, 1080)
         width_tablet = (HomePageGuest(self.driver).get_collapse_block().size['width'])
@@ -312,6 +319,7 @@ class HomePageTestCase(BaseTestRunner):
         self.assertTrue(is_hidden_third_el, "Third element is not hidden")
         self.assertTrue(is_hidden_fourth_el, "Fourth element is not hidden")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/173")
     def test_the_collapse_block_ui_tab(self):
         # check tab
         (HeaderUnauthorizedComponent(self.driver).tab_key(6))
