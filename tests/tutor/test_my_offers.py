@@ -7,10 +7,11 @@ from tests.test_runners import TestRunnerWithTutor
 
 class MyOffers(TestRunnerWithTutor):
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/117")
     def test_offers_sort_price_low_high(self):
         menu = HeaderAuthorizedComponent(self.driver)
         (menu.get_user_menu()
-         .click_get_account()
+         .click_account()
          .click_menu_items_my_offers())
         offers = MyOffersPage(self.driver)
         (offers
@@ -22,10 +23,11 @@ class MyOffers(TestRunnerWithTutor):
         actual = offers.get_list_prices()
         self.assertEqual(expected, actual)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/117")
     def test_offers_sort_price_high_low(self):
         menu = HeaderAuthorizedComponent(self.driver)
         (menu.get_user_menu()
-         .click_get_account()
+         .click_account()
          .click_menu_items_my_offers())
         offers = MyOffersPage(self.driver)
         (offers

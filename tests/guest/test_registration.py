@@ -1,12 +1,9 @@
 import unittest
-from time import sleep
 
-from selenium.webdriver.common.by import By
+import allure
 
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
-from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
-from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
@@ -14,6 +11,7 @@ from tests.value_provider import ValueProvider
 
 class RegistrationTestCase(BaseTestRunner):
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/110")
     def test_registration_password_without_alphabetic_numeric_character(self):
         registration = (HomePageGuest(self.driver)
                         .click_started_for_free()
@@ -26,6 +24,7 @@ class RegistrationTestCase(BaseTestRunner):
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/104")
     def test_registration_modal_student_is_shown_for_guest(self):
         is_displayed = (HomePageGuest(self.driver)
                         .click_started_for_free()
@@ -33,6 +32,7 @@ class RegistrationTestCase(BaseTestRunner):
                         .is_displayed())
         self.assertTrue(is_displayed, "Element not displayed!")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/109")
     def test_registration_tutor_too_long_password(self):
         registration = (HomePageGuest(self.driver)
                         .click_started_for_free()
@@ -68,6 +68,42 @@ class RegistrationTestCase(BaseTestRunner):
         modal = RegistrationModal(self.driver).get_title_text()
         self.assertTrue(modal, "Sign up as a student")
 
+    def test_guest_can_open_the_student_registration_popup(self):
+        (HomePageGuest(self.driver)
+         .get_how_it_works_block()
+         .get_checkbox_learn_from_experts()
+         .click()
+        )
+        HomePageGuest(self.driver).click_button_become_a_student_tutor()
+        modal = RegistrationModal(self.driver).get_title_text()
+        self.assertTrue(modal, "Sign up as a student")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/181",
+                     "Verify that a Guest can open the tutor registration pop-up at the How it works block")
+    def test_guest_can_open_the_tutor_registration_popup(self):
+        how_it_works_block_is_displayed = (HomePageGuest(self.driver)
+                                           .get_how_it_works_block()
+                                           .is_displayed_how_it_works_block())
+        self.assertTrue(how_it_works_block_is_displayed, "'How it works' block isn't displayed")
+
+        share_your_experience_title_color = (HomePageGuest(self.driver)
+                                             .click_checkbox_switch_how_it_works_block()
+                                             .get_share_your_experience_how_it_works_block()
+                                             .value_of_css_property("color"))
+        self.assertEqual("rgba(38, 50, 56, 1)", share_your_experience_title_color,
+                         "'Share your Experience' option isn't active")
+
+        button_become_a_tutor_text = (HomePageGuest(self.driver)
+                                      .get_text_button_become_a_student_tutor())
+        self.assertEqual(button_become_a_tutor_text, "Become a tutor",
+                         "Button's name differs from 'Become a tutor'")
+
+        registration_modal_title = (HomePageGuest(self.driver)
+                                    .click_button_become_a_student_tutor().get_text_title_modal())
+        self.assertEqual(registration_modal_title, "Sign up as a tutor",
+                         "Modal's name differs from 'Sign up as a tutor'")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/171")
     def test_open_tutor_registration_modal_at_what_can_you_do_block(self):
         block_is_displayed = (HomePageGuest(self.driver)
                               .get_header()
@@ -77,7 +113,31 @@ class RegistrationTestCase(BaseTestRunner):
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Element not displayed!")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/177")
+    def test_open_student_registration_modal_at_what_can_you_do_block(self):
+        block_is_displayed = (HomePageGuest(self.driver)
+                              .get_header()
+                              .get_navigate_links()[0]
+                              .click()
+                              .click_become_a_student()
+                              .is_displayed())
+        self.assertTrue(block_is_displayed, "Element not displayed!")
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/174')
+    def test_opening_of_modal_registration_window_for_tutor_and_student(self):
+        get_started_for_free = (HomePageGuest(self.driver)
+                                .click_started_for_free())
+        start_student = get_started_for_free\
+            .get_card_learn_from_experts()\
+            .click_btn()
+        title_student = start_student.get_text_title_modal()
+        self.assertEqual(title_student, "Sign up as a student")
+        start_student.click_close_btn()
+        title_tutor = get_started_for_free\
+            .get_card_share_your_experience()\
+            .click_btn()\
+            .get_text_title_modal()
+        self.assertEqual(title_tutor, "Sign up as a tutor")
 
 
 if __name__ == '__main__':
