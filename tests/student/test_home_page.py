@@ -5,8 +5,6 @@ from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffe
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.test_runners import TestRunnerWithStudent
 
-TEST_CASE_219 = "https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/219"
-
 
 class TestHomePageStudent(TestRunnerWithStudent):
 
@@ -110,7 +108,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
                           .get_list_of_offers_grid_card())
         self.assertIsNotNone(list_of_offers, "There are no offers")
 
-    @allure.testcase(TEST_CASE_219)
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/219")
     def test_the_ui_welcoming_block_resize(self):
         HomePageStudent(self.driver).set_size_window(899, 1080)
         tablet_input_block = (HomePageStudent(self.driver).get_search_input().node.size['width'])
