@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -36,64 +37,81 @@ class MyOffersPage(BasePage):
         self._card_offers = None
         self._list_price = None
 
+    @allure.step("Get offers table")
     def get_offers_table(self):
         node = self.driver.find_element(*OFFERS_TABLE)
         self._offers_table = OfferElements(node)
         return self._offers_table
 
+    @allure.step("Get title")
     def get_title(self) -> WebElement:
         return self.driver.find_element(*MY_OFFERS_PAGE_TITLE)
 
+    @allure.step("Get 'create new offer' button")
     def get_create_new_offer_btn(self) -> WebElement:
         return self.driver.find_element(*CREATE_NEW_OFFER_BTN)
 
+    @allure.step("Click 'create new offer' button")
     def click_create_new_offer_btn(self):
         self.driver.get_create_new_offer_btn.click()
 
+    @allure.step("Get select offer buttons")
     def get_select_offer_btns(self):
         node = self.driver.find_element(*SELECT_OFFER_BTNS)
         self._select_offer_btns = SelectOffers(node)
         return self._select_offer_btns
 
+    @allure.step("Get offers interaction")
     def get_offers_interaction(self):
         node = self.driver.find_element(*OFFERS_INTERACTION)
         self._offers_interaction = OffersInteraction(node)
         return self._offers_interaction
 
+    @allure.step("Get list box dropdown menu")
     def get_list_box_dropdown_menu(self):
         node = self.driver.find_element(*LIST_BOX_DROPDOWN_MENU)
         self._list_box_dropdown_menu = DropdownMenu(node)
         return self._list_box_dropdown_menu
 
+    @allure.step("Get dropdown menu")
     def get_dropdown_menu(self) -> WebElement:
         return self.driver.find_element(*DROPDOWN_MENU)
 
+    @allure.step("Click dropdown menu")
     def click_dropdown_menu(self):
         return self.get_dropdown_menu().click()
 
+    @allure.step("Get actions button inline")
     def get_actions_btn_inline(self) -> WebElement:
         return self.driver.find_element(*ACTIONS_BTN_INLINE)
 
+    @allure.step("Click actions button inline")
     def click_actions_btn_inline(self):
         self.get_actions_btn_inline().click()
 
+    @allure.step("Get edit button inline")
     def get_edit_btn_inline(self) -> WebElement:
         return self.driver.find_element(*EDIT_BTN_INLINE)
 
+    @allure.step("Get view details button inline")
     def get_view_details_btn_inline(self) -> WebElement:
         return self.driver.find_element(*VIEW_DETAILS_BTN_INLINE)
 
+    @allure.step("Click edit button inline")
     def click_edit_btn_inline(self):
         self.get_edit_btn_inline().click()
 
+    @allure.step("Click view details button inline")
     def click_view_details_btn_inline(self):
         self.get_view_details_btn_inline().click()
 
+    @allure.step("Get actions button grid")
     def get_actions_btn_grid(self):
         node = self.driver.find_element(*ACTIONS_BTN_GRID)
         self._actions_btn_grid = ActionsBtnGrid(node)
         return self._actions_btn_grid
 
+    @allure.step("Get card offers")
     def get_card_offers(self) -> list[OffersCardComponent]:
         if self._card_offers is None:
             card_offers = self.driver.find_elements(*CARD_OFFERS)
@@ -102,6 +120,7 @@ class MyOffersPage(BasePage):
                 self._card_offers.append(OffersCardComponent(card))
         return self._card_offers
 
+    @allure.step("Get list of prices")
     def get_list_prices(self) -> list:
         if self._list_price is None:
             list_price = self.driver.find_elements(*PRICE)
