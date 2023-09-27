@@ -35,11 +35,12 @@ SIGN_UP_BTN = (By.XPATH, "//button[contains(text(), 'Sign up')]")
 OR_CONTINUE_TEXT = (By.XPATH, "//div[@data-testid='popupContent']//p[contains(text(), 'or continue')]")
 SIGN_UP_WITH_GOOGLE_IFRAME = (By.XPATH, "//div[@id='googleButton']//iframe")
 SIGN_UP_WITH_GOOGLE_BTN = (By.XPATH, "//span[text()='Sign up with Google']")
+ALREADY_HAVE_ACCOUNT_TEXT = (By.XPATH, "//p[text()='Already have a Space2Study account?']")
 
 TERMS_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]/div/a[1]")
 PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]"
                                  "/div/a[2]")
-LOGIN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
+LOGIN_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
 LOGIN_MODAL = (By.XPATH, "//*[@role='dialog']")
 
 TITLE_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
@@ -242,6 +243,10 @@ class RegistrationModal(BaseComponent):
         self.node.parent.switch_to.default_content()
         return button_text
 
+    @allure.step("Get 'Already have account' text")
+    def get_already_have_account_text(self):
+        return self.node.find_element(*ALREADY_HAVE_ACCOUNT_TEXT)
+
     def get_title_text(self) -> WebElement:
         if not self._title:
             self._title = self.node.find_element(*TITLE)
@@ -250,11 +255,10 @@ class RegistrationModal(BaseComponent):
 
     def get_login_link(self) -> WebElement:
         if not self._login_link:
-            self._login_link = self.node.find_element(*LOGIN)
+            self._login_link = self.node.find_element(*LOGIN_LINK)
         return self._login_link
 
     def get_login_link_text(self) -> str:
-
         return self.get_login_link().text
 
     def click_login_link(self):

@@ -182,10 +182,26 @@ class RegistrationTestCase(BaseTestRunner):
         sign_up_with_google_btn_exist = registration_modal.get_sign_up_with_google_iframe().is_displayed()
         self.assertTrue(sign_up_with_google_btn_exist, "'Sign up with Google' button doesn't exist")
         sign_up_with_google_btn_title = registration_modal.get_sign_up_with_google_btn_text()
-        print(sign_up_btn_title)
         self.assertEqual("Sign up with Google", sign_up_with_google_btn_title,
                          f"Button name is {sign_up_with_google_btn_title}, but expected 'Sign up with Google'")
-        # CONTINUE..
+
+        already_have_account_exist = registration_modal.get_already_have_account_text().is_displayed()
+        self.assertTrue(already_have_account_exist, "'Already have account' text doesn't exist")
+        already_have_account_text = registration_modal.get_already_have_account_text().text
+        self.assertEqual("Already have a Space2Study account?", already_have_account_text,
+                         "Text differs from 'Already have a Space2Study account?'")
+
+        login_link_text = registration_modal.get_login_link_text()
+        self.assertEqual("Login!", login_link_text,
+                         "Link name differs from 'Login!'")
+        login_link_is_underlined = registration_modal.get_login_link().value_of_css_property("text-decoration")
+        self.assertEqual("underline solid rgb(38, 50, 56)", login_link_is_underlined, "'Login!' link isn't underlined")
+        login_link_is_bold = registration_modal.get_login_link().value_of_css_property("font-weight")
+        self.assertEqual("500", login_link_is_bold, "'Login!' link isn't bold")
+        login_link_is_clickable = registration_modal.click_login_link().get_title_text()
+        self.assertEqual("Welcome back", login_link_is_clickable,
+                         f"'Login!' refers on {login_link_is_clickable}, but expected Login modal.")
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
