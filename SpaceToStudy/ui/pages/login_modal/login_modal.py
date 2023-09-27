@@ -21,7 +21,6 @@ FORGOT_PASSWORD_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/di
 LOGIN_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
 SIGN_IN_WITH_GMAIL = (By.XPATH, '//*[@id="googleButton"]/div/iframe')
 JOIN_US_FOR_FREE = (By.XPATH, "//*[contains(text(),'Join us for free')]")
-SIGN_IN_WITH_GMAIL_BUTTON = (By.XPATH, '//*[@id="container"]/div/div[2]/span[1]')
 UNSUCCESS_LOGIN_POP_UP = (By.XPATH, "?????????????")
 
 
@@ -34,7 +33,7 @@ class LoginModal(BaseComponent):
         self._email_input = None
         self._password_input = None
         self._forgot_password_button = None
-        #self._sign_in_as_gmail = None
+        self._sign_in_as_gmail = None
         self._join_us_for_free = None
         self._login_button = None
 
@@ -113,17 +112,13 @@ class LoginModal(BaseComponent):
 
     @allure.step("Get the 'Sign In with Gmail' button")
     def get_sign_in_as_gmail(self):
-        # if not self._sign_in_as_gmail:
-        #     self._sign_in_as_gmail = self.node.find_element(*SIGN_IN_WITH_GMAIL)
-        # return self._sign_in_as_gmail
-        return self.node.find_element(*SIGN_IN_WITH_GMAIL)
+        if not self._sign_in_as_gmail:
+            self._sign_in_as_gmail = self.node.find_element(*SIGN_IN_WITH_GMAIL)
+        return self._sign_in_as_gmail
 
     @allure.step("Click the 'Sign In with Gmail' button")
     def click_sign_in_as_gmail(self):
-        iframe = self.get_sign_in_as_gmail()
-        self.node.parent.switch_to.frame(iframe).click()
-        #self.node.parent.find_element(*SIGN_IN_WITH_GMAIL_BUTTON).click()
-        self.node.parent.switch_to.default_content()
+        self.node.find_element(*SIGN_IN_WITH_GMAIL).click()
         return GooglePopUpEmailInput(self.node.parent)
 
     @allure.step("Perform an outside click to dismiss the modal window")

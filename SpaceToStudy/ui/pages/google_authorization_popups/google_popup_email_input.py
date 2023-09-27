@@ -1,11 +1,12 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.button import Button
+from SpaceToStudy.ui.pages.google_authorization_popups.google_popup_password_input import GooglePopUpPasswordInput
 
-
-TITLE = (By.ID, "headingText")
+TITLE = (By.XPATH, '//*[@id="headingText"]/span')
 SUBTITLE = (By.ID, "headingSubtext")
 EMAIL_INPUT = ()
 EMAIL_LABEL = (By.XPATH, '//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/div[1]/div/form/'
@@ -16,19 +17,25 @@ FORGOT_EMAIL_BUTTON = (By.XPATH, '//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/div[1]/
                                  'div/form/span/section/div/div/div[3]/button')
 CREATE_ACCOUNT_BUTTON = (By.XPATH, '//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/div[2]/div/div[2]/div/div/div[1]/div/button')
 NEXT_BUTTON = (By.XPATH, '//*[@id="identifierNext"]/div/button')
-#SWITHER FOR LANG
+
 
 
 class GooglePopUpEmailInput(BaseComponent):
     def __init__(self, node):
         super().__init__(node)
+        self._title = None
         self._email_input = None
         self._forgot_email_button = None
         self._create_account_button = None
         self._next_button = None
 
-    def get_title_text(self) -> str:
-        return self.node.find_element(*TITLE).text
+    def get_title(self) -> WebElement:
+        if not self._title:
+            self._title = self.node.find_element(*TITLE)
+        return self._title
+
+    def get_title_text(self):
+        return self.get_title().text
 
     def get_subtitle_text(self) -> str:
         return self.node.find_element(*SUBTITLE).text
@@ -59,7 +66,7 @@ class GooglePopUpEmailInput(BaseComponent):
 
     def click_forgot_email_button(self):
         self.get_forgot_email_button().click_button()
-        # return page
+        # return page ?
 
     def get_create_account_button(self):
         node = self.node.find_element(*CREATE_ACCOUNT_BUTTON)
@@ -68,7 +75,7 @@ class GooglePopUpEmailInput(BaseComponent):
 
     def click_create_account_button(self):
         self.get_create_account_button().click_button()
-        #return page
+        # return page ?
 
     def get_next_button(self):
         node = self.node.find_element(*NEXT_BUTTON)
@@ -77,7 +84,7 @@ class GooglePopUpEmailInput(BaseComponent):
 
     def click_next_button(self):
         self.get_next_button().click_button()
-        #return page
+        return GooglePopUpPasswordInput(self.node.parent)
 
 
 

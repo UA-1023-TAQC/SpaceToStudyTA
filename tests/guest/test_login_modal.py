@@ -1,5 +1,7 @@
 from time import sleep
 
+from selenium.webdriver.support.wait import WebDriverWait
+
 from SpaceToStudy.ui.pages.google_authorization_popups.google_popup_email_input import GooglePopUpEmailInput
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
@@ -7,6 +9,9 @@ from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class LoginModalTestCase(BaseTestRunner):
@@ -49,10 +54,15 @@ class LoginModalTestCase(BaseTestRunner):
         self.assertEqual(full_name, name_surname)
 
     def test_google_authorization(self):
-        (HomePageGuest(self.driver)
-            .get_header()
-            .click_login_btn())
-        LoginModal(self.driver).click_sign_in_as_gmail()
-        self.driver.switch_to.window(self.driver.window_handles[1])
+        pop_up = HomePageGuest(self.driver).get_header().click_login_btn()
+        original_window = self.driver.current_window_handle
+        pop_up.click_sign_in_as_gmail()
+        for window_handle in self.driver.window_handles:
+            if window_handle != original_window:
+                self.driver.switch_to.window(window_handle)
+                break
+        wait = WebDriverWait(self.driver, 10)
+        element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="headingText"]/span')))
+        #self.driver.implicitly_wait(10)
         title = GooglePopUpEmailInput(self.driver).get_title_text()
         self.assertEqual(title, "Увійти")
