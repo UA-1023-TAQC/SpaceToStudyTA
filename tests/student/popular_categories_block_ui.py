@@ -3,7 +3,6 @@ import allure
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent, BUTTON_GO_TO_CATEGORIES
 from tests.test_runners import TestRunnerWithStudent
 
-
 class PopularCategoriesBlockUI(TestRunnerWithStudent):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/203")
