@@ -1,12 +1,12 @@
 import unittest
 
+import allure
+
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
-
-from time import sleep
 
 
 class RegistrationTestCase(BaseTestRunner):
@@ -99,16 +99,19 @@ class RegistrationTestCase(BaseTestRunner):
             .get_text_title_modal()
         self.assertEqual(title_tutor, "Sign up as a tutor")
 
-
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/197")
     def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
-        what_can_you_do_block = (HomePageGuest(self.driver)
-                                     .get_header()
-                                     .get_navigate_links()[0]
-                                     .click())
-        sleep(5)
-        list_of_elements_full_screen = what_can_you_do_block.get_the_list_of_what_can_you_do_elements()
-        print(list_of_elements_full_screen)
-        
+        window_width = 1500
+        window_height = 1000
+        what_can_u_do_block = (HomePageGuest(self.driver)
+                              .get_header()
+                              .get_navigate_links()[0]
+                              .click())
+        HomePageGuest(self.driver).set_size_window(window_width, window_height)
+        what_can_u_do_elements = HomePageGuest(what_can_u_do_block).get_what_can_u_do_elements()
+        for element in what_can_u_do_elements.values():
+            self.assertTrue(element.is_displayed())
+      
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

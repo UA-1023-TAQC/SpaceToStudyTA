@@ -223,13 +223,17 @@ class HomePageGuest(BasePage):
         return RegistrationModal(self.driver.find_element(By.XPATH,"//div[@data-testid='popupContent']"))
     
     @allure.step("Get the list of web elements for 'What can you do' block")
-    def get_the_list_of_what_can_u_do_elements(self) -> list:
-        return [self.get_what_can_u_do_title,
-                self.get_what_can_u_do_description,
-                self.get_card_learn_from_experts,
-                self.get_become_a_student_btn,
-                self.get_card_share_your_experience,
-                self.get_become_a_tutor_btn]
+    def get_what_can_u_do_elements(self) -> dict:
+        return {"title": self.get_what_can_u_do_title(),
+                "description": self.get_what_can_u_do_description(),
+                "the_learn_card_img": self.get_card_learn_from_experts().get_image(),
+                "the_learn_card_title": self.get_card_learn_from_experts().get_name_element(),
+                "the_learn_card_description": self.get_card_learn_from_experts().get_offers_element(),
+                "become_student_btn": self.get_card_learn_from_experts().get_btn(),
+                "the_teach_card_img": self.get_card_share_your_experience().get_image(),
+                "the_teach_card_title": self.get_card_share_your_experience().get_name_element(),
+                "the_teach_card_description": self.get_card_share_your_experience().get_offers_element(),
+                "become_a_tutor_btn": self.get_card_share_your_experience().get_btn()}
 
     @allure.step("Get how it works block")
     def get_how_it_works_block(self) -> HowItWorksComponent:

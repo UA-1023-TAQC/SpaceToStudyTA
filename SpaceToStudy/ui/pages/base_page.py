@@ -39,3 +39,4 @@ class BasePage:
 
     def set_size_window(self, width, height):
         self.driver.set_window_size(width, height)
+        return self

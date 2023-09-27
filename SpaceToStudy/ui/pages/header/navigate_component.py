@@ -26,19 +26,16 @@ class NavigateComponent(BaseComponent):
             return self.name.text
 
     @allure.step("Click 'What can you do' button in header")
-    def click_what_can_you_do(self):
-        navigate_links = HeaderComponent.get_navigate_links()
-        navigate_links[0].click()
-        return HomePageGuest.get_what_can_u_do_block()
+    def click_what_can_u_do(self):
+        self.node.click()
+        return HomePageGuest(HomePageGuest(self.node).get_what_can_u_do_block())
 
     @allure.step("Click 'How it works' button in header")
     def click_how_it_works(self):
-        navigate_links = HeaderComponent.get_navigate_links()
-        navigate_links[1].click()
-        return HomePageGuest.get_how_it_works_block()
+        self.node.click()
+        return HomePageGuest(HomePageGuest(self.node).get_how_it_works_block())
 
     @allure.step("Click 'Who we are' button in header")
     def click_who_we_are(self):
-        navigate_links = HeaderComponent.get_navigate_links()
-        navigate_links[2].click()
-        return HomePageGuest.get_who_we_are_block()
+        self.node.click()
+        return HomePageGuest(HomePageGuest(self.node).get_who_we_are_block())

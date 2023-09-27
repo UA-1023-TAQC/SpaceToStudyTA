@@ -24,22 +24,26 @@ class HeaderComponent(BaseComponent):
     def click_logo(self):
         self.get_logo().click()
 
-    # @allure.step("Get navigate links on the header")
-    # def get_navigate_links(self) -> list:
-    #     from SpaceToStudy.ui.pages.header.navigate_component import NavigateComponent
-    #     if not self._navigate_elements:
-    #         navigate_links = self.node.find_elements(*NAVIGATE_ELEMENTS)
-    #         for element in navigate_links:
-    #             self._navigate_elements.append(NavigateComponent(element))
-    #     return self._navigate_elements
-    
     @allure.step("Get navigate links on the header")
-    def get_navigate_links(self) -> list:
+    def get_navigate_links(self) -> list: #the name should be changed for "get_navigate_elements"
+        from SpaceToStudy.ui.pages.header.navigate_component import NavigateComponent
         if not self._navigate_elements:
             navigate_links = self.node.find_elements(*NAVIGATE_ELEMENTS)
             for element in navigate_links:
-                self._navigate_elements.append(element)
+                self._navigate_elements.append(NavigateComponent(element))
         return self._navigate_elements
+    
+    # @allure.step("Get navigate links on the header")
+    # def get_navigate_links(self) -> dict:
+    #     self._navigate_elements = {} #needs to be changed in init
+    #     from SpaceToStudy.ui.pages.header.navigate_component import NavigateComponent
+    #     if not self._navigate_elements:
+    #         navigate_links = self.node.find_elements(*NAVIGATE_ELEMENTS)
+    #         navigate_el_names = ["what_can_u_do",
+    #                              "How_it_works",
+    #                              "Who we are"]
+    #         self._navigate_elements = {key: NavigateComponent(value) for key in navigate_el_names for value in navigate_links }
+    #     return self._navigate_elements
 
     def tab_key(self, count_of_tabs: int):
         self.get_logo().send_keys(Keys.TAB * count_of_tabs)
