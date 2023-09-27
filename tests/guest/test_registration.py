@@ -110,26 +110,22 @@ class RegistrationTestCase(BaseTestRunner):
         first_name_exist = registration_modal.get_first_name_input().is_displayed()
         self.assertTrue(first_name_exist, "First name input doesn't exist")
         first_name_label = registration_modal.get_first_name_label_text()
-        self.assertEqual("First name\u2009*", first_name_label,
-                         "Input name differs from 'First name'")
+        self.assertEqual("First name\u2009*", first_name_label, "Input name differs from 'First name'")
 
         last_name_exist = registration_modal.get_last_name_input().is_displayed()
         self.assertTrue(last_name_exist, "last name input doesn't exist")
         last_name_label = registration_modal.get_last_name_label_text()
-        self.assertEqual("Last name\u2009*", last_name_label,
-                         "Input name differs from 'Last name'")
+        self.assertEqual("Last name\u2009*", last_name_label, "Input name differs from 'Last name'")
 
         email_exist = registration_modal.get_email_input().is_displayed()
         self.assertTrue(email_exist, "Email input doesn't exist")
         email_label = registration_modal.get_email_label_text()
-        self.assertEqual("Email\u2009*", email_label,
-                         "Input name differs from 'Email'")
+        self.assertEqual("Email\u2009*", email_label, "Input name differs from 'Email'")
 
         password_exist = registration_modal.get_password_input().is_displayed()
         self.assertTrue(password_exist, "Password input doesn't exist")
         password_label = registration_modal.get_password_label_text()
-        self.assertEqual("Password\u2009*", password_label,
-                         "Input name differs from 'Password'")
+        self.assertEqual("Password\u2009*", password_label, "Input name differs from 'Password'")
 
         confirm_password_exist = registration_modal.get_confirm_password_input().is_displayed()
         self.assertTrue(confirm_password_exist, "Confirm password input doesn't exist")
@@ -143,26 +139,25 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertFalse(i_agree_checkbox_empty, "'I agree' checkbox is checked by default")
 
         terms_link_text = registration_modal.get_terms_link_text()
-        self.assertEqual(terms_link_text, "Terms",
-                         "Link name differs from 'Terms'")
+        self.assertEqual(terms_link_text, "Terms", "Link name differs from 'Terms'")
         terms_is_underlined = registration_modal.get_terms_link().get_value_css_property("text-decoration")
-        self.assertEqual("underline solid rgb(38, 50, 56)", terms_is_underlined, "'Terms' link isn't underlined")
+        expected_decoration_property = "underline solid rgb(38, 50, 56)"
+        self.assertEqual(expected_decoration_property, terms_is_underlined, "'Terms' link isn't underlined")
         terms_is_bold = registration_modal.get_terms_link().get_value_css_property("font-weight")
-        self.assertEqual("500", terms_is_bold, "'Terms' link isn't bold")
+        expected_font_weight = "500"
+        self.assertEqual(expected_font_weight, terms_is_bold, "'Terms' link isn't bold")
         terms_link_href = registration_modal.get_terms_link().get_link_href()
-        self.assertEqual("https://s2s-front-stage.azurewebsites.net/", terms_link_href,
-                         f"'Terms' refers on {terms_link_href}, "
-                         f"but expected URL 'https://s2s-front-stage.azurewebsites.net/'.")
+        self.assertEqual("https://s2s-front-stage.azurewebsites.net/", terms_link_href, f"'Terms' refers"
+                         f" on {terms_link_href}, but expected URL 'https://s2s-front-stage.azurewebsites.net/'.")
 
         privacy_policy_link_text = registration_modal.get_privacy_policy_link_text()
-        self.assertEqual("Privacy Policy", privacy_policy_link_text,
-                         "Link name differs from 'Privacy policy'")
+        self.assertEqual("Privacy Policy", privacy_policy_link_text, "Link name differs from 'Privacy policy'")
         privacy_policy_is_underlined = (registration_modal.get_privacy_policy_link()
                                         .get_value_css_property("text-decoration"))
-        self.assertEqual("underline solid rgb(38, 50, 56)", privacy_policy_is_underlined,
+        self.assertEqual(expected_decoration_property, privacy_policy_is_underlined,
                          "'Privacy policy' link isn't underlined")
         privacy_policy_is_bold = registration_modal.get_privacy_policy_link().get_value_css_property("font-weight")
-        self.assertEqual("500", privacy_policy_is_bold, "'Privacy policy' link isn't bold")
+        self.assertEqual(expected_font_weight, privacy_policy_is_bold, "'Privacy policy' link isn't bold")
         privacy_policy_link_href = registration_modal.get_privacy_policy_link().get_link_href()
         self.assertEqual("https://s2s-front-stage.azurewebsites.net/privacy-policy", privacy_policy_link_href,
                          f"'Privacy policy' refers on {privacy_policy_link_href},"
@@ -171,7 +166,7 @@ class RegistrationTestCase(BaseTestRunner):
         sign_up_btn_exist = registration_modal.get_sign_up_btn().is_displayed()
         self.assertTrue(sign_up_btn_exist, "'Sign up' button doesn't exist")
         sign_up_btn_title = registration_modal.get_sign_up_btn().text
-        self.assertEqual(sign_up_btn_title, "Sign up",
+        self.assertEqual("Sign up", sign_up_btn_title,
                          f"Button name is {sign_up_btn_title}, but expected 'Sign up'")
 
         or_continue_exist = registration_modal.get_or_continue_text().is_displayed()
@@ -192,15 +187,14 @@ class RegistrationTestCase(BaseTestRunner):
                          "Text differs from 'Already have a Space2Study account?'")
 
         login_link_text = registration_modal.get_login_link_text()
-        self.assertEqual("Login!", login_link_text,
-                         "Link name differs from 'Login!'")
+        self.assertEqual("Login!", login_link_text,"Link name differs from 'Login!'")
         login_link_is_underlined = registration_modal.get_login_link().value_of_css_property("text-decoration")
-        self.assertEqual("underline solid rgb(38, 50, 56)", login_link_is_underlined, "'Login!' link isn't underlined")
+        self.assertEqual(expected_decoration_property, login_link_is_underlined, "'Login!' link isn't underlined")
         login_link_is_bold = registration_modal.get_login_link().value_of_css_property("font-weight")
-        self.assertEqual("500", login_link_is_bold, "'Login!' link isn't bold")
-        login_link_is_clickable = registration_modal.click_login_link().get_title_text()
-        self.assertEqual("Welcome back", login_link_is_clickable,
-                         f"'Login!' refers on {login_link_is_clickable}, but expected Login modal.")
+        self.assertEqual(expected_font_weight, login_link_is_bold, "'Login!' link isn't bold")
+        login_link_redirects_to = registration_modal.click_login_link().get_title_text()
+        self.assertEqual("Welcome back", login_link_redirects_to,
+                         f"'Login!' refers on {login_link_redirects_to}, but expected Login modal.")
 
 
 if __name__ == '__main__':
