@@ -124,6 +124,7 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertTrue(block_is_displayed, "Registration modal is not displayed!")
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/174')
+    @allure.title('Verify opening of modal registration window for tutor and student')
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
                                 .click_started_for_free())
@@ -138,6 +139,17 @@ class RegistrationTestCase(BaseTestRunner):
             .click_btn()\
             .get_text_title_modal()
         self.assertEqual(title_tutor, "Sign up as a tutor")
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/315')
+    def test_tutor_sign_up_invalid_data_for_last_name(self):
+        (HomePageGuest(self.driver)
+         .click_started_for_free()
+         .click_become_a_tutor())
+        error = (RegistrationModal(self.driver)
+                 .set_last_name("ajj#&^1234")
+                 .click_i_agree_checkbox()
+                 .get_last_name_error_message())
+        self.assertEqual(error, "This field can contain alphabetic characters only")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/107",
                      "Verify that 'Sign up as a tutor' pop-up contains all UI components")
