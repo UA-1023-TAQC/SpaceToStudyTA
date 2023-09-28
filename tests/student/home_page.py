@@ -1,9 +1,11 @@
 import allure
-from selenium.webdriver import Keys
 
+
+from selenium.webdriver import Keys
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.test_runners import TestRunnerWithStudent
+
 
 
 class TestHomePageStudent(TestRunnerWithStudent):
