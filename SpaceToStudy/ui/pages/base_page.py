@@ -1,3 +1,4 @@
+from selenium.common import NoSuchElementException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -6,6 +7,7 @@ from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAutho
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 
 FOOTER_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/footer/div")
+PULSATE = (By.XPATH, "//span[@class='MuiTouchRipple-child MuiTouchRipple-childPulsate']")
 
 
 class BasePage:
@@ -40,3 +42,10 @@ class BasePage:
     def set_size_window(self, width, height):
         self.driver.set_window_size(width, height)
         return self
+
+    def get_tub_animation(self) -> bool:
+        try:
+            self.driver.find_element(*PULSATE)
+            return True
+        except NoSuchElementException:
+            return False
