@@ -142,7 +142,7 @@ class RegistrationTestCase(BaseTestRunner):
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
     def test_visability_of_the_all_elements_after_resizing_for_who_we_are_block(self):
-        window_width = 1500
+        window_width = 600
         window_height = 1000
         who_we_are = (HomePageGuest(self.driver)
                               .get_header()
