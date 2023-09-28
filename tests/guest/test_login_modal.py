@@ -1,21 +1,21 @@
+import allure
 from time import sleep
 
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from tests.test_runners import BaseTestRunner
+from tests.value_provider import ValueProvider
 
 from SpaceToStudy.ui.pages.google_authorization_popups.google_popup_email_input import GooglePopUpEmailInput
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
-from tests.test_runners import BaseTestRunner
-from tests.value_provider import ValueProvider
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-
 
 class LoginModalTestCase(BaseTestRunner):
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/97')
     def test_login_modal_outside_click(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()
@@ -32,6 +32,7 @@ class LoginModalTestCase(BaseTestRunner):
                          "Button background color is not as expected")
         self.assertFalse(button.is_enabled_button(), "The button must be disabled")
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/114')
     def test_user_access_to_personal_cabinet(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()
@@ -47,7 +48,7 @@ class LoginModalTestCase(BaseTestRunner):
         authorize.click_login_button()
         name_surname = (HeaderAuthorizedComponent(self.driver)
                         .get_user_menu()
-                        .click_get_account()
+                        .click_account()
                         .click_menu_items_my_profile()
                         .get_name_surname_text())
         full_name = ValueProvider.get_tutor_first_name() + " " + ValueProvider.get_tutor_last_name()

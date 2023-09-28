@@ -1,24 +1,27 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 
 PERSON_ICON = (By.XPATH, './div/div[1]/div[1]/a/div/svg')
-PERSON_NAME = (By.XPATH, './div/div/div/a/p')
-ADD_TO_BOOKMARKS_BTN = (By.XPATH, './div/div/div[1]/button')
-LANGUAGES = (By.XPATH, './div/div[2]/div[2]/p')
-OFFER_TITLE = (By.XPATH, './div/div[2]/h6')
-SUBJECT_LABEL = (By.XPATH, './div/div[2]/div/div[1]/span/p')
-LEVEL_LABEL = (By.XPATH, './div/div[2]/div/div[2]/span/p')
+PERSON_NAME = (By.XPATH, './div/div[1]/div[1]/div/a/p')
+ADD_TO_BOOKMARKS_BTN = (By.XPATH, './div/div[1]/button')
+LANGUAGES = (By.XPATH, './div/div[1]/div[1]/div/div/p')
+OFFER_TITLE = (By.XPATH, './div/div[1]/p')
+SUBJECT_LABEL = (By.XPATH, './div/div[1]/div[2]/div[2]/div[1]/span/p')
+LEVEL_LABEL = (By.XPATH, './div/div[1]/div[2]/div[2]/div[2]/span/p')
 
-PRICE_VALUE = (By.XPATH, './div/div[3]/div/div/h6')
-PRICE_PERIOD = (By.XPATH, './div/div[3]/div/div/p')
+PRICE_VALUE = (By.XPATH, './div/div[2]/div[1]/div[1]/p')
+PRICE_PERIOD = (By.XPATH, './div/div[2]/div[1]/div[1]/span')
 
-STAR_ICON = (By.XPATH, './/*[@data-testid="app-rating"]')
-RATING_VALUE = (By.XPATH, './/*[@data-testid="app-rating"]/span[2]')
-REVIEWS_LINE = (By.XPATH, './div/div/div[1]/p')
+STAR_ICON = (By.XPATH, './/*[@data-testid="star-icon"]')
+RATING_VALUE = (By.XPATH, './/*[@data-testid="number-box"]/p')
+
+REVIEWS_LINE = (By.XPATH, './div/div[2]/div[1]/div[2]/p')
 
 VIEW_DETAILS_BTN = (By.XPATH, '//a[contains(text(), "View details")]')
 SEND_MESSAGE_BTN = (By.XPATH, '//button[contains(text(), "Send message")]')
@@ -40,8 +43,8 @@ class GridCardComponent(BaseComponent):
     def get_person_name(self):
         return self.node.find_element(*PERSON_NAME)
 
-    @allure.step("Get text of person's name")
     def get_person_name_text(self) -> str:
+        WebDriverWait(self.node, 10).until(EC.visibility_of_element_located(PERSON_NAME))
         return self.node.find_element(*PERSON_NAME).text
 
     @allure.step("Click on person's name")
