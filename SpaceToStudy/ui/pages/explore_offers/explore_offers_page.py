@@ -57,6 +57,10 @@ class ExploreOffersPage(BasePage):
     def get_title(self) -> WebElement:
         return self.driver.find_element(*TITLE)
 
+    @allure.step("Get title text")
+    def get_title_text(self):
+        return self.get_title().text
+
     @allure.step("Get subtitle ")
     def get_text(self) -> WebElement:
         return self.driver.find_element(*TEXT)
