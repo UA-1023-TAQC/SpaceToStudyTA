@@ -13,6 +13,7 @@ from tests.value_provider import ValueProvider
 class LoginModalTestCase(BaseTestRunner):
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/97')
+    @allure.title('Verify that the user cannot close the login modal by clicking outside of it.')
     def test_login_modal_outside_click(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()
@@ -30,6 +31,7 @@ class LoginModalTestCase(BaseTestRunner):
         self.assertFalse(button.is_enabled_button(), "The button must be disabled")
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/114')
+    @allure.title('Verify that the registered user can access the personal cabinet')
     def test_user_access_to_personal_cabinet(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()

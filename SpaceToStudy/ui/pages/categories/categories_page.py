@@ -15,7 +15,7 @@ SEARCH_BTN = (By.XPATH, '//button[text()="Search"]')
 SEARCH_INPUT = (By.XPATH, '//input[contains(@role, "combobox")]/../..')
 SEARCH_FIELD_HELP_TEXT = (By.XPATH, '//*[@id="mui-2488-label"]')
 STUDENT_PRIVATE_LESSON_COMPONENT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
-CARDS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/a")
+CARDS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[5]/div/a")
 
 NO_RESULT_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div/p")
 
@@ -70,6 +70,7 @@ class CategoriesPage(BasePage):
         if not self._cards:
             card_set = self.driver.find_elements(*CARDS)
             self._cards = [CardComponent(card) for card in card_set]
+        return self._cards
 
     @allure.step("Get no result title")
     def get_no_result_title(self) -> str:
