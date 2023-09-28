@@ -109,6 +109,7 @@ class RegistrationModal(BaseComponent):
         first_name_input.set_text(first_name_text)
         return self
 
+    @allure.step("Clear first name input")
     def clear_first_name_input(self):
         first_name_input = self.get_first_name_input()
         first_name_input.clear_text_input()
@@ -137,6 +138,7 @@ class RegistrationModal(BaseComponent):
         last_name_input.set_text(last_name_text)
         return self
 
+    @allure.step("Clear last name input")
     def clear_last_name_input(self):
         last_name_input = self.get_last_name_input()
         last_name_input.clear_text_input()
@@ -165,6 +167,7 @@ class RegistrationModal(BaseComponent):
         email_input.set_text(email_text)
         return self
 
+    @allure.step("Clear email input")
     def clear_email_input(self):
         email_input = self.get_email_input()
         email_input.clear_text_input()
@@ -193,6 +196,7 @@ class RegistrationModal(BaseComponent):
         password_input.set_text(password_text)
         return self
 
+    @allure.step("Clear password input")
     def clear_password_input(self):
         password_input = self.get_password_input()
         password_input.clear_text_input()
@@ -227,6 +231,7 @@ class RegistrationModal(BaseComponent):
         confirm_password_input.set_text(confirm_password_text)
         return self
 
+    @allure.step("Clear confirm password input")
     def clear_confirm_password_input(self):
         confirm_password_input = self.get_confirm_password_input()
         confirm_password_input.clear_text_input()
