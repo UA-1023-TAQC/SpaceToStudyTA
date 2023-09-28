@@ -17,7 +17,7 @@ class NavigateComponent(BaseComponent):
     @allure.step("Click on a navigation link")
     def click(self):
         self.node.click()
-        return HomePageGuest(self.node.parent)
+        return self.node.parent
 
     @allure.step("Get the text of a navigation link")
     def get_name(self) -> str:
@@ -25,17 +25,3 @@ class NavigateComponent(BaseComponent):
             self.name = self.node.find_element(*NAME)
             return self.name.text
 
-    @allure.step("Click 'What can you do' button in header")
-    def click_what_can_u_do(self):
-        self.node.click()
-        return HomePageGuest(HomePageGuest(self.node).get_what_can_u_do_block())
-
-    @allure.step("Click 'How it works' button in header")
-    def click_how_it_works(self):
-        self.node.click()
-        return HomePageGuest(HomePageGuest(self.node).get_how_it_works_block())
-
-    @allure.step("Click 'Who we are' button in header")
-    def click_who_we_are(self):
-        self.node.click()
-        return HomePageGuest(HomePageGuest(self.node).get_who_we_are_block())

@@ -30,8 +30,7 @@ class HomePageTestCase(BaseTestRunner):
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/105")
     def test_how_it_works_block_is_visible_guest(self):
         (HeaderUnauthorizedComponent(self.driver)
-         .get_navigate_links()[1]
-         .click())
+         .click_navigate_link_by_name("How it works"))
         block_is_displayed = (HomePageGuest(self.driver)
                               .get_how_it_works_block()
                               .is_displayed_how_it_works_block())
