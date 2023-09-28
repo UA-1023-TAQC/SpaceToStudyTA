@@ -1,3 +1,5 @@
+import allure
+
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -350,3 +352,15 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(0, 0, 0, 0.12)",second_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
+    def test_visability_of_the_all_elements_after_resizing_for_who_we_are_block(self):
+        window_width = 600
+        window_height = 1000
+        who_we_are = HomePageGuest(self.driver).click_navigate_link_in_header_by_name("Who we are")
+        HomePageGuest(self.driver).set_size_window(window_width, window_height)
+        who_we_are_elements = (who_we_are
+                               .get_who_we_are_block()
+                               .get_who_we_are_elements())
+        for key, element in who_we_are_elements.items():
+            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
