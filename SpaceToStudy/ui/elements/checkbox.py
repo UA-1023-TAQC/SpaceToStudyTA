@@ -5,7 +5,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from SpaceToStudy.ui.elements.base_element import BaseElement
 
 NAME_OF_CHECKBOX = (By.XPATH, "./p")
-CHECKBOX_INPUT = (By.XPATH, "./span/input")
+CHECKBOX_INPUT = (By.XPATH, "//form//input[@type='checkbox']")
 CHECKBOX_SVG = (By.XPATH, "./span/svg")
 
 
@@ -33,6 +33,4 @@ class Checkbox(BaseElement):
 
     @allure.step("Check if the checkbox input element is selected")
     def is_checked(self) -> bool:
-        if self.node.find_element(*CHECKBOX_SVG).get_attribute("data-testid") == "CheckBoxIcon":
-            return True
-        return False
+        return self.node.find_element(*CHECKBOX_INPUT).get_attribute("value") == "true"

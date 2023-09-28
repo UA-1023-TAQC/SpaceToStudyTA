@@ -49,15 +49,6 @@ class CardComponent(BaseComponent):
     def get_btn_text(self) -> str:
         return self.get_btn().text
 
-    @allure.step("Get tub animation or return false if no such element")
-    def get_tub_animation(self) -> bool:
-        try:
-            pulsate = self.node.find_element(By.XPATH,
-                                             "//span[@class='MuiTouchRipple-child MuiTouchRipple-childPulsate']")
-            return True
-        except NoSuchElementException:
-            return False
-
     @allure.step("Click button")
     def click_btn(self):
         from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
