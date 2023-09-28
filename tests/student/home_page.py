@@ -1,3 +1,6 @@
+import allure
+
+from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.test_runners import TestRunnerWithStudent
@@ -97,8 +100,6 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
-
-
     def test_student_can_see_tutors_offers_at_the_home_page(self):
         (HomePageStudent(self.driver)
          .get_search_input()
@@ -106,3 +107,14 @@ class TestHomePageStudent(TestRunnerWithStudent):
         list_of_offers = (ExploreOffersPage(self.driver)
                           .get_list_of_offers_grid_card())
         self.assertIsNotNone(list_of_offers, "There are no offers")
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/305')
+    def test_verify_student_can_find_popular_categories(self):
+        card_element = (HomePageStudent(self.driver).get_categories())[1]
+        name = card_element.get_name()
+        self.assertEqual("Computer science", name)
+        card_element.click()
+        title = CategoriesPage(self.driver).get_categories_title()
+        self.assertEqual("Computer science Subjects", title)
+        sub_category_name = (CategoriesPage(self.driver).get_cards())[0].get_title()
+        self.assertEqual("Cybersecurity", sub_category_name)
