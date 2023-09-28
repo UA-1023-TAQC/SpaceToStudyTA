@@ -236,6 +236,7 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual("Welcome back", login_link_redirects_to,
                          f"'Login!' refers on {login_link_redirects_to}, but expected Login modal.")
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/307')
     def test_first_name_error_message(self):
         invalid_data_1 = (HomePageGuest(self.driver)
                           .click_become_a_tutor()
