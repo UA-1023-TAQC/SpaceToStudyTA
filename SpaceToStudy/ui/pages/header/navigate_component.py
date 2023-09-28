@@ -16,7 +16,7 @@ class NavigateComponent(BaseComponent):
     @allure.step("Click on a navigation link")
     def click(self):
         self.node.click()
-        return HomePageGuest(self.node.parent)
+        return
 
     @allure.step("Get the text of a navigation link")
     def get_name(self) -> str:
