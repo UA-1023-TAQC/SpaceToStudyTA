@@ -1,9 +1,10 @@
 import allure
 
+
+from selenium.webdriver import Keys
+from tests.test_runners import TestRunnerWithStudent
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
-from tests.test_runners import TestRunnerWithStudent
-
 
 
 class TestHomePageStudent(TestRunnerWithStudent):
@@ -108,3 +109,33 @@ class TestHomePageStudent(TestRunnerWithStudent):
         list_of_offers = (ExploreOffersPage(self.driver)
                           .get_list_of_offers_grid_card())
         self.assertIsNotNone(list_of_offers, "There are no offers")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/283")
+    def test_the_ui_welcoming_block(self):
+        get_input_line = (HomePageStudent(self.driver)
+                          .get_search_input()
+                          .get_input()
+                          .get_attribute("placeholder"))
+        get_find_tutor = (HomePageStudent(self.driver)
+                          .get_text_button_find_tutor)
+        self.assertTrue("What would you like to learn ?", get_input_line)
+        self.assertTrue("Find tutor", get_find_tutor)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/284")
+    def test_the_welcoming_block_controls_active_after_navigating_to_them(self):
+        find_tutor_btn = (HomePageStudent(self.driver)
+                          .get_button_find_tutor())
+        before_hover = find_tutor_btn.value_of_css_property("background-color")
+        after_hover = (HomePageStudent(self.driver)
+                       .hover(find_tutor_btn)
+                       .value_of_css_property("background-color"))
+        self.assertNotEqual(before_hover, after_hover, "The button hasn't changed")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/284")
+    def test_the_welcoming_block_controls_active_after_navigating_to_them_by_tab(self):
+        (HomePageStudent(self.driver)
+         .get_search_input()
+         .get_input()
+         .send_keys(Keys.TAB))
+        after_hover = (HomePageStudent(self.driver).get_tub_animation())
+        self.assertTrue(after_hover, "There is no animation")
