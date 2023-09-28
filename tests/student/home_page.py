@@ -1,6 +1,9 @@
+import allure
+
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.test_runners import TestRunnerWithStudent
+
 
 
 class TestHomePageStudent(TestRunnerWithStudent):
@@ -97,8 +100,6 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
         self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
 
-
-
     def test_student_can_see_tutors_offers_at_the_home_page(self):
         (HomePageStudent(self.driver)
          .get_search_input()
@@ -106,3 +107,14 @@ class TestHomePageStudent(TestRunnerWithStudent):
         list_of_offers = (ExploreOffersPage(self.driver)
                           .get_list_of_offers_grid_card())
         self.assertIsNotNone(list_of_offers, "There are no offers")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/283")
+    def test_the_ui_welcoming_block(self):
+        get_input_line = (HomePageStudent(self.driver)
+                          .get_search_input()
+                          .get_input()
+                          .get_attribute("placeholder"))
+        get_find_tutor = (HomePageStudent(self.driver)
+                          .get_text_button_find_tutor)
+        self.assertTrue("What would you like to learn ?", get_input_line)
+        self.assertTrue("Find tutor", get_find_tutor)
