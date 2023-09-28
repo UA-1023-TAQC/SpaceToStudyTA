@@ -6,8 +6,10 @@ from SpaceToStudy.ui.elements.input_with_image import InputWithImage
 from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
+from SpaceToStudy.ui.pages.sign_up_modal.please_confirm_modal import PleaseConfirm
 
 CLOSE_BTN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/button")
+PLEASE_CONFIRM = (By.XPATH, "/html/body/div[3]/div[3]/div")
 
 TITLE = (By.XPATH, "//h2")
 FIRST_NAME_INPUT = (By.XPATH, "//label[contains(text(), 'First name')]/..")
@@ -41,6 +43,7 @@ TITLE_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
 
 TITLE = (By.XPATH, "//h2[contains(text(), 'student')]")
 
+
 class RegistrationModal(BaseComponent):
 
     def __init__(self, node):
@@ -55,6 +58,7 @@ class RegistrationModal(BaseComponent):
         self._privacy_policy_link = None
         self._title_modal = None
         self._title = None
+        self._please_confirm = None
 
     def get_close_btn(self):
         return self.node.find_element(*CLOSE_BTN)
@@ -64,9 +68,15 @@ class RegistrationModal(BaseComponent):
         self.get_close_btn().click()
         return HomePageGuest(self.node.parent)
 
+    def get_please_confirm(self):
+        self.get_close_btn().click()
+        if not self._please_confirm:
+            node = self.node.find_element(*PLEASE_CONFIRM)
+            self._please_confirm = PleaseConfirm(node)
+        return self._please_confirm
+
     def get_title_text(self) -> str:
         return self.node.find_element(*TITLE).text
-
 
     def get_first_name_input(self):
         if not self._first_name_input:
@@ -222,7 +232,6 @@ class RegistrationModal(BaseComponent):
         if not self._title:
             self._title = self.node.find_element(*TITLE)
         return self._title.text
-
 
     def get_login_link(self) -> WebElement:
         if not self._login_link:

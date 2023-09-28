@@ -1,4 +1,5 @@
 import unittest
+from time import sleep
 
 import allure
 
@@ -138,6 +139,21 @@ class RegistrationTestCase(BaseTestRunner):
             .click_btn()\
             .get_text_title_modal()
         self.assertEqual(title_tutor, "Sign up as a tutor")
+
+    def test_first_name_error_message(self):
+        invalid_data_1 = (HomePageGuest(self.driver)
+                          .click_become_a_tutor()
+                          .set_first_name("vajj#&^%")
+                          .click_i_agree_checkbox())
+        error_message_1 = invalid_data_1.get_first_name_error_message()
+        self.assertEqual("This field can contain alphabetic characters only", error_message_1)
+        self.driver.refresh()
+        invalid_data_2 = (HomePageGuest(self.driver)
+                          .click_become_a_tutor()
+                          .set_first_name("1234567")
+                          .click_i_agree_checkbox())
+        error_message_2 = invalid_data_2.get_first_name_error_message()
+        self.assertEqual("This field can contain alphabetic characters only", error_message_2)
 
 
 if __name__ == '__main__':
