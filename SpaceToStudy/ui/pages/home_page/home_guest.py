@@ -67,6 +67,7 @@ class HomePageGuest(BasePage):
         self._collapse_items = None
         self._collapse_block = None
         self._collapse_items_mobile = None
+        self._who_we_are_block = None
 
     @allure.step("Get collapse block")
     def get_collapse_block(self) -> WebElement:
