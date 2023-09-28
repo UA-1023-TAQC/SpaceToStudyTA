@@ -19,3 +19,7 @@ class Link(BaseElement):
     @allure.step("Click link element")
     def click_link(self):
         self.node.find_element(*LINK).click()
+
+    @allure.step("Get link element href")
+    def get_link_href(self) -> str:
+        return self.node.find_element(*LINK).get_attribute("href")

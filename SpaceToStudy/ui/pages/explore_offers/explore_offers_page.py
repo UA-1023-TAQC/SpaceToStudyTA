@@ -8,7 +8,7 @@ from SpaceToStudy.ui.pages.explore_offers.grid_card_component import GridCardCom
 from SpaceToStudy.ui.pages.explore_offers.inline_card_component import InlineCardComponent
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.explore_offers.student_private_lesson_component import StudentPrivateLessonComponent
-
+from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 
 STUDENT_FOR_PRIVATE_LESSONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 
