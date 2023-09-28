@@ -1,6 +1,8 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.elements.checkbox import Checkbox
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input_with_image import InputWithImage
 from SpaceToStudy.ui.elements.link import Link
@@ -28,18 +30,23 @@ EMAIL_ERROR = (By.XPATH, "//*[@id='mui-12-helper-text']/span")
 PASSWORD_ERROR = (By.XPATH, "//*[@id='mui-13-helper-text']/span")
 CONFIRM_PASSWORD_ERROR = (By.XPATH, "//*[@id='mui-14-helper-text']/span")
 
-I_AGREE_CHECKBOX = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[1]/input")
+I_AGREE_CHECKBOX = (By.XPATH, "//form//input[@type='checkbox']/..")
 SIGN_UP_BTN = (By.XPATH, "//button[contains(text(), 'Sign up')]")
+OR_CONTINUE_TEXT = (By.XPATH, "//div[@data-testid='popupContent']//p[contains(text(), 'or continue')]")
+SIGN_UP_WITH_GOOGLE_IFRAME = (By.XPATH, "//div[@id='googleButton']//iframe")
+SIGN_UP_WITH_GOOGLE_BTN = (By.XPATH, "//span[text()='Sign up with Google']")
+ALREADY_HAVE_ACCOUNT_TEXT = (By.XPATH, "//p[text()='Already have a Space2Study account?']")
 
 TERMS_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]/div/a[1]")
 PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/div[5]/label/span[2]"
                                  "/div/a[2]")
-LOGIN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
+LOGIN_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
 LOGIN_MODAL = (By.XPATH, "//*[@role='dialog']")
 
 TITLE_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/h2")
 
 TITLE = (By.XPATH, "//h2[contains(text(), 'student')]")
+
 
 class RegistrationModal(BaseComponent):
 
@@ -51,6 +58,7 @@ class RegistrationModal(BaseComponent):
         self._email_input = None
         self._password_input = None
         self._confirm_password_input = None
+        self._i_agree_checkbox = None
         self._terms_link = None
         self._privacy_policy_link = None
         self._title_modal = None
@@ -174,11 +182,12 @@ class RegistrationModal(BaseComponent):
         return self
 
     def get_i_agree_checkbox(self):
-        return self.node.find_element(*I_AGREE_CHECKBOX)
+        node = self.node.find_element(*I_AGREE_CHECKBOX)
+        self._i_agree_checkbox = Checkbox(node)
+        return self._i_agree_checkbox
 
     def click_i_agree_checkbox(self):
-        i_agree_checkbox = self.get_i_agree_checkbox()
-        i_agree_checkbox.click()
+        self.get_i_agree_checkbox().set_check()
         return self
 
     def get_terms_link(self):
@@ -218,6 +227,26 @@ class RegistrationModal(BaseComponent):
         sign_up_btn = self.get_sign_up_btn()
         sign_up_btn.click()
 
+    @allure.step("Get 'or continue' text")
+    def get_or_continue_text(self):
+        return self.node.find_element(*OR_CONTINUE_TEXT)
+
+    @allure.step("Get 'Sign up with Google' iframe")
+    def get_sign_up_with_google_iframe(self):
+        return self.node.find_element(*SIGN_UP_WITH_GOOGLE_IFRAME)
+
+    @allure.step("Get 'Sign up with Google' button text")
+    def get_sign_up_with_google_btn_text(self) -> str:
+        iframe = self.get_sign_up_with_google_iframe()
+        self.node.parent.switch_to.frame(iframe)
+        button_text = self.node.parent.find_element(*SIGN_UP_WITH_GOOGLE_BTN).text
+        self.node.parent.switch_to.default_content()
+        return button_text
+
+    @allure.step("Get 'Already have account' text")
+    def get_already_have_account_text(self):
+        return self.node.find_element(*ALREADY_HAVE_ACCOUNT_TEXT)
+
     def get_title_text(self) -> WebElement:
         if not self._title:
             self._title = self.node.find_element(*TITLE)
@@ -226,11 +255,10 @@ class RegistrationModal(BaseComponent):
 
     def get_login_link(self) -> WebElement:
         if not self._login_link:
-            self._login_link = self.node.find_element(*LOGIN)
+            self._login_link = self.node.find_element(*LOGIN_LINK)
         return self._login_link
 
     def get_login_link_text(self) -> str:
-
         return self.get_login_link().text
 
     def click_login_link(self):
