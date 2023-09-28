@@ -248,6 +248,22 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual("Welcome back", login_link_redirects_to,
                          f"'Login!' refers on {login_link_redirects_to}, but expected Login modal.")
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/307')
+    def test_first_name_error_message(self):
+        invalid_data_1 = (HomePageGuest(self.driver)
+                          .click_become_a_tutor()
+                          .set_first_name("vajj#&^%")
+                          .click_i_agree_checkbox())
+        error_message_1 = invalid_data_1.get_first_name_error_message()
+        self.assertEqual("This field can contain alphabetic characters only", error_message_1)
+        self.driver.refresh()
+        invalid_data_2 = (HomePageGuest(self.driver)
+                          .click_become_a_tutor()
+                          .set_first_name("1234567")
+                          .click_i_agree_checkbox())
+        error_message_2 = invalid_data_2.get_first_name_error_message()
+        self.assertEqual("This field can contain alphabetic characters only", error_message_2)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
