@@ -52,7 +52,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/168")
-    def test_search_field_find_by_category(self):
+    def test_search_field_find_by_subject(self):
         search_result = (HomePageStudent(self.driver)
                          .get_search_input()
                          .set_text("CYBERSECURITY")
