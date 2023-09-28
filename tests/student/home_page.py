@@ -15,7 +15,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
                          .get_search_input()
                          .set_text("Tutor F")
                          .click_find_tutor_btn()
-                         .get_list_of_offers_grid_card())
+                         .get_list_of_offers_inline_card())
         for result in search_result:
             self.assertIn("Tutor F", result.get_person_name())
         tutors_offers_is_active = (ExploreOffersPage(self.driver)
@@ -54,12 +54,12 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/168")
-    def test_search_field_find_by_category(self):
+    def test_search_field_find_by_subject(self):
         search_result = (HomePageStudent(self.driver)
                          .get_search_input()
                          .set_text("CYBERSECURITY")
                          .click_find_tutor_btn()
-                         .get_list_of_offers_grid_card())
+                         .get_list_of_offers_inline_card())
         for result in search_result:
             self.assertIn("CYBERSECURITY", result.get_subject_label())
         count_of_filters = (ExploreOffersPage(self.driver)
