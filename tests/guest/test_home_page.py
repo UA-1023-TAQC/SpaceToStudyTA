@@ -1,3 +1,4 @@
+import allure
 from time import sleep
 
 import allure
