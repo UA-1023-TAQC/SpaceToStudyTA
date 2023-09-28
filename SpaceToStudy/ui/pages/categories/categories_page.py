@@ -18,13 +18,14 @@ STUDENT_PRIVATE_LESSON_COMPONENT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/
 CARDS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[5]/div/a")
 
 NO_RESULT_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div/p")
-
+CATEGORIES_BLOCK = (By.XPATH, '/html/body/div/div/div[2]/div[2]')
 
 class CategoriesPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self._cards = None
         self._no_result_title = None
+        self._categories_block = None
 
     @allure.step("Get categories title text")
     def get_categories_title(self) -> str:
@@ -78,3 +79,8 @@ class CategoriesPage(BasePage):
             self._no_result_title = self.driver.find_element(*NO_RESULT_TITLE)
         return self._no_result_title.text
 
+    @allure.step("Get categories block")
+    def get_categories_block(self) -> WebElement:
+        if not self._categories_block:
+            self._categories_block = self.driver.find_element(*CATEGORIES_BLOCK)
+        return self._categories_block
