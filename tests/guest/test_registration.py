@@ -124,6 +124,7 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertTrue(block_is_displayed, "Registration modal is not displayed!")
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/174')
+    @allure.title('Verify opening of modal registration window for tutor and student')
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
                                 .click_started_for_free())

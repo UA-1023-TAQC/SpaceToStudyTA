@@ -2,6 +2,8 @@ import allure
 
 
 from selenium.webdriver import Keys
+
+from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from tests.test_runners import TestRunnerWithStudent
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
@@ -139,3 +141,15 @@ class TestHomePageStudent(TestRunnerWithStudent):
          .send_keys(Keys.TAB))
         after_hover = (HomePageStudent(self.driver).get_tub_animation())
         self.assertTrue(after_hover, "There is no animation")
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/305')
+    @allure.title('Verify that a Student can find popular learning categories and choose one at the home page')
+    def test_verify_student_can_find_popular_categories(self):
+        card_element = (HomePageStudent(self.driver).get_categories())[1]
+        name = card_element.get_name()
+        self.assertEqual("Computer science", name)
+        card_element.click()
+        title = CategoriesPage(self.driver).get_categories_title()
+        self.assertEqual("Computer science Subjects", title)
+        sub_category_name = (CategoriesPage(self.driver).get_cards())[0].get_title()
+        self.assertEqual("Cybersecurity", sub_category_name)
