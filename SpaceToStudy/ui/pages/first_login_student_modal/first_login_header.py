@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -13,6 +14,7 @@ class FirstLoginHeader(BaseComponent):
     def get_general_page(self) -> WebElement:
         return self.node.find_element(*GENERAL_PAGE)
 
+    @allure.step("Click general page")
     def click_general_page(self):
         self.get_general_page().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.general_page import GeneralPageStudent
@@ -21,6 +23,7 @@ class FirstLoginHeader(BaseComponent):
     def get_interests_page(self) -> WebElement:
         return self.node.find_element(*INTERESTS_PAGE)
 
+    @allure.step("Click interests page")
     def click_interests_page(self):
         self.get_interests_page().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.interests_page import InterestsPageStudent
@@ -29,6 +32,7 @@ class FirstLoginHeader(BaseComponent):
     def get_language_page(self) -> WebElement:
         return self.node.find_element(*LANGUAGE_PAGE)
 
+    @allure.step("Click language page")
     def click_language_page(self):
         self.get_language_page().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.language_page import LanguagePageStudent
@@ -37,6 +41,7 @@ class FirstLoginHeader(BaseComponent):
     def get_photo_page(self) -> WebElement:
         return self.node.find_element(*PHOTO_PAGE)
 
+    @allure.step("Click photo page")
     def click_photo_page(self):
         self.get_photo_page().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.photo_page import PhotoPageStudent

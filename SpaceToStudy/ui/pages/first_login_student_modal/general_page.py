@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -22,59 +23,78 @@ class GeneralPageStudent(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    @allure.step("Get starting text")
     def get_starting_text(self) -> str:
         return self.driver.find_element(*STARTING_TEXT).text
 
+    @allure.step("Get image")
     def get_image(self) -> WebElement:
         return self.driver.find_element(*IMAGE)
 
+    @allure.step("Get first name input")
     def get_first_name_input(self) -> WebElement:
         return self.driver.find_element(*FIRST_NAME_INPUT)
 
+    @allure.step("Set first name input")
     def set_first_name_input(self, text):
         self.get_first_name_input().send_keys(text)
 
+    @allure.step("Get first name label")
     def get_first_name_label(self) -> WebElement:
         return self.driver.find_element(*FIRST_NAME_LABEL)
 
+    @allure.step("Get last name input")
     def get_last_name_input(self) -> WebElement:
         return self.driver.find_element(*LAST_NAME_INPUT)
 
+    @allure.step("Set last name input")
     def set_last_name_input(self, text):
         self.get_last_name_input().send_keys(text)
 
+    @allure.step("Get last name label")
     def get_last_name_label(self) -> WebElement:
         return self.driver.find_element(*LAST_NAME_LABEL)
 
+    @allure.step("Get country input")
     def get_country_input(self) -> WebElement:
         return self.driver.find_element(*COUNTRY_INPUT)
 
+    @allure.step("Set country input")
     def set_country_input(self, text):
         self.get_country_input().send_keys(text)
 
+    @allure.step("Get country label")
     def get_country_label(self) -> WebElement:
         return self.driver.find_element(*COUNTRY_LABEL)
 
+    @allure.step("Get city input")
     def get_city_input(self) -> WebElement:
         return self.driver.find_element(*CITY_INPUT)
 
+    @allure.step("Set city input")
     def set_city_input(self, text):
         self.get_city_input().send_keys(text)
 
+    @allure.step("Get city label")
     def get_city_label(self) -> WebElement:
         return self.driver.find_element(*CITY_LABEL)
 
+    @allure.step("Get description input")
     def get_description_input(self) -> WebElement:
         return self.driver.find_element(*DESCRIPTION_INPUT)
 
+    @allure.step("Set description input")
     def set_description_input(self, text):
         self.get_description_input().send_keys(text)
 
+    @allure.step("Get description label")
     def get_description_label(self) -> WebElement:
         return self.driver.find_element(*DESCRIPTION_LABEL)
 
+    @allure.step("Get symbols counter")
     def get_symbols_counter(self) -> WebElement:
         return self.driver.find_element(*SYMBOLS_COUNTER)
 
+    @allure.step("Get symbols counter text")
     def get_symbols_counter_text(self) -> str:
         return self.get_symbols_counter().text

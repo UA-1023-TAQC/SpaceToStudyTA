@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -10,17 +11,22 @@ NATIVE_LANGUAGE_INPUT = (By.XPATH, "//div[@data-testid='language']/div/input")
 
 
 class LanguagePageStudent(BasePage):
+    @allure.step("Get image")
     def get_image(self) -> WebElement:
         return self.driver.find_element(*IMAGE)
 
+    @allure.step("Get starting text")
     def get_starting_text(self) -> str:
         return self.driver.find_element(*STARTING_TEXT).text
 
+    @allure.step("Get native language label")
     def get_native_language_label(self) -> WebElement:
         return self.driver.find_element(*NATIVE_LANGUAGE_LABEL)
 
+    @allure.step("Get native language input")
     def get_native_language_input(self) -> WebElement:
         return self.driver.find_element(*NATIVE_LANGUAGE_INPUT)
 
+    @allure.step("Set native language input")
     def set_native_language_input(self, text):
         self.get_native_language_input().send_keys(text)
