@@ -1,6 +1,7 @@
 import unittest
 
 import allure
+from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
@@ -264,6 +265,30 @@ class RegistrationTestCase(BaseTestRunner):
         error_message_2 = invalid_data_2.get_first_name_error_message()
         self.assertEqual("This field can contain alphabetic characters only", error_message_2)
 
+    def test_transparent_header_disappears_if_the_field_is_filled(self):
+        data_1 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Muradov"))
+        self.assertEqual("false", data_1.node.find_element(By.ID, "mui-8").get_attribute("aria-invalid"))
+        self.assertNotEqual("This field cannot be empty", data_1.get_last_name_error_message)
+        self.driver.refresh()
+        data_2 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Muradov Rumadov"))
+        self.assertEqual("false", data_2.node.find_element(By.ID, "mui-8").get_attribute("aria-invalid"))
+        self.assertNotEqual("This field cannot be empty", data_2.get_last_name_error_message)
+        self.driver.refresh()
+        data_3 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("M"))
+        self.assertEqual("false", data_3.node.find_element(By.ID, "mui-8").get_attribute("aria-invalid"))
+        self.assertNotEqual("This field cannot be empty", data_3.get_last_name_error_message)
+        self.driver.refresh()
+        data_4 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Mzxcvbnmaszxcvbnmasdasdfghjklq"))
+        self.assertEqual("false", data_4.node.find_element(By.ID, "mui-8").get_attribute("aria-invalid"))
+        self.assertNotEqual("This field cannot be empty", data_4.get_last_name_error_message)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
