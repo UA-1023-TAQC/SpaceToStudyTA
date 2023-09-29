@@ -3,6 +3,7 @@ import allure
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent, BUTTON_GO_TO_CATEGORIES
 from tests.test_runners import TestRunnerWithStudent
 
+
 class PopularCategoriesBlockUI(TestRunnerWithStudent):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/203")
@@ -24,3 +25,30 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         self.assertEqual("Go to categories", button_text)
         self.assertTrue(button_is_displayed, "Button is not displayed")
         self.assertTrue(page_is_displayed, "Page is not displayed")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/340")
+    def test_popular_categories_block_ui_alignment(self):
+        horizontal_margin_between_elements = 294
+        vertical_margin_between_elements = 136
+        start_coordinate_x = 187
+        start_coordinate_y = 747
+        location_x = (HomePageStudent(self.driver).get_categories())
+        for result in location_x[:4]:
+            self.assertEqual(start_coordinate_x, result.node.location['x'])
+            start_coordinate_x = start_coordinate_x + horizontal_margin_between_elements
+
+        location_y = (HomePageStudent(self.driver).get_categories())
+        first_row = [value for index, value in enumerate(location_y) if index < 4]
+        second_row = [value for index, value in enumerate(location_y) if index > 3 & index < 8]
+        for result in first_row:
+            self.assertEqual(start_coordinate_y, result.node.location['y'])
+        for result in second_row:
+            self.assertEqual(start_coordinate_y + vertical_margin_between_elements, result.node.location['y'])
+
+        size_window = self.driver.get_window_size()
+        get_width_window = size_window['width']
+        get_block = HomePageStudent(self.driver).get_categories_block()
+        get_size_block = get_block.size['width']
+        left_margin = get_block.location['x']
+        right_margin = get_width_window - get_size_block - left_margin
+        self.assertAlmostEqual(right_margin, left_margin, delta=26)

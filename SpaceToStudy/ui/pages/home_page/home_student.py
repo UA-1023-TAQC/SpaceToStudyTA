@@ -36,6 +36,7 @@ class HomePageStudent(BasePage):
         self._search_tutor = None
         self._img_search_block = None
         self._how_it_works_block_student = None
+        self._categories_block = None
 
     @allure.step("Get categories")
     def get_categories(self) -> tuple[CategoryComponent]:
@@ -44,8 +45,13 @@ class HomePageStudent(BasePage):
             self._categories = []
             for category in categories:
                 self._categories.append(CategoryComponent(category))
-
         return self._categories
+
+    @allure.step("Get categories block")
+    def get_categories_block(self) -> WebElement:
+        if not self._categories_block:
+            self._categories_block = self.driver.find_element(*CATEGORIES_BLOCK)
+        return self._categories_block
 
     @allure.step("Get search input")
     def get_search_input(self) -> SearchTutorComponent:
