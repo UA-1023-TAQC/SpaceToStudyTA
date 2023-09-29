@@ -48,7 +48,6 @@ LOGIN_MODAL = (By.XPATH, "//*[@role='dialog']")
 TITLE_MODAL = (By.XPATH, "//h2")
 
 
-
 class RegistrationModal(BaseComponent):
 
     def __init__(self, node):
@@ -83,10 +82,7 @@ class RegistrationModal(BaseComponent):
             self._please_confirm = PleaseConfirm(node)
         return self._please_confirm
 
-    def get_title_text(self) -> str:
-        return self.node.find_element(*TITLE).text
-
-    @allure.step("Get text login link")
+    @allure.step("Get title modal")
     def get_title(self) -> WebElement:
         if not self._title_modal:
             self._title_modal = self.node.find_element(*TITLE_MODAL)
@@ -298,11 +294,6 @@ class RegistrationModal(BaseComponent):
     @allure.step("Get 'Already have account' text")
     def get_already_have_account_text(self):
         return self.node.find_element(*ALREADY_HAVE_ACCOUNT_TEXT)
-
-    def get_title_text(self) -> WebElement:
-        if not self._title:
-            self._title = self.node.find_element(*TITLE)
-        return self._title.text
 
     @allure.step("Get login link")
     def get_login_link(self) -> WebElement:
