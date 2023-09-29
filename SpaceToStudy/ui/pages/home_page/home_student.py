@@ -9,6 +9,8 @@ from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowIt
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
 from SpaceToStudy.ui.pages.home_page.search_tutor_input_component import SearchTutorComponent
 
+CATEGORIES_BLOCK_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/p")
+CATEGORIES_BLOCK_DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/span")
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
@@ -36,6 +38,8 @@ class HomePageStudent(BasePage):
         self._search_tutor = None
         self._img_search_block = None
         self._how_it_works_block_student = None
+        self._categories_block_title = None
+        self._categories_block_description = None
 
     @allure.step("Get categories")
     def get_categories(self) -> tuple[CategoryComponent]:
@@ -46,6 +50,18 @@ class HomePageStudent(BasePage):
                 self._categories.append(CategoryComponent(category))
 
         return self._categories
+
+    @allure.step("Get title categories block")
+    def get_title_categories_block(self) -> str:
+        if not self._categories_block_title:
+            self._categories_block_title = self.driver.find_element(*CATEGORIES_BLOCK_TITLE)
+        return self._categories_block_title.text
+
+    @allure.step("Get description categories block")
+    def get_description_categories_block(self) -> str:
+        if not self._categories_block_description:
+            self._categories_block_description = self.driver.find_element(*CATEGORIES_BLOCK_DESCRIPTION)
+        return self._categories_block_description.text
 
     @allure.step("Get search input")
     def get_search_input(self) -> SearchTutorComponent:
