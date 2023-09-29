@@ -1,4 +1,3 @@
-from time import sleep
 
 import allure
 from selenium.webdriver import Keys
@@ -34,6 +33,5 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         (HomePageStudent(self.driver)
          .get_button_go_to_categories()
          .send_keys(Keys.TAB))
-        sleep(7)
         get_flash = (HomePageStudent(self.driver).get_tub_animation())
         self.assertTrue(get_flash, "There is no flash")
