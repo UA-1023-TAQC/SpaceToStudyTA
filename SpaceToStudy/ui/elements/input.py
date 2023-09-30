@@ -33,8 +33,14 @@ class Input(BaseElement):
     def get_text(self):
         return self.get_input().get_attribute("value")
 
+    @allure.step("Get label element")
+    def get_label(self):
+        if not self._label:
+            self._label = self.node.find_element(*LABEL)
+        return self._label
+
     @allure.step("Get text of label element")
-    def get_label(self) -> str:
+    def get_label_text(self) -> str:
         if not self._label:
             self._label = self.node.find_element(*LABEL)
         return self._label.text
