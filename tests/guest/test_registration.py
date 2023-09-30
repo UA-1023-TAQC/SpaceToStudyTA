@@ -265,6 +265,7 @@ class RegistrationTestCase(BaseTestRunner):
         error_message_2 = invalid_data_2.get_first_name_error_message()
         self.assertEqual("This field can contain alphabetic characters only", error_message_2)
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/309')
     def test_transparent_header_disappears_if_the_field_is_filled(self):
         data_1 = (HomePageGuest(self.driver)
                   .click_become_a_tutor()
