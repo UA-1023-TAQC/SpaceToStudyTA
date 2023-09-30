@@ -76,6 +76,7 @@ class RegistrationModal(BaseComponent):
         self.get_close_btn().click()
         return HomePageGuest(self.node.parent)
 
+    @allure.step("Get please confirm modal")
     def get_please_confirm(self):
         self.get_close_btn().click()
         if not self._please_confirm:
@@ -112,7 +113,7 @@ class RegistrationModal(BaseComponent):
     @allure.step("Get first name label text")
     def get_first_name_label_text(self):
         first_name_input = self.get_first_name_input()
-        return first_name_input.get_label()
+        return first_name_input.get_label_text()
 
     @allure.step("Get first name error message")
     def get_first_name_error_message(self):
@@ -132,10 +133,15 @@ class RegistrationModal(BaseComponent):
         last_name_input.set_text(last_name_text)
         return self
 
+    @allure.step("Get Last name label")
+    def get_last_name_label(self):
+        last_name_input = self.get_last_name_input()
+        return last_name_input.get_label()
+
     @allure.step("Get Last name label text")
     def get_last_name_label_text(self):
         last_name_input = self.get_last_name_input()
-        return last_name_input.get_label()
+        return last_name_input.get_label_text()
 
     @allure.step("Get last name error message")
     def get_last_name_error_message(self):
@@ -158,7 +164,7 @@ class RegistrationModal(BaseComponent):
     @allure.step("Get email label text")
     def get_email_label_text(self):
         email_input = self.get_email_input()
-        return email_input.get_label()
+        return email_input.get_label_text()
 
     @allure.step("Get email error message")
     def get_email_error_message(self):
@@ -181,7 +187,7 @@ class RegistrationModal(BaseComponent):
     @allure.step("Get password label text")
     def get_password_label_text(self):
         password_input = self.get_password_input()
-        return password_input.get_label()
+        return password_input.get_label_text()
 
     @allure.step("Get password error message")
     def get_password_error_message(self) -> str:
@@ -210,7 +216,7 @@ class RegistrationModal(BaseComponent):
     @allure.step("Get confirm password label text")
     def get_confirm_password_label_text(self):
         confirm_password_input = self.get_confirm_password_input()
-        return confirm_password_input.get_label()
+        return confirm_password_input.get_label_text()
 
     @allure.step("Get confirm password error message")
     def get_confirm_password_error_message(self):
