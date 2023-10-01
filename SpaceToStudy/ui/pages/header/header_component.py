@@ -34,6 +34,7 @@ class HeaderComponent(BaseComponent):
                 self._navigate_elements.append(NavigateComponent(element))
         return self._navigate_elements
 
+    @allure.step("Send tab key {count_of_tabs} times")
     def tab_key(self, count_of_tabs: int):
         self.get_logo().send_keys(Keys.TAB * count_of_tabs)
         return
