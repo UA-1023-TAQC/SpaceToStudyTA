@@ -1,7 +1,10 @@
+from time import sleep
+
 import allure
 
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent, BUTTON_GO_TO_CATEGORIES
 from tests.test_runners import TestRunnerWithStudent
+
 
 class PopularCategoriesBlockUI(TestRunnerWithStudent):
 
@@ -24,3 +27,11 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         self.assertEqual("Go to categories", button_text)
         self.assertTrue(button_is_displayed, "Button is not displayed")
         self.assertTrue(page_is_displayed, "Page is not displayed")
+
+    def test_popular_categories_block_ui_interaction(self):
+        title = (HomePageStudent(self.driver).click_category_el(1).get_subjects_title())
+        self.driver.back()
+        is_displayed_computer = (HomePageStudent(self.driver).click_category_el(1).get_subjects_title().is_displayed())
+        print("text", title)
+        self.assertTrue(is_displayed_computer)
+        self.assertEqual("Computer science Subjects", title)

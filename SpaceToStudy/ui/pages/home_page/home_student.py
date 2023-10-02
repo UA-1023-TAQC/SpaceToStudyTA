@@ -8,6 +8,7 @@ from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowItWorksComponentStudent
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
 from SpaceToStudy.ui.pages.home_page.search_tutor_input_component import SearchTutorComponent
+from SpaceToStudy.ui.pages.subjects.subjects_page import SubjectsPage
 
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
@@ -46,6 +47,16 @@ class HomePageStudent(BasePage):
                 self._categories.append(CategoryComponent(category))
 
         return self._categories
+
+    @allure.step("Click category element by the {index} index")
+    def click_category_el(self, index: int):
+        # for i in range(s):
+        # if index == 0:
+        self.get_categories()[index].click()
+        return SubjectsPage(self.driver)
+        # elif index == 1:
+        #     self.get_categories()[1].click()
+        #     return ComputerScienceSubjectsPage(self.driver)
 
     @allure.step("Get search input")
     def get_search_input(self) -> SearchTutorComponent:

@@ -24,8 +24,12 @@ class SubjectsPage(BasePage):
         super().__init__(driver)
         self._cards = None
 
-    def get_subjects_title(self) -> str:
-        return self.driver.find_element(*SUBJECTS_TITLE).text
+    def get_subjects_title(self) -> WebElement:
+        return self.driver.find_element(*SUBJECTS_TITLE)
+
+    @allure.step("Get title text")
+    def get_text_subjects_title(self) -> str:
+        return self.get_subjects_title().text
 
     def get_subjects_subtext(self) -> str:
         return self.driver.find_element(*SUBJECTS_SUBTEXT).text
