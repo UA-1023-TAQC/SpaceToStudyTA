@@ -4,6 +4,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
+from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowItWorksComponentStudent
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
@@ -80,9 +81,9 @@ class HomePageStudent(BasePage):
         return self.get_button_find_tutor().text
 
     @allure.step("Click button \"find tutor\"")
-    def click_button_find_tutor(self):
+    def click_button_find_tutor(self) -> ExploreOffersPage:
         self.get_button_find_tutor().click()
-        return self
+        return ExploreOffersPage(self.driver)
 
     @allure.step("Get questions block")
     def get_questions_block(self) -> QuestionsComponent:
