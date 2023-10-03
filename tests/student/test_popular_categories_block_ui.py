@@ -28,10 +28,18 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/340")
     def test_popular_categories_block_ui_alignment(self):
+        delta = 13
+        size_window = self.driver.get_window_size()
+        get_width_window = size_window['width']
+        get_block = HomePageStudent(self.driver).get_categories_block()
+        get_width_block = get_block.size['width']
+        left_margin = get_block.location['x'] + delta
+        right_margin = get_width_window - get_width_block - left_margin
         horizontal_margin_between_elements = 294
         vertical_margin_between_elements = 136
-        start_coordinate_x = 187
+        start_coordinate_x = (get_width_window - get_width_block) / 2 - delta
         start_coordinate_y = 747
+
         location_x = (HomePageStudent(self.driver).get_categories())
         for result in location_x[:4]:
             self.assertEqual(start_coordinate_x, result.node.location['x'])
@@ -45,10 +53,4 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         for result in second_row:
             self.assertEqual(start_coordinate_y + vertical_margin_between_elements, result.node.location['y'])
 
-        size_window = self.driver.get_window_size()
-        get_width_window = size_window['width']
-        get_block = HomePageStudent(self.driver).get_categories_block()
-        get_size_block = get_block.size['width']
-        left_margin = get_block.location['x']
-        right_margin = get_width_window - get_size_block - left_margin
-        self.assertAlmostEqual(right_margin, left_margin, delta=26)
+        self.assertEqual(right_margin, left_margin)
