@@ -3,7 +3,6 @@ from time import sleep
 
 import allure
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
@@ -249,7 +248,7 @@ class HomePageTestCase(BaseTestRunner):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/198")
     def test_that_controls_active_after_navigating_to_them(self):
-        sleep(3)
+        sleep(1)
         (HeaderUnauthorizedComponent(self.driver)
          .get_navigate_links()[0]
          .click())
@@ -257,8 +256,7 @@ class HomePageTestCase(BaseTestRunner):
                             .get_card_learn_from_experts()
                             .get_btn())
         button_before_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
-        ActionChains(self.driver).move_to_element(become_a_student).perform()
-        sleep(5)
+        (HomePageGuest(self.driver).hover(become_a_student))
         button_after_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
         self.assertNotEqual(button_before_it_is_hovered_over, button_after_it_is_hovered_over,
                             "The button hasn't changed")
