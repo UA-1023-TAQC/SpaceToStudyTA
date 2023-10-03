@@ -15,11 +15,11 @@ class TestHomePageStudent(TestRunnerWithStudent):
     def test_search_field_find_by_name(self):
         search_result = (HomePageStudent(self.driver)
                          .get_search_input()
-                         .set_text("Tutor F")
+                         .set_text("Bruno M")
                          .click_find_tutor_btn()
                          .get_list_of_offers_inline_card())
         for result in search_result:
-            self.assertIn("Tutor F", result.get_person_name())
+            self.assertIn("Bruno M", result.get_person_name())
         tutors_offers_is_active = (ExploreOffersPage(self.driver)
                                    .get_filtering_and_sorting_block()
                                    .get_tutors_offers()
