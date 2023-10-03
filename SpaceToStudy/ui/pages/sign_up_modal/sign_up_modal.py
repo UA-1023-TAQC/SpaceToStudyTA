@@ -116,7 +116,7 @@ class RegistrationModal(BaseComponent):
         first_name_input.clear_text_input()
         return self
 
-    @allure.step("Get first name label text")
+    @allure.step("Get first name label")
     def get_first_name_label(self):
         first_name_input = self.get_first_name_input()
         return first_name_input.get_label()
