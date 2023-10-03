@@ -1,4 +1,6 @@
+
 import allure
+from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.home_page.home_student import (HomePageStudent,
                                                           BUTTON_GO_TO_CATEGORIES,
@@ -71,3 +73,10 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         self.assertEqual("rgba(144, 164, 174, 0.56) 0px 3px 16px 2px", hover_languages_el)
         self.assertEqual("pointer", cursor_languages_el)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/347")
+    def test_popular_categories_block_ui_tab(self):
+        (HomePageStudent(self.driver)
+         .get_button_go_to_categories()
+         .send_keys(Keys.TAB))
+        get_flash = (HomePageStudent(self.driver).get_tub_animation())
+        self.assertTrue(get_flash, "There is no flash")
