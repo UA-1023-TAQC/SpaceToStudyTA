@@ -232,6 +232,7 @@ class HomePageTestCase(BaseTestRunner):
         new_location = free_choice_of_tutors.node.location
         self.assertNotEqual(initial_location, new_location, "The element remained in place")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/186")
     def test_who_we_are_block_contains_video_content(self):
         (HeaderComponent(self.driver)
          .get_navigate_links()[2]
@@ -241,6 +242,7 @@ class HomePageTestCase(BaseTestRunner):
                  .get_video())
         self.assertTrue(video)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/190")
     def test_open_who_we_are_block_by_tabs(self):
         logo = HeaderUnauthorizedComponent(self.driver).get_logo()
         logo.send_keys(Keys.TAB, 3, Keys.ENTER)
