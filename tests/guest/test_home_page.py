@@ -29,8 +29,7 @@ class HomePageTestCase(BaseTestRunner):
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/105")
     def test_how_it_works_block_is_visible_guest(self):
         (HeaderUnauthorizedComponent(self.driver)
-         .get_navigate_links()[1]
-         .click())
+         .click_navigate_link_by_name("How it works"))
         block_is_displayed = (HomePageGuest(self.driver)
                               .get_how_it_works_block()
                               .is_displayed_how_it_works_block())
@@ -350,3 +349,19 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(0, 0, 0, 0.12)", second_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/197")
+    def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
+        window_width = 600
+        window_height = 1000
+        what_can_u_do_block = HomePageGuest(self.driver).click_navigate_link_in_header_by_name("What can you do")
+
+        self.driver.minimize_window()
+        what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
+        for key, element in what_can_u_do_elements.items():
+            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when window is minimized")
+
+        HomePageGuest(self.driver).set_size_window(window_width, window_height)
+        what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
+        for key, element in what_can_u_do_elements.items():
+            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")

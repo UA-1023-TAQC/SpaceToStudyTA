@@ -1,3 +1,4 @@
+import allure
 from selenium.common import NoSuchElementException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -41,6 +42,7 @@ class BasePage:
 
     def set_size_window(self, width, height):
         self.driver.set_window_size(width, height)
+        return self
 
     def get_tub_animation(self) -> bool:
         try:
@@ -48,3 +50,9 @@ class BasePage:
             return True
         except NoSuchElementException:
             return False
+
+    @allure.step("Click '{name}' button in header")
+    def click_navigate_link_in_header_by_name(self, name):
+        self.get_header().click_navigate_link_by_name(name)
+        return self
+
