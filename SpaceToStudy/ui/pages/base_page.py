@@ -47,6 +47,7 @@ class BasePage:
     @allure.step("Set size window width: {width} and height: {height}")
     def set_size_window(self, width, height):
         self.driver.set_window_size(width, height)
+        return self
 
     @allure.step("Is tab animation")
     def get_tub_animation(self) -> bool:
@@ -55,3 +56,9 @@ class BasePage:
             return True
         except NoSuchElementException:
             return False
+
+    @allure.step("Click '{name}' button in header")
+    def click_navigate_link_in_header_by_name(self, name):
+        self.get_header().click_navigate_link_by_name(name)
+        return self
+

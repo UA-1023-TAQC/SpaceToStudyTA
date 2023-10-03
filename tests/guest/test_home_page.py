@@ -3,7 +3,6 @@ from time import sleep
 
 import allure
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
@@ -30,8 +29,7 @@ class HomePageTestCase(BaseTestRunner):
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/105")
     def test_how_it_works_block_is_visible_guest(self):
         (HeaderUnauthorizedComponent(self.driver)
-         .get_navigate_links()[1]
-         .click())
+         .click_navigate_link_by_name("How it works"))
         block_is_displayed = (HomePageGuest(self.driver)
                               .get_how_it_works_block()
                               .is_displayed_how_it_works_block())
@@ -249,7 +247,7 @@ class HomePageTestCase(BaseTestRunner):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/198")
     def test_that_controls_active_after_navigating_to_them(self):
-        sleep(3)
+        sleep(1)
         (HeaderUnauthorizedComponent(self.driver)
          .get_navigate_links()[0]
          .click())
@@ -257,8 +255,7 @@ class HomePageTestCase(BaseTestRunner):
                             .get_card_learn_from_experts()
                             .get_btn())
         button_before_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
-        ActionChains(self.driver).move_to_element(become_a_student).perform()
-        sleep(5)
+        (HomePageGuest(self.driver).hover(become_a_student))
         button_after_it_is_hovered_over = become_a_student.value_of_css_property("background-color")
         self.assertNotEqual(button_before_it_is_hovered_over, button_after_it_is_hovered_over,
                             "The button hasn't changed")
@@ -352,3 +349,19 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("rgba(0, 0, 0, 0.12)", second_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
         self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/197")
+    def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
+        window_width = 600
+        window_height = 1000
+        what_can_u_do_block = HomePageGuest(self.driver).click_navigate_link_in_header_by_name("What can you do")
+
+        self.driver.minimize_window()
+        what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
+        for key, element in what_can_u_do_elements.items():
+            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when window is minimized")
+
+        HomePageGuest(self.driver).set_size_window(window_width, window_height)
+        what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
+        for key, element in what_can_u_do_elements.items():
+            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
