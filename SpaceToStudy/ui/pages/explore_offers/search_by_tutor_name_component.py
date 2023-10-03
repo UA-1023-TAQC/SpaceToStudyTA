@@ -56,8 +56,9 @@ class SearchByTutorNameComponent(BaseComponent):
 
     @allure.step("Click on the search button")
     def click_search_btn(self):
+        from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.get_search_btn().click()
-        return self
+        return ExploreOffersPage(self.node)
 
     @allure.step("Set {text} into the categories input")
     def set_categories_input(self, text):

@@ -36,7 +36,7 @@ class Slider(BaseElement):
         self.drag_slider_to_value(int(target_value), slider, slider_thumb)
         return self
 
-    @allure.step("Drag slider to the right by {values_to_the_left} of {slider} element ")
+    @allure.step("Drag slider to the right by {values_to_the_right} of {slider} element ")
     def drag_slider_right(self, values_to_the_right: int, slider: WebElement, slider_thumb: WebElement):
         target_value = float(slider_thumb.get_attribute('value')) + values_to_the_right
         self.drag_slider_to_value(int(target_value), slider, slider_thumb)
