@@ -1,7 +1,10 @@
+
 import allure
+from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent, BUTTON_GO_TO_CATEGORIES
 from tests.test_runners import TestRunnerWithStudent
+
 
 class PopularCategoriesBlockUI(TestRunnerWithStudent):
 
@@ -24,3 +27,11 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         self.assertEqual("Go to categories", button_text)
         self.assertTrue(button_is_displayed, "Button is not displayed")
         self.assertTrue(page_is_displayed, "Page is not displayed")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/347")
+    def test_popular_categories_block_ui_tab(self):
+        (HomePageStudent(self.driver)
+         .get_button_go_to_categories()
+         .send_keys(Keys.TAB))
+        get_flash = (HomePageStudent(self.driver).get_tub_animation())
+        self.assertTrue(get_flash, "There is no flash")
