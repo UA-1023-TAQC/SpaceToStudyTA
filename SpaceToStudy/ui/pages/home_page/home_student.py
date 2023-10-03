@@ -4,11 +4,18 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
+from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowItWorksComponentStudent
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
 from SpaceToStudy.ui.pages.home_page.search_tutor_input_component import SearchTutorComponent
 
+CATEGORY_MUSIC = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[1]")
+CATEGORY_COMPUTER = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[2]")
+CATEGORY_DESIGN = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[3]")
+CATEGORY_DANCE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[4]")
+CATEGORY_MATH = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[5]")
+CATEGORY_LANGUAGES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[6]")
 CATEGORIES_BLOCK_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/p")
 CATEGORIES_BLOCK_DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/span")
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
@@ -96,9 +103,9 @@ class HomePageStudent(BasePage):
         return self.get_button_find_tutor().text
 
     @allure.step("Click button \"find tutor\"")
-    def click_button_find_tutor(self):
+    def click_button_find_tutor(self) -> ExploreOffersPage:
         self.get_button_find_tutor().click()
-        return self
+        return ExploreOffersPage(self.driver)
 
     @allure.step("Get questions block")
     def get_questions_block(self) -> QuestionsComponent:

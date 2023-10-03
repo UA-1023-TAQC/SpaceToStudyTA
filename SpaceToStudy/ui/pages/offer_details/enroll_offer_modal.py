@@ -26,7 +26,7 @@ PREFERRED_PRICE_INPUT = (By.XPATH, "//input[@inputmode='numeric']")
 
 ADDITIONAL_INFORMATION_INPUT = (By.XPATH, "//textarea[@maxlength = '1000']")
 SEND_COOPERATION_REQUEST_BTN = (By.XPATH, "//div[@role='dialog']//button[@type='submit']")
-GRID_CARD_COMPONENT = (By.XPATH, "//div[@data-testid='popupContent']/div/div/div/div")
+GRID_CARD_COMPONENT = (By.XPATH, "//div[@data-testid='popupContent']/div/div/div")
 
 
 class EnrollOfferModal(BaseComponent):
@@ -57,6 +57,15 @@ class EnrollOfferModal(BaseComponent):
 
     @allure.step("Get 'Your required level' dropdown on 'Enroll offer' modal window")
     def get_your_required_level_dropdown(self):
+        self.node.find_element(*YOUR_REQUIRED_LEVEL_DROPDOWN)
+        return self
+
+    @allure.step("Get 'Your required level' dropdown current text on 'Enroll offer' modal window")
+    def get_your_required_level_text(self) -> str:
+        return self.node.find_element(*YOUR_REQUIRED_LEVEL_DROPDOWN).text
+
+    @allure.step("Click 'Your required level' dropdown on 'Enroll offer' modal window")
+    def click_your_required_level_dropdown(self):
         self.node.find_element(*YOUR_REQUIRED_LEVEL_DROPDOWN).click()
         return self
 
@@ -87,13 +96,11 @@ class EnrollOfferModal(BaseComponent):
 
     @allure.step("Get the lowest price label on the slider on 'Enroll offer' modal window")
     def get_lowest_price_value(self) -> int:
-        return int(self.node.find_element(*PREFERRED_PRICE_LOWEST_VALUE_ON_SLIDER_LABEL)
-                   .get_attribute('value'))
+        return int(self.node.find_element(*PREFERRED_PRICE_LOWEST_VALUE_ON_SLIDER_LABEL).text)
 
     @allure.step("Get the highest price label on the slider on 'Enroll offer' modal window")
     def get_highest_price_value(self) -> int:
-        return int(self.node.find_element(*PREFERRED_PRICE_HIGHEST_VALUE_ON_SLIDER_LABEL)
-                   .get_attribute('value'))
+        return int(self.node.find_element(*PREFERRED_PRICE_HIGHEST_VALUE_ON_SLIDER_LABEL).text)
 
     @allure.step("Set the lowest price on the slider on 'Enroll offer' modal window")
     def set_lowest_price(self):
@@ -102,13 +109,18 @@ class EnrollOfferModal(BaseComponent):
 
     @allure.step("Set the highest price on the slider on 'Enroll offer' modal window")
     def set_highest_price(self):
-        self.get_highest_price_on_slider().click()
+        self.node.find_element(*PREFERRED_PRICE_SLIDER_THUMB).send_keys(Keys.END)
         return self
 
-    @allure.step("Get the current price value on the slider on 'Enroll offer' modal window")
-    def get_current_price_value(self) -> float:
+    @allure.step("Get the current price value in textbox on 'Enroll offer' modal window")
+    def get_current_price_textbox_value(self) -> float:
         current_price = self.node.find_element(*PREFERRED_PRICE_INPUT)
         return float(current_price.get_attribute('value'))
+
+    @allure.step("Get the current price value on the slider on 'Enroll offer' modal window")
+    def get_current_price_slider_value(self) -> float:
+        current_price = self.node.find_element(*PREFERRED_PRICE_SLIDER_THUMB)
+        return float(current_price.get_attribute('aria-valuenow'))
 
     @allure.step("Set the preferred price in the input on 'Enroll offer' modal window")
     def set_preferred_price_input(self, value):
@@ -138,6 +150,12 @@ class EnrollOfferModal(BaseComponent):
         slider_thumb = self.node.find_element(*PREFERRED_PRICE_SLIDER_THUMB)
         Slider(self.node).drag_slider_to_value(value, slider, slider_thumb)
         return self
+
+    @allure.step("Get 'Additional information' text area on 'Enroll offer' modal window")
+    def get_additional_information(self) -> WebElement:
+        if not self._additional_information_input:
+            self._additional_information_input = self.node.find_element(*ADDITIONAL_INFORMATION_INPUT)
+        return self._additional_information_input
 
     @allure.step("Add the information in 'Additional information' text area on 'Enroll offer' modal window")
     def add_additional_information(self, additional_information: str):
