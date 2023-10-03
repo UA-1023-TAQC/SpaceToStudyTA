@@ -1,5 +1,3 @@
-from time import sleep
-
 import allure
 
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent, BUTTON_GO_TO_CATEGORIES
@@ -29,9 +27,39 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         self.assertTrue(page_is_displayed, "Page is not displayed")
 
     def test_popular_categories_block_ui_interaction(self):
-        title = (HomePageStudent(self.driver).click_category_el(1).get_subjects_title())
+        title_music = (HomePageStudent(self.driver).click_category_el(0).get_subjects_title())
+        self.driver.back()
+        is_displayed_music = (HomePageStudent(self.driver).click_category_el(0).get_subjects_title().is_displayed())
+        self.assertTrue(is_displayed_music)
+        self.assertEqual("Computer science Subjects", title_music)
+
+        title_computer = (HomePageStudent(self.driver).click_category_el(1).get_subjects_title())
         self.driver.back()
         is_displayed_computer = (HomePageStudent(self.driver).click_category_el(1).get_subjects_title().is_displayed())
-        print("text", title)
         self.assertTrue(is_displayed_computer)
-        self.assertEqual("Computer science Subjects", title)
+        self.assertEqual("Music Subjects", title_computer)
+
+        title_design = (HomePageStudent(self.driver).click_category_el(2).get_subjects_title())
+        self.driver.back()
+        is_displayed_design = (HomePageStudent(self.driver).click_category_el(2).get_subjects_title().is_displayed())
+        self.assertTrue(is_displayed_design)
+        self.assertEqual("Design Subjects", title_design)
+
+        title_dance = (HomePageStudent(self.driver).click_category_el(3).get_subjects_title())
+        self.driver.back()
+        is_displayed_dance = (HomePageStudent(self.driver).click_category_el(3).get_subjects_title().is_displayed())
+        self.assertTrue(is_displayed_dance)
+        self.assertEqual("Dance Subjects", title_dance)
+
+        title_math = (HomePageStudent(self.driver).click_category_el(4).get_subjects_title())
+        self.driver.back()
+        is_displayed_math = (HomePageStudent(self.driver).click_category_el(4).get_subjects_title().is_displayed())
+        self.assertTrue(is_displayed_math)
+        self.assertEqual("Mathematics Subjects", title_math)
+
+        title_language = (HomePageStudent(self.driver).click_category_el(5).get_subjects_title())
+        self.driver.back()
+        is_displayed_language = (HomePageStudent(self.driver).click_category_el(5).get_subjects_title().is_displayed())
+        self.assertTrue(is_displayed_language)
+        self.assertEqual("Languages Subjects", title_language)
+
