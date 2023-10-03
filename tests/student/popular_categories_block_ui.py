@@ -36,14 +36,15 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         languages = "Languages"
         title_block = "Popular Categories"
         descriptions_block = "Explore tutoring categories you're passionate about."
-        get_title_block = (HomePageStudent(self.driver).get_title_categories_block())
-        get_descriptions_block = (HomePageStudent(self.driver).get_description_categories_block())
-        category_music = (HomePageStudent(self.driver).get_categories()[0].get_name())
-        category_computer = (HomePageStudent(self.driver).get_categories()[1].get_name())
-        category_design = (HomePageStudent(self.driver).get_categories()[2].get_name())
-        category_dance = (HomePageStudent(self.driver).get_categories()[3].get_name())
-        category_mathematics = (HomePageStudent(self.driver).get_categories()[4].get_name())
-        category_languages = (HomePageStudent(self.driver).get_categories()[5].get_name())
+        home = HomePageStudent(self.driver)
+        get_title_block = home.get_title_categories_block()
+        get_descriptions_block = home.get_description_categories_block()
+        category_music = home.get_categories()[0].get_name()
+        category_computer = home.get_categories()[1].get_name()
+        category_design = home.get_categories()[2].get_name()
+        category_dance = home.get_categories()[3].get_name()
+        category_mathematics = home.get_categories()[4].get_name()
+        category_languages = home.get_categories()[5].get_name()
         self.assertEqual(title_block, get_title_block)
         self.assertEqual(descriptions_block, get_descriptions_block)
         self.assertEqual(music, category_music)
