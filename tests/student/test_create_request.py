@@ -54,7 +54,7 @@ class CreateRequestTestCase(BaseTestRunner):
         (OffersRequestModal(self.driver.find_element(By.XPATH, "/html/body/div[2]/div[3]/form"))
          .click_add_to_draft_btn())
 
-        inline_card = OfferDetailsPage(self.driver).get_offer_inline_card_component()
+        inline_card = OfferDetailsPage(self.driver).get_inline_card_component()
         student_name_expected = (f"{ValueProvider.get_student_first_name()} "
                                  f"{ValueProvider.get_student_last_name()[0]}.")
         student_name_actual = inline_card.get_person_name()
@@ -68,7 +68,7 @@ class CreateRequestTestCase(BaseTestRunner):
         self.assertEqual(str.upper(subject), card_subject_actual)
         self.assertEqual(str.upper("Beginner"), card_level_actual)
         self.assertEqual(language, card_language_actual)
-        self.assertEqual(f"{price} UAH", card_price_actual)
+        self.assertEqual(float(price), card_price_actual)
 
         general_info_component = OfferDetailsPage(self.driver).get_general_info_component()
         offer_desc_actual = OfferDetailsPage(self.driver).get_about_offer_desc()
