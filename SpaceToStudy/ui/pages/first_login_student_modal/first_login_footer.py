@@ -18,6 +18,7 @@ class FirstLoginFooter(BaseComponent):
         self.get_back_button().click()
         return self.node.parent
 
+    @allure.step("Get next button")
     def get_next_button(self) -> WebElement:
         return self.node.find_element(*NEXT_BUTTON)
 
@@ -26,6 +27,7 @@ class FirstLoginFooter(BaseComponent):
         self.get_next_button().click()
         return self.node.parent
 
+    @allure.step("Get finish button")
     def get_finish_button(self) -> WebElement:
         return self.node.find_element(*FINISH_BUTTON)
 
