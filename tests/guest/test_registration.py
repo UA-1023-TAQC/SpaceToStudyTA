@@ -264,6 +264,17 @@ class RegistrationTestCase(BaseTestRunner):
         error_message_2 = invalid_data_2.get_first_name_error_message()
         self.assertEqual("This field can contain alphabetic characters only", error_message_2)
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/313')
+    def test_tutor_sign_up_first_name_input_length_validation(self):
+        (HomePageGuest(self.driver)
+         .click_started_for_free()
+         .click_become_a_tutor())
+        error_message = (RegistrationModal(self.driver)
+                         .set_first_name("Vzxcvbnmaszxcvbnmasdasdfghjklqw")
+                         .click_i_agree_checkbox()
+                         .get_first_name_error_message())
+        self.assertEqual(error_message, "This field cannot be longer than 30 characters")
+
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/311')
     def test_tutor_sign_up_button_inactive_without_entered_data_or_checkbox(self):
         (HomePageGuest(self.driver)
