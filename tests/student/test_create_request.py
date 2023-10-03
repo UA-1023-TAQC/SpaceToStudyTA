@@ -1,5 +1,6 @@
 import unittest
 
+import allure
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
@@ -17,6 +18,7 @@ from tests.value_provider import ValueProvider
 
 class CreateRequestTestCase(BaseTestRunner):
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/99")
     def test_offer_details(self):
         category = "Music"
         subject = "Guitar"
