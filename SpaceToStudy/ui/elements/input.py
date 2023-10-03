@@ -1,4 +1,5 @@
 import allure
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -32,6 +33,12 @@ class Input(BaseElement):
     @allure.step("Get text of input element")
     def get_text(self):
         return self.get_input().get_attribute("value")
+
+    @allure.step("Clear text in input element")
+    def clear_text_input(self):
+        input_element = self.get_input()
+        input_element.send_keys(Keys.CONTROL + "a")
+        input_element.send_keys(Keys.DELETE)
 
     @allure.step("Get text of label element")
     def get_label(self) -> str:

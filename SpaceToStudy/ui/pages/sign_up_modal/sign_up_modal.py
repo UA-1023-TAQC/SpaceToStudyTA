@@ -109,6 +109,12 @@ class RegistrationModal(BaseComponent):
         first_name_input.set_text(first_name_text)
         return self
 
+    @allure.step("Clear first name input")
+    def clear_first_name_input(self):
+        first_name_input = self.get_first_name_input()
+        first_name_input.clear_text_input()
+        return self
+
     @allure.step("Get first name label text")
     def get_first_name_label_text(self):
         first_name_input = self.get_first_name_input()
@@ -130,6 +136,12 @@ class RegistrationModal(BaseComponent):
     def set_last_name(self, last_name_text):
         last_name_input = self.get_last_name_input()
         last_name_input.set_text(last_name_text)
+        return self
+
+    @allure.step("Clear last name input")
+    def clear_last_name_input(self):
+        last_name_input = self.get_last_name_input()
+        last_name_input.clear_text_input()
         return self
 
     @allure.step("Get Last name label text")
@@ -155,6 +167,12 @@ class RegistrationModal(BaseComponent):
         email_input.set_text(email_text)
         return self
 
+    @allure.step("Clear email input")
+    def clear_email_input(self):
+        email_input = self.get_email_input()
+        email_input.clear_text_input()
+        return self
+
     @allure.step("Get email label text")
     def get_email_label_text(self):
         email_input = self.get_email_input()
@@ -176,6 +194,12 @@ class RegistrationModal(BaseComponent):
     def set_password(self, password_text):
         password_input = self.get_password_input()
         password_input.set_text(password_text)
+        return self
+
+    @allure.step("Clear password input")
+    def clear_password_input(self):
+        password_input = self.get_password_input()
+        password_input.clear_text_input()
         return self
 
     @allure.step("Get password label text")
@@ -205,6 +229,12 @@ class RegistrationModal(BaseComponent):
     def set_confirm_password(self, confirm_password_text):
         confirm_password_input = self.get_confirm_password_input()
         confirm_password_input.set_text(confirm_password_text)
+        return self
+
+    @allure.step("Clear confirm password input")
+    def clear_confirm_password_input(self):
+        confirm_password_input = self.get_confirm_password_input()
+        confirm_password_input.clear_text_input()
         return self
 
     @allure.step("Get confirm password label text")
