@@ -123,16 +123,19 @@ class FilteringAndSortingComponent(BaseComponent):
             self._filters_sidebar_component = FiltersSidebarComponent(new_node)
             return self._filters_sidebar_component
 
+    @allure.step("Get notification img")
     def get_notifications_img(self) -> WebElement:
         if not self._notifications_img:
             self._notifications_img = self.node.find_element(*NOTIFICATIONS_IMG)
         return self._notifications_img
 
+    @allure.step("Get notification text")
     def get_notifications_text(self) -> str:
         if not self._notifications_text:
             self._notifications_text = self.node.find_element(*NOTIFICATIONS_TEXT)
         return self._notifications_text.text
 
+    @allure.step("Get notification subtext")
     def get_notifications_subtext(self) -> str:
         if not self._notifications_subtext:
             self._notifications_subtext = self.node.find_element(*NOTIFICATIONS_SUBTEXT)
