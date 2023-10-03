@@ -35,9 +35,11 @@ class CollapseItem(BaseComponent):
     def get_color_of_title(self):
         return self.node.find_element(*TITLE_COLLAPSE_ITEM).value_of_css_property("color")
 
+    @allure.step("Get value of css description")
     def get_description_value_of_css(self, value):
         return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).value_of_css_property(value)
 
+    @allure.step("Get description")
     def get_description(self) -> str:
         return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).text
 
@@ -50,6 +52,7 @@ class CollapseItem(BaseComponent):
     def click(self):
         self.node.click()
 
+    @allure.step("Get background el with tab")
     def get_background_el_with_tab(self) -> WebElement:
         return self.node.find_element(*TAB_ELEMENT)
 

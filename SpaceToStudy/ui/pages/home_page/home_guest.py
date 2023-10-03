@@ -101,7 +101,7 @@ class HomePageGuest(BasePage):
                 self._collapse_items.append(CollapseItem(collapse_item))
         return self._collapse_items
 
-    @allure.step("Get list items in collapse block mobile size screen")
+    @allure.step("Get list items in collapse block mobile_size_screen")
     def get_collapse_list_items_block_mobile_size_screen(self) -> list[CollapseItem]:
         if self._collapse_items_mobile is None:
             _collapse_items_mobile = self.driver.find_elements(*COLLAPSE_BLOCK_ITEMS_MOBILE)

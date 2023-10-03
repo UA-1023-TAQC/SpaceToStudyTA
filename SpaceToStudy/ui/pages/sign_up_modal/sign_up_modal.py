@@ -76,6 +76,7 @@ class RegistrationModal(BaseComponent):
         self.get_close_btn().click()
         return HomePageGuest(self.node.parent)
 
+    @allure.step("Get please confirm")
     def get_please_confirm(self):
         self.get_close_btn().click()
         if not self._please_confirm:
