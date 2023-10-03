@@ -264,6 +264,84 @@ class RegistrationTestCase(BaseTestRunner):
         error_message_2 = invalid_data_2.get_first_name_error_message()
         self.assertEqual("This field can contain alphabetic characters only", error_message_2)
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/313')
+    def test_tutor_sign_up_first_name_input_length_validation(self):
+        (HomePageGuest(self.driver)
+         .click_started_for_free()
+         .click_become_a_tutor())
+        error_message = (RegistrationModal(self.driver)
+                         .set_first_name("Vzxcvbnmaszxcvbnmasdasdfghjklqw")
+                         .click_i_agree_checkbox()
+                         .get_first_name_error_message())
+        self.assertEqual(error_message, "This field cannot be longer than 30 characters")
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/311')
+    def test_tutor_sign_up_button_inactive_without_entered_data_or_checkbox(self):
+        (HomePageGuest(self.driver)
+         .click_started_for_free()
+         .click_become_a_tutor())
+        button_state_without_checkbox = (RegistrationModal(self.driver)
+                                         .set_first_name("First")
+                                         .set_last_name("Last")
+                                         .set_email("Email@gmail.com")
+                                         .set_password("password1")
+                                         .set_confirm_password("password1")
+                                         .get_sign_up_btn())
+        self.assertFalse(button_state_without_checkbox.is_enabled(), "The sign up button must be inactive")
+        error_msg_first_name = (RegistrationModal(self.driver)
+                                .clear_first_name_input()
+                                .click_i_agree_checkbox()
+                                .get_first_name_error_message())
+        self.assertEqual(error_msg_first_name, "This field cannot be empty")
+        button_state_without_first_name = (RegistrationModal(self.driver).get_sign_up_btn())
+        self.assertFalse(button_state_without_first_name.is_enabled(), "The sign up button must be inactive")
+        error_msg_last_name = (RegistrationModal(self.driver)
+                               .clear_last_name_input()
+                               .set_first_name("First")
+                               .get_last_name_error_message())
+        self.assertEqual(error_msg_last_name, "This field cannot be empty")
+        button_state_without_last_name = (RegistrationModal(self.driver).get_sign_up_btn())
+        self.assertFalse(button_state_without_last_name.is_enabled(), "The sign up button must be inactive")
+        error_msg_email = (RegistrationModal(self.driver)
+                           .clear_email_input()
+                           .set_last_name("Last")
+                           .get_email_error_message())
+        self.assertEqual(error_msg_email, "This field cannot be empty")
+        button_state_without_email = (RegistrationModal(self.driver).get_sign_up_btn())
+        self.assertFalse(button_state_without_email.is_enabled(), "The sign up button must be inactive")
+        error_msg_password = (RegistrationModal(self.driver)
+                              .clear_password_input()
+                              .set_email("Email@gmail.com")
+                              .get_password_error_message())
+        self.assertEqual(error_msg_password, "This field cannot be empty")
+        button_state_without_password = (RegistrationModal(self.driver).get_sign_up_btn())
+        self.assertFalse(button_state_without_password.is_enabled(), "The sign up button must be inactive")
+        error_msg_confirm_password = (RegistrationModal(self.driver)
+                                      .clear_confirm_password_input()
+                                      .set_password("password1")
+                                      .get_confirm_password_error_message())
+        self.assertEqual(error_msg_confirm_password, "This field cannot be empty")
+        button_state_without_confirm_password = (RegistrationModal(self.driver).get_sign_up_btn())
+        self.assertFalse(button_state_without_confirm_password.is_enabled(), "The sign up button must be inactive")
+
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/197")
+    def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
+        window_width = 600
+        window_height = 1000
+        what_can_u_do_block = HomePageGuest(self.driver).click_navigate_link_in_header_by_name("What can you do")
+
+        self.driver.minimize_window()
+        what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
+        for key, element in what_can_u_do_elements.items():
+            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when window is minimized")
+
+        HomePageGuest(self.driver).set_size_window(window_width, window_height)
+        what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
+        for key, element in what_can_u_do_elements.items():
+            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
+
