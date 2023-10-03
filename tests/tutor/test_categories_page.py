@@ -1,5 +1,7 @@
 import unittest
 
+import allure
+
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
@@ -9,6 +11,7 @@ from tests.value_provider import ValueProvider
 
 class CategoriesPageTestCase(BaseTestRunner):
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/159")
     def test_searching_categories_page(self):
         category = "Design"
         (HeaderUnauthorizedComponent(self.driver).click_login_btn()
@@ -29,6 +32,7 @@ class CategoriesPageTestCase(BaseTestRunner):
                      .get_title())
         self.assertEqual("Web design", card_name)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/162")
     def test_no_result_categories_page(self):
         category = "Drawing"
         (HeaderUnauthorizedComponent(self.driver).click_login_btn()
