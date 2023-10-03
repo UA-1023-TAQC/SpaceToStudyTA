@@ -2,7 +2,9 @@ import allure
 
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
+from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
+from SpaceToStudy.ui.pages.my_offers_page import MyOffersPage
 
 from tests.test_runners import TestRunnerWithStudent
 
@@ -53,7 +55,7 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
     def test_offers_sort_price_high_low(self):
         menu = HeaderAuthorizedComponent(self.driver)
         (menu.get_user_menu()
-         .click_get_account()
+         .click_account()
          .click_menu_items_my_offers())
         offers = MyOffersPage(self.driver)
         (offers

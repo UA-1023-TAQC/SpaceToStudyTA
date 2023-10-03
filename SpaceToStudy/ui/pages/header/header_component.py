@@ -14,7 +14,7 @@ class HeaderComponent(BaseComponent):
 
     def __init__(self, node):
         super().__init__(node)
-        self._navigate_elements = None
+        self._navigate_elements = []
 
     @allure.step("Get logo on the header")
     def get_logo(self) -> WebElement:
@@ -25,15 +25,19 @@ class HeaderComponent(BaseComponent):
         self.get_logo().click()
 
     @allure.step("Get navigate links on the header")
-    def get_navigate_links(self) -> tuple:
+    def get_navigate_links(self) -> list: #the name should be changed for "get_navigate_elements"
         from SpaceToStudy.ui.pages.header.navigate_component import NavigateComponent
-        if self._navigate_elements is None:
+        if not self._navigate_elements:
             navigate_links = self.node.find_elements(*NAVIGATE_ELEMENTS)
-            self._navigate_elements = []
             for element in navigate_links:
                 self._navigate_elements.append(NavigateComponent(element))
         return self._navigate_elements
+    def click_navigate_link_by_name(self, name):
+        link = list(filter(lambda e: e.get_name() == name, self.get_navigate_links()))
+        if link:
+            link[0].click()
 
+    @allure.step("Send tab key {count_of_tabs} times")
     def tab_key(self, count_of_tabs: int):
         self.get_logo().send_keys(Keys.TAB * count_of_tabs)
         return

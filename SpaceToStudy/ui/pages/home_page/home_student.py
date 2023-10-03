@@ -9,6 +9,12 @@ from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowIt
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
 from SpaceToStudy.ui.pages.home_page.search_tutor_input_component import SearchTutorComponent
 
+CATEGORY_MUSIC = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[1]")
+CATEGORY_COMPUTER = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[2]")
+CATEGORY_DESIGN = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[3]")
+CATEGORY_DANCE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[4]")
+CATEGORY_MATH = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[5]")
+CATEGORY_LANGUAGES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[6]")
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
