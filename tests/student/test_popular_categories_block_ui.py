@@ -30,7 +30,7 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
     def test_popular_categories_block_ui_alignment(self):
         home = HomePageStudent(self.driver)
         delta = 13
-        gap = 24
+        gap = home.get_gap_value_css_property_categories_block()
         size_window = self.driver.get_window_size()
         get_block = home.get_categories_block()
         get_width_window = size_window['width']

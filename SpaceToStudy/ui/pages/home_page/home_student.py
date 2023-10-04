@@ -16,7 +16,7 @@ CATEGORY_DESIGN = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div
 CATEGORY_DANCE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[4]")
 CATEGORY_MATH = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[5]")
 CATEGORY_LANGUAGES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[6]")
-CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
+CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
@@ -59,6 +59,13 @@ class HomePageStudent(BasePage):
         if not self._categories_block:
             self._categories_block = self.driver.find_element(*CATEGORIES_BLOCK)
         return self._categories_block
+
+    @allure.step("Get value css categories block")
+    def get_gap_value_css_property_categories_block(self):
+        value = self.get_categories_block().value_of_css_property("gap")
+        gap = str(value).replace("px", "")
+        gap_int = (int(gap))
+        return gap_int
 
     @allure.step("Get search input")
     def get_search_input(self) -> SearchTutorComponent:
