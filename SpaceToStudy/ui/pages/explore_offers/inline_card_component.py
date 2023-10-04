@@ -94,7 +94,9 @@ class InlineCardComponent(BaseComponent):
 
     @allure.step("Click on the view details button")
     def click_view_details_btn(self):
+        from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
         self.get_view_details_btn().click()
+        return OfferDetailsPage(self.node)
 
     @allure.step("Get send message button")
     def get_send_message_btn(self) -> WebElement:
