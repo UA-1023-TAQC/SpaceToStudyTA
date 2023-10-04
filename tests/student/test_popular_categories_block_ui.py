@@ -30,14 +30,17 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
     def test_popular_categories_block_ui_alignment(self):
         home = HomePageStudent(self.driver)
         delta = 13
+        gap = 24
         size_window = self.driver.get_window_size()
-        get_width_window = size_window['width']
         get_block = home.get_categories_block()
+        get_width_window = size_window['width']
         get_width_block = get_block.size['width']
         left_margin = get_block.location['x'] + delta
         right_margin = get_width_window - get_width_block - left_margin
-        horizontal_margin_between_elements = 294
-        vertical_margin_between_elements = 136
+        width_one_element = home.get_categories()[0].node.size['width']
+        height_one_element = home.get_categories()[0].node.size['height']
+        horizontal_margin_between_elements = gap + width_one_element
+        vertical_margin_between_elements = gap + height_one_element
         start_coordinate_x = (get_width_window - get_width_block) / 2 - delta
         start_coordinate_y = home.get_categories_block().location['y']
 
