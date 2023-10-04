@@ -115,6 +115,7 @@ class ExploreOffersPage(BasePage):
         self._list_of_offers_inline_card = [InlineCardComponent(offer) for offer in offers]
         return self._list_of_offers_inline_card
 
+    @allure.step("Get notification lock with no results")
     def get_notification_block_with_no_results(self) -> FilteringAndSortingComponent:
         if not self._notification_block:
             _notification_block = self.driver.find_element(*NOTIFICATION_BLOCK)
