@@ -173,6 +173,12 @@ class HomePageGuest(BasePage):
         self.get_button_get_started_for_free().click()
         return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
 
+    @allure.step('Click button "Get started for free"')
+    def click_started_for_free(self):
+        self.get_button_get_started_for_free().click()
+        sleep(1)
+        return self
+
     @allure.step("Get the 'What can you do' block")
     def get_what_can_u_do_block(self):
         return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
