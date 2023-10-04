@@ -134,3 +134,18 @@ class HomePageTestCase(BaseTestRunner):
         what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
         for key, element in what_can_u_do_elements.items():
             self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/187")
+    def test_what_can_we_do_elements_in_center(self):
+        (HeaderComponent(self.driver)
+         .get_navigate_links()[2]
+         .click())
+        home_page = HomePageGuest(self.driver)
+        video_display = (home_page
+                 .get_who_we_are_block()
+                 .get_video_display())
+        text_aligning = (home_page
+                 .get_who_we_are_block()
+                 .get_text_aligning())
+        self.assertEqual("block", video_display)
+        self.assertEqual("center", text_aligning)

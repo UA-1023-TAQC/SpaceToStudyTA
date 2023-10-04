@@ -4,10 +4,10 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
+TEXT_DIV = (By.XPATH, "./div[1]")
 TITLE = (By.XPATH, "./div[1]/p")
 DESC = (By.XPATH, "./div[1]/span")
-VIDEO = (By.XPATH, "./div[2]")
-
+VIDEO = (By.CSS_SELECTOR, "#who-we-are > div.MuiBox-root > div > img")
 
 class WhoWeAreBlock(BaseComponent):
     def __init__(self, node):
@@ -33,3 +33,11 @@ class WhoWeAreBlock(BaseComponent):
         if not self._video:
             self._video = self.node.find_element(*VIDEO)
         return self._video
+
+    @allure.step("Get the video element display in 'Who We Are' block")
+    def get_video_display(self) -> str:
+        return self.get_video().value_of_css_property("display")
+
+    @allure.step("Get the text aligning in 'Wo We Are' block")
+    def get_text_aligning(self) -> str:
+        return self.node.find_element(*TEXT_DIV).value_of_css_property("text-align")
