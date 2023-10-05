@@ -360,3 +360,5 @@ class HomePageGuest(BasePage):
             node = self.driver.find_element(*WHO_WE_ARE_BLOCK)
             self._who_we_are_block = WhoWeAreBlock(node)
         return self._who_we_are_block
+
+
