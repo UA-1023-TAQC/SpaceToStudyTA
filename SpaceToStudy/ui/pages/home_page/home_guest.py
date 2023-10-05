@@ -169,6 +169,11 @@ class HomePageGuest(BasePage):
         return self.get_button_get_started_for_free().text
 
     @allure.step("Click button \"get started for free\"")
+    def click_started_for_free(self):
+        self.get_button_get_started_for_free().click()
+        return self
+
+    @allure.step("Click button \"get started for free\"")
     def click_button_get_started_for_free(self):
         self.get_button_get_started_for_free().click()
         return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
@@ -360,3 +365,10 @@ class HomePageGuest(BasePage):
             node = self.driver.find_element(*WHO_WE_ARE_BLOCK)
             self._who_we_are_block = WhoWeAreBlock(node)
         return self._who_we_are_block
+
+    @allure.step("Get button \"get started for free\"")
+    def get_button_get_started_for_free(self) -> WebElement:
+        if not self._button_get_started_for_free:
+            self._button_get_started_for_free = self.driver.find_element(*BUTTON_GET_STARTED_FOR_FREE)
+        return self._button_get_started_for_free
+
