@@ -63,7 +63,7 @@ class HomePageStudent(BasePage):
     @allure.step("Get value css categories block")
     def get_gap_value_css_property_categories_block(self):
         value = self.get_categories_block().value_of_css_property("gap")
-        gap = str(value).replace("px", "")
+        gap = value.replace("px", "")
         gap_int = (int(gap))
         return gap_int
 
