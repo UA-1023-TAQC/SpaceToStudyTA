@@ -109,7 +109,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
          .get_search_input()
          .click_find_tutor_btn())
         list_of_offers = (ExploreOffersPage(self.driver)
-                          .get_list_of_offers_grid_card())
+                          .get_list_of_offers_inline_card())
         self.assertIsNotNone(list_of_offers, "There are no offers")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/283")
@@ -119,7 +119,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
                           .get_input()
                           .get_attribute("placeholder"))
         get_find_tutor = (HomePageStudent(self.driver)
-                          .get_text_button_find_tutor)
+                          .get_text_button_find_tutor())
         self.assertTrue("What would you like to learn ?", get_input_line)
         self.assertTrue("Find tutor", get_find_tutor)
 
