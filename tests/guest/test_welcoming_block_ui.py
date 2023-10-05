@@ -32,7 +32,7 @@ class WelcomingBlockUI(BaseTestRunner):
         background_color = (HomePageGuest(self.driver).get_individual_time().node
                             .value_of_css_property("background-color"))
         self.assertEqual("rgba(55, 71, 79, 1)", background_color)
-        sleep(2)
+
         color_description = (HomePageGuest(self.driver)
                              .get_individual_time()
                              .get_description_value_of_css("color"))
@@ -63,7 +63,7 @@ class WelcomingBlockUI(BaseTestRunner):
             self.assertFalse(result.is_expanded(), "Element is selected")
 
         (HomePageGuest(self.driver).click_digital_communication())
-        sleep(2)
+
         background_color = (HomePageGuest(self.driver).get_digital_communication().node
                             .value_of_css_property("background-color"))
         self.assertEqual("rgba(55, 71, 79, 1)", background_color)
