@@ -10,6 +10,7 @@ from SpaceToStudy.ui.elements.input import PasswordInput
 from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.elements.button import Button
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.google_authorization_popups.google_popup_email_input import GooglePopUpEmailInput
 
 IMG_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/img")
 TITLE_MODAL = (By.XPATH, "//*[contains(text(),'Welcome back')]")
@@ -18,9 +19,8 @@ PASSWORD_INPUT = (By.XPATH, "//label[contains(text(), 'Password')]/..")
 
 FORGOT_PASSWORD_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[1]")
 LOGIN_BUTTON = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/form/button[2]")
-SIGN_IN_WITH_GMAIL = (By.XPATH, '//*[@id="googleButton"]/div/div/div/div[2]/span[1]')
+SIGN_IN_WITH_GMAIL = (By.XPATH, '//*[@id="googleButton"]/div/iframe')
 JOIN_US_FOR_FREE = (By.XPATH, "//*[contains(text(),'Join us for free')]")
-
 UNSUCCESS_LOGIN_POP_UP = (By.XPATH, "?????????????")
 
 
@@ -118,7 +118,8 @@ class LoginModal(BaseComponent):
 
     @allure.step("Click the 'Sign In with Gmail' button")
     def click_sign_in_as_gmail(self):
-        self.get_sign_in_as_gmail().click()
+        self.node.find_element(*SIGN_IN_WITH_GMAIL).click()
+        return GooglePopUpEmailInput(self.node.parent)
 
     @allure.step("Perform an outside click to dismiss the modal window")
     def outside_click(self):
