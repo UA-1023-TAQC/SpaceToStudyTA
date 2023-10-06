@@ -17,10 +17,10 @@ class RegistrationTestCase(BaseTestRunner):
                         .click_started_for_free()
                         .click_become_a_tutor())
         (registration.set_first_name("test")
-                     .set_last_name("test")
-                     .set_email("test@gmail.com")
-                     .set_password("@#$%//////")
-                     .set_confirm_password("@#$%//////"))
+         .set_last_name("test")
+         .set_email("test@gmail.com")
+         .set_password("@#$%//////")
+         .set_confirm_password("@#$%//////"))
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
@@ -38,19 +38,19 @@ class RegistrationTestCase(BaseTestRunner):
                         .click_started_for_free()
                         .click_become_a_tutor())
         (registration.set_first_name("test")
-                     .set_last_name("test")
-                     .set_email("test@gmail.com")
-                     .set_password("11111111111111111111111111q")
-                     .set_confirm_password("11111111111111111111111111q"))
+         .set_last_name("test")
+         .set_email("test@gmail.com")
+         .set_password("11111111111111111111111111q")
+         .set_confirm_password("11111111111111111111111111q"))
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/96")
     def test_tutor_signUp_button_is_active(self):
         (HeaderUnauthorizedComponent(self.driver)
-                                .click_login_btn()
-                                .get_join_us_for_free()
-                                .click_link())
+         .click_login_btn()
+         .get_join_us_for_free()
+         .click_link())
         registration_modal = (HomePageGuest(self.driver)
                               .click_become_a_tutor()
                               .set_first_name(ValueProvider.get_tutor_first_name())
@@ -74,7 +74,7 @@ class RegistrationTestCase(BaseTestRunner):
          .get_how_it_works_block()
          .get_checkbox_learn_from_experts()
          .click()
-        )
+         )
         HomePageGuest(self.driver).click_button_become_a_student_tutor()
         modal = RegistrationModal(self.driver).get_title_text()
         self.assertTrue(modal, "Sign up as a student")
@@ -106,20 +106,16 @@ class RegistrationTestCase(BaseTestRunner):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/171")
     def test_open_tutor_registration_modal_at_what_can_you_do_block(self):
+        (HeaderUnauthorizedComponent(self.driver).click_navigate_link_by_name("What can you do"))
         block_is_displayed = (HomePageGuest(self.driver)
-                              .get_header()
-                              .get_navigate_links()[0]
-                              .click()
                               .click_become_a_tutor()
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Registration modal is not displayed!")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/177")
     def test_open_student_registration_modal_at_what_can_you_do_block(self):
+        (HeaderUnauthorizedComponent(self.driver).click_navigate_link_by_name("What can you do"))
         block_is_displayed = (HomePageGuest(self.driver)
-                              .get_header()
-                              .get_navigate_links()[0]
-                              .click()
                               .click_become_a_student()
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Registration modal is not displayed!")
@@ -129,15 +125,15 @@ class RegistrationTestCase(BaseTestRunner):
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
                                 .click_started_for_free())
-        start_student = get_started_for_free\
-            .get_card_learn_from_experts()\
+        start_student = get_started_for_free \
+            .get_card_learn_from_experts() \
             .click_btn()
         title_student = start_student.get_text_title_modal()
         self.assertEqual(title_student, "Sign up as a student")
         start_student.click_close_btn()
-        title_tutor = get_started_for_free\
-            .get_card_share_your_experience()\
-            .click_btn()\
+        title_tutor = get_started_for_free \
+            .get_card_share_your_experience() \
+            .click_btn() \
             .get_text_title_modal()
         self.assertEqual(title_tutor, "Sign up as a tutor")
 
@@ -240,7 +236,7 @@ class RegistrationTestCase(BaseTestRunner):
                          "Text differs from 'Already have a Space2Study account?'")
 
         login_link_text = registration_modal.get_login_link_text()
-        self.assertEqual("Login!", login_link_text,"Link name differs from 'Login!'")
+        self.assertEqual("Login!", login_link_text, "Link name differs from 'Login!'")
         login_link_is_underlined = registration_modal.get_login_link().value_of_css_property("text-decoration")
         self.assertEqual(expected_decoration_property, login_link_is_underlined, "'Login!' link isn't underlined")
         login_link_is_bold = registration_modal.get_login_link().value_of_css_property("font-weight")
@@ -325,7 +321,6 @@ class RegistrationTestCase(BaseTestRunner):
         button_state_without_confirm_password = (RegistrationModal(self.driver).get_sign_up_btn())
         self.assertFalse(button_state_without_confirm_password.is_enabled(), "The sign up button must be inactive")
 
-
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/197")
     def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
         window_width = 600
@@ -340,7 +335,8 @@ class RegistrationTestCase(BaseTestRunner):
         HomePageGuest(self.driver).set_size_window(window_width, window_height)
         what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
         for key, element in what_can_u_do_elements.items():
-            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+            self.assertTrue(element.is_displayed(),
+                            f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/309')
     def test_transparent_header_disappears_if_the_field_last_name_is_filled(self):
@@ -397,4 +393,3 @@ class RegistrationTestCase(BaseTestRunner):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
-
