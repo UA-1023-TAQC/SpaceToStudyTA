@@ -5,8 +5,8 @@ import allure
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
-from tests.test_runners import BaseTestRunner
-from tests.value_provider import ValueProvider
+from tests.ui.test_runners import BaseTestRunner
+from tests.utils.value_provider import ValueProvider
 
 
 class RegistrationTestCase(BaseTestRunner):
@@ -197,7 +197,7 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(expected_font_weight, terms_is_bold, "'Terms' link isn't bold")
         terms_link_href = registration_modal.get_terms_link().get_link_href()
         self.assertEqual("https://s2s-front-stage.azurewebsites.net/", terms_link_href, f"'Terms' refers"
-                         f" on {terms_link_href}, but expected URL 'https://s2s-front-stage.azurewebsites.net/'.")
+                                                                                        f" on {terms_link_href}, but expected URL 'https://s2s-front-stage.azurewebsites.net/'.")
 
         privacy_policy_link_text = registration_modal.get_privacy_policy_link_text()
         self.assertEqual("Privacy Policy", privacy_policy_link_text, "Link name differs from 'Privacy policy'")
@@ -419,6 +419,7 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(error_message, last_name_error)
         self.assertEqual(error_message, email_error)
         self.assertEqual(error_message, confirm_password_error)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

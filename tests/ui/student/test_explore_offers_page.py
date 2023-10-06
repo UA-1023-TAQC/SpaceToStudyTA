@@ -2,8 +2,8 @@ import allure
 
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
-from tests.test_runners import TestRunnerWithStudent
-from tests.value_provider import ValueProvider
+from tests.ui.test_runners import TestRunnerWithStudent
+from tests.utils.value_provider import ValueProvider
 
 
 class TestExploreOffersPageStudent(TestRunnerWithStudent):

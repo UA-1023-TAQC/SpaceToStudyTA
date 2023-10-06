@@ -1,7 +1,6 @@
+import re
 
 import allure
-import re
-from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent, BUTTON_GO_TO_CATEGORIES
 from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.home_page.home_student import (HomePageStudent,
@@ -12,7 +11,7 @@ from SpaceToStudy.ui.pages.home_page.home_student import (HomePageStudent,
                                                           CATEGORY_MATH,
                                                           CATEGORY_DANCE,
                                                           CATEGORY_LANGUAGES)
-from tests.test_runners import TestRunnerWithStudent
+from tests.ui.test_runners import TestRunnerWithStudent
 
 
 class PopularCategoriesBlockUI(TestRunnerWithStudent):
@@ -119,6 +118,3 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
             self.list_offers_without_digits.append(text_offers_without_digits)
         for element in self.list_offers_without_digits:
             self.assertEqual("offers", element)
-
-
-

@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
-from tests.value_provider import ValueProvider
+from tests.utils.value_provider import ValueProvider
 
 IMPLICITLY_WAIT = 5
 

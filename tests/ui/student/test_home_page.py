@@ -1,13 +1,11 @@
 import allure
-
-
 from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
-from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
-from tests.test_runners import TestRunnerWithStudent
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
+from tests.ui.test_runners import TestRunnerWithStudent
 
 
 class TestHomePageStudent(TestRunnerWithStudent):
@@ -84,7 +82,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
     @allure.title('Verify that a Student can see all tutor’s offers at the home page')
     def test_student_view_tutor_offers(self):
         (HeaderComponent(self.driver)
-         .get_navigate_links())[1]\
+         .get_navigate_links())[1] \
             .click()
         how_it_works_block = (HomePageStudent(self.driver)
                               .get_how_it_works_block_student())
@@ -106,4 +104,3 @@ class TestHomePageStudent(TestRunnerWithStudent):
         home.click_button_go_to_categories()
         title_of_page = CategoriesPage(self.driver).get_categories_title()
         self.assertEqual(title_of_page, "Categories")
-
