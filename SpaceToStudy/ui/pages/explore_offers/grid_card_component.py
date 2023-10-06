@@ -60,6 +60,10 @@ class GridCardComponent(BaseComponent):
         self.get_add_to_bookmarks_btn().click()
         return self
 
+    @allure.step("Get languages as a webElement")
+    def get_languages_webelement(self) -> WebElement:
+        return self.node.find_element(*LANGUAGES)
+
     @allure.step("Get languages as a text")
     def get_languages(self) -> str:
         return self.node.find_element(*LANGUAGES).text
@@ -68,13 +72,25 @@ class GridCardComponent(BaseComponent):
     def get_offer_title(self) -> str:
         return self.node.find_element(*OFFER_TITLE).text
 
+    @allure.step("Get subject label as a webElement")
+    def get_subject_label_webelement(self) -> WebElement:
+        return self.node.find_element(*SUBJECT_LABEL)
+
     @allure.step("Get subject label as a text")
     def get_subject_label(self) -> str:
         return self.node.find_element(*SUBJECT_LABEL).text
 
+    @allure.step("Get level label as a webElement")
+    def get_level_label_webelement(self) -> WebElement:
+        return self.node.find_element(*LEVEL_LABEL)
+
     @allure.step("Get level label as a text")
     def get_level_label(self) -> str:
         return self.node.find_element(*LEVEL_LABEL).text
+
+    @allure.step("Get price value as webElement")
+    def get_price_value_webelement(self) -> WebElement:
+        return self.node.find_element(*PRICE_VALUE)
 
     @allure.step("Get price value")
     def get_price_value(self) -> str:
@@ -88,9 +104,17 @@ class GridCardComponent(BaseComponent):
     def get_star_icon(self) -> WebElement:
         return self.node.find_element(*STAR_ICON)
 
+    @allure.step("Get rating value as a webElement")
+    def get_rating_webelement(self) -> WebElement:
+        return self.node.find_element(*RATING_VALUE)
+
     @allure.step("Get rating value as a text")
     def get_rating_value(self) -> str:
         return self.node.find_element(*RATING_VALUE).text
+
+    @allure.step("Get reviews as a webElement")
+    def get_reviews_webelement(self) -> WebElement:
+        return self.node.find_element(*REVIEWS_LINE)
 
     @allure.step("Get reviews line as a text")
     def get_reviews_line(self) -> str:
@@ -102,7 +126,9 @@ class GridCardComponent(BaseComponent):
 
     @allure.step("Click on the view details button")
     def click_view_details_btn(self):
+        from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
         self.get_view_details_btn().click()
+        return OfferDetailsPage(self.node)
 
     @allure.step("Get send message button")
     def get_send_message_btn(self) -> WebElement:

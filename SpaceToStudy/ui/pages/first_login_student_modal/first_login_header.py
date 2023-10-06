@@ -11,6 +11,8 @@ PHOTO_PAGE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/div[4]"
 
 
 class FirstLoginHeader(BaseComponent):
+
+    @allure.step("Get general page")
     def get_general_page(self) -> WebElement:
         return self.node.find_element(*GENERAL_PAGE)
 
@@ -20,6 +22,7 @@ class FirstLoginHeader(BaseComponent):
         from SpaceToStudy.ui.pages.first_login_student_modal.general_page import GeneralPageStudent
         return GeneralPageStudent(self.node.parent)
 
+    @allure.step("Get interests page")
     def get_interests_page(self) -> WebElement:
         return self.node.find_element(*INTERESTS_PAGE)
 
@@ -29,6 +32,7 @@ class FirstLoginHeader(BaseComponent):
         from SpaceToStudy.ui.pages.first_login_student_modal.interests_page import InterestsPageStudent
         return InterestsPageStudent(self.node.parent)
 
+    @allure.step("Get language page")
     def get_language_page(self) -> WebElement:
         return self.node.find_element(*LANGUAGE_PAGE)
 
@@ -38,6 +42,7 @@ class FirstLoginHeader(BaseComponent):
         from SpaceToStudy.ui.pages.first_login_student_modal.language_page import LanguagePageStudent
         return LanguagePageStudent(self.node.parent)
 
+    @allure.step("Get photo page")
     def get_photo_page(self) -> WebElement:
         return self.node.find_element(*PHOTO_PAGE)
 
