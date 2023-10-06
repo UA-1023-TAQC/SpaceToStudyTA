@@ -16,6 +16,7 @@ CATEGORY_DESIGN = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div
 CATEGORY_DANCE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[4]")
 CATEGORY_MATH = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[5]")
 CATEGORY_LANGUAGES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[6]")
+CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div")
 CATEGORIES_BLOCK_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/p")
 CATEGORIES_BLOCK_DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/span")
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
@@ -47,6 +48,7 @@ class HomePageStudent(BasePage):
         self._how_it_works_block_student = None
         self._categories_block_title = None
         self._categories_block_description = None
+        self._categories_block = None
 
     @allure.step("Get categories")
     def get_categories(self) -> tuple[CategoryComponent]:
@@ -55,8 +57,20 @@ class HomePageStudent(BasePage):
             self._categories = []
             for category in categories:
                 self._categories.append(CategoryComponent(category))
-
         return self._categories
+
+    @allure.step("Get categories block")
+    def get_categories_block(self) -> WebElement:
+        if not self._categories_block:
+            self._categories_block = self.driver.find_element(*CATEGORIES_BLOCK)
+        return self._categories_block
+
+    @allure.step("Get value css categories block")
+    def get_gap_value_css_property_categories_block(self):
+        value = self.get_categories_block().value_of_css_property("gap")
+        gap = value.replace("px", "")
+        gap_int = (int(gap))
+        return gap_int
 
     @allure.step("Get title categories block")
     def get_title_categories_block(self) -> str:
