@@ -1,6 +1,9 @@
+from typing import List
+
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.explore_offers.filtering_and_sorting_component import FilteringAndSortingComponent
@@ -108,13 +111,14 @@ class ExploreOffersPage(BasePage):
         return self.get_back_to_all_subject().click()
 
     @allure.step("Get list of offers in grid card")
-    def get_list_of_offers_grid_card(self) -> list:
+    def get_list_of_offers_grid_card(self) -> List[GridCardComponent]:
         offers = self.driver.find_elements(*GRID_CARD)
         self._list_of_offers_grid_card = [GridCardComponent(offer) for offer in offers]
         return self._list_of_offers_grid_card
 
     @allure.step("Get list of offers in inline card")
-    def get_list_of_offers_inline_card(self) -> list:
+    def get_list_of_offers_inline_card(self) -> List[InlineCardComponent]:
+        WebDriverWait(self.driver, 3)
         offers = self.driver.find_elements(*INLINE_CARD)
         self._list_of_offers_inline_card = [InlineCardComponent(offer) for offer in offers]
         return self._list_of_offers_inline_card
