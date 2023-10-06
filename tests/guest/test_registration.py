@@ -45,6 +45,7 @@ class RegistrationTestCase(BaseTestRunner):
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/96")
     def test_tutor_signUp_button_is_active(self):
         (HeaderUnauthorizedComponent(self.driver)
                                 .click_login_btn()
