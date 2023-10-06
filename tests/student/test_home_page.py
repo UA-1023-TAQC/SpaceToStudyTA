@@ -182,3 +182,4 @@ class TestHomePageStudent(TestRunnerWithStudent):
         home.click_button_go_to_categories()
         title_of_page = CategoriesPage(self.driver).get_categories_title()
         self.assertEqual(title_of_page, "Categories")
+
