@@ -341,6 +341,32 @@ class RegistrationTestCase(BaseTestRunner):
         for key, element in what_can_u_do_elements.items():
             self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/310')
+    def test_transparent_header_disappears_if_the_field_first_name_is_filled(self):
+        data_1 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_first_name("Valentyn"))
+        self.assertEqual("true", data_1.get_first_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_1.get_first_name_error_message())
+        self.driver.refresh()
+        data_2 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_first_name("Valentyn Valentyn"))
+        self.assertEqual("true", data_2.get_first_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_2.get_first_name_error_message())
+        self.driver.refresh()
+        data_3 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_first_name("Vzxcvbnmaszxcvbnmasdasdfghjklq"))
+        self.assertEqual("true", data_3.get_first_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_3.get_first_name_error_message())
+        self.driver.refresh()
+        data_4 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_first_name("V"))
+        self.assertEqual("true", data_4.get_first_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_4.get_first_name_error_message())
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
