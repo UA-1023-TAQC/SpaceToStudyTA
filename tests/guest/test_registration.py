@@ -7,6 +7,7 @@ from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
+from utils.api_for_emails import TemporaryMailGenerator
 
 
 class RegistrationTestCase(BaseTestRunner):
@@ -340,6 +341,19 @@ class RegistrationTestCase(BaseTestRunner):
         what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
         for key, element in what_can_u_do_elements.items():
             self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+
+    def test_guest_signup_as_mentor_with_correct_data_and_agreement(self):
+        mailbox_address = TemporaryMailGenerator().generate_email_address()
+        (HomePageGuest(self.driver)
+         .click_become_a_tutor()
+         .set_first_name(ValueProvider.get_tutor_first_name())
+         .set_last_name(ValueProvider.get_tutor_last_name())
+         .set_password(ValueProvider.get_tutor_password())
+         .set_confirm_password(ValueProvider.get_tutor_password())
+         .set_email(mailbox_address)
+         .click_i_agree_checkbox()
+         .click_sign_up_btn())
+
 
 
 if __name__ == '__main__':
