@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 
 BLOCK_NAME = (By.XPATH, "./div[1]/p")
 FOUR_STEPS = (By.XPATH, "./div[1]/p/span")
@@ -23,6 +24,8 @@ ITEM_START_LEARNING_DESCRIPTION = (By.XPATH, "./div[2]/div[3]/div/p/span")
 ITEM_WRITE_FEEDBACK_IMG = (By.XPATH, "./div[2]/div[4]/img")
 ITEM_WRITE_FEEDBACK_TITLE = (By.XPATH, "./div[2]/div[4]/div/p")
 ITEM_WRITE_FEEDBACK_DESCRIPTION = (By.XPATH, "./div[2]/div[4]/div/p/span")
+
+FIND_TUTOR_BTN = (By.XPATH, "./a")
 
 
 class HowItWorksComponentStudent(BaseComponent):
@@ -128,8 +131,11 @@ class HowItWorksComponentStudent(BaseComponent):
             self._description_write_feedback_student = self.node.find_element(*ITEM_WRITE_FEEDBACK_DESCRIPTION)
         return self._description_write_feedback_student.text
 
-    @allure.step("Get button 'Find tutor' in How it works block")
-    def get_button_find_tutor_in_how_it_works(self) -> WebElement:
-        if not self._button_find_tutor_in_how_it_works:
-            self._button_find_tutor_in_how_it_works = self.node.find_element(*BUTTON_FIND_TUTOR_IN_HOW_IT_WORKS)
-        return self._button_find_tutor_in_how_it_works
+    @allure.step("Get 'Find tutor' button")
+    def get_find_tutor_btn(self):
+        return self.node.find_element(*FIND_TUTOR_BTN)
+
+    @allure.step("Click 'Find tutor' button")
+    def click_find_tutor_btn(self):
+        self.get_find_tutor_btn().click()
+        return ExploreOffersPage(self.node.parent)

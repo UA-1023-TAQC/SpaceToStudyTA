@@ -1,13 +1,12 @@
-import unittest
 import re
+import unittest
 
 import allure
 
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.offer_details.enroll_offer_modal import EnrollOfferModal
 from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
-
-from tests.test_runners import TestRunnerWithStudent
+from tests.ui.test_runners import TestRunnerWithStudent
 
 
 class EnrollTutorsOffer(TestRunnerWithStudent):

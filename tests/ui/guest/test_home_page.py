@@ -1,13 +1,12 @@
-import allure
 from time import sleep
 
+import allure
 from selenium.webdriver.common.keys import Keys
 
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
-
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
-from tests.test_runners import BaseTestRunner
+from tests.ui.test_runners import BaseTestRunner
 
 
 class HomePageTestCase(BaseTestRunner):
@@ -79,6 +78,7 @@ class HomePageTestCase(BaseTestRunner):
         new_location = free_choice_of_tutors.node.location
         self.assertNotEqual(initial_location, new_location, "The element remained in place")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/186")
     def test_who_we_are_block_contains_video_content(self):
         (HeaderComponent(self.driver)
          .get_navigate_links()[2]
@@ -88,6 +88,7 @@ class HomePageTestCase(BaseTestRunner):
                  .get_video())
         self.assertTrue(video)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/190")
     def test_open_who_we_are_block_by_tabs(self):
         logo = HeaderUnauthorizedComponent(self.driver).get_logo()
         logo.send_keys(Keys.TAB, 3, Keys.ENTER)
@@ -118,7 +119,6 @@ class HomePageTestCase(BaseTestRunner):
         focus_styles = (HomePageGuest(self.driver).get_tub_animation())
         self.assertTrue(focus_styles, "There is no animation")
 
-
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/197")
     def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
         window_width = 600
@@ -133,4 +133,64 @@ class HomePageTestCase(BaseTestRunner):
         HomePageGuest(self.driver).set_size_window(window_width, window_height)
         what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
         for key, element in what_can_u_do_elements.items():
-            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+            self.assertTrue(element.is_displayed(),
+                            f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/173")
+    def test_the_collapse_block_ui_tab(self):
+        # check tab
+        (HeaderUnauthorizedComponent(self.driver).tab_key(6))
+        sleep(2)
+        first_el_tab = (HomePageGuest(self.driver)
+                        .get_collapse_list_items_block()[0]
+                        .get_background_el_with_tab()
+                        .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(7))
+        sleep(2)
+        second_el_tab = (HomePageGuest(self.driver)
+                         .get_collapse_list_items_block()[1]
+                         .get_background_el_with_tab()
+                         .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(8))
+        sleep(2)
+        third_el_tab = (HomePageGuest(self.driver)
+                        .get_collapse_list_items_block()[2]
+                        .get_background_el_with_tab()
+                        .value_of_css_property("background-color"))
+        (HeaderUnauthorizedComponent(self.driver).tab_key(9))
+        sleep(2)
+        fourth_el_tab = (HomePageGuest(self.driver)
+                         .get_collapse_list_items_block()[3]
+                         .get_background_el_with_tab()
+                         .value_of_css_property("background-color"))
+        self.assertEqual("rgba(0, 0, 0, 0.12)", first_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", second_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", third_el_tab)
+        self.assertEqual("rgba(0, 0, 0, 0.12)", fourth_el_tab)
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/188')
+    def test_visability_of_the_all_elements_after_zooming_for_who_we_are_block(self):
+        zoom_page = '25%'
+        who_we_are = HomePageGuest(self.driver).click_navigate_link_in_header_by_name("Who we are")
+        who_we_are.driver.execute_script(f"document.body.style.zoom='{zoom_page}'")
+        who_we_are_elements = (who_we_are
+                               .get_who_we_are_block()
+                               .get_who_we_are_elements())
+        for key, element in who_we_are_elements.items():
+            self.assertTrue(element.is_displayed(),
+                            f"Element {key} is not displayed when a window zoom is set {zoom_page}")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/187")
+    def test_what_can_we_do_elements_in_center(self):
+        (HeaderComponent(self.driver)
+         .get_navigate_links()[2]
+         .click())
+        home_page = HomePageGuest(self.driver)
+        video_display = (home_page
+                         .get_who_we_are_block()
+                         .get_video_display())
+        text_aligning = (home_page
+                         .get_who_we_are_block()
+                         .get_text_aligning())
+        self.assertEqual("block", video_display)
+        self.assertEqual("center", text_aligning)

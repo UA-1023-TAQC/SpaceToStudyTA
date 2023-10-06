@@ -10,7 +10,7 @@ from SpaceToStudy.ui.pages.home_page.home_guest import (HomePageGuest,
                                                         COLLAPSE_BLOCK_INDIVIDUAL_TIME,
                                                         COLLAPSE_BLOCK_FLEXIBLE_LOCATION,
                                                         BUTTON_GET_STARTED_FOR_FREE)
-from tests.test_runners import BaseTestRunner
+from tests.ui.test_runners import BaseTestRunner
 
 
 class WelcomingBlockUI(BaseTestRunner):
@@ -32,7 +32,7 @@ class WelcomingBlockUI(BaseTestRunner):
         background_color = (HomePageGuest(self.driver).get_individual_time().node
                             .value_of_css_property("background-color"))
         self.assertEqual("rgba(55, 71, 79, 1)", background_color)
-        sleep(2)
+
         color_description = (HomePageGuest(self.driver)
                              .get_individual_time()
                              .get_description_value_of_css("color"))
@@ -43,10 +43,10 @@ class WelcomingBlockUI(BaseTestRunner):
         self.assertEqual("rgba(255, 255, 255, 1)", color_title)
         is_second_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
         for result in is_second_el_open[:1] + is_second_el_open[2:]:
-            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
+            self.assertFalse(result.is_expanded(), "Element is selected")
 
         (HomePageGuest(self.driver).click_free_choice_of_tutors())
-        sleep(2)
+
         background_color = (HomePageGuest(self.driver).get_free_choice_of_tutors().node
                             .value_of_css_property("background-color"))
         self.assertEqual("rgba(55, 71, 79, 1)", background_color)
@@ -60,10 +60,10 @@ class WelcomingBlockUI(BaseTestRunner):
         self.assertEqual("rgba(255, 255, 255, 1)", color_title)
         is_third_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
         for result in is_third_el_open[:2] + is_third_el_open[3:]:
-            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
+            self.assertFalse(result.is_expanded(), "Element is selected")
 
         (HomePageGuest(self.driver).click_digital_communication())
-        sleep(2)
+
         background_color = (HomePageGuest(self.driver).get_digital_communication().node
                             .value_of_css_property("background-color"))
         self.assertEqual("rgba(55, 71, 79, 1)", background_color)
@@ -77,7 +77,7 @@ class WelcomingBlockUI(BaseTestRunner):
         self.assertEqual("rgba(255, 255, 255, 1)", color_title)
         is_fourth_el_open = (HomePageGuest(self.driver).get_collapse_list_items_block())
         for result in is_fourth_el_open[:3]:
-            self.assertFalse(result.get_description().is_displayed(), "Element is selected")
+            self.assertFalse(result.is_expanded(), "Element is selected")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/206")
     def test_the_collapse_block_ui_alignment(self):
@@ -101,44 +101,43 @@ class WelcomingBlockUI(BaseTestRunner):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/203")
     def test_the_collapse_block_ui_text(self):
+        home = HomePageGuest(self.driver)
         flexible_location = "Flexible Location"
         individual_time = "Individual Time"
         free_choice = "Free Choice of Tutors"
         digital_communication = "Digital Communication"
-        description = ("It is a long established fact that a reader will be distracted by the readable content "
-                       "of a page when looking at its layout.")
-        title_fl = (HomePageGuest(self.driver)
-                    .get_flexible_location()
-                    .get_title_text())
+        description_flexible_location = ("Space2Study platform has no boundaries and can be used anywhere in the"
+                                         " world, all you need is aspiration.")
+        description_individual_time = ("Space2Study platform provides the opportunity to study lessons at "
+                                       "any time convenient for you, pause and continue again.")
+        description_free_choice_of_tutors = ("Space2Study platform has a wide range of criteria and will help you "
+                                             "find the best tutor for education.")
+        description_digital_communication = ("Space2Study platform offers extensive opportunities for meaningful "
+                                             "communication not only with tutors but also with students.")
+        title_fl = home.get_flexible_location().get_title_text()
         self.assertEqual(flexible_location, title_fl)
         description_fl = (HomePageGuest(self.driver)
                           .get_flexible_location()
                           .get_description_text())
-        self.assertEqual(description_fl, description)
-        title_it = (HomePageGuest(self.driver)
-                    .get_individual_time()
-                    .get_title_text())
+        self.assertEqual(description_flexible_location, description_fl)
+
+        title_it = home.get_individual_time().get_title_text()
         self.assertEqual(individual_time, title_it)
-        description_it = (HomePageGuest(self.driver)
-                          .get_individual_time()
-                          .get_description_text())
-        self.assertEqual(description_it, description)
-        title_fc = (HomePageGuest(self.driver)
-                    .get_free_choice_of_tutors()
-                    .get_title_text())
+        home.click_individual_time()
+        description_it = home.get_individual_time().get_description_text()
+        self.assertEqual(description_individual_time, description_it)
+
+        title_fc = home.get_free_choice_of_tutors().get_title_text()
         self.assertEqual(free_choice, title_fc)
-        description_fc = (HomePageGuest(self.driver)
-                          .get_free_choice_of_tutors()
-                          .get_description_text())
-        self.assertIn(description_fc, description)
-        title_dc = (HomePageGuest(self.driver)
-                    .get_digital_communication()
-                    .get_title_text())
+        home.click_free_choice_of_tutors()
+        description_fc = home.get_free_choice_of_tutors().get_description_text()
+        self.assertIn(description_free_choice_of_tutors, description_fc)
+
+        title_dc = home.get_digital_communication().get_title_text()
         self.assertEqual(digital_communication, title_dc)
-        description_dc = (HomePageGuest(self.driver)
-                          .get_digital_communication()
-                          .get_description_text())
-        self.assertIn(description_dc, description)
+        home.click_digital_communication()
+        description_dc = home.get_digital_communication().get_description_text()
+        self.assertEqual(description_digital_communication, description_dc)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/212")
     def test_the_collapse_block_ui_hover(self):
@@ -238,7 +237,7 @@ class WelcomingBlockUI(BaseTestRunner):
         (HeaderUnauthorizedComponent(self.driver)
          .get_login_btn()
          .send_keys(Keys.TAB))
-        sleep(3)
+        sleep(5)
         button_tab = (HomePageGuest(self.driver)
                       .get_button_get_started_for_free()
                       .value_of_css_property("box-shadow"))
