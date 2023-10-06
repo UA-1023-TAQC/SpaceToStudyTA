@@ -25,12 +25,3 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         self.assertEqual("Go to categories", button_text)
         self.assertTrue(button_is_displayed, "Button is not displayed")
         self.assertTrue(page_is_displayed, "Page is not displayed")
-
-    @allure.step("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/306")
-    def test_student_home_page_availability_learning_categories(self):
-        HomePageStudent(self.driver).click_button_go_to_categories()
-        title_of_page = CategoriesPage(self.driver).get_categories_title()
-        self.assertEqual(title_of_page, "Categories")
-
-
-
