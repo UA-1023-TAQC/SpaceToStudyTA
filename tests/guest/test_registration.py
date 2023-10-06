@@ -321,6 +321,17 @@ class RegistrationTestCase(BaseTestRunner):
         button_state_without_confirm_password = (RegistrationModal(self.driver).get_sign_up_btn())
         self.assertFalse(button_state_without_confirm_password.is_enabled(), "The sign up button must be inactive")
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/316')
+    def test_tutor_sign_up_last_name_input_length_validation(self):
+        (HomePageGuest(self.driver)
+         .click_started_for_free()
+         .click_become_a_tutor())
+        error_message = (RegistrationModal(self.driver)
+                         .set_last_name("Vzxcvbnmaszxcvbnmasdasdfghjklqw")
+                         .click_i_agree_checkbox()
+                         .get_last_name_error_message())
+        self.assertEqual(error_message, "This field cannot be longer than 30 characters")
+
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/197")
     def test_visability_of_the_all_elements_after_resizing_for_what_can_you_do_block(self):
         window_width = 600
