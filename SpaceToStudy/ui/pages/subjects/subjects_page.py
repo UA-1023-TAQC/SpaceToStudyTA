@@ -31,9 +31,6 @@ class SubjectsPage(BasePage):
     @allure.step("Get title text")
     def get_text_subjects_title(self) -> str:
         return self.get_subjects_title().text
-    @allure.step("Get subjects title")
-    def get_subjects_title(self) -> str:
-        return self.driver.find_element(*SUBJECTS_TITLE).text
 
     @allure.step("Get subjects subtext")
     def get_subjects_subtext(self) -> str:
