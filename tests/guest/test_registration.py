@@ -17,10 +17,10 @@ class RegistrationTestCase(BaseTestRunner):
                         .click_started_for_free()
                         .click_become_a_tutor())
         (registration.set_first_name("test")
-                     .set_last_name("test")
-                     .set_email("test@gmail.com")
-                     .set_password("@#$%//////")
-                     .set_confirm_password("@#$%//////"))
+         .set_last_name("test")
+         .set_email("test@gmail.com")
+         .set_password("@#$%//////")
+         .set_confirm_password("@#$%//////"))
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password must contain at least one alphabetic and one numeric character")
 
@@ -38,18 +38,19 @@ class RegistrationTestCase(BaseTestRunner):
                         .click_started_for_free()
                         .click_become_a_tutor())
         (registration.set_first_name("test")
-                     .set_last_name("test")
-                     .set_email("test@gmail.com")
-                     .set_password("11111111111111111111111111q")
-                     .set_confirm_password("11111111111111111111111111q"))
+         .set_last_name("test")
+         .set_email("test@gmail.com")
+         .set_password("11111111111111111111111111q")
+         .set_confirm_password("11111111111111111111111111q"))
         message = (registration.get_password_error_message())
         self.assertEqual(message, "Password cannot be shorter than 8 and longer than 25 characters")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/96")
     def test_tutor_signUp_button_is_active(self):
         (HeaderUnauthorizedComponent(self.driver)
-                                .click_login_btn()
-                                .get_join_us_for_free()
-                                .click_link())
+         .click_login_btn()
+         .get_join_us_for_free()
+         .click_link())
         registration_modal = (HomePageGuest(self.driver)
                               .click_become_a_tutor()
                               .set_first_name(ValueProvider.get_tutor_first_name())
@@ -73,7 +74,7 @@ class RegistrationTestCase(BaseTestRunner):
          .get_how_it_works_block()
          .get_checkbox_learn_from_experts()
          .click()
-        )
+         )
         HomePageGuest(self.driver).click_button_become_a_student_tutor()
         modal = RegistrationModal(self.driver).get_title_text()
         self.assertTrue(modal, "Sign up as a student")
@@ -105,20 +106,16 @@ class RegistrationTestCase(BaseTestRunner):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/171")
     def test_open_tutor_registration_modal_at_what_can_you_do_block(self):
+        (HeaderUnauthorizedComponent(self.driver).click_navigate_link_by_name("What can you do"))
         block_is_displayed = (HomePageGuest(self.driver)
-                              .get_header()
-                              .get_navigate_links()[0]
-                              .click()
                               .click_become_a_tutor()
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Registration modal is not displayed!")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/177")
     def test_open_student_registration_modal_at_what_can_you_do_block(self):
+        (HeaderUnauthorizedComponent(self.driver).click_navigate_link_by_name("What can you do"))
         block_is_displayed = (HomePageGuest(self.driver)
-                              .get_header()
-                              .get_navigate_links()[0]
-                              .click()
                               .click_become_a_student()
                               .is_displayed())
         self.assertTrue(block_is_displayed, "Registration modal is not displayed!")
@@ -128,15 +125,15 @@ class RegistrationTestCase(BaseTestRunner):
     def test_opening_of_modal_registration_window_for_tutor_and_student(self):
         get_started_for_free = (HomePageGuest(self.driver)
                                 .click_started_for_free())
-        start_student = get_started_for_free\
-            .get_card_learn_from_experts()\
+        start_student = get_started_for_free \
+            .get_card_learn_from_experts() \
             .click_btn()
         title_student = start_student.get_text_title_modal()
         self.assertEqual(title_student, "Sign up as a student")
         start_student.click_close_btn()
-        title_tutor = get_started_for_free\
-            .get_card_share_your_experience()\
-            .click_btn()\
+        title_tutor = get_started_for_free \
+            .get_card_share_your_experience() \
+            .click_btn() \
             .get_text_title_modal()
         self.assertEqual(title_tutor, "Sign up as a tutor")
 
@@ -239,7 +236,7 @@ class RegistrationTestCase(BaseTestRunner):
                          "Text differs from 'Already have a Space2Study account?'")
 
         login_link_text = registration_modal.get_login_link_text()
-        self.assertEqual("Login!", login_link_text,"Link name differs from 'Login!'")
+        self.assertEqual("Login!", login_link_text, "Link name differs from 'Login!'")
         login_link_is_underlined = registration_modal.get_login_link().value_of_css_property("text-decoration")
         self.assertEqual(expected_decoration_property, login_link_is_underlined, "'Login!' link isn't underlined")
         login_link_is_bold = registration_modal.get_login_link().value_of_css_property("font-weight")
@@ -349,9 +346,61 @@ class RegistrationTestCase(BaseTestRunner):
         HomePageGuest(self.driver).set_size_window(window_width, window_height)
         what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
         for key, element in what_can_u_do_elements.items():
-            self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+            self.assertTrue(element.is_displayed(),
+                            f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/309')
+    def test_transparent_header_disappears_if_the_field_last_name_is_filled(self):
+        data_1 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Muradov"))
+        self.assertEqual("true", data_1.get_last_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_1.get_last_name_error_message())
+        self.driver.refresh()
+        data_2 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Muradov Rumadov"))
+        self.assertEqual("true", data_2.get_last_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_2.get_last_name_error_message())
+        self.driver.refresh()
+        data_3 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("M"))
+        self.assertEqual("true", data_3.get_last_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_3.get_last_name_error_message())
+        self.driver.refresh()
+        data_4 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Mzxcvbnmaszxcvbnmasdasdfghjklq"))
+        self.assertEqual("true", data_4.get_last_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_4.get_last_name_error_message())
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/310')
+    def test_transparent_header_disappears_if_the_field_first_name_is_filled(self):
+        data_1 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_first_name("Valentyn"))
+        self.assertEqual("true", data_1.get_first_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_1.get_first_name_error_message())
+        self.driver.refresh()
+        data_2 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_first_name("Valentyn Valentyn"))
+        self.assertEqual("true", data_2.get_first_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_2.get_first_name_error_message())
+        self.driver.refresh()
+        data_3 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_first_name("Vzxcvbnmaszxcvbnmasdasdfghjklq"))
+        self.assertEqual("true", data_3.get_first_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_3.get_first_name_error_message())
+        self.driver.refresh()
+        data_4 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_first_name("V"))
+        self.assertEqual("true", data_4.get_first_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_4.get_first_name_error_message())
 
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
-

@@ -1,4 +1,7 @@
+from time import sleep
+
 import allure
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -8,6 +11,7 @@ NAME_QUESTIONS_BLOCK = (By.XPATH, "./p")
 DESCRIPTION_QUESTIONS_BLOCK = (By.XPATH, "./span")
 HOW_TO_FIND_A_TUTOR_ITEM_TITLE = (By.XPATH, "./div[1]/div[1]/h6")
 HOW_TO_FIND_A_TUTOR_ITEM_DESCRIPTION = (By.XPATH, "./div[2]/div/div/div/div/p")
+ITEM_BLOCK = (By.XPATH, "./div[1]")
 
 
 class QuestionsComponent(BaseComponent):
@@ -18,6 +22,23 @@ class QuestionsComponent(BaseComponent):
         self._description_questions_block = None
         self._description_items = None
         self._title_items = None
+
+    @allure.step("Get the item block")
+    def get_item_block(self) -> WebElement:
+        return self.node.find_element(*ITEM_BLOCK)
+
+    @allure.step("Get the background color of item block")
+    def get_background_color_of_item_block(self) -> str:
+        return self.get_item_block().value_of_css_property("background-color")
+
+    @allure.step("Go to item N={item_sequence_number} by pressing tab")
+    def go_to_item_by_pressing_tab(self, item_sequence_number=1):
+        from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
+        home = HomePageStudent(self.node.parent)
+        number_of_tabs_from_input_field_till_first_item = 9
+        home.get_search_input().get_input()\
+            .send_keys(Keys.TAB * (number_of_tabs_from_input_field_till_first_item + item_sequence_number))
+        sleep(0.5)
 
     @allure.step("Get the name of questions block")
     def get_name_questions_block(self) -> str:

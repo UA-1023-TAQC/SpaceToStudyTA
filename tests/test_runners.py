@@ -21,7 +21,6 @@ class BaseTestRunner(unittest.TestCase):
         self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
         self.driver.maximize_window()
-        self.addCleanup(self.driver.quit)
         self.driver.get(ValueProvider.get_base_url())
 
     def _login(self, email: str, password: str):
