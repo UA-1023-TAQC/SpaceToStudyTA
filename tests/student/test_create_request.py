@@ -1,10 +1,9 @@
 import unittest
-from time import sleep
 
+import allure
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
-from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
@@ -19,6 +18,7 @@ from tests.value_provider import ValueProvider
 
 class CreateRequestTestCase(BaseTestRunner):
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/99")
     def test_offer_details(self):
         category = "Music"
         subject = "Guitar"
@@ -70,7 +70,7 @@ class CreateRequestTestCase(BaseTestRunner):
         self.assertEqual(str.upper(subject), card_subject_actual)
         self.assertEqual(str.upper("Beginner"), card_level_actual)
         self.assertEqual(language, card_language_actual)
-        self.assertEqual(f"{price} UAH", card_price_actual)
+        self.assertEqual(float(price), card_price_actual)
 
         general_info_component = OfferDetailsPage(self.driver).get_general_info_component()
         offer_desc_actual = OfferDetailsPage(self.driver).get_about_offer_desc()
@@ -156,7 +156,7 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         third_block.click_add_question_btn()
         offers_request_modal.click_add_to_draft_btn()
 
-        inline_card_component = OfferDetailsPage(self.driver).get_inline_card_component()
+        inline_card_component = OfferDetailsPage(self.driver).get_offer_inline_card_component()
         expected_title = inline_card_component.get_offer_title()
         expected_subject_label = inline_card_component.get_subject_label()
         expected_price_value = inline_card_component.get_price_value()

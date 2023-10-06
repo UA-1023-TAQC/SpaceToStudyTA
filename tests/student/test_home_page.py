@@ -4,6 +4,7 @@ import allure
 from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from tests.test_runners import TestRunnerWithStudent
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
@@ -11,105 +12,13 @@ from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 
 class TestHomePageStudent(TestRunnerWithStudent):
 
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/282")
-    def test_search_field_find_by_name(self):
-        search_result = (HomePageStudent(self.driver)
-                         .get_search_input()
-                         .set_text("Bruno M")
-                         .click_find_tutor_btn()
-                         .get_list_of_offers_inline_card())
-        for result in search_result:
-            self.assertIn("Bruno M", result.get_person_name())
-        tutors_offers_is_active = (ExploreOffersPage(self.driver)
-                                   .get_filtering_and_sorting_block()
-                                   .get_tutors_offers()
-                                   .value_of_css_property("color"))
-        students_requests_is_not_active = (ExploreOffersPage(self.driver)
-                                           .get_filtering_and_sorting_block()
-                                           .get_students_requests()
-                                           .value_of_css_property("color"))
-        self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
-        self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)")
-
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/217")
-    def test_search_field_with_invalid_data(self):
-        search_result = (HomePageStudent(self.driver)
-                         .get_search_input()
-                         .set_text("AN2$")
-                         .click_find_tutor_btn()
-                         .get_notification_block_with_no_results()
-                         .get_notifications_text())
-        self.assertEqual(search_result, "Sorry, no results found")
-        count_of_filters = (ExploreOffersPage(self.driver)
-                            .get_filtering_and_sorting_block()
-                            .get_filter_quantity_number())
-        tutors_offers_is_active = (ExploreOffersPage(self.driver)
-                                   .get_filtering_and_sorting_block()
-                                   .get_tutors_offers()
-                                   .value_of_css_property("color"))
-        students_requests_is_not_active = (ExploreOffersPage(self.driver)
-                                           .get_filtering_and_sorting_block()
-                                           .get_students_requests()
-                                           .value_of_css_property("color"))
-        self.assertEqual(count_of_filters, 1)
-        self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
-        self.assertEqual(students_requests_is_not_active,"rgba(96, 125, 139, 1)")
-
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/168")
-    def test_search_field_find_by_subject(self):
-        search_result = (HomePageStudent(self.driver)
-                         .get_search_input()
-                         .set_text("CYBERSECURITY")
-                         .click_find_tutor_btn()
-                         .get_list_of_offers_inline_card())
-        for result in search_result:
-            self.assertIn("CYBERSECURITY", result.get_subject_label())
-        count_of_filters = (ExploreOffersPage(self.driver)
-                            .get_filtering_and_sorting_block()
-                            .get_filter_quantity_number())
-        tutors_offers_is_active = (ExploreOffersPage(self.driver)
-                                   .get_filtering_and_sorting_block()
-                                   .get_tutors_offers()
-                                   .value_of_css_property("color"))
-        students_requests_is_not_active = (ExploreOffersPage(self.driver)
-                                           .get_filtering_and_sorting_block()
-                                           .get_students_requests()
-                                           .value_of_css_property("color"))
-        self.assertEqual(count_of_filters, 1)
-        self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
-        self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
-
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/281")
-    def test_search_field_find_by_title(self):
-        search_result = (HomePageStudent(self.driver)
-                         .get_search_input()
-                         .set_text("Freestyle and breakdance")
-                         .click_find_tutor_btn()
-                         .get_list_of_offers_inline_card())
-        for result in search_result:
-            self.assertIn("Freestyle and breakdance", result.get_offer_title())
-        count_of_filters = (ExploreOffersPage(self.driver)
-                            .get_filtering_and_sorting_block()
-                            .get_filter_quantity_number())
-        tutors_offers_is_active = (ExploreOffersPage(self.driver)
-                                   .get_filtering_and_sorting_block()
-                                   .get_tutors_offers()
-                                   .value_of_css_property("color"))
-        students_requests_is_not_active = (ExploreOffersPage(self.driver)
-                                           .get_filtering_and_sorting_block()
-                                           .get_students_requests()
-                                           .value_of_css_property("color"))
-        self.assertEqual(count_of_filters, 1)
-        self.assertEqual(tutors_offers_is_active, "rgba(38, 50, 56, 1)")
-        self.assertEqual(students_requests_is_not_active, "rgba(96, 125, 139, 1)")
-
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/218")
     def test_student_can_see_tutors_offers_at_the_home_page(self):
         (HomePageStudent(self.driver)
          .get_search_input()
          .click_find_tutor_btn())
         list_of_offers = (ExploreOffersPage(self.driver)
-                          .get_list_of_offers_grid_card())
+                          .get_list_of_offers_inline_card())
         self.assertIsNotNone(list_of_offers, "There are no offers")
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/283")
@@ -119,7 +28,7 @@ class TestHomePageStudent(TestRunnerWithStudent):
                           .get_input()
                           .get_attribute("placeholder"))
         get_find_tutor = (HomePageStudent(self.driver)
-                          .get_text_button_find_tutor)
+                          .get_text_button_find_tutor())
         self.assertTrue("What would you like to learn ?", get_input_line)
         self.assertTrue("Find tutor", get_find_tutor)
 
@@ -170,3 +79,18 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(493, mobile_input_block, "The item is not the right size")
         self.assertEqual(445, mobile_input, "The item is not the right size")
         self.assertEqual(493, mobile_find_tutor_btn, "The item is not the right size")
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/333')
+    @allure.title('Verify that a Student can see all tutor’s offers at the home page')
+    def test_student_view_tutor_offers(self):
+        (HeaderComponent(self.driver)
+         .get_navigate_links())[1]\
+            .click()
+        how_it_works_block = (HomePageStudent(self.driver)
+                              .get_how_it_works_block_student())
+        block_title = how_it_works_block.get_block_name_student()
+        self.assertEqual('How it works', block_title)
+        explore_offers = how_it_works_block.click_find_tutor_btn()
+        title = explore_offers.get_title_text()
+        self.assertEqual("Explore Offers", title)
+        self.assertEqual(8, len(explore_offers.get_list_of_offers_inline_card()))

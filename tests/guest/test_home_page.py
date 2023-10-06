@@ -79,6 +79,7 @@ class HomePageTestCase(BaseTestRunner):
         new_location = free_choice_of_tutors.node.location
         self.assertNotEqual(initial_location, new_location, "The element remained in place")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/186")
     def test_who_we_are_block_contains_video_content(self):
         (HeaderComponent(self.driver)
          .get_navigate_links()[2]
@@ -88,6 +89,7 @@ class HomePageTestCase(BaseTestRunner):
                  .get_video())
         self.assertTrue(video)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/190")
     def test_open_who_we_are_block_by_tabs(self):
         logo = HeaderUnauthorizedComponent(self.driver).get_logo()
         logo.send_keys(Keys.TAB, 3, Keys.ENTER)
@@ -134,3 +136,18 @@ class HomePageTestCase(BaseTestRunner):
         what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
         for key, element in what_can_u_do_elements.items():
             self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/187")
+    def test_what_can_we_do_elements_in_center(self):
+        (HeaderComponent(self.driver)
+         .get_navigate_links()[2]
+         .click())
+        home_page = HomePageGuest(self.driver)
+        video_display = (home_page
+                 .get_who_we_are_block()
+                 .get_video_display())
+        text_aligning = (home_page
+                 .get_who_we_are_block()
+                 .get_text_aligning())
+        self.assertEqual("block", video_display)
+        self.assertEqual("center", text_aligning)

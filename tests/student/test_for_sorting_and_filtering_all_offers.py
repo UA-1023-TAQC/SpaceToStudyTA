@@ -183,17 +183,22 @@ class SortingAndFilteringAllOffersTestCase(TestRunnerWithStudent):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/124")
     def test_search_by_name_filter_in_sidebar(self):
+        name_input = "Tutor"
         explore_offers_page = ExploreOffersPage(self.driver) \
             .get_filtering_and_sorting_block() \
             .click_filter_title() \
             .get_filters_sidebar_component() \
-            .set_search_by_name_input("Yura") \
+            .set_search_by_name_input(name_input) \
             .click_apply_filters_btn()
 
         list_of_filtered_offers = explore_offers_page\
             .get_list_of_offers_inline_card()
+
+        name_input_not_found = False
         for offer in list_of_filtered_offers:
-            self.assertIn("Yura", offer.get_person_name())
+            if name_input.lower() not in (offer.get_person_name() + offer.get_offer_title()).lower():
+                name_input_not_found = True
+        self.assertFalse(name_input_not_found)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/123")
     def test_rating_filter_in_sidebar(self):

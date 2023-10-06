@@ -17,6 +17,9 @@ CATEGORY_DANCE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/
 CATEGORY_MATH = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[5]")
 CATEGORY_LANGUAGES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[6]")
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div")
+CATEGORIES_BLOCK_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/p")
+CATEGORIES_BLOCK_DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/span")
+CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
@@ -43,6 +46,8 @@ class HomePageStudent(BasePage):
         self._search_tutor = None
         self._img_search_block = None
         self._how_it_works_block_student = None
+        self._categories_block_title = None
+        self._categories_block_description = None
         self._categories_block = None
 
     @allure.step("Get categories")
@@ -66,6 +71,18 @@ class HomePageStudent(BasePage):
         gap = value.replace("px", "")
         gap_int = (int(gap))
         return gap_int
+
+    @allure.step("Get title categories block")
+    def get_title_categories_block(self) -> str:
+        if not self._categories_block_title:
+            self._categories_block_title = self.driver.find_element(*CATEGORIES_BLOCK_TITLE)
+        return self._categories_block_title.text
+
+    @allure.step("Get description categories block")
+    def get_description_categories_block(self) -> str:
+        if not self._categories_block_description:
+            self._categories_block_description = self.driver.find_element(*CATEGORIES_BLOCK_DESCRIPTION)
+        return self._categories_block_description.text
 
     @allure.step("Get search input")
     def get_search_input(self) -> SearchTutorComponent:
@@ -117,7 +134,7 @@ class HomePageStudent(BasePage):
             _questions_items = self.driver.find_elements(*QUESTIONS_ITEMS)
             self._questions_items = []
             for questions_item in _questions_items:
-                self._questions_items.append(CategoryComponent(questions_item))
+                self._questions_items.append(QuestionsComponent(questions_item))
         return self._questions_items
 
     @allure.step("Get image search block")
