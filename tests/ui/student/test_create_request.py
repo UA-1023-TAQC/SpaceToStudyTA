@@ -5,18 +5,67 @@ from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
-from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
-from SpaceToStudy.ui.pages.offers_request_modal.offers_request_modal import(OffersRequestModal,
-                                                                            FirstBlock,
-                                                                            SecondBlock,
-                                                                            ThirdBlock)
-from tests.test_runners import BaseTestRunner, TestRunnerWithStudent
-from tests.value_provider import ValueProvider
+from SpaceToStudy.ui.pages.offers_request_modal.offers_request_modal import (OffersRequestModal,
+                                                                             FirstBlock,
+                                                                             SecondBlock,
+                                                                             ThirdBlock)
+from tests.ui.test_runners import TestRunnerWithStudent
+from tests.utils.value_provider import ValueProvider
 
 
-class CreateRequestTestCase(BaseTestRunner):
+class CreateStudentRequestTestCase(TestRunnerWithStudent):
+    def test_create_request_as_student(self):
+        categories_url = "https://s2s-front-stage.azurewebsites.net/categories"
+        category = "Music"
+        subject = "Guitar"
+        title = "Title 1"
+        description = "Description Description Description Description Description Description"
+        price = "1"
+        questions = "Questions 1"
+        answer = "Answer 1"
+
+        categories_url = (HomePageStudent(self.driver)
+                          .get_header()
+                          .get_navigate_links()[0]
+                          .click()
+                          .parent
+                          .current_url)
+        self.assertEqual(categories_url, categories_url)
+        offers_request_modal = (CategoriesPage(self.driver)
+                                .get_student_private_lesson_component()
+                                .click_create_request_btn())
+
+        first_block = offers_request_modal.get_first_block()
+        category_input = first_block.get_category_input()
+        category_input.set_text(category)
+        category_input.press_down_button(1).press_enter_button()
+        subject_input = first_block.get_subject_input()
+        subject_input.set_text(subject)
+        subject_input.press_down_button(1).press_enter_button()
+        first_block.get_checkbox_beginner().set_check()
+
+        second_block = offers_request_modal.get_second_block()
+        second_block.get_title_input().set_text(title)
+        second_block.get_describe_input().set_text(description)
+        second_block.get_language_input().press_down_button(2).press_enter_button()
+        second_block.get_price_input().set_text(price)
+
+        third_block = offers_request_modal.get_third_block()
+        third_block.get_question_input().set_text(questions)
+        third_block.set_answer_input_text(answer)
+        third_block.click_add_question_btn()
+        offers_request_modal.click_add_to_draft_btn()
+
+        inline_card_component = OfferDetailsPage(self.driver).get_offer_inline_card_component()
+        expected_title = inline_card_component.get_offer_title()
+        expected_subject_label = inline_card_component.get_subject_label()
+        expected_price_value = inline_card_component.get_price_value()
+
+        self.assertEqual(title, expected_title)
+        self.assertEqual(subject.upper(), expected_subject_label)
+        self.assertEqual(float(price), expected_price_value)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/99")
     def test_offer_details(self):
@@ -28,10 +77,7 @@ class CreateRequestTestCase(BaseTestRunner):
         price = "700"
         question = "What staff do I need?"
         answer = "You need a guitar"
-        (HeaderUnauthorizedComponent(self.driver).click_login_btn()
-         .set_email(ValueProvider.get_student_email())
-         .set_password(ValueProvider.get_student_password())
-         .click_login_button())
+
         (HeaderComponent(self.driver)
          .get_navigate_links()[0]
          .click())
@@ -105,62 +151,6 @@ class CreateRequestTestCase(BaseTestRunner):
         self.assertEqual(question, question_actual)
         self.assertEqual(answer, answer_actual)
 
-    def tearDown(self):
-        self.driver.quit()
-
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
-
-
-class CreateStudentRequestTestCase(TestRunnerWithStudent):
-    def test_create_request_as_student(self):
-        categories_url = "https://s2s-front-stage.azurewebsites.net/categories"
-        category = "Music"
-        subject = "Guitar"
-        title = "Title 1"
-        description = "Description Description Description Description Description Description"
-        price = "1"
-        questions = "Questions 1"
-        answer = "Answer 1"
-
-        categories_url = (HomePageStudent(self.driver)
-                          .get_header()
-                          .get_navigate_links()[0]
-                          .click()
-                          .parent
-                          .current_url)
-        self.assertEqual(categories_url, categories_url)
-        offers_request_modal = (CategoriesPage(self.driver)
-                                .get_student_private_lesson_component()
-                                .click_create_request_btn())
-
-        first_block = offers_request_modal.get_first_block()
-        category_input = first_block.get_category_input()
-        category_input.set_text(category)
-        category_input.press_down_button(1).press_enter_button()
-        subject_input = first_block.get_subject_input()
-        subject_input.set_text(subject)
-        subject_input.press_down_button(1).press_enter_button()
-        first_block.get_checkbox_beginner().set_check()
-
-        second_block = offers_request_modal.get_second_block()
-        second_block.get_title_input().set_text(title)
-        second_block.get_describe_input().set_text(description)
-        second_block.get_language_input().press_down_button(2).press_enter_button()
-        second_block.get_price_input().set_text(price)
-
-        third_block = offers_request_modal.get_third_block()
-        third_block.get_question_input().set_text(questions)
-        third_block.set_answer_input_text(answer)
-        third_block.click_add_question_btn()
-        offers_request_modal.click_add_to_draft_btn()
-
-        inline_card_component = OfferDetailsPage(self.driver).get_offer_inline_card_component()
-        expected_title = inline_card_component.get_offer_title()
-        expected_subject_label = inline_card_component.get_subject_label()
-        expected_price_value = inline_card_component.get_price_value()
-
-        self.assertEqual(title, expected_title)
-        self.assertEqual(subject.upper(), expected_subject_label)
-        self.assertEqual(float(price), expected_price_value)

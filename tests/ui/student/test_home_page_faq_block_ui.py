@@ -2,7 +2,7 @@ import allure
 from selenium.webdriver.common.action_chains import ActionChains
 
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
-from tests.test_runners import TestRunnerWithStudent
+from tests.ui.test_runners import TestRunnerWithStudent
 
 
 class TestHomePageFAQBlockUI(TestRunnerWithStudent):
@@ -67,9 +67,3 @@ class TestHomePageFAQBlockUI(TestRunnerWithStudent):
             self.assertEqual('rgba(0, 0, 0, 0)', question.get_background_color_of_item_block())
             question.go_to_item_by_pressing_tab(item_index + 1)
             self.assertEqual('rgba(0, 0, 0, 0.12)', question.get_background_color_of_item_block())
-
-
-
-
-
-

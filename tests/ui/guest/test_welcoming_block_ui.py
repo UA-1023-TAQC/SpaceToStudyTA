@@ -10,7 +10,7 @@ from SpaceToStudy.ui.pages.home_page.home_guest import (HomePageGuest,
                                                         COLLAPSE_BLOCK_INDIVIDUAL_TIME,
                                                         COLLAPSE_BLOCK_FLEXIBLE_LOCATION,
                                                         BUTTON_GET_STARTED_FOR_FREE)
-from tests.test_runners import BaseTestRunner
+from tests.ui.test_runners import BaseTestRunner
 
 
 class WelcomingBlockUI(BaseTestRunner):
