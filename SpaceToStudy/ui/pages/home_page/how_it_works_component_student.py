@@ -6,6 +6,7 @@ from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 BLOCK_NAME = (By.XPATH, "./div[1]/p")
 FOUR_STEPS = (By.XPATH, "./div[1]/p/span")
+BUTTON_FIND_TUTOR_IN_HOW_IT_WORKS = (By.XPATH, "//div[@id='how-it-works']/a[contains(text(), 'Find tutor')]")
 
 ITEM_SELECT_A_TUTOR_IMG = (By.XPATH, "./div[2]/div[1]/img")
 ITEM_SELECT_A_TUTOR_TITLE = (By.XPATH, "./div[2]/div[1]/div/p")
@@ -41,6 +42,7 @@ class HowItWorksComponentStudent(BaseComponent):
         self._img_write_feedback_student = None
         self._title_write_feedback_student = None
         self._description_write_feedback_student = None
+        self._button_find_tutor_in_how_it_works = None
 
     @allure.step("Get the block name")
     def get_block_name_student(self) -> str:
@@ -125,3 +127,9 @@ class HowItWorksComponentStudent(BaseComponent):
         if not self._description_write_feedback_student:
             self._description_write_feedback_student = self.node.find_element(*ITEM_WRITE_FEEDBACK_DESCRIPTION)
         return self._description_write_feedback_student.text
+
+    @allure.step("Get button 'Find tutor' in How it works block")
+    def get_button_find_tutor_in_how_it_works(self) -> WebElement:
+        if not self._button_find_tutor_in_how_it_works:
+            self._button_find_tutor_in_how_it_works = self.node.find_element(*BUTTON_FIND_TUTOR_IN_HOW_IT_WORKS)
+        return self._button_find_tutor_in_how_it_works
