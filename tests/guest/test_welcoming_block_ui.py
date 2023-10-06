@@ -237,7 +237,7 @@ class WelcomingBlockUI(BaseTestRunner):
         (HeaderUnauthorizedComponent(self.driver)
          .get_login_btn()
          .send_keys(Keys.TAB))
-        sleep(3)
+        sleep(5)
         button_tab = (HomePageGuest(self.driver)
                       .get_button_get_started_for_free()
                       .value_of_css_property("box-shadow"))
