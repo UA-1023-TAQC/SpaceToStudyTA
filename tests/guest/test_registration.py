@@ -196,7 +196,7 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(expected_font_weight, terms_is_bold, "'Terms' link isn't bold")
         terms_link_href = registration_modal.get_terms_link().get_link_href()
         self.assertEqual("https://s2s-front-stage.azurewebsites.net/", terms_link_href, f"'Terms' refers"
-                        f" on {terms_link_href}, but expected URL 'https://s2s-front-stage.azurewebsites.net/'.")
+                         f" on {terms_link_href}, but expected URL 'https://s2s-front-stage.azurewebsites.net/'.")
 
         privacy_policy_link_text = registration_modal.get_privacy_policy_link_text()
         self.assertEqual("Privacy Policy", privacy_policy_link_text, "Link name differs from 'Privacy policy'")
