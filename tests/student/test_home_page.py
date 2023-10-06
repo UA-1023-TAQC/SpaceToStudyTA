@@ -4,6 +4,7 @@ import allure
 from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from tests.test_runners import TestRunnerWithStudent
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
@@ -170,3 +171,18 @@ class TestHomePageStudent(TestRunnerWithStudent):
         self.assertEqual(493, mobile_input_block, "The item is not the right size")
         self.assertEqual(445, mobile_input, "The item is not the right size")
         self.assertEqual(493, mobile_find_tutor_btn, "The item is not the right size")
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/333')
+    @allure.title('Verify that a Student can see all tutor’s offers at the home page')
+    def test_student_view_tutor_offers(self):
+        (HeaderComponent(self.driver)
+         .get_navigate_links())[1]\
+            .click()
+        how_it_works_block = (HomePageStudent(self.driver)
+                              .get_how_it_works_block_student())
+        block_title = how_it_works_block.get_block_name_student()
+        self.assertEqual('How it works', block_title)
+        explore_offers = how_it_works_block.click_find_tutor_btn()
+        title = explore_offers.get_title_text()
+        self.assertEqual("Explore Offers", title)
+        self.assertEqual(8, len(explore_offers.get_list_of_offers_inline_card()))
