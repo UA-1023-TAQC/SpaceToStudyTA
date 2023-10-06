@@ -94,3 +94,16 @@ class TestHomePageStudent(TestRunnerWithStudent):
         title = explore_offers.get_title_text()
         self.assertEqual("Explore Offers", title)
         self.assertEqual(8, len(explore_offers.get_list_of_offers_inline_card()))
+
+    @allure.step("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/306")
+    def test_student_home_page_availability_learning_categories(self):
+        home = HomePageStudent(self.driver)
+        cards = home.get_categories()[0]
+        name = cards.get_name()
+        self.assertEqual(name, "Music")
+        offers = cards.get_offers()
+        self.assertEqual(offers, "28 offers")
+        home.click_button_go_to_categories()
+        title_of_page = CategoriesPage(self.driver).get_categories_title()
+        self.assertEqual(title_of_page, "Categories")
+
