@@ -1,4 +1,5 @@
 import allure
+
 from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
@@ -104,3 +105,30 @@ class TestHomePageStudent(TestRunnerWithStudent):
         home.click_button_go_to_categories()
         title_of_page = CategoriesPage(self.driver).get_categories_title()
         self.assertEqual(title_of_page, "Categories")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/334",
+                     "Check the student’s home page How it works block UI Test 1")
+    def test_how_it_works_ui_find_tutor_btn(self):
+        find_tutor_btn = (HomePageStudent(self.driver)
+                          .click_navigate_link_in_header_by_name("How it works")
+                          .get_how_it_works_block_student()
+                          .get_find_tutor_btn())
+        find_tutor_is_displayed = find_tutor_btn.is_displayed()
+        self.assertTrue(find_tutor_is_displayed, "'Find tutor' button isn't displayed on the page")
+
+        find_tutor_background_color = find_tutor_btn.value_of_css_property("background-color")
+        hover_find_tutor_background_color = (HomePageStudent(self.driver)
+                                             .hover(find_tutor_btn)
+                                             .value_of_css_property("background-color"))
+        self.assertNotEqual(find_tutor_background_color, hover_find_tutor_background_color,
+                            "'Find tutor' button doesn't changes color when hovered over")
+
+        button_class_with_tab_animation = "Mui-focusVisible"
+        find_tutor_class = find_tutor_btn.get_attribute("class")
+        self.assertTrue(button_class_with_tab_animation not in find_tutor_class,
+                        "'Find tutor' button is flashing without being hovered over or pressed with TAB key")
+
+        (HomePageStudent(self.driver).get_button_go_to_categories().send_keys(Keys.TAB))
+        tab_find_tutor_class = find_tutor_btn.get_attribute("class")
+        self.assertTrue(button_class_with_tab_animation in tab_find_tutor_class,
+                        "'Find tutor' button is not flashing when hovered over by pressing TAB key")

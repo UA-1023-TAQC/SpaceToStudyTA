@@ -7,7 +7,6 @@ from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffe
 
 BLOCK_NAME = (By.XPATH, "./div[1]/p")
 FOUR_STEPS = (By.XPATH, "./div[1]/p/span")
-BUTTON_FIND_TUTOR_IN_HOW_IT_WORKS = (By.XPATH, "//div[@id='how-it-works']/a[contains(text(), 'Find tutor')]")
 
 ITEM_SELECT_A_TUTOR_IMG = (By.XPATH, "./div[2]/div[1]/img")
 ITEM_SELECT_A_TUTOR_TITLE = (By.XPATH, "./div[2]/div[1]/div/p")
