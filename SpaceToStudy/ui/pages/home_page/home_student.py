@@ -120,7 +120,7 @@ class HomePageStudent(BasePage):
             _questions_items = self.driver.find_elements(*QUESTIONS_ITEMS)
             self._questions_items = []
             for questions_item in _questions_items:
-                self._questions_items.append(CategoryComponent(questions_item))
+                self._questions_items.append(QuestionsComponent(questions_item))
         return self._questions_items
 
     @allure.step("Get image search block")
