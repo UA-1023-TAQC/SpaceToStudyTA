@@ -341,6 +341,32 @@ class RegistrationTestCase(BaseTestRunner):
         for key, element in what_can_u_do_elements.items():
             self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/309')
+    def test_transparent_header_disappears_if_the_field_last_name_is_filled(self):
+        data_1 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Muradov"))
+        self.assertEqual("true", data_1.get_last_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_1.get_last_name_error_message())
+        self.driver.refresh()
+        data_2 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Muradov Rumadov"))
+        self.assertEqual("true", data_2.get_last_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_2.get_last_name_error_message())
+        self.driver.refresh()
+        data_3 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("M"))
+        self.assertEqual("true", data_3.get_last_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_3.get_last_name_error_message())
+        self.driver.refresh()
+        data_4 = (HomePageGuest(self.driver)
+                  .click_become_a_tutor()
+                  .set_last_name("Mzxcvbnmaszxcvbnmasdasdfghjklq"))
+        self.assertEqual("true", data_4.get_last_name_label().get_attribute("data-shrink"))
+        self.assertNotEqual("This field cannot be empty", data_4.get_last_name_error_message())
+
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/310')
     def test_transparent_header_disappears_if_the_field_first_name_is_filled(self):
         data_1 = (HomePageGuest(self.driver)

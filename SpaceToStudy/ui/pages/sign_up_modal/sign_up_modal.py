@@ -150,6 +150,11 @@ class RegistrationModal(BaseComponent):
         last_name_input.clear_text_input()
         return self
 
+    @allure.step("Get Last name label")
+    def get_last_name_label(self):
+        last_name_input = self.get_last_name_input()
+        return last_name_input.get_label()
+
     @allure.step("Get Last name label text")
     def get_last_name_label_text(self):
         last_name_input = self.get_last_name_input()
