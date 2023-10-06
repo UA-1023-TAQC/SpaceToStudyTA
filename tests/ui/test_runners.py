@@ -33,7 +33,8 @@ class BaseTestRunner(unittest.TestCase):
          .click_login_button())
 
     def tearDown(self):
-        self.driver.quit()
+        pass
+        #self.driver.quit()
 
 class TestRunnerWithStudent(BaseTestRunner):
     def setUp(self):
