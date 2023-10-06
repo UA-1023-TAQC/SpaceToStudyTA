@@ -275,7 +275,7 @@ class RegistrationTestCase(BaseTestRunner):
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/311')
     def test_tutor_sign_up_button_inactive_without_entered_data_or_checkbox(self):
         (HomePageGuest(self.driver)
-         .click_started_for_free()
+         # .click_started_for_free()
          .click_become_a_tutor())
         button_state_without_checkbox = (RegistrationModal(self.driver)
                                          .set_first_name("First")
@@ -401,6 +401,24 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual("true", data_4.get_first_name_label().get_attribute("data-shrink"))
         self.assertNotEqual("This field cannot be empty", data_4.get_first_name_error_message())
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/314")
+    def test_error_messages_appear_if_fields_empty(self):
+        sign_up = (HomePageGuest(self.driver)
+                   .click_become_a_tutor()
+                   .set_last_name("")
+                   .set_email("")
+                   .set_confirm_password("")
+                   .set_password(ValueProvider().get_tutor_password()))
+        error_message = "This field cannot be empty"
+        first_name_error = sign_up.get_first_name_error_message()
+        last_name_error = sign_up.get_last_name_error_message()
+        email_error = sign_up.get_email_error_message()
+        confirm_password_error = sign_up.get_confirm_password_error_message()
+
+        self.assertEqual(error_message, first_name_error)
+        self.assertEqual(error_message, last_name_error)
+        self.assertEqual(error_message, email_error)
+        self.assertEqual(error_message, confirm_password_error)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
