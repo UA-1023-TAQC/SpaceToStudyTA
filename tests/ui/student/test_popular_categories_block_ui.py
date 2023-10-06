@@ -164,7 +164,7 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
 
         location_y = (HomePageStudent(self.driver).get_categories())
         first_row = [value for index, value in enumerate(location_y) if index < 4]
-        second_row = [value for index, value in enumerate(location_y) if 3 < index < 8]
+        second_row = [value for index, value in enumerate(location_y) if 3 < index < 6]
         for result in first_row:
             self.assertEqual(start_coordinate_y, result.node.location['y'])
         for result in second_row:
