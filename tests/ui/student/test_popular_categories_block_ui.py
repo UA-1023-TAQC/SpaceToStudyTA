@@ -1,3 +1,4 @@
+import re
 
 import allure
 from selenium.webdriver import Keys
@@ -10,7 +11,7 @@ from SpaceToStudy.ui.pages.home_page.home_student import (HomePageStudent,
                                                           CATEGORY_MATH,
                                                           CATEGORY_DANCE,
                                                           CATEGORY_LANGUAGES)
-from tests.test_runners import TestRunnerWithStudent
+from tests.ui.test_runners import TestRunnerWithStudent
 
 
 class PopularCategoriesBlockUI(TestRunnerWithStudent):
@@ -80,3 +81,40 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
          .send_keys(Keys.TAB))
         get_flash = (HomePageStudent(self.driver).get_tub_animation())
         self.assertTrue(get_flash, "There is no flash")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/345")
+    def test_popular_categories_block_ui_text(self):
+        music = "Music"
+        computer = "Computer science"
+        design = "Design"
+        dance = "Dance"
+        mathematics = "Mathematics"
+        languages = "Languages"
+        title_block = "Popular Categories"
+        descriptions_block = "Explore tutoring categories you're passionate about."
+        home = HomePageStudent(self.driver)
+        get_title_block = home.get_title_categories_block()
+        get_descriptions_block = home.get_description_categories_block()
+        category_music = home.get_categories()[0].get_name()
+        category_computer = home.get_categories()[1].get_name()
+        category_design = home.get_categories()[2].get_name()
+        category_dance = home.get_categories()[3].get_name()
+        category_mathematics = home.get_categories()[4].get_name()
+        category_languages = home.get_categories()[5].get_name()
+        self.assertEqual(title_block, get_title_block)
+        self.assertEqual(descriptions_block, get_descriptions_block)
+        self.assertEqual(music, category_music)
+        self.assertEqual(computer, category_computer)
+        self.assertEqual(design, category_design)
+        self.assertEqual(dance, category_dance)
+        self.assertEqual(mathematics, category_mathematics)
+        self.assertEqual(languages, category_languages)
+
+        offers = (HomePageStudent(self.driver).get_categories())
+        self.list_offers_without_digits = []
+        for i in offers:
+            text_offers = i.get_offers()
+            text_offers_without_digits = re.sub(r"[^A-Za-z]", "", text_offers)
+            self.list_offers_without_digits.append(text_offers_without_digits)
+        for element in self.list_offers_without_digits:
+            self.assertEqual("offers", element)

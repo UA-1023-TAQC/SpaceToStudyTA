@@ -32,6 +32,8 @@ class HeaderComponent(BaseComponent):
             for element in navigate_links:
                 self._navigate_elements.append(NavigateComponent(element))
         return self._navigate_elements
+    
+    @allure.step("Click navigate link by name in header")
     def click_navigate_link_by_name(self, name):
         link = list(filter(lambda e: e.get_name() == name, self.get_navigate_links()))
         if link:

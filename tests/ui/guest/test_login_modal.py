@@ -6,8 +6,8 @@ from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAutho
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
-from tests.test_runners import BaseTestRunner
-from tests.value_provider import ValueProvider
+from tests.ui.test_runners import BaseTestRunner
+from tests.utils.value_provider import ValueProvider
 
 
 class LoginModalTestCase(BaseTestRunner):
