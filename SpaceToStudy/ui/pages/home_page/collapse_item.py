@@ -2,8 +2,10 @@ import allure
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from selenium.webdriver.support import expected_conditions as EC
 
 TITLE_COLLAPSE_ITEM = (By.XPATH, "./div[1]/div/h6")
 DESCRIPTION_COLLAPSE_ITEM = (By.XPATH, ".//p")
@@ -25,7 +27,9 @@ class CollapseItem(BaseComponent):
 
     @allure.step("Get description element")
     def get_description(self) -> WebElement:
-        return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM)
+        wait = WebDriverWait(self.node, 10)
+        description = wait.until(EC.visibility_of_element_located(DESCRIPTION_COLLAPSE_ITEM))
+        return description
 
     @allure.step("Get description text")
     def get_description_text(self) -> str:
@@ -39,9 +43,6 @@ class CollapseItem(BaseComponent):
     def get_description_value_of_css(self, value):
         return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).value_of_css_property(value)
 
-    @allure.step("Get description")
-    def get_description(self) -> str:
-        return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).text
 
     @allure.step("Check if element is expanded")
     def is_expanded(self) -> bool:
