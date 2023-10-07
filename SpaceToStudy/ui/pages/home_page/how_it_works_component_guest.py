@@ -60,12 +60,28 @@ class HowItWorksComponent(BaseComponent):
             self.title = self.node.find_element(*TITLE)
         return self.title.text
 
+    @allure.step("Get the name WebElement")
+    def get_name_web_element(self) -> WebElement:
+        if not self.title:
+            self.title = self.node.find_element(*TITLE)
+        return self.title
+
     @allure.step("Get the description")
     def get_description(self) -> str:
         if not self.description:
             self.description = self.node.find_element(*DESCRIPTION)
         return self.description.text
 
+    @allure.step("Get the description WebElement")
+    def get_description_web_element(self) -> WebElement:
+        if not self.description:
+            self.description = self.node.find_element(*DESCRIPTION)
+        return self.description
+
     @allure.step("Check if 'How It Works' block is displayed")
     def is_displayed_how_it_works_block(self) -> bool:
         return self.node.is_displayed()
+
+    @allure.step("Get web element")
+    def get_web_element(self) -> WebElement:
+        return self.node

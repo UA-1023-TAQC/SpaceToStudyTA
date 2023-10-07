@@ -251,7 +251,7 @@ class HomePageGuest(BasePage):
         return self._how_it_works_block
 
     @allure.step("Get checkbox how it works block")
-    def get_checkbox_how_it_works_block(self) -> HowItWorksComponent:
+    def get_checkbox_how_it_works_block(self) -> WebElement:
         if not self._checkbox_how_it_works_block:
             return self.driver.find_element(*CHECKBOX_HOW_IT_WORKS_BLOCK)
 
@@ -262,31 +262,27 @@ class HomePageGuest(BasePage):
 
     @allure.step("Get sign up items")
     def get_sign_up_items(self) -> HowItWorksComponent:
-        if not self._sign_up:
-            _sign_up = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SIGN_UP)
-            self._sign_up = HowItWorksComponent(_sign_up)
-        return self._sign_up
+        _sign_up = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SIGN_UP)
+        return HowItWorksComponent(_sign_up)
+
 
     @allure.step("Get select a tutor items")
     def get_select_a_tutor_items(self) -> HowItWorksComponent:
-        if not self._select_a_tutor:
-            _select_a_tutor = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR)
-            self._select_a_tutor = HowItWorksComponent(_select_a_tutor)
-        return self._select_a_tutor
+        _select_a_tutor = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR)
+        return HowItWorksComponent(_select_a_tutor)
+
 
     @allure.step("Get send request items")
     def get_send_request_items(self) -> HowItWorksComponent:
-        if not self._send_request:
-            _send_request = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SEND_REQUEST)
-            self._send_request = HowItWorksComponent(_send_request)
-        return self._send_request
+        _send_request = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SEND_REQUEST)
+        return HowItWorksComponent(_send_request)
+
 
     @allure.step("Get start learning items")
-    def get_start_learning_items(self) -> WebElement:
-        if not self._start_learning:
-            node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
-            self._start_learning = HowItWorksComponent(node)
-        return self._start_learning
+    def get_start_learning_items(self) -> HowItWorksComponent:
+        node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
+        return HowItWorksComponent(node)
+
 
     @allure.step("Get how it works block")
     def get_how_it_works_block(self) -> HowItWorksComponent:
