@@ -44,7 +44,9 @@ class CategoriesPageTestCase(TestRunnerWithTutor):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/378")
     def test_verify_tutor_can_find_all_categories(self):
-        pass
+        categories = HomePageTutor(self.driver).click_go_to_categories_btn()
+        self.assertEqual("Categories", categories.get_categories_title())
+        self.assertIn("/categories", self.driver.current_url)
 
 
 if __name__ == '__main__':
