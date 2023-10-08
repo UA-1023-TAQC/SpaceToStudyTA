@@ -264,10 +264,10 @@ class HomePageTestCase(BaseTestRunner):
                 self.assertEqual(expected_description, el_description)
 
             # Verify labels alignment
-            first_name_element = how_it_works_cards_list[0].get_name_web_element().location['x']
-            second_name_element = how_it_works_cards_list[1].get_name_web_element().location['x']
-            third_name_element = how_it_works_cards_list[2].get_name_web_element().location['x']
-            fourth_name_element = how_it_works_cards_list[3].get_name_web_element().location['x']
+            first_name_element = how_it_works_cards_list[0].get_web_element_title().location['x']
+            second_name_element = how_it_works_cards_list[1].get_web_element_title().location['x']
+            third_name_element = how_it_works_cards_list[2].get_web_element_title().location['x']
+            fourth_name_element = how_it_works_cards_list[3].get_web_element_title().location['x']
             self.assertEqual(first_name_element, third_name_element)
             self.assertEqual(second_name_element, fourth_name_element)
 

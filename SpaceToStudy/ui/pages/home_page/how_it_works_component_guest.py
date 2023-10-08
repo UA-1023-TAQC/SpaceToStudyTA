@@ -60,8 +60,8 @@ class HowItWorksComponent(BaseComponent):
             self.title = self.node.find_element(*TITLE)
         return self.title.text
 
-    @allure.step("Get the name WebElement")
-    def get_name_web_element(self) -> WebElement:
+    @allure.step("Get the title WebElement")
+    def get_web_element_title(self) -> WebElement:
         if not self.title:
             self.title = self.node.find_element(*TITLE)
         return self.title

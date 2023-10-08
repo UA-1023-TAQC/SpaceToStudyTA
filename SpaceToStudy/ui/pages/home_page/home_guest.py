@@ -347,7 +347,7 @@ class HomePageGuest(BasePage):
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
 
-    @allure.step("Get button become a student or tutor")
+    @allure.step("Get button become a student or tutor text")
     def get_button_become_a_student_tutor_text(self) -> str:
         return self.get_button_become_a_student_tutor().text
 
