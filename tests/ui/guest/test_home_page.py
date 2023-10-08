@@ -197,8 +197,6 @@ class HomePageTestCase(BaseTestRunner):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/179")
     def test_how_it_works_block_ui(self):
-        print(self.driver.execute_script("return window.innerWidth"))
-        print(self.driver.execute_script("return window.innerHeight"))
         width = 1920
         height = 1080
         self.driver.set_window_size(width, height)
@@ -226,10 +224,12 @@ class HomePageTestCase(BaseTestRunner):
         expected_cards_retreat = 172
         expected_image_x = 903
         switcher = HomePageGuest(self.driver).get_checkbox_how_it_works_block()
-        print(switcher.is_displayed())
-        print(switcher.is_enabled())
+
+        # print(switcher.is_displayed()) # False
+        # print(switcher.is_enabled())   # True
 
         # self.assertTrue(switcher.is_displayed())
+
         def elements_and_labels_tests():
             how_it_works_cards_list = [HomePageGuest(self.driver).get_sign_up_items(),
                                        HomePageGuest(self.driver).get_select_a_tutor_items(),
@@ -237,17 +237,15 @@ class HomePageTestCase(BaseTestRunner):
                                        HomePageGuest(self.driver).get_start_learning_items()]
 
             # Verify UI elements alignment
-            print(1)
-            data_y_element_location = expected_location_y_first_element
+            data_y_element_location = expected_location_y_first_element - expected_cards_retreat
             for card in how_it_works_cards_list:
                 x = card.get_web_element().location['x']
                 y = card.get_web_element().location['y']
-                print(x, y)
                 self.assertEqual(expected_block_location_x, x)
-                self.assertEqual(data_y_element_location, y)
-                data_y_element_location += expected_cards_retreat
+                distance_between_elements = y - data_y_element_location
+                self.assertEqual(expected_cards_retreat, distance_between_elements)
+                data_y_element_location = y
 
-            print(2)
             data_y_image_location = expected_image_y_first_element
             for card in how_it_works_cards_list:
                 x = card.get_image().location['x']
@@ -257,15 +255,14 @@ class HomePageTestCase(BaseTestRunner):
                 data_y_image_location += expected_cards_retreat
 
             # Verify labels spelling
-            print(3)
             for card, expected_title in zip(how_it_works_cards_list, expected_expected_titles):
                 el_title = card.get_name()
                 self.assertEqual(expected_title, el_title)
-            print(4)
+
             for card, expected_description in zip(how_it_works_cards_list, expected_description_list):
                 el_description = card.get_description()
                 self.assertEqual(expected_description, el_description)
-            print(5)
+
             # Verify labels alignment
             first_name_element = how_it_works_cards_list[0].get_name_web_element().location['x']
             second_name_element = how_it_works_cards_list[1].get_name_web_element().location['x']
@@ -308,7 +305,7 @@ class HomePageTestCase(BaseTestRunner):
         self.driver.set_window_size(width, height)
         self.driver.execute_script(f"document.body.style.zoom = '{zoom}'")
         switcher.click()
-        sleep(5)
+        sleep(2)
 
         expected_block_location_x = 387
         expected_location_y_first_element = expected_image_y_first_element = 151
@@ -335,12 +332,9 @@ class HomePageTestCase(BaseTestRunner):
         elements_and_labels_tests()
 
         # Verify that all UI controls are active and focused when navigating by “Tab” keyboard button.
-        button_become_a_student_tutor = HomePageGuest(self.driver).get_button_become_a_student_tutor()
-        print(button_become_a_student_tutor.is_selected())
         HeaderUnauthorizedComponent(self.driver).tab_key(13)
-        print(button_become_a_student_tutor.is_selected())
-
-        sleep(3)
+        is_button_selected = (HomePageGuest(self.driver).is_button_become_a_student_tutor_selected())
+        self.assertTrue(is_button_selected)
 
 
 

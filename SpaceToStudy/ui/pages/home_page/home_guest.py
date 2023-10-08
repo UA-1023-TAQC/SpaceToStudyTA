@@ -42,6 +42,7 @@ HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR = (By.XPATH, "/html/body/div/div/div[2]/div[1]
 HOW_IT_WORKS_BLOCK_SEND_REQUEST = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[4]")
 HOW_IT_WORKS_BLOCK_START_LEARNING = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[5]")
 BECOME_A_TUTOR_OR_STUDENT_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/button")
+BECOME_A_TUTOR_OR_STUDENT_BUTTON_SELECTED = (By.TAG_NAME, "span")
 CHECKBOX_HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[1]/span/span[1]/input")
 
 WHO_WE_ARE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[4]")
@@ -345,6 +346,21 @@ class HomePageGuest(BasePage):
     @allure.step("Get button become a student or tutor")
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
+
+    @allure.step("Get button become a student or tutor")
+    def get_button_become_a_student_tutor_text(self) -> str:
+        return self.get_button_become_a_student_tutor().text
+
+    @allure.step("Check button become a student or tutor is selected")
+    def is_button_become_a_student_tutor_selected(self) -> bool:
+        # when u press tab until button is selected
+        count_of_span_elements = self.get_button_become_a_student_tutor().find_elements(*BECOME_A_TUTOR_OR_STUDENT_BUTTON_SELECTED)
+        if len(count_of_span_elements) == 1:
+            return False
+        elif len(count_of_span_elements) == 3:
+            return True
+        else:
+            raise AssertionError(f"The logic for the '{self.get_button_become_a_student_tutor_text}' has been changed. Please review and update the code accordingly to handle this change.")
 
     @allure.step("Get text in button \"become a student or tutor\"")
     def get_text_button_become_a_student_tutor(self) -> str:
