@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.base_page import BasePage
@@ -20,6 +21,7 @@ class HomePageTutor(BasePage):
             self._find_student = self.driver.find_element(*FIND_STUDENT)
         return self._find_student
 
+    @allure.step("Click on the 'Find student' button")
     def click_find_student_btn(self):
         self.get_find_student_btn().click()
         return ExploreOffersPage(self.driver)
@@ -29,6 +31,7 @@ class HomePageTutor(BasePage):
             self._go_to_categories = self.driver.find_element(*GO_TO_CATEGORIES)
         return self._go_to_categories
 
+    @allure.step("Click on the 'Go to categories' button")
     def click_go_to_categories_btn(self):
         self.get_go_to_categories_btn().click()
         return CategoriesPage(self.driver)
