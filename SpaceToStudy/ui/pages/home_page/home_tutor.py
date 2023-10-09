@@ -6,6 +6,7 @@ from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 
 TITLE = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[1]/p")
+DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[1]/span")
 SEARCH_INPUT = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[2]/div/div/input")
 FIND_STUDENT = (By.XPATH, "//a[contains(text(), 'Find student')]")
 
@@ -15,6 +16,7 @@ class HomePageTutor(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self._title = None
+        self._description = None
         self._search_input = None
         self._find_student = None
 
@@ -27,6 +29,16 @@ class HomePageTutor(BasePage):
     @allure.step("Get title text")
     def get_title_text(self) -> str:
         return self.get_title().text
+
+    @allure.step("Get description element")
+    def get_description(self) -> WebElement:
+        if self._description is None:
+            self._description = self.driver.find_element(*DESCRIPTION)
+        return self._description
+
+    @allure.step("Get description text")
+    def get_description_text(self) -> str:
+        return self.get_description().text
 
     @allure.step("Get search input")
     def get_search_input(self) -> WebElement:
