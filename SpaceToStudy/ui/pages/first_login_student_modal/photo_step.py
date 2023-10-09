@@ -3,13 +3,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
 
 STARTING_TEXT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p[1]")
 UPLOAD_BUTTON = (By.XPATH, "//label[contains(text(), 'Upload')]")
 MAXIMUM_FILE_SIZE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p[2]")
 
 
-class PhotoPageStudent(BasePage):
+class PhotoStepStudent(FirstLoginModal):
     @allure.step("Get image")
     def get_starting_text(self) -> str:
         return self.driver.find_element(*STARTING_TEXT).text

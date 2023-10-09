@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
+from SpaceToStudy.ui.pages.first_login_student_modal.interests_step import InterestsStepStudent
 
 STARTING_TEXT = (By.XPATH, "//form/div[1]/p")
 IMAGE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/img")
@@ -19,7 +21,7 @@ DESCRIPTION_LABEL = (By.XPATH, "//form/div[1]/div[2]/div/label")
 SYMBOLS_COUNTER = (By.XPATH, "//form/div[1]/div[2]/p")
 
 
-class GeneralPageStudent(BasePage):
+class GeneralStepStudent(FirstLoginModal):
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -98,3 +100,10 @@ class GeneralPageStudent(BasePage):
     @allure.step("Get symbols counter text")
     def get_symbols_counter_text(self) -> str:
         return self.get_symbols_counter().text
+
+
+    @allure.step("Click next button")
+    def click_next_button(self):
+        self.get_next_button().click()
+        return InterestsStepStudent(self.node.parent)
+    

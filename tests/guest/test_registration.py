@@ -381,9 +381,10 @@ class RegistrationTestCase(BaseTestRunner):
         .set_email(email)
         .set_password(password)
         .click_login_button())
-        sleep(5)
+        sleep(10)
         
         #test stepper
+        
 
 
 

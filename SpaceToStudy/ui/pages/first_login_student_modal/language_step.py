@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
+from SpaceToStudy.ui.pages.first_login_student_modal.photo_step import PhotoStepStudent
 
 IMAGE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[1]/img")
 STARTING_TEXT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p")
@@ -10,7 +12,7 @@ NATIVE_LANGUAGE_LABEL = (By.XPATH, "//div[@data-testid='language']/label")
 NATIVE_LANGUAGE_INPUT = (By.XPATH, "//div[@data-testid='language']/div/input")
 
 
-class LanguagePageStudent(BasePage):
+class LanguageStepStudent(FirstLoginModal):
     @allure.step("Get image")
     def get_image(self) -> WebElement:
         return self.driver.find_element(*IMAGE)
@@ -30,3 +32,8 @@ class LanguagePageStudent(BasePage):
     @allure.step("Set native language input")
     def set_native_language_input(self, text):
         self.get_native_language_input().send_keys(text)
+
+    @allure.step("Click next button")
+    def click_next_button(self):
+        self.get_next_button().click()
+        return PhotoStepStudent(self.node.parent)
