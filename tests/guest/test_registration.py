@@ -1,12 +1,18 @@
+from time import sleep
 import unittest
 
 import allure
+from SpaceToStudy.ui.pages.email_confirmation_modal.email_confirmation_modal import EmailConfirmationModal
 
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
+
 from tests.test_runners import BaseTestRunner
 from tests.value_provider import ValueProvider
+
+from utils.api_for_emails import MailBox
+from utils.api_for_emails import TemporaryMailGenerator
 
 
 class RegistrationTestCase(BaseTestRunner):
@@ -340,6 +346,45 @@ class RegistrationTestCase(BaseTestRunner):
         what_can_u_do_elements = what_can_u_do_block.get_what_can_u_do_elements()
         for key, element in what_can_u_do_elements.items():
             self.assertTrue(element.is_displayed(), f"Element {key} is not displayed when a window size is set: width {window_width}, height {window_height}")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/101")
+    def test_stepper_window_after_first_loggining_as_student(self):
+        first_name = "Student"
+        last_name = "Test"
+        email = TemporaryMailGenerator().generate_email_address()
+        password = "123Qwe!@#"
+        home_page = HomePageGuest(self.driver)
+
+        #registration
+        (home_page
+            .click_become_a_student()
+            .set_first_name(first_name)
+            .set_last_name(last_name)
+            .set_email(email)
+            .set_password(password)
+            .set_confirm_password(password)
+            .click_i_agree_checkbox()
+            .click_sign_up_btn())
+        
+        #email validation
+        letters = MailBox(email).get_letters()
+        # self.assertEqual(1, len(letters))
+        # sender = letters.get_sender_email()
+        # self.assertEqual("space2study.info@gmail.com", sender)
+        letter = letters[0]
+        link = letter.get_link_from_letter()
+        self.driver.get(link) 
+
+        #first loggining
+        (EmailConfirmationModal(self.driver)
+        .click_go_to_login_button()
+        .set_email(email)
+        .set_password(password)
+        .click_login_button())
+        sleep(5)
+        
+        #test stepper
+
 
 
 if __name__ == '__main__':

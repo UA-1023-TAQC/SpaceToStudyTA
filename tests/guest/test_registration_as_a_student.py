@@ -18,7 +18,6 @@ class RegistrationAsAStudentTestCase(BaseTestRunner):
 
         # Registration
         (HomePageGuest(self.driver)
-         .click_started_for_free()
          .click_become_a_student()
          .set_first_name(ValueProvider.get_student_first_name())
          .set_last_name(ValueProvider.get_student_last_name())
