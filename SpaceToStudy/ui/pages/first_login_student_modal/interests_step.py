@@ -62,5 +62,11 @@ class InterestsStepStudent(FirstLoginModal):
     @allure.step("Click next button")
     def click_next_button(self):
         self.get_next_button().click()
-        return LanguageStepStudent(self.node.parent)
+        return LanguageStepStudent(self.node)
+    
+    @allure.step("Click back button")
+    def click_back_button(self):
+        from SpaceToStudy.ui.pages.first_login_student_modal.general_step import GeneralStepStudent
+        self.get_back_button().click()
+        return GeneralStepStudent(self.node)
 

@@ -11,7 +11,6 @@ LANGUAGE_STEP = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/div[
 PHOTO_STEP = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/div[4]")
 BACK_BUTTON = (By.XPATH, "//button[contains(text(), 'Back')]")
 NEXT_BUTTON = (By.XPATH, "//button[contains(text(), 'Next')]")
-FINISH_BUTTON = (By.XPATH, "//button[contains(text(), 'Finish')]")
 
 
 class FirstLoginModal(BaseComponent):
@@ -19,16 +18,12 @@ class FirstLoginModal(BaseComponent):
     @allure.step("Get general step")
     def get_general_step(self) -> WebElement:
         return self.node.find_element(*GENERAL_STEP)
-    
-    @allure.step("Get general step text")
-    def get_general_step_text(self) -> WebElement:
-        return self.get_general_step().text
 
     @allure.step("Click general step")
     def click_general_step(self):
         self.get_general_step().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.general_step import GeneralStepStudent
-        return GeneralStepStudent(self.node.parent)
+        return GeneralStepStudent(self.node)
 
     @allure.step("Get interests step")
     def get_interests_step(self) -> WebElement:
@@ -38,7 +33,7 @@ class FirstLoginModal(BaseComponent):
     def click_interests_step(self):
         self.get_interests_step().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.interests_step import InterestsStepStudent
-        return InterestsStepStudent(self.node.parent)
+        return InterestsStepStudent(self.node)
 
     @allure.step("Get language step")
     def get_language_step(self) -> WebElement:
@@ -48,7 +43,7 @@ class FirstLoginModal(BaseComponent):
     def click_language_step(self):
         self.get_language_step().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.language_step import LanguageStepStudent
-        return LanguageStepStudent(self.node.parent)
+        return LanguageStepStudent(self.node)
 
     @allure.step("Get photo step")
     def get_photo_step(self) -> WebElement:
@@ -58,7 +53,7 @@ class FirstLoginModal(BaseComponent):
     def click_photo_step(self):
         self.get_photo_step().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.photo_step import PhotoStepStudent
-        return PhotoStepStudent(self.node.parent)
+        return PhotoStepStudent(self.node)
     
     @allure.step("Get back button")
     def get_back_button(self) -> WebElement:
@@ -78,11 +73,6 @@ class FirstLoginModal(BaseComponent):
         self.get_next_button().click()
         return self.node.parent
 
-    @allure.step("Get finish button")
-    def get_finish_button(self) -> WebElement:
-        return self.node.find_element(*FINISH_BUTTON)
 
-    @allure.step("Click finish button")
-    def click_finish_button(self):
-        self.get_finish_button().click()
-        return self.node.parent
+
+

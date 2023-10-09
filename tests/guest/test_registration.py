@@ -376,15 +376,16 @@ class RegistrationTestCase(BaseTestRunner):
         self.driver.get(link) 
 
         #first loggining
-        (EmailConfirmationModal(self.driver)
+        stepper = (EmailConfirmationModal(self.driver)
         .click_go_to_login_button()
         .set_email(email)
         .set_password(password)
         .click_login_button())
-        sleep(120)
+        
         
         #test stepper
-        
+        stepper.click_general_step().click_interests_step().click_next_button().click_photo_step().click_finish_button()
+        sleep(10)
 
 
 
