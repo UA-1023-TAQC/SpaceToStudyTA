@@ -19,6 +19,10 @@ class FirstLoginModal(BaseComponent):
     @allure.step("Get general step")
     def get_general_step(self) -> WebElement:
         return self.node.find_element(*GENERAL_STEP)
+    
+    @allure.step("Get general step text")
+    def get_general_step_text(self) -> WebElement:
+        return self.get_general_step().text
 
     @allure.step("Click general step")
     def click_general_step(self):
