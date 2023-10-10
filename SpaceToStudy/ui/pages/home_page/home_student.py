@@ -25,6 +25,7 @@ CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 CATEGORIES_MOBILE = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/div/a")
 
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
+HEADER_LINK_CATEGORIES = (By.XPATH, "//a[contains(text(), 'Categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
 
 SEARCH_INPUT_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div")
@@ -43,6 +44,7 @@ class HomePageStudent(BasePage):
         super().__init__(driver)
         self._categories = None
         self._button_go_to_categories = None
+        self._header_link_categories = None
         self._button_find_tutor = None
         self._questions_block = None
         self._questions_items = None
@@ -80,6 +82,13 @@ class HomePageStudent(BasePage):
         if not self._categories_block:
             self._categories_block = self.driver.find_element(*CATEGORIES_BLOCK)
         return self._categories_block
+
+
+    @allure.step("Get categories header link")
+    def get_categories_header_link(self) -> WebElement:
+        if not self._header_link_categories:
+            self._header_link_categories = self.driver.find_element(*HEADER_LINK_CATEGORIES)
+        return self._header_link_categories
 
     @allure.step("Get value css categories block")
     def get_gap_value_css_property_categories_block(self):

@@ -151,6 +151,16 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         self.assertEqual(question, question_actual)
         self.assertEqual(answer, answer_actual)
 
+    @allure.testcase("https://github.com/ita-social-projects/SpaceToStudy-Client/issues/1029")
+    def test_offer_details_in_student_profile(self):
+        offers_request_modal = (HomePageStudent(self.driver)
+                                .get_categories_header_link()
+                                .click())
+        cp = CategoriesPage(self.driver)
+        cp.get_show_all_offers_btn
+        cards = cp.get_cards()
+        for card in cards:
+            print(card.get_categories_title())
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
