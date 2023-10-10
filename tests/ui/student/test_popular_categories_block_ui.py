@@ -1,4 +1,5 @@
 import re
+from time import sleep
 
 import allure
 from selenium.webdriver import Keys
@@ -118,3 +119,39 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
             self.list_offers_without_digits.append(text_offers_without_digits)
         for element in self.list_offers_without_digits:
             self.assertEqual("offers", element)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/303")
+    def test_popular_categories_block_ui_resize(self):
+        home = HomePageStudent(self.driver)
+        gap = home.get_gap_value_css_property_categories_block()
+        height_one_element = home.get_categories()[0].node.size['height']
+        vertical_margin_between_elements = gap + height_one_element
+        start_coordinate_y = 436
+        home.set_size_window(899, 1080)
+        categories = home.get_categories()
+        width_tablet = home.get_categories_block().size['width']
+        self.assertEqual(828, width_tablet)
+
+        location_y_first_row = home.get_categories()[0].node.location['y']
+        location_y_second_row = home.get_categories()[2].node.location['y']
+        location_y_third_row = home.get_categories()[4].node.location['y']
+        first_row = [value for index, value in enumerate(categories) if index < 2]
+        second_row = [value for index, value in enumerate(categories) if 1 < index < 4]
+        third_row = [value for index, value in enumerate(categories) if 3 < index]
+        for result in first_row:
+            self.assertEqual(location_y_first_row, result.node.location['y'])
+        for result in second_row:
+            self.assertEqual(location_y_second_row, result.node.location['y'])
+        for result in third_row:
+            self.assertEqual(location_y_third_row, result.node.location['y'])
+
+        home.set_size_window(599, 1080)
+        categories_mobile = home.get_categories_mobile()
+        width_mobile = home.get_categories_block().size['width']
+        l = home.get_categories_mobile()
+        self.assertEqual(544, width_mobile)
+        self.assertEqual(6, len(l))
+
+        for result in categories_mobile[:4]:
+            start_coordinate_y = start_coordinate_y + vertical_margin_between_elements
+            self.assertEqual(start_coordinate_y, result.node.location['y'])
