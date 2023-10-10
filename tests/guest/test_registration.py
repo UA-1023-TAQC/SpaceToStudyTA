@@ -353,12 +353,14 @@ class RegistrationTestCase(BaseTestRunner):
         last_name = "Test"
         email = TemporaryMailGenerator().generate_email_address()
         password = "123Qwe!@#"
-        home_page = HomePageGuest(self.driver)
-
+        country = "Ukraine"
+        city = "Chernivtsi"
+        description = "Description"
+        
         #registration
-        (home_page
+        (HomePageGuest(self.driver)
             .click_become_a_student()
-            .set_first_name(first_name)
+            .set_first_name(first_name)            
             .set_last_name(last_name)
             .set_email(email)
             .set_password(password)
@@ -384,10 +386,19 @@ class RegistrationTestCase(BaseTestRunner):
         
         
         #test stepper
-        stepper.click_general_step().click_interests_step().click_next_button().click_photo_step().click_finish_button()
-        sleep(10)
+        general_step = stepper.click_general_step()
+        self.assertEqual(general_step.get_first_name_input_text(), first_name, f"In the first_name area text doesn't equal input {first_name}")
+        self.assertEqual(general_step.get_last_name_input_text(), last_name, f"In the last_name area text doesn't equal input {last_name}")
 
+        general_step.set_country_input(country)
+        self.assertEqual(general_step.get_country_input_text(), country, f"In the county area text doesn't equal input {country}")
+        sleep(30)
 
+        general_step.set_city_input(city)
+        self.assertEqual(general_step.get_city_input_text(), city, f"In the city area text doesn't equal input {city}")
+
+        general_step.set_description(description)
+        self.assertEqual(general_step.get_description_text(), description, f"In the description area text doesn't equal input {description}")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

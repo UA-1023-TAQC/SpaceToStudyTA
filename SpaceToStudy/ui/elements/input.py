@@ -30,6 +30,16 @@ class Input(BaseElement):
     def set_text(self, text):
         self.get_input().send_keys(text)
 
+    @allure.step("Set {text} text into input element with autofill option")
+    def set_text_to_autofill_input(self, text):
+        input_element = self.get_input()
+        input_element.send_keys(text)
+        self.node.parent.implicitly_wait(2)
+        input_element.send_keys(Keys.DOWN)
+        self.node.parent.implicitly_wait(1)
+        input_element.send_keys(Keys.ENTER)
+        print("endddddddddddddddddddddd111111111111")
+
     @allure.step("Get text of input element")
     def get_text(self):
         return self.get_input().get_attribute("value")
