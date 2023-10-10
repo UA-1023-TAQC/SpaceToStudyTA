@@ -1,6 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
@@ -65,6 +67,9 @@ class HomePageStudent(BasePage):
     @allure.step("Get categories")
     def get_categories_mobile(self) -> tuple[CategoryComponent]:
         if self._categories_mobile is None:
+
+            wait = WebDriverWait(self.driver, 10)
+            wait.until(EC.presence_of_all_elements_located(CATEGORIES_MOBILE))
             categories_mobile = self.driver.find_elements(*CATEGORIES_MOBILE)
             self._categories_mobile = []
             for category in categories_mobile:

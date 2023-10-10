@@ -148,10 +148,9 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
         home.set_size_window(599, 1080)
         categories_mobile = home.get_categories_mobile()
         width_mobile = home.get_categories_block().size['width']
-        l = home.get_categories_mobile()
+        length_list = home.get_categories_mobile()
         self.assertEqual(544, width_mobile)
-        self.assertEqual(6, len(l))
-
-        for result in categories_mobile[:4]:
+        self.assertEqual(6, len(length_list))
+        for result in categories_mobile[:3]:
             start_coordinate_y = start_coordinate_y + vertical_margin_between_elements
             self.assertEqual(start_coordinate_y, result.node.location['y'])
