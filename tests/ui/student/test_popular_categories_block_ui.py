@@ -1,5 +1,4 @@
 import re
-from time import sleep
 
 import allure
 from selenium.webdriver import Keys

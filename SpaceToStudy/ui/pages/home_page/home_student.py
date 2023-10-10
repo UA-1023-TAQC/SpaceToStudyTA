@@ -64,7 +64,7 @@ class HomePageStudent(BasePage):
                 self._categories.append(CategoryComponent(category))
         return self._categories
 
-    @allure.step("Get categories")
+    @allure.step("Get categories mobile version site")
     def get_categories_mobile(self) -> tuple[CategoryComponent]:
         if self._categories_mobile is None:
 
