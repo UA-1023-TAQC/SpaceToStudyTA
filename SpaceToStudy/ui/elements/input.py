@@ -2,14 +2,13 @@ import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver import ActionChains
 
 from SpaceToStudy.ui.elements.base_element import BaseElement
 
 INPUT = (By.XPATH, "./div/input")
 LABEL = (By.XPATH, "./label")
 ERROR_MESSAGE = (By.XPATH, "./p/span")
-
-
 
 
 class Input(BaseElement):
@@ -33,13 +32,18 @@ class Input(BaseElement):
     @allure.step("Set {text} text into input element with autofill option")
     def set_text_to_autofill_input(self, text):
         input_element = self.get_input()
+        input_element.click()
         input_element.send_keys(text)
         self.node.parent.implicitly_wait(2)
-        input_element.send_keys(Keys.DOWN)
-        self.node.parent.implicitly_wait(1)
-        input_element.send_keys(Keys.ENTER)
-        print("endddddddddddddddddddddd111111111111")
+        # actions = ActionChains(self.node.parent)
+        # el = actions.move_to_element(input_element)
+        # el.send_keys(Keys.ARROW_DOWN).perform()
+        # el.send_keys(Keys.RETURN).perform()
+        # self.node.parent.switch_to.active_element
+        input_element.send_keys(Keys.ARROW_DOWN)
+        input_element.send_keys(Keys.RETURN)
 
+            
     @allure.step("Get text of input element")
     def get_text(self):
         return self.get_input().get_attribute("value")

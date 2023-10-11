@@ -104,12 +104,9 @@ class LoginModal(BaseComponent):
     def click_login_button(self):
         from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
         from SpaceToStudy.ui.pages.home_page.home_tutor import HomePageTutor
-        sleep(0.1)
+        sleep(0.5)
         self.get_login_button().click_button()
         sleep(1)
-
-        print(f"self.node.parent_______________{self.node.parent}")
-        
         if FirstLoginModal(self.node.parent).get_general_step().is_displayed():
             return FirstLoginModal(self.node.parent)
         elif HomePageStudent(self.node.parent).get_text_button_find_tutor() == "Find tutor":
