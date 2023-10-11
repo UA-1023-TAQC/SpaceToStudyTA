@@ -1,4 +1,6 @@
 import unittest
+from random import randint
+from time import sleep
 
 import allure
 from selenium.webdriver.common.by import By
@@ -153,14 +155,35 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
 
     @allure.testcase("https://github.com/ita-social-projects/SpaceToStudy-Client/issues/1029")
     def test_offer_details_in_student_profile(self):
-        offers_request_modal = (HomePageStudent(self.driver)
-                                .get_categories_header_link()
-                                .click())
+        offers_request_modal = HomePageStudent(self.driver)
+        offers_request_modal.get_categories_header_link().click()
         cp = CategoriesPage(self.driver)
-        cp.get_show_all_offers_btn
-        cards = cp.get_cards()
-        for card in cards:
-            print(card.get_categories_title())
+        cn = cp.get_categories_names()
+        random_category_num = randint(0, len(cn)-1)
+        clicked_category = cn[random_category_num].text.split("\n")[0]
+        cn[random_category_num].click()
+        subcategories_list = cp.get_cards()
+        random_subcategory_num = randint(0, len(subcategories_list)-1)
+        subject = subcategories_list[random_subcategory_num].get_title()
+        offers_request_modal = (CategoriesPage(self.driver)
+                                .get_student_private_lesson_component()
+                                .click_create_request_btn())
+        first_block = offers_request_modal.get_first_block()
+        category_input = first_block.get_category_input()
+        category_input.set_text(clicked_category)
+        category_input.press_down_button(1).press_enter_button()
+        subject_input = first_block.get_subject_input()
+        subject_input.set_text(subject)
+        subject_input.press_down_button(1).press_enter_button()
+
+        check_boxes = first_block.get_all_checkboxes()
+        random_check_box_num = randint(0, len(check_boxes)-1)
+        check_boxes[random_check_box_num].click()
+        sleep(4)
+        first_block.get_checkbox_beginner().set_check()
+        first_block.get_subject_input().set_text(subject)
+        first_block.get_subject_input().press_down_button(1).press_enter_button()
+        sleep(4)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

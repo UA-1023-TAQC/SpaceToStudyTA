@@ -17,6 +17,7 @@ SEARCH_INPUT = (By.XPATH, '//input[contains(@role, "combobox")]/../..')
 SEARCH_FIELD_HELP_TEXT = (By.XPATH, '//*[@id="mui-2488-label"]')
 STUDENT_PRIVATE_LESSON_COMPONENT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 CARDS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[5]/div/a")
+CATEGORIES_NAMES = (By.XPATH,"//a[@class='MuiBox-root css-1lap3qx']")
 
 NO_RESULT_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div/p")
 CATEGORIES_BLOCK = (By.XPATH, '/html/body/div/div/div[2]/div[2]')
@@ -95,3 +96,11 @@ class CategoriesPage(BasePage):
             wait.until(EC.text_to_be_present_in_element(MUSIC_SUBJECTS, 'Music Subjects'))
             self._music_subjects = self.driver.find_element(*MUSIC_SUBJECTS).text
         return self._music_subjects
+
+    @allure.step("Get Categories names")
+    def get_categories_names(self) -> list:
+        res = list()
+        cn = self.driver.find_elements(*CATEGORIES_NAMES)
+        for c in cn:
+            res.append(c)
+        return res
