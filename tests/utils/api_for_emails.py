@@ -72,8 +72,8 @@ class MailBox:
 
         while counter <= 10 and "error" in letter_data and letter_data["error"] == "There are no emails yet":
             response = requests.request("GET", url, headers=self.headers, data=self.payload)
-            print(f"response code_________{response.status_code}")
-            letter_data = response.json()
+            if response.status_code == 200:
+                letter_data = response.json()
             counter += 1
             sleep(1)
 

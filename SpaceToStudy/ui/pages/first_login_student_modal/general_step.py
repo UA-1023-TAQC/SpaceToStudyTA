@@ -2,6 +2,7 @@ import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.keys import Keys
+from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
@@ -21,6 +22,7 @@ CITY_LABEL = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//f
 DESCRIPTION_INPUT = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[2]/div/div/textarea[1]")
 DESCRIPTION_LABEL = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[2]/div/label")
 SYMBOLS_COUNTER = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[2]/p")
+FIRST_AUTOCOMPLETE_ELEMENT = (By.XPATH, "/html/body/div[3]/div/ul/li[1]")
 
 
 class GeneralStepStudent(FirstLoginModal):
@@ -42,7 +44,7 @@ class GeneralStepStudent(FirstLoginModal):
         return self.node.find_element(*IMAGE)
 
     @allure.step("Get first name input")
-    def get_first_name_input(self) -> WebElement:
+    def get_first_name_input(self) -> Input:
         if not self._first_name_input:
             node = self.node.find_element(*FIRST_NAME_INPUT)
             self._first_name_input = Input(node)
@@ -61,7 +63,7 @@ class GeneralStepStudent(FirstLoginModal):
         return self.node.find_element(*FIRST_NAME_LABEL)
 
     @allure.step("Get last name input")
-    def get_last_name_input(self) -> WebElement:
+    def get_last_name_input(self) -> Input:
         if not self._last_name_input:
             node = self.node.find_element(*LAST_NAME_INPUT)
             self._last_name_input = Input(node)
@@ -80,10 +82,10 @@ class GeneralStepStudent(FirstLoginModal):
         return self.node.find_element(*LAST_NAME_LABEL)
 
     @allure.step("Get country input")
-    def get_country_input(self) -> WebElement:
+    def get_country_input(self) -> InputDropDownList:
         if not self._country_input:
             node = self.node.find_element(*COUNTRY_INPUT)
-            self._country_input = Input(node)
+            self._country_input = InputDropDownList(node)
         return self._country_input
     
     @allure.step("Get country input text")
@@ -92,17 +94,17 @@ class GeneralStepStudent(FirstLoginModal):
 
     @allure.step("Set country input")
     def set_country_input(self, text):
-        self.get_country_input().set_text_to_autofill_input(text)
+        self.get_country_input().set_text_to_autocomplete_input(text, FIRST_AUTOCOMPLETE_ELEMENT)
 
     @allure.step("Get country label")
     def get_country_label(self) -> WebElement:
         return self.node.find_element(*COUNTRY_LABEL)
 
     @allure.step("Get city input")
-    def get_city_input(self) -> WebElement:
+    def get_city_input(self) -> InputDropDownList:
         if not self._city_input:
             node = self.node.find_element(*CITY_INPUT)
-            self._city_input = Input(node)
+            self._city_input = InputDropDownList(node)
         return self._city_input
     
     @allure.step("Get city input text")
@@ -111,7 +113,7 @@ class GeneralStepStudent(FirstLoginModal):
 
     @allure.step("Set city input")
     def set_city_input(self, text):
-        self.get_city_input().set_text_to_autofill_input(text)
+        self.get_city_input().set_text_to_autocomplete_input(text, FIRST_AUTOCOMPLETE_ELEMENT)
 
     @allure.step("Get city label")
     def get_city_label(self) -> WebElement:

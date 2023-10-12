@@ -13,11 +13,11 @@ FINISH_BUTTON = (By.XPATH, "//button[contains(text(), 'Finish')]")
 class PhotoStepStudent(FirstLoginModal):
     @allure.step("Get image")
     def get_starting_text(self) -> str:
-        return self.driver.find_element(*STARTING_TEXT).text
+        return self.node.find_element(*STARTING_TEXT).text
 
     @allure.step("Get upload button")
     def get_upload_button(self) -> WebElement:
-        return self.driver.find_element(*UPLOAD_BUTTON)
+        return self.node.find_element(*UPLOAD_BUTTON)
 
     @allure.step("Click upload button")
     def click_upload_button(self):
@@ -26,7 +26,7 @@ class PhotoStepStudent(FirstLoginModal):
 
     @allure.step("Get maximum file size text")
     def get_maximum_file_size(self) -> str:
-        return self.driver.find_element(*MAXIMUM_FILE_SIZE).text
+        return self.node.find_element(*MAXIMUM_FILE_SIZE).text
     
     @allure.step("Click back button")
     def click_back_button(self):

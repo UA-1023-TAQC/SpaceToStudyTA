@@ -1,4 +1,3 @@
-from time import sleep
 import unittest
 
 import allure
@@ -435,6 +434,11 @@ class RegistrationTestCase(BaseTestRunner):
         country = "Ukraine"
         city = "Chernivtsi"
         description = "Description"
+        subject1 = "Piano"
+        category1 = "Music"
+        subject2 = "Freestyle"
+        category2 = "Dance"
+        language = "Ukrainian"
         
         #registration
         (HomePageGuest(self.driver)
@@ -461,7 +465,7 @@ class RegistrationTestCase(BaseTestRunner):
         .click_login_button())
         
         
-        #test stepper
+        #test General step
         general_step = stepper.click_general_step()
         self.assertEqual(general_step.get_first_name_input_text(), first_name, f"In the first_name area text doesn't equal input {first_name}")
         self.assertEqual(general_step.get_last_name_input_text(), last_name, f"In the last_name area text doesn't equal input {last_name}")
@@ -469,14 +473,37 @@ class RegistrationTestCase(BaseTestRunner):
         general_step.set_country_input(country)
         self.assertEqual(general_step.get_country_input_text(), country, f"In the county area text doesn't equal input {country}")
 
-        # general_step.set_city_input(city)
-        # self.assertEqual(general_step.get_city_input_text(), city, f"In the city area text doesn't equal input {city}")
+        general_step.set_city_input(city)
+        self.assertEqual(general_step.get_city_input_text(), city, f"In the city area text doesn't equal input {city}")
 
         general_step.set_description(description)
         self.assertEqual(general_step.get_description_text(), description, f"In the description area text doesn't equal input {description}")
 
-        general_step.click_next_button()
-        sleep(5)
+        #test Interests step
+        interest_step = general_step.click_next_button()
+        
+        interest_step.set_main_tutoring_category_input(category1)
+        self.assertEqual(interest_step.get_main_tutoring_category_text(), category1, f"In the category area text doesn't equal input {category1}")
+
+        interest_step.set_subject_input(subject1)
+        self.assertEqual(interest_step.get_subject_text(), subject1, f"In the subject area text doesn't equal input {subject1}")
+
+        interest_step.click_add_subject_button()
+        self.assertEqual(interest_step.get_main_tutoring_category_text(),"", "The category area is fiiled")
+        self.assertEqual(interest_step.get_subject_text(), "", "The category area is fiiled")
+
+        interest_step.set_main_tutoring_category_input(category2)
+        self.assertEqual(interest_step.get_main_tutoring_category_text(), category2, f"In the category area text doesn't equal input {category2}")
+
+        interest_step.set_subject_input(subject2)
+        self.assertEqual(interest_step.get_subject_text(), subject2, f"In the subject area text doesn't equal input {subject2}")
+
+        #test Language step
+        language_step = interest_step.click_next_button()
+        language_step.set_native_language_input(language)
+        self.assertEqual(language_step.get_native_language_text(), language, f"In the language area text doesn't equal input {language}")
+
+        #test Photo step
 
 
 if __name__ == '__main__':

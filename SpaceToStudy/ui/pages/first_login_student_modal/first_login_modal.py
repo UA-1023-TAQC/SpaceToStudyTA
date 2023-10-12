@@ -72,7 +72,4 @@ class FirstLoginModal(BaseComponent):
     def click_next_button(self):
         self.get_next_button().click()
         return self.node.parent
-
-
-
-
+    
