@@ -36,7 +36,7 @@ class LanguageStepStudent(FirstLoginModal):
     @allure.step("Click next button")
     def click_next_button(self):
         self.get_next_button().click()
-        return PhotoStepStudent(self.node.parent)
+        return PhotoStepStudent(self.node)
     
     @allure.step("Click back button")
     def click_back_button(self):

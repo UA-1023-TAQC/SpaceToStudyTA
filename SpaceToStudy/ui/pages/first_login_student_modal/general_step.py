@@ -147,5 +147,5 @@ class GeneralStepStudent(FirstLoginModal):
     @allure.step("Click next button")
     def click_next_button(self):
         self.get_next_button().click()
-        return InterestsStepStudent(self.node.parent)
+        return InterestsStepStudent(self.node)
     

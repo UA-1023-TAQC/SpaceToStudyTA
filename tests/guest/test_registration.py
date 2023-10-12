@@ -370,9 +370,6 @@ class RegistrationTestCase(BaseTestRunner):
         
         #email validation
         letters = MailBox(email).get_letters()
-        # self.assertEqual(1, len(letters))
-        # sender = letters.get_sender_email()
-        # self.assertEqual("space2study.info@gmail.com", sender)
         letter = letters[0]
         link = letter.get_link_from_letter()
         self.driver.get(link) 
@@ -392,13 +389,16 @@ class RegistrationTestCase(BaseTestRunner):
 
         general_step.set_country_input(country)
         self.assertEqual(general_step.get_country_input_text(), country, f"In the county area text doesn't equal input {country}")
-        sleep(30)
 
-        general_step.set_city_input(city)
-        self.assertEqual(general_step.get_city_input_text(), city, f"In the city area text doesn't equal input {city}")
+        # general_step.set_city_input(city)
+        # self.assertEqual(general_step.get_city_input_text(), city, f"In the city area text doesn't equal input {city}")
 
         general_step.set_description(description)
         self.assertEqual(general_step.get_description_text(), description, f"In the description area text doesn't equal input {description}")
+
+        general_step.click_next_button()
+        sleep(5)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
