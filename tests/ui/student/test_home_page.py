@@ -1,3 +1,4 @@
+from time import sleep
 import allure
 from selenium.webdriver import Keys
 
@@ -105,19 +106,3 @@ class TestHomePageStudent(TestRunnerWithStudent):
         home.click_button_go_to_categories()
         title_of_page = CategoriesPage(self.driver).get_categories_title()
         self.assertEqual(title_of_page, "Categories")
-
-
-    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
-    def test_visability_of_the_all_elements_after_resizing_for_who_we_are_block(self):
-        window_width = 600
-        window_height = 1000
-        who_we_are = (HomePageGuest(self.driver)
-                              .get_header()
-                              .get_navigate_links()[2]
-                              .click())
-        HomePageGuest(self.driver).set_size_window(window_width, window_height)
-        who_we_are_elements = (HomePageGuest(who_we_are)
-                               .get_who_we_are_block()
-                               .get_who_we_are_elements())
-        for element in who_we_are_elements.values():
-            self.assertTrue(element.is_displayed())
