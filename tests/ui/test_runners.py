@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
-from tests.value_provider import ValueProvider
+from tests.utils.value_provider import ValueProvider
 
 IMPLICITLY_WAIT = 5
 
@@ -21,7 +21,7 @@ class BaseTestRunner(unittest.TestCase):
         self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
         self.driver.maximize_window()
-        self.addCleanup(self.driver.quit)
+        # self.addCleanup(self.driver.quit)
         self.driver.get(ValueProvider.get_base_url())
 
     def _login(self, email: str, password: str):

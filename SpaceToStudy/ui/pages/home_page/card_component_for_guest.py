@@ -27,17 +27,25 @@ class CardComponent(BaseComponent):
             self.image = self.node.find_element(*IMAGE)
         return self.image
 
-    @allure.step("Get name")
-    def get_name(self) -> str:
+    @allure.step("Get a 'name' element")
+    def get_name_element(self) -> WebElement:
         if not self.title:
             self.title = self.node.find_element(*TITLE)
-        return self.title.text
+        return self.title
 
-    @allure.step("Get offers description text")
-    def get_offers(self) -> str:
+    @allure.step("Get a 'name' element title")
+    def get_name(self) -> str:
+        return self.get_name_element().text
+
+    @allure.step("Get a card description element")
+    def get_offers_element(self) -> str:
         if not self.description:
             self.description = self.node.find_element(*DESCRIPTION)
-        return self.description.text
+        return self.description
+
+    @allure.step("Get a card description text")
+    def get_offers(self) -> str:
+        return self.get_offers_element().text
 
     @allure.step("Get button")
     def get_btn(self) -> WebElement:
@@ -48,15 +56,6 @@ class CardComponent(BaseComponent):
     @allure.step("Get button text")
     def get_btn_text(self) -> str:
         return self.get_btn().text
-
-    @allure.step("Get tub animation or return false if no such element")
-    def get_tub_animation(self) -> bool:
-        try:
-            pulsate = self.node.find_element(By.XPATH,
-                                             "//span[@class='MuiTouchRipple-child MuiTouchRipple-childPulsate']")
-            return True
-        except NoSuchElementException:
-            return False
 
     @allure.step("Click button")
     def click_btn(self):

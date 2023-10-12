@@ -6,13 +6,14 @@ from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAutho
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
-from tests.test_runners import BaseTestRunner
-from tests.value_provider import ValueProvider
+from tests.ui.test_runners import BaseTestRunner
+from tests.utils.value_provider import ValueProvider
 
 
 class LoginModalTestCase(BaseTestRunner):
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/97')
+    @allure.title('Verify that the user cannot close the login modal by clicking outside of it.')
     def test_login_modal_outside_click(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()
@@ -30,6 +31,7 @@ class LoginModalTestCase(BaseTestRunner):
         self.assertFalse(button.is_enabled_button(), "The button must be disabled")
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/114')
+    @allure.title('Verify that the registered user can access the personal cabinet')
     def test_user_access_to_personal_cabinet(self):
         login_modal = (HomePageGuest(self.driver)
                        .get_header()

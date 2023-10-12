@@ -1,15 +1,16 @@
 """
 https://apilayer.com/marketplace/temp_mail-api
 """
-import json
-import requests
-import random
-import string
 import hashlib
+import json
+import random
 import re
+import string
 
-from tests.value_provider import ValueProvider
+import requests
 from bs4 import BeautifulSoup
+
+from tests.utils.value_provider import ValueProvider
 
 
 def get_hashed_email(email):

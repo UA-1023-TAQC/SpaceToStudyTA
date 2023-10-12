@@ -1,6 +1,9 @@
+from typing import List
+
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.explore_offers.filtering_and_sorting_component import FilteringAndSortingComponent
@@ -8,7 +11,7 @@ from SpaceToStudy.ui.pages.explore_offers.grid_card_component import GridCardCom
 from SpaceToStudy.ui.pages.explore_offers.inline_card_component import InlineCardComponent
 from SpaceToStudy.ui.pages.explore_offers.search_by_tutor_name_component import SearchByTutorNameComponent
 from SpaceToStudy.ui.pages.explore_offers.student_private_lesson_component import StudentPrivateLessonComponent
-
+from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 
 STUDENT_FOR_PRIVATE_LESSONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 
@@ -57,6 +60,10 @@ class ExploreOffersPage(BasePage):
     def get_title(self) -> WebElement:
         return self.driver.find_element(*TITLE)
 
+    @allure.step("Get title text")
+    def get_title_text(self):
+        return self.get_title().text
+
     @allure.step("Get subtitle ")
     def get_text(self) -> WebElement:
         return self.driver.find_element(*TEXT)
@@ -104,17 +111,19 @@ class ExploreOffersPage(BasePage):
         return self.get_back_to_all_subject().click()
 
     @allure.step("Get list of offers in grid card")
-    def get_list_of_offers_grid_card(self) -> list:
+    def get_list_of_offers_grid_card(self) -> List[GridCardComponent]:
         offers = self.driver.find_elements(*GRID_CARD)
         self._list_of_offers_grid_card = [GridCardComponent(offer) for offer in offers]
         return self._list_of_offers_grid_card
 
     @allure.step("Get list of offers in inline card")
-    def get_list_of_offers_inline_card(self) -> list:
+    def get_list_of_offers_inline_card(self) -> List[InlineCardComponent]:
+        WebDriverWait(self.driver, 3)
         offers = self.driver.find_elements(*INLINE_CARD)
         self._list_of_offers_inline_card = [InlineCardComponent(offer) for offer in offers]
         return self._list_of_offers_inline_card
 
+    @allure.step("Get notification lock with no results")
     def get_notification_block_with_no_results(self) -> FilteringAndSortingComponent:
         if not self._notification_block:
             _notification_block = self.driver.find_element(*NOTIFICATION_BLOCK)

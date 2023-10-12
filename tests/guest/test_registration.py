@@ -5,8 +5,8 @@ import allure
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
-from tests.test_runners import BaseTestRunner
-from tests.value_provider import ValueProvider
+from tests.ui.test_runners import BaseTestRunner
+from tests.utils.value_provider import ValueProvider
 
 
 class RegistrationTestCase(BaseTestRunner):
@@ -157,3 +157,4 @@ class RegistrationTestCase(BaseTestRunner):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
+

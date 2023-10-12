@@ -1,8 +1,8 @@
+import allure
 
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
-
 from SpaceToStudy.ui.pages.my_offers_page import MyOffersPage
-from tests.test_runners import TestRunnerWithTutor
+from tests.ui.test_runners import TestRunnerWithTutor
 
 
 class MyOffers(TestRunnerWithTutor):

@@ -4,6 +4,7 @@ import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
@@ -56,8 +57,10 @@ class SearchByTutorNameComponent(BaseComponent):
 
     @allure.step("Click on the search button")
     def click_search_btn(self):
+        from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
         self.get_search_btn().click()
-        return self
+        WebDriverWait(self.node.parent, 3)
+        return ExploreOffersPage(self.node)
 
     @allure.step("Set {text} into the categories input")
     def set_categories_input(self, text):
