@@ -73,6 +73,7 @@ class HomePageGuest(BasePage):
         self._collapse_items = None
         self._collapse_block = None
         self._collapse_items_mobile = None
+        self._who_we_are_block = None
 
     @allure.step("Get map image")
     def get_img_map(self) -> WebElement:
@@ -172,6 +173,12 @@ class HomePageGuest(BasePage):
     def click_button_get_started_for_free(self):
         self.get_button_get_started_for_free().click()
         return self.driver.find_element(*WHAT_CAN_U_DO_BLOCK)
+
+    @allure.step('Click button "Get started for free"')
+    def click_started_for_free(self):
+        self.get_button_get_started_for_free().click()
+        sleep(1)
+        return self
 
     @allure.step("Get the 'What can you do' block")
     def get_what_can_u_do_block(self):
@@ -356,3 +363,5 @@ class HomePageGuest(BasePage):
             node = self.driver.find_element(*WHO_WE_ARE_BLOCK)
             self._who_we_are_block = WhoWeAreBlock(node)
         return self._who_we_are_block
+
+

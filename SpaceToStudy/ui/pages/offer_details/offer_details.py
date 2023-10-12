@@ -19,6 +19,7 @@ ABOUT_OFFER_DESC = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[3]/div/div/d
 GENERAL_INFO_COMPONENT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]")
 FREQUENTLY_ASKED_QUESTIONS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[5]")
 WHAT_STUDENTS_SAY_COMPONENT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[6]")
+INLINE_CARD_COMPONENT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[2]")
 
 SUCCESS_FLASHBOX = (By.XPATH,
                     "//div[@role='alert']//div[contains(text(), 'Request for cooperation sent successfully')]")
@@ -39,6 +40,7 @@ class OfferDetailsPage(BasePage):
         self._what_students_say_component = None
         self._enroll_offer_btn = None
         self._is_request_sent_successfully = None
+        self._inline_card_component = None
 
     @allure.step("Get title of offer details page")
     def get_title(self) -> str:
@@ -96,6 +98,13 @@ class OfferDetailsPage(BasePage):
         if not self._what_students_say_component:
             self._what_students_say_component = self.driver.find_element(*WHAT_STUDENTS_SAY_COMPONENT)
         return self._what_students_say_component
+
+    @allure.step("Get inline card on offer details page")
+    def get_inline_card_component(self) -> OfferInlineCardComponent:
+        if not self._inline_card_component:
+            node = self.driver.find_element(*INLINE_CARD_COMPONENT)
+            self._inline_card_component = OfferInlineCardComponent(node)
+        return self._inline_card_component
 
     @allure.step("Check that request was sent successfully on offer details page")
     def is_request_sent_successfully(self) -> bool:

@@ -1,4 +1,3 @@
-import unittest
 from time import sleep
 
 import allure
@@ -6,9 +5,9 @@ import allure
 from SpaceToStudy.ui.pages.email_confirmation_modal.email_confirmation_modal import EmailConfirmationModal
 from SpaceToStudy.ui.pages.first_login_student_modal.general_step import GeneralStepStudent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
-from tests.test_runners import BaseTestRunner
-from tests.value_provider import ValueProvider
-from utils.api_for_emails import MailBox, TemporaryMailGenerator
+from tests.ui.test_runners import BaseTestRunner
+from tests.utils.api_for_emails import MailBox, TemporaryMailGenerator
+from tests.utils.value_provider import ValueProvider
 
 
 class RegistrationAsAStudentTestCase(BaseTestRunner):
