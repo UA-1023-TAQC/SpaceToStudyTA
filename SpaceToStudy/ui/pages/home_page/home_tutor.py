@@ -3,12 +3,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 
 TITLE = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[1]/p")
 DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[1]/span")
 SEARCH_INPUT = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[2]/div/div/input")
 FIND_STUDENT = (By.XPATH, "//a[contains(text(), 'Find student')]")
+GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 
 
 class HomePageTutor(BasePage):
@@ -19,6 +21,7 @@ class HomePageTutor(BasePage):
         self._description = None
         self._search_input = None
         self._find_student = None
+        self._go_to_categories = None
 
     @allure.step("Get title")
     def get_title(self) -> WebElement:
@@ -61,7 +64,17 @@ class HomePageTutor(BasePage):
             self._find_student = self.driver.find_element(*FIND_STUDENT)
         return self._find_student
 
-    @allure.step("Click 'Find student' button")
+    @allure.step("Click on the 'Find student' button")
     def click_find_student_btn(self) -> ExploreOffersPage:
         self.get_find_student_btn().click()
         return ExploreOffersPage(self.driver)
+
+    def get_go_to_categories_btn(self):
+        if self._go_to_categories is None:
+            self._go_to_categories = self.driver.find_element(*GO_TO_CATEGORIES)
+        return self._go_to_categories
+
+    @allure.step("Click on the 'Go to categories' button")
+    def click_go_to_categories_btn(self):
+        self.get_go_to_categories_btn().click()
+        return CategoriesPage(self.driver)
