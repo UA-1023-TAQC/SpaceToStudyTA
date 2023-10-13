@@ -421,6 +421,21 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(error_message, email_error)
         self.assertEqual(error_message, confirm_password_error)
 
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/312')
+    def test_tutor_sign_up_button_active_with_correct_data(self):
+        (HomePageGuest(self.driver)
+         .click_started_for_free()
+         .click_become_a_tutor())
+        sign_up_button_state = (RegistrationModal(self.driver)
+                                .set_first_name("Dan")
+                                .set_last_name("Brown")
+                                .set_email("danbrown@example.com")
+                                .set_password("Password123")
+                                .set_confirm_password("Password123")
+                                .click_i_agree_checkbox()
+                                .get_sign_up_btn())
+        self.assertTrue(sign_up_button_state.is_enabled(), "The 'Sign Up' button should be active")
+
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/308")
     def test_guest_signup_as_mentor_with_correct_data_and_agreement(self):
         mailbox_address = TemporaryMailGenerator().generate_email_address()
