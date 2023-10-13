@@ -101,7 +101,7 @@ class RegistrationTestCase(BaseTestRunner):
                          "Button's name differs from 'Become a tutor'")
 
         registration_modal_title = (HomePageGuest(self.driver)
-                                    .click_button_become_a_student_tutor().get_text_title_modal())
+                                    .click_button_become_a_student_tutor().get_title_text())
         self.assertEqual(registration_modal_title, "Sign up as a tutor",
                          "Modal's name differs from 'Sign up as a tutor'")
 
@@ -129,13 +129,13 @@ class RegistrationTestCase(BaseTestRunner):
         start_student = get_started_for_free \
             .get_card_learn_from_experts() \
             .click_btn()
-        title_student = start_student.get_text_title_modal()
+        title_student = start_student.get_title_text()
         self.assertEqual(title_student, "Sign up as a student")
         start_student.click_close_btn()
         title_tutor = get_started_for_free \
             .get_card_share_your_experience() \
             .click_btn() \
-            .get_text_title_modal()
+            .get_title_text()
         self.assertEqual(title_tutor, "Sign up as a tutor")
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/315')
@@ -153,7 +153,7 @@ class RegistrationTestCase(BaseTestRunner):
                      "Verify that 'Sign up as a tutor' pop-up contains all UI components")
     def test_tutor_registration_modal_contains_all_UI_components(self):
         registration_modal = (HomePageGuest(self.driver).click_started_for_free().click_become_a_tutor())
-        registration_modal_title = registration_modal.get_text_title_modal()
+        registration_modal_title = registration_modal.get_title_text()
         self.assertEqual(registration_modal_title, "Sign up as a tutor",
                          "Modal name differs from 'Sign up as a tutor'")
 
