@@ -107,6 +107,32 @@ class TestHomePageStudent(TestRunnerWithStudent):
         title_of_page = CategoriesPage(self.driver).get_categories_title()
         self.assertEqual(title_of_page, "Categories")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/370",
+                     "Check the student’s home page How it works block UI Test 3")
+    def test_how_it_works_ui_resize_window(self):
+        how_it_works_component = (HomePageStudent(self.driver)
+                                  .get_how_it_works_block_student())
+        how_it_works_items_list = [how_it_works_component.get_select_a_tutor_items(),
+                                   how_it_works_component.get_send_request_items(),
+                                   how_it_works_component.get_start_learning_items(),
+                                   how_it_works_component.get_write_feedback_items()]
+
+        resized_width = 600
+        resized_height = 1000
+        self.driver.set_window_size(resized_width, resized_height)
+        for item in how_it_works_items_list:
+            item_title = item.text
+            self.assertTrue(item.is_displayed(), f"Item {item_title} is not displayed when a window size is set: "
+                                                 f"width {resized_width}, height {resized_height}")
+
+        resized_width = 800
+        resized_height = 600
+        self.driver.set_window_size(resized_width, resized_height)
+        for item in how_it_works_items_list:
+            item_title = item.text
+            self.assertTrue(item.is_displayed(), f"Item {item_title} is not displayed when a window size is set: "
+                                                 f"width {resized_width}, height {resized_height}")
+
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/334",
                      "Check the student’s home page How it works block UI Test 1")
     def test_how_it_works_ui_find_tutor_btn(self):
