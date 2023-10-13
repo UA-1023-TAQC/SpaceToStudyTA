@@ -1,6 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
@@ -20,6 +22,8 @@ CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/di
 CATEGORIES_BLOCK_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/p")
 CATEGORIES_BLOCK_DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/span")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
+CATEGORIES_MOBILE = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/div/a")
+
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
 
@@ -48,6 +52,7 @@ class HomePageStudent(BasePage):
         self._categories_block_title = None
         self._categories_block_description = None
         self._categories_block = None
+        self._categories_mobile = None
 
     @allure.step("Get categories")
     def get_categories(self) -> tuple[CategoryComponent]:
@@ -57,6 +62,18 @@ class HomePageStudent(BasePage):
             for category in categories:
                 self._categories.append(CategoryComponent(category))
         return self._categories
+
+    @allure.step("Get categories mobile version site")
+    def get_categories_mobile(self) -> tuple[CategoryComponent]:
+        if self._categories_mobile is None:
+
+            wait = WebDriverWait(self.driver, 10)
+            wait.until(EC.presence_of_all_elements_located(CATEGORIES_MOBILE))
+            categories_mobile = self.driver.find_elements(*CATEGORIES_MOBILE)
+            self._categories_mobile = []
+            for category in categories_mobile:
+                self._categories_mobile.append(CategoryComponent(category))
+        return self._categories_mobile
 
     @allure.step("Get categories block")
     def get_categories_block(self) -> WebElement:
