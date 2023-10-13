@@ -13,24 +13,24 @@ from SpaceToStudy.ui.pages.sign_up_modal.please_confirm_modal import PleaseConfi
 CLOSE_BTN = (By.XPATH, "/html/body/div[2]/div[3]/div/div/button")
 PLEASE_CONFIRM = (By.XPATH, "/html/body/div[3]/div[3]/div")
 
-TITLE = (By.XPATH, "//h2")
+MODAL_TITLE = (By.XPATH, "//h2")
 FIRST_NAME_INPUT = (By.XPATH, "//label[contains(text(), 'First name')]/..")
 LAST_NAME_INPUT = (By.XPATH, "//label[contains(text(), 'Last name')]/..")
 EMAIL_INPUT = (By.XPATH, "//label[contains(text(), 'Email')]/..")
 PASSWORD_INPUT = (By.XPATH, "//label[contains(text(), 'Password')]/..")
 CONFIRM_PASSWORD_INPUT = (By.XPATH, "//label[contains(text(), 'Confirm password')]/..")
 
-FIRST_NAME_LABEL = (By.ID, "//*[@id='mui-10-label']")
-LAST_NAME_LABEL = (By.ID, "//*[@id='mui-11-label']")
-EMAIL_LABEL = (By.XPATH, "//*[@id='mui-12-label']")
-PASSWORD_LABEL = (By.ID, "//*[@id='mui-13-label']")
-CONFIRM_PASSWORD_LABEL = (By.XPATH, "//*[@id='mui-14-label']")
+FIRST_NAME_LABEL = (By.ID, "//label[contains(text(), 'First name')]")
+LAST_NAME_LABEL = (By.ID, "//label[contains(text(), 'Last name')]")
+EMAIL_LABEL = (By.XPATH, "//label[contains(text(), 'Email')]")
+PASSWORD_LABEL = (By.ID, "//label[contains(text(), 'Password')]")
+CONFIRM_PASSWORD_LABEL = (By.XPATH, "//label[contains(text(), 'Confirm password')]")
 
-FIRST_NAME_ERROR = (By.XPATH, "//*[@id='mui-10-helper-text']/span")
-LAST_NAME_ERROR = (By.XPATH, "//*[@id='mui-11-helper-text']/span")
-EMAIL_ERROR = (By.XPATH, "//*[@id='mui-12-helper-text']/span")
-PASSWORD_ERROR = (By.XPATH, "//*[@id='mui-13-helper-text']/span")
-CONFIRM_PASSWORD_ERROR = (By.XPATH, "//*[@id='mui-14-helper-text']/span")
+FIRST_NAME_ERROR = (By.XPATH, "//label[contains(text(), 'First name')]/following-sibling::p/span")
+LAST_NAME_ERROR = (By.XPATH, "//label[contains(text(), 'Last name')]/following-sibling::p/span")
+EMAIL_ERROR = (By.XPATH, "//label[contains(text(), 'Email')]/following-sibling::p/span")
+PASSWORD_ERROR = (By.XPATH, "//label[contains(text(), 'Password')]/following-sibling::p/span")
+CONFIRM_PASSWORD_ERROR = (By.XPATH, "//label[contains(text(), 'Confirm password')]/following-sibling::p/span")
 
 I_AGREE_CHECKBOX = (By.XPATH, "//form//input[@type='checkbox']/..")
 SIGN_UP_BTN = (By.XPATH, "//button[contains(text(), 'Sign up')]")
@@ -44,8 +44,6 @@ PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2
                                  "/div/a[2]")
 LOGIN_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
 LOGIN_MODAL = (By.XPATH, "//*[@role='dialog']")
-
-TITLE_MODAL = (By.XPATH, "//h2")
 
 
 class RegistrationModal(BaseComponent):
@@ -61,8 +59,7 @@ class RegistrationModal(BaseComponent):
         self._i_agree_checkbox = None
         self._terms_link = None
         self._privacy_policy_link = None
-        self._title_modal = None
-        self._title = None
+        self._modal_title = None
         self._please_confirm = None
 
     @allure.step("Get close btn")
@@ -85,9 +82,9 @@ class RegistrationModal(BaseComponent):
 
     @allure.step("Get title modal")
     def get_title(self) -> WebElement:
-        if not self._title_modal:
-            self._title_modal = self.node.find_element(*TITLE_MODAL)
-        return self._title_modal
+        if not self._modal_title:
+            self._modal_title = self.node.find_element(*MODAL_TITLE)
+        return self._modal_title
 
     @allure.step("Get title modal text")
     def get_title_text(self) -> str:
