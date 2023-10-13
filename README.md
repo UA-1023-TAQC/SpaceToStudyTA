@@ -4,6 +4,7 @@ Create a `.env` file in the root of your project:
 
 ```dosini
 BASE_URL=base_url
+BASE_API_URL=base_api_url
 
 STUDENT_EMAIL=student@test.com
 STUDENT_PASSWORD=student_password
