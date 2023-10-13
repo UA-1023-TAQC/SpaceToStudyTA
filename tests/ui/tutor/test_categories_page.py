@@ -4,6 +4,7 @@ import allure
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
+from SpaceToStudy.ui.pages.home_page.home_tutor import HomePageTutor
 from tests.ui.test_runners import TestRunnerWithTutor
 
 
@@ -40,6 +41,12 @@ class CategoriesPageTestCase(TestRunnerWithTutor):
 
         result_text = CategoriesPage(self.driver).get_no_result_title()
         self.assertEqual("Sorry, no results found", result_text)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/378")
+    def test_verify_tutor_can_find_all_categories(self):
+        categories = HomePageTutor(self.driver).click_go_to_categories_btn()
+        self.assertEqual("Categories", categories.get_categories_title())
+        self.assertIn("/categories", self.driver.current_url)
 
 
 if __name__ == '__main__':

@@ -6,6 +6,7 @@ from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUna
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.ui.test_runners import BaseTestRunner
+from tests.utils.api_for_emails import TemporaryMailGenerator
 from tests.utils.value_provider import ValueProvider
 
 
@@ -100,7 +101,7 @@ class RegistrationTestCase(BaseTestRunner):
                          "Button's name differs from 'Become a tutor'")
 
         registration_modal_title = (HomePageGuest(self.driver)
-                                    .click_button_become_a_student_tutor().get_text_title_modal())
+                                    .click_button_become_a_student_tutor().get_title_text())
         self.assertEqual(registration_modal_title, "Sign up as a tutor",
                          "Modal's name differs from 'Sign up as a tutor'")
 
@@ -128,13 +129,13 @@ class RegistrationTestCase(BaseTestRunner):
         start_student = get_started_for_free \
             .get_card_learn_from_experts() \
             .click_btn()
-        title_student = start_student.get_text_title_modal()
+        title_student = start_student.get_title_text()
         self.assertEqual(title_student, "Sign up as a student")
         start_student.click_close_btn()
         title_tutor = get_started_for_free \
             .get_card_share_your_experience() \
             .click_btn() \
-            .get_text_title_modal()
+            .get_title_text()
         self.assertEqual(title_tutor, "Sign up as a tutor")
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/315')
@@ -152,7 +153,7 @@ class RegistrationTestCase(BaseTestRunner):
                      "Verify that 'Sign up as a tutor' pop-up contains all UI components")
     def test_tutor_registration_modal_contains_all_UI_components(self):
         registration_modal = (HomePageGuest(self.driver).click_started_for_free().click_become_a_tutor())
-        registration_modal_title = registration_modal.get_text_title_modal()
+        registration_modal_title = registration_modal.get_title_text()
         self.assertEqual(registration_modal_title, "Sign up as a tutor",
                          "Modal name differs from 'Sign up as a tutor'")
 
@@ -419,6 +420,27 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(error_message, last_name_error)
         self.assertEqual(error_message, email_error)
         self.assertEqual(error_message, confirm_password_error)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/308")
+    def test_guest_signup_as_mentor_with_correct_data_and_agreement(self):
+        mailbox_address = TemporaryMailGenerator().generate_email_address()
+        data = (HomePageGuest(self.driver)
+                .click_become_a_tutor()
+                .set_first_name(ValueProvider.get_tutor_first_name())
+                .set_last_name(ValueProvider.get_tutor_last_name())
+                .set_password(ValueProvider.get_tutor_password())
+                .set_confirm_password(ValueProvider.get_tutor_password())
+                .set_email(mailbox_address)
+                .click_i_agree_checkbox())
+        self.assertEqual('', data.get_first_name_error_message(), "An error message is present")
+        self.assertEqual('', data.get_last_name_error_message(), "An error message is present")
+        self.assertEqual('', data.get_password_error_message(), "An error message is present")
+        self.assertEqual('', data.get_confirm_password_error_message(), "An error message is present")
+        self.assertEqual('', data.get_email_error_message(), "An error message is present")
+        self.assertTrue(data.get_i_agree_checkbox().is_checked(), "The checkbox is not checked")
+        modal_window = (data.get_verification_modal_window()
+                        .is_displayed())
+        self.assertTrue(modal_window, "The modal window did not appear")
 
 
 if __name__ == '__main__':

@@ -19,7 +19,6 @@ CATEGORY_LANGUAGES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/
 CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div")
 CATEGORIES_BLOCK_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[1]/p")
 CATEGORIES_BLOCK_DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/span")
-CATEGORIES_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]")
 CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
