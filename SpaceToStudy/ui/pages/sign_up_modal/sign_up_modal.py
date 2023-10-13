@@ -7,6 +7,7 @@ from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input_with_image import InputWithImage
 from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.email_confirmation_modal.email_verification_modal import EmailVerificationModal
 from SpaceToStudy.ui.pages.login_modal.login_modal import LoginModal
 from SpaceToStudy.ui.pages.sign_up_modal.please_confirm_modal import PleaseConfirm
 
@@ -45,6 +46,9 @@ PRIVACY_POLICY_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2
 LOGIN_LINK = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/div[3]/p[2]")
 LOGIN_MODAL = (By.XPATH, "//*[@role='dialog']")
 
+TITLE_MODAL = (By.XPATH, "//h2")
+VERIFICATION_MODAL_WINDOW = (By.XPATH, '/html/body/div[2]/div[3]/div/div/div')
+
 
 class RegistrationModal(BaseComponent):
 
@@ -61,6 +65,7 @@ class RegistrationModal(BaseComponent):
         self._privacy_policy_link = None
         self._modal_title = None
         self._please_confirm = None
+        self._verification_modal_window = None
 
     @allure.step("Get close btn")
     def get_close_btn(self):
@@ -349,6 +354,14 @@ class RegistrationModal(BaseComponent):
         login_link.click()
         node = self.node.parent.find_element(*LOGIN_MODAL)
         return LoginModal(node)
+
+    @allure.step("Receiving a modal email confirmation window")
+    def get_verification_modal_window(self):
+        self.click_sign_up_btn()
+        if not self._verification_modal_window:
+            node = self.node.find_element(*VERIFICATION_MODAL_WINDOW)
+            self._verification_modal_window = EmailVerificationModal(node)
+        return self._verification_modal_window
 
     @allure.step("Is displayed element")
     def is_displayed(self) -> bool:

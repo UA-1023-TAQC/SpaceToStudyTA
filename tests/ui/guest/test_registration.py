@@ -6,6 +6,7 @@ from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUna
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 from tests.ui.test_runners import BaseTestRunner
+from tests.utils.api_for_emails import TemporaryMailGenerator
 from tests.utils.value_provider import ValueProvider
 
 
@@ -419,6 +420,27 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(error_message, last_name_error)
         self.assertEqual(error_message, email_error)
         self.assertEqual(error_message, confirm_password_error)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/308")
+    def test_guest_signup_as_mentor_with_correct_data_and_agreement(self):
+        mailbox_address = TemporaryMailGenerator().generate_email_address()
+        data = (HomePageGuest(self.driver)
+                .click_become_a_tutor()
+                .set_first_name(ValueProvider.get_tutor_first_name())
+                .set_last_name(ValueProvider.get_tutor_last_name())
+                .set_password(ValueProvider.get_tutor_password())
+                .set_confirm_password(ValueProvider.get_tutor_password())
+                .set_email(mailbox_address)
+                .click_i_agree_checkbox())
+        self.assertEqual('', data.get_first_name_error_message(), "An error message is present")
+        self.assertEqual('', data.get_last_name_error_message(), "An error message is present")
+        self.assertEqual('', data.get_password_error_message(), "An error message is present")
+        self.assertEqual('', data.get_confirm_password_error_message(), "An error message is present")
+        self.assertEqual('', data.get_email_error_message(), "An error message is present")
+        self.assertTrue(data.get_i_agree_checkbox().is_checked(), "The checkbox is not checked")
+        modal_window = (data.get_verification_modal_window()
+                        .is_displayed())
+        self.assertTrue(modal_window, "The modal window did not appear")
 
 
 if __name__ == '__main__':
