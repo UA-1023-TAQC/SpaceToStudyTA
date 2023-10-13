@@ -195,6 +195,7 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("block", video_display)
         self.assertEqual("center", text_aligning)
 
+
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/179")
     def test_how_it_works_block_ui(self):
         width = 1920
@@ -338,3 +339,19 @@ class HomePageTestCase(BaseTestRunner):
 
 
 
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
+    def test_visability_of_the_all_elements_after_resizing_for_who_we_are_block(self):
+        window_width = 600
+        window_height = 1000
+        who_we_are = (HomePageGuest(self.driver)
+                              .get_header()
+                              .get_navigate_links()[2]
+                              .click())
+        HomePageGuest(self.driver).set_size_window(window_width, window_height)
+        who_we_are_elements = HomePageGuest(who_we_are)
+        sleep(10)
+        who_we_are_elements = (who_we_are_elements.get_who_we_are_block()
+                               .get_who_we_are_elements())
+        for element in who_we_are_elements.values():
+            self.assertTrue(element.is_displayed(), f"Element {element} isn't displayed")
