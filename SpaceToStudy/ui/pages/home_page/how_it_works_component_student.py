@@ -8,6 +8,11 @@ from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffe
 BLOCK_NAME = (By.XPATH, "./div[1]/p")
 FOUR_STEPS = (By.XPATH, "./div[1]/p/span")
 
+HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR = (By.XPATH, "//div[@id='how-it-works']/div[2]/div[1]")
+HOW_IT_WORKS_BLOCK_SEND_REQUEST = (By.XPATH, "//div[@id='how-it-works']/div[2]/div[2]")
+HOW_IT_WORKS_BLOCK_START_LEARNING = (By.XPATH, "//div[@id='how-it-works']/div[2]/div[3]")
+HOW_IT_WORKS_BLOCK_WRITE_FEEDBACK = (By.XPATH, "//div[@id='how-it-works']/div[2]/div[4]")
+
 ITEM_SELECT_A_TUTOR_IMG = (By.XPATH, "./div[2]/div[1]/img")
 ITEM_SELECT_A_TUTOR_TITLE = (By.XPATH, "./div[2]/div[1]/div/p")
 ITEM_SELECT_A_TUTOR_DESCRIPTION = (By.XPATH, "./div[2]/div[1]/div/p/span")
@@ -137,3 +142,19 @@ class HowItWorksComponentStudent(BaseComponent):
     def click_find_tutor_btn(self):
         self.get_find_tutor_btn().click()
         return ExploreOffersPage(self.node.parent)
+
+    @allure.step("Get select a tutor items")
+    def get_select_a_tutor_items(self) -> WebElement:
+        return self.node.find_element(*HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR)
+
+    @allure.step("Get send request items")
+    def get_send_request_items(self) -> WebElement:
+        return self.node.find_element(*HOW_IT_WORKS_BLOCK_SEND_REQUEST)
+
+    @allure.step("Get start learning items")
+    def get_start_learning_items(self) -> WebElement:
+        return self.node.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
+
+    @allure.step("Get write feedback items")
+    def get_write_feedback_items(self) -> WebElement:
+        return self.node.find_element(*HOW_IT_WORKS_BLOCK_WRITE_FEEDBACK)
