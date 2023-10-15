@@ -159,3 +159,85 @@ class TestHomePageStudent(TestRunnerWithStudent):
         tab_find_tutor_class = find_tutor_btn.get_attribute("class")
         self.assertTrue(button_class_with_tab_animation in tab_find_tutor_class,
                         "'Find tutor' button is not flashing when hovered over by pressing TAB key")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/369",
+                     "Check the student’s home page How it works block UI Test 2")
+    def test_how_it_works_ui_spelling_and_alignment(self):
+        title_expected = "How it works"
+        step_1_expected = "Select a Tutor"
+        step_2_expected = "Send Request"
+        step_3_expected = "Start Learning"
+        step_4_expected = "Write Feedback"
+
+        how_it_works_student_block = (HomePageStudent(self.driver)
+                                      .click_navigate_link_in_header_by_name("How it works")
+                                      .get_how_it_works_block_student())
+
+        actual_title = how_it_works_student_block.get_block_name_student()
+        actual_step_1 = how_it_works_student_block.get_title_select_a_tutor_student()
+        actual_step_2 = how_it_works_student_block.get_title_send_request_student()
+        actual_step_3 = how_it_works_student_block.get_title_start_learning_student()
+        actual_step_4 = how_it_works_student_block.get_title_write_feedback_student()
+
+        self.assertEqual(title_expected, actual_title,
+                         f"Block title is: {actual_title}, but expected is: {title_expected}")
+        self.assertEqual(step_1_expected, actual_step_1,
+                         f"Step 1 title is: {actual_step_1}, but expected is: {step_1_expected}")
+        self.assertEqual(step_2_expected, actual_step_2,
+                         f"Step 1 title is: {actual_step_2}, but expected is: {step_2_expected}")
+        self.assertEqual(step_3_expected, actual_step_3,
+                         f"Step 1 title is: {actual_step_3}, but expected is: {step_3_expected}")
+        self.assertEqual(step_4_expected, actual_step_4,
+                         f"Step 1 title is: {actual_step_4}, but expected is: {step_4_expected}")
+
+        # Verify items alignment
+
+        how_it_works_items_list = [how_it_works_student_block.get_select_a_tutor_items(),
+                                   how_it_works_student_block.get_send_request_items(),
+                                   how_it_works_student_block.get_start_learning_items(),
+                                   how_it_works_student_block.get_write_feedback_items()]
+
+        heights = []
+        for block in how_it_works_items_list:
+            height = block.size['height']
+            heights.append(height)
+        self.assertListEqual(heights, [heights[0]] * len(heights), "Elements have different heights")
+
+        y_coordinates = []
+        for item in how_it_works_items_list:
+            y_coordinate = item.location['y']
+            y_coordinates.append(y_coordinate)
+        self.assertListEqual(y_coordinates, [y_coordinates[0]] * len(y_coordinates), "Elements are not height-aligned")
+
+        widths = []
+        for block in how_it_works_items_list:
+            width = block.size['width']
+            widths.append(width)
+        self.assertListEqual(widths, [widths[0]] * len(widths), "Elements have different widths")
+
+        x_coordinates = []
+        for item in how_it_works_items_list:
+            x_coordinate = item.location['x']
+            x_coordinates.append(x_coordinate)
+        self.assertTrue((x_coordinates[1] - x_coordinates[0]) == (x_coordinates[2] - x_coordinates[1]) ==
+                        (x_coordinates[3] - x_coordinates[2]), "Elements are not width-aligned")
+
+        # Verify titles alignment
+
+        how_it_works_titles_list = [how_it_works_student_block.get_title_select_a_tutor_student_webelement(),
+                                    how_it_works_student_block.get_title_send_request_student_webelement(),
+                                    how_it_works_student_block.get_title_start_learning_student_webelement(),
+                                    how_it_works_student_block.get_title_write_feedback_student_webelement()]
+
+        y_coordinates = []
+        for item in how_it_works_titles_list:
+            y_coordinate = item.location['y']
+            y_coordinates.append(y_coordinate)
+        self.assertListEqual(y_coordinates, [y_coordinates[0]] * len(y_coordinates), "Titles are not height-aligned")
+
+        x_coordinates = []
+        for item in how_it_works_titles_list:
+            x_coordinate = item.location['x']
+            x_coordinates.append(x_coordinate)
+        self.assertTrue((x_coordinates[1] - x_coordinates[0]) == (x_coordinates[2] - x_coordinates[1]) ==
+                        (x_coordinates[3] - x_coordinates[2]), "Titles are not width-aligned")
