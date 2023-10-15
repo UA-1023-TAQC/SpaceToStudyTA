@@ -13,5 +13,5 @@ class TestAPICategories(APITestRunnerWithStudent):
     def test_find_all_categories(self):
         client = CategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_categories()
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_CATEGORIES)
