@@ -9,17 +9,55 @@ SCHEMA_FOR_ALL_USERS = {
                 "properties": {
                     "mainSubjects": {
                         "type": "object",
+                        "required": ["student", "tutor"],
                         "properties": {
                             "student": {
-                                "type": "array"
+                                "type": "array",
+                                "items": {
+                                    "type": ["object", "string"],
+                                    "required": ["_id", "name", "category", "totalOffers"],
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "category": {
+                                            "type": "string"
+                                        },
+                                        "totalOffers": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
                             },
                             "tutor": {
-                                "type": "array"
+                                "type": "array",
+                                "items": {
+                                    "type": ["object", "string"],
+                                    "required": ["_id", "name", "category", "totalOffers"],
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "category": {
+                                            "type": "string"
+                                        },
+                                        "totalOffers": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
                             }
                         }
                     },
                     "totalReviews": {
                         "type": "object",
+                        "required": ["student", "tutor"],
                         "properties": {
                             "student": {
                                 "type": "number"
@@ -31,6 +69,7 @@ SCHEMA_FOR_ALL_USERS = {
                     },
                     "averageRating": {
                         "type": "object",
+                        "required": ["student", "tutor"],
                         "properties": {
                             "student": {
                                 "type": "number"
@@ -42,6 +81,7 @@ SCHEMA_FOR_ALL_USERS = {
                     },
                     "status": {
                         "type": "object",
+                        "required": ["student", "tutor", "admin"],
                         "properties": {
                             "student": {
                                 "type": "string",
@@ -63,7 +103,8 @@ SCHEMA_FOR_ALL_USERS = {
                     "role": {
                         "type": "array",
                         "items": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": ["student", "tutor"]
                         }
                     },
                     "firstName": {
@@ -79,6 +120,48 @@ SCHEMA_FOR_ALL_USERS = {
                         "type": ["string", "null"],
                         "format": "date-time"
                     },
+                    "FAQ": {
+                        "type": "object",
+                        "required": ["student", "tutor"],
+                        "properties": {
+                            "student": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": ["question", "_id", "answer"],
+                                    "properties": {
+                                        "question": {
+                                            "type": "string"
+                                        },
+                                        "_id": {
+                                            "type": "string"
+                                        },
+                                        "answer": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "tutor": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": ["question", "_id", "answer"],
+                                    "properties": {
+                                        "question": {
+                                            "type": "string"
+                                        },
+                                        "_id": {
+                                            "type": "string"
+                                        },
+                                        "answer": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -92,6 +175,7 @@ SCHEMA_FOR_ALL_USERS = {
                     },
                     "address": {
                         "type": "object",
+                        "required": ["country", "city"],
                         "properties": {
                             "country": {
                                 "type": "string"
@@ -134,9 +218,4 @@ SCHEMA_FOR_ALL_USERS = {
         }
     },
     "required": ["items", "count"],
-    "components": {
-        "category": {
-            "$ref": "categories/schemas.py#/SCHEMA_FOR_ALL_CATEGORIES"
-        }
-    }
 }
