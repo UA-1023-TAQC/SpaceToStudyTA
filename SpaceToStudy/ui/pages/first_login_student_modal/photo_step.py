@@ -7,13 +7,35 @@ from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 
 STARTING_TEXT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p[1]")
 UPLOAD_BUTTON = (By.XPATH, "//label[contains(text(), 'Upload')]")
+PHOTO_INPUT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/div/label/input")
+PHOTO_INPUT_TEXT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/div/ul/li")
 MAXIMUM_FILE_SIZE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p[2]")
 FINISH_BUTTON = (By.XPATH, "//button[contains(text(), 'Finish')]")
 
+# /html/body/div/div[2]
+# //*[@id="root"]/div[2]/div
+
 class PhotoStepStudent(FirstLoginModal):
+     
+    def __init__(self, node):
+        super().__init__(node)
+        self._photo_input = None
+        self._photo_input_text = None
+
     @allure.step("Get image")
     def get_starting_text(self) -> str:
         return self.node.find_element(*STARTING_TEXT).text
+    
+    @allure.step("Get photo input")
+    def get_photo_input(self) -> WebElement:
+        if not self._photo_input:
+            self._photo_input = self.node.find_element(*PHOTO_INPUT)
+        return self._photo_input
+    
+    def get_photo_input_text(self) -> str:
+        if not self._photo_input_text:
+            self._photo_input_text = self.node.find_element(*PHOTO_INPUT_TEXT).text
+        return self._photo_input_text
 
     @allure.step("Get upload button")
     def get_upload_button(self) -> WebElement:

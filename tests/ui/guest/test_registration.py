@@ -1,3 +1,6 @@
+import os
+import re
+from time import sleep
 import unittest
 
 import allure
@@ -439,6 +442,8 @@ class RegistrationTestCase(BaseTestRunner):
         subject2 = "Freestyle"
         category2 = "Dance"
         language = "Ukrainian"
+        photo_path = "/tests/materials/logo.jpg"
+        pattern_get_file_name = "[\w-]+\..*"
         
         #registration
         (HomePageGuest(self.driver)
@@ -504,6 +509,12 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(language_step.get_native_language_text(), language, f"In the language area text doesn't equal input {language}")
 
         #test Photo step
+        photo_step = language_step.click_next_button()
+        photo_step.get_photo_input().send_keys(os.getcwd() + photo_path)
+        self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(), "Photo isn't added")
+        photo_step.click_finish_button()
+            
+        sleep(100)
 
 
 if __name__ == '__main__':

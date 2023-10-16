@@ -1,10 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.common.keys import Keys
-from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 
-from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
 from SpaceToStudy.ui.pages.first_login_student_modal.interests_step import InterestsStepStudent
 from SpaceToStudy.ui.elements.input import Input

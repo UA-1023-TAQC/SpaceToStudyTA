@@ -63,7 +63,7 @@ class LoginModal(BaseComponent):
 
     @allure.step("The email input field is set to the value: {email}")
     def set_email(self, email: str):
-        self.node.parent.implicitly_wait(1)
+        self.node.parent.implicitly_wait(2)
         self.get_email_input().set_text(email)
         return self
 
