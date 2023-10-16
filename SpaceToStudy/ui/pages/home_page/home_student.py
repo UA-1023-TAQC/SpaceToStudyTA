@@ -27,16 +27,11 @@ CATEGORIES_MOBILE = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/div/
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 HEADER_LINK_CATEGORIES = (By.XPATH, "//a[contains(text(), 'Categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
-
 SEARCH_INPUT_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div")
-
 HOW_IT_WORKS_BLOCK_STUDENT = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[3]")
-
 IMG_SEARCH_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
-
 QUESTIONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[1]")
 QUESTIONS_ITEMS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[2]/div")
-
 
 class HomePageStudent(BasePage):
 
@@ -129,6 +124,16 @@ class HomePageStudent(BasePage):
     @allure.step("Click button \"go to categories\"")
     def click_button_go_to_categories(self):
         self.get_button_go_to_categories().click()
+        return CategoriesPage(self.driver)
+
+    def get_header_link_categories(self) -> WebElement:
+        if not self._header_link_categories:
+            self._header_link_categories = self.driver.find_element(*HEADER_LINK_CATEGORIES)
+        return self._header_link_categories
+
+    @allure.step("Click header link \"Categories\"")
+    def click_header_link_categories(self):
+        self.get_header_link_categories().click()
         return CategoriesPage(self.driver)
 
     @allure.step("Get button \"find tutor\"")

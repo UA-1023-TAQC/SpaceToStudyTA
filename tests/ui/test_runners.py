@@ -35,13 +35,11 @@ class BaseTestRunner(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-
 class TestRunnerWithStudent(BaseTestRunner):
     def setUp(self):
         self._init_driver()
         self._login(ValueProvider.get_student_email(),
                     ValueProvider.get_student_password())
-
 
 class TestRunnerWithTutor(BaseTestRunner):
     def setUp(self):

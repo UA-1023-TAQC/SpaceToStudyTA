@@ -175,15 +175,65 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         subject_input = first_block.get_subject_input()
         subject_input.set_text(subject)
         subject_input.press_down_button(1).press_enter_button()
-
         check_boxes = first_block.get_all_checkboxes()
         random_check_box_num = randint(0, len(check_boxes)-1)
+        level = check_boxes[random_check_box_num].text
         check_boxes[random_check_box_num].click()
-        sleep(4)
-        first_block.get_checkbox_beginner().set_check()
-        first_block.get_subject_input().set_text(subject)
-        first_block.get_subject_input().press_down_button(1).press_enter_button()
-        sleep(4)
+        second_block = offers_request_modal.get_second_block()
+        title = "This is a sort of Title"
+        description = "This is a kind of Description"
+        price = "789"
+        second_block.get_title_input().set_text(title)
+        second_block.get_describe_input().set_text(description)
+        second_block.get_language_input().press_down_button(randint(1,7)).press_enter_button()
+        second_block.get_language_input().press_down_button(randint(1,7)).press_enter_button()
+        expected_languages_elements = second_block.get_all_selected_languages()
+        expected_languages = list()
+        for lang in expected_languages_elements:
+            expected_languages.append(lang.text)
+        second_block.get_price_input().set_text(price)
+        third_block = offers_request_modal.get_third_block()
+        question = "What is the question?"
+        answer = "What is the answer? Answer it is."
+        third_block.get_question_input().set_text(question)
+        third_block.set_answer_input_text(answer)
+        third_block.click_add_question_btn()
+        offers_request_modal.click_add_to_draft_btn()
+
+        general_info_component = OfferDetailsPage(self.driver).get_general_info_component()
+        offer_desc_actual = OfferDetailsPage(self.driver).get_about_offer_desc()
+        subject_actual = (general_info_component
+                          .get_tutoring_subject_component()
+                          .get_value())
+        level_actual = (general_info_component
+                        .get_preparation_levels_component()
+                        .get_values()[0]
+                        .get_text())
+        price_actual = (general_info_component
+                        .get_pricing_component()
+                        .get_value())
+        self.assertEqual(description, offer_desc_actual)
+        self.assertEqual(subject, subject_actual)
+        self.assertEqual(level, level_actual)
+        languages_actual = list()
+        for i in range(0, len(expected_languages)):
+            languages_actual.append((general_info_component
+                                    .get_tutoring_languages_component()
+                                    .get_values()[i]
+                                    .get_text()))
+        self.assertEqual(expected_languages, languages_actual)
+        self.assertEqual(f"{price} UAH/hour", price_actual)
+        question_actual = (OfferDetailsPage(self.driver)
+                           .get_frequently_asked_questions_component()
+                           .get_questions()[0].get_question_text())
+        answer_actual = (OfferDetailsPage(self.driver)
+                         .get_frequently_asked_questions_component()
+                         .get_questions()[0]
+                         .click_question_btn()
+                         .get_answer())
+        self.assertEqual(question, question_actual)
+        self.assertEqual(answer, answer_actual)
+        sleep(5)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

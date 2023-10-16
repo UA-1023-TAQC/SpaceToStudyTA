@@ -31,6 +31,7 @@ CHECKBOX_TEST_PREPARATION = (By.XPATH, "./div[2]/div[2]/div/label[4]")
 CHECKBOX_PROFESSIONAL = (By.XPATH, "./div[2]/div[2]/div/label[5]")
 CHECKBOX_SPECIALIZED = (By.XPATH, "./div[2]/div[2]/div/label[6]")
 ALL_CHECKBOXES = (By.XPATH, "//label[@class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1jaw3da']")
+SELECTED_LANGUAGES = (By.XPATH, "//div//span/p")
 
 SECOND_BLOCK_OF_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/form/div[2]")
 NAME_OF_SECOND_BLOCK = (By.XPATH, "./div[1]/p/span")
@@ -112,7 +113,7 @@ class FirstBlock(BaseComponent):
             self._desc_before_checkbox = self.node.find_element(*DESC_BEFORE_CHECKBOX)
         return self._desc_before_checkbox.text
 
-    @allure.step("Get all checkboxes")
+    @allure.step("Get all checkboxes names")
     def get_all_checkboxes(self) -> list:
         if not self._all_checkboxes:
             node = self.node.find_elements(*ALL_CHECKBOXES)
@@ -177,6 +178,7 @@ class SecondBlock(BaseComponent):
         self._desc_before_price = None
         self._price_img = None
         self._price_input = None
+        self._all_selected_languages = None
 
     @allure.step("Get name of second block")
     def get_name_of_second_block(self) -> str:
@@ -229,6 +231,15 @@ class SecondBlock(BaseComponent):
         if self.get_language_input().get_input().get_attribute("aria-expanded") == "true":
             return True
         return False
+
+    @allure.step("Get all selected languages")
+    def get_all_selected_languages(self) -> list:
+        if not self._all_selected_languages:
+            node = self.node.find_elements(*SELECTED_LANGUAGES)
+            res = list()
+            for c in node:
+                res.append(c)
+            return res
 
     @allure.step("Get description before price")
     def get_desc_before_price(self) -> str:
