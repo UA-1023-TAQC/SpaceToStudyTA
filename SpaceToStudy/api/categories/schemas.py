@@ -53,3 +53,19 @@ SCHEMA_FOR_ALL_CATEGORIES = {
     },
     "required": ["items", "count"]
 }
+
+SCHEMA_FOR_SUBJECTS_NAMES_BY_CATEGORY_ID = {
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string",
+      },
+      "name": {
+        "type": "string"
+      }
+    },
+    "required": ["_id", "name"]
+  }
+}
