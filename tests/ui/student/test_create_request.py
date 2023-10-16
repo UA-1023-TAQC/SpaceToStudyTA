@@ -1,7 +1,5 @@
 import unittest
 from random import randint
-from time import sleep
-
 import allure
 from selenium.webdriver.common.by import By
 
@@ -173,12 +171,14 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         category_input.set_text(clicked_category)
         category_input.press_down_button(1).press_enter_button()
         subject_input = first_block.get_subject_input()
-        subject_input.set_text(subject)
-        subject_input.press_down_button(1).press_enter_button()
+
         check_boxes = first_block.get_all_checkboxes()
         random_check_box_num = randint(0, len(check_boxes)-1)
         level = check_boxes[random_check_box_num].text
         check_boxes[random_check_box_num].click()
+
+        subject_input.set_text(subject)
+        subject_input.press_down_button(1).press_enter_button()
         second_block = offers_request_modal.get_second_block()
         title = "This is a sort of Title"
         description = "This is a kind of Description"
@@ -229,11 +229,10 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         answer_actual = (OfferDetailsPage(self.driver)
                          .get_frequently_asked_questions_component()
                          .get_questions()[0]
-                         .click_question_btn()
-                         .get_answer())
+                         .click_question_btn())
+        answer_actual = answer_actual.get_answer()
         self.assertEqual(question, question_actual)
         self.assertEqual(answer, answer_actual)
-        sleep(5)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
