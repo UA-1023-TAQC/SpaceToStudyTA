@@ -1,5 +1,5 @@
 import allure
-from selenium.webdriver import ActionChains
+from selenium.webdriver import ActionChains, Keys
 
 from SpaceToStudy.ui.pages.home_page.home_tutor import HomePageTutor
 from tests.ui.test_runners import TestRunnerWithTutor
@@ -16,8 +16,10 @@ class HomePageTestCase(TestRunnerWithTutor):
         self.assertTrue(home.get_description_text() == "A Space2Study platform is the best place where you can teach. "
                                                        "Type who or what would you like to teach and find students "
                                                        "for that.")
-        # Checking button flashing
-
+        # Checking button flashing after TAB
+        self.assertFalse(home.check_find_student_btn_is_flashing())
+        home.get_search_input().send_keys(Keys.TAB)
+        self.assertTrue(home.check_find_student_btn_is_flashing())
 
         # Checking color change on hover
         initial_color = home.get_find_student_btn().value_of_css_property("background-color")
@@ -36,8 +38,3 @@ class HomePageTestCase(TestRunnerWithTutor):
         self.driver.set_window_size(800, 1200)
         self.assertTrue(home.get_search_input().is_displayed())
         self.assertTrue(home.get_find_student_btn().is_displayed())
-
-
-
-
-

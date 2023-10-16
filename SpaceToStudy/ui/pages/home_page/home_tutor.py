@@ -10,6 +10,7 @@ TITLE = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[1]/p")
 DESCRIPTION = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[1]/span")
 SEARCH_INPUT = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div/div[2]/div/div/input")
 FIND_STUDENT = (By.XPATH, "//a[contains(text(), 'Find student')]")
+FLASHING_BTN = (By.XPATH, "//a[contains(@class, 'focusVisible')]")
 GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
 
 
@@ -63,6 +64,11 @@ class HomePageTutor(BasePage):
         if self._find_student is None:
             self._find_student = self.driver.find_element(*FIND_STUDENT)
         return self._find_student
+
+    @allure.step("Check if 'Find student' button is flashing")
+    def check_find_student_btn_is_flashing(self) -> bool:
+        found = self.get_find_student_btn().parent.find_elements(*FLASHING_BTN)
+        return len(found) > 0
 
     @allure.step("Click on the 'Find student' button")
     def click_find_student_btn(self) -> ExploreOffersPage:
