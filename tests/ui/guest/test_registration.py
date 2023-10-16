@@ -444,6 +444,7 @@ class RegistrationTestCase(BaseTestRunner):
         language = "Ukrainian"
         photo_path = "/tests/materials/logo.jpg"
         pattern_get_file_name = "[\w-]+\..*"
+        notification = "Success! Your data were added."
         
         #registration
         (HomePageGuest(self.driver)
@@ -512,9 +513,12 @@ class RegistrationTestCase(BaseTestRunner):
         photo_step = language_step.click_next_button()
         photo_step.get_photo_input().send_keys(os.getcwd() + photo_path)
         self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(), "Photo isn't added")
-        photo_step.click_finish_button()
+        
+        result_notification = photo_step.click_finish_button()
+        self.assertEqual(result_notification.get_notification_text(), notification, f"Notification doesn't equal {notification}")
+        
             
-        sleep(100)
+       
 
 
 if __name__ == '__main__':

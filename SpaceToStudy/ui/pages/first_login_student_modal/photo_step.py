@@ -1,9 +1,11 @@
 import allure
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.elements.notification import Notification
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
-from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
+
 
 STARTING_TEXT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p[1]")
 UPLOAD_BUTTON = (By.XPATH, "//label[contains(text(), 'Upload')]")
@@ -12,8 +14,6 @@ PHOTO_INPUT_TEXT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/d
 MAXIMUM_FILE_SIZE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p[2]")
 FINISH_BUTTON = (By.XPATH, "//button[contains(text(), 'Finish')]")
 
-# /html/body/div/div[2]
-# //*[@id="root"]/div[2]/div
 
 class PhotoStepStudent(FirstLoginModal):
      
@@ -63,4 +63,4 @@ class PhotoStepStudent(FirstLoginModal):
     @allure.step("Click finish button")
     def click_finish_button(self):
         self.get_finish_button().click()
-        return HomePageStudent(self.node)
+        return Notification(self.node)
