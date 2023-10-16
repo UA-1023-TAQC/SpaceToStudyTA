@@ -7,6 +7,7 @@ from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffe
 
 FIND_STUDENT = (By.XPATH, "//a[contains(text(), 'Find student')]")
 GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
+MUSIC = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/div/a[1]/div/p")
 
 
 class HomePageTutor(BasePage):
@@ -34,4 +35,15 @@ class HomePageTutor(BasePage):
     @allure.step("Click on the 'Go to categories' button")
     def click_go_to_categories_btn(self):
         self.get_go_to_categories_btn().click()
+        return CategoriesPage(self.driver)
+
+    @allure.step("Get music button")
+    def get_music_btn(self):
+        if self._music is None:
+            self._music = self.driver.find_element(*MUSIC)
+        return self._music
+
+    @allure.step("Click music button")
+    def click_music_btn(self):
+        self.get_music_btn().click()
         return CategoriesPage(self.driver)
