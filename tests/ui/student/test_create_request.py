@@ -229,8 +229,7 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         answer_actual = (OfferDetailsPage(self.driver)
                          .get_frequently_asked_questions_component()
                          .get_questions()[0]
-                         .click_question_btn())
-        answer_actual = answer_actual.get_answer()
+                         .click_question_btn().get_answer())
         self.assertEqual(question, question_actual)
         self.assertEqual(answer, answer_actual)
 
