@@ -21,7 +21,6 @@ class TestOffersApi(APITestRunnerWithStudent):
     def test_find_all_offers(self):
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_offers_by_id("123")
-        self.assertEqual(400, response.status_code)
         assert response.status_code == 400
         assert response.json().get('message') == "ID is invalid."
         assert response.json().get('code') == "INVALID_ID"
