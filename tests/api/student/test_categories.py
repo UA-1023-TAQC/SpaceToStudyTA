@@ -22,6 +22,7 @@ class TestAPICategories(APITestRunnerWithStudent):
         response = client.get_subjects_by_category_id("64884f21fdc2d1a130c24ac0")
         self.assertEqual(response.status_code, 200)
         validate(instance=response.json(), schema=SCHEMA_FOR_SUBJECTS_BY_CATEGORY_ID)
+        self.assertEqual(response.json()["count"], len(response.json()["items"]))
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/408")
     def test_get_categories_by_id(self):
