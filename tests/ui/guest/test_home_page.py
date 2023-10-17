@@ -195,6 +195,151 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("block", video_display)
         self.assertEqual("center", text_aligning)
 
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/179")
+    def test_how_it_works_block_ui(self):
+        width = 1920
+        height = 1080
+        self.driver.set_window_size(width, height)
+        zoom = '100%'
+        self.driver.execute_script(f"document.body.style.zoom = '{zoom}'")
+        expected_sign_up_title_text = "Sign Up"
+        expected_select_a_tutor_title_text = "Select a Tutor"
+        expected_send_request_title_text = "Send Request"
+        expected_start_learning_title_text = "Start Learning"
+        expected_expected_titles = [expected_sign_up_title_text,
+                                    expected_select_a_tutor_title_text,
+                                    expected_send_request_title_text,
+                                    expected_start_learning_title_text]
+
+        expected_sign_up_description_text = "Registering on the Space2Study platform is very simple, just enter your email or use your Google account."
+        expected_select_a_tutor_description_text = "Finding a tutor is very easy, select a subject from the list, and then pick the tutor, or enter his name and find directly."
+        expected_send_request_description_text = "Write a request to the tutor in two clicks, where you indicate/confirm the price and the desired level of training."
+        expected_start_learning_description_text = "After confirming the request, all training opportunities for the chosen course will open for you."
+        expected_description_list = [expected_sign_up_description_text,
+                                     expected_select_a_tutor_description_text,
+                                     expected_send_request_description_text,
+                                     expected_start_learning_description_text]
+        expected_block_location_x = 387
+        expected_location_y_first_element = expected_image_y_first_element = 2342
+        expected_cards_retreat = 172
+        expected_image_x = 903
+        switcher = HomePageGuest(self.driver).get_checkbox_how_it_works_block()
+
+        # print(switcher.is_displayed()) # False
+        # print(switcher.is_enabled())   # True
+
+        # self.assertTrue(switcher.is_displayed())
+
+        def elements_and_labels_tests():
+            how_it_works_cards_list = [HomePageGuest(self.driver).get_sign_up_items(),
+                                       HomePageGuest(self.driver).get_select_a_tutor_items(),
+                                       HomePageGuest(self.driver).get_send_request_items(),
+                                       HomePageGuest(self.driver).get_start_learning_items()]
+
+            # Verify UI elements alignment
+            data_y_element_location = expected_location_y_first_element - expected_cards_retreat
+            for card in how_it_works_cards_list:
+                x = card.get_web_element().location['x']
+                y = card.get_web_element().location['y']
+                self.assertEqual(expected_block_location_x, x)
+                distance_between_elements = y - data_y_element_location
+                self.assertEqual(expected_cards_retreat, distance_between_elements)
+                data_y_element_location = y
+
+            data_y_image_location = expected_image_y_first_element
+            for card in how_it_works_cards_list:
+                x = card.get_image().location['x']
+                y = card.get_image().location['y']
+                self.assertEqual(expected_image_x, x)
+                self.assertEqual(data_y_image_location, y)
+                data_y_image_location += expected_cards_retreat
+
+            # Verify labels spelling
+            for card, expected_title in zip(how_it_works_cards_list, expected_expected_titles):
+                el_title = card.get_name()
+                self.assertEqual(expected_title, el_title)
+
+            for card, expected_description in zip(how_it_works_cards_list, expected_description_list):
+                el_description = card.get_description()
+                self.assertEqual(expected_description, el_description)
+
+            # Verify labels alignment
+            first_name_element = how_it_works_cards_list[0].get_web_element_title().location['x']
+            second_name_element = how_it_works_cards_list[1].get_web_element_title().location['x']
+            third_name_element = how_it_works_cards_list[2].get_web_element_title().location['x']
+            fourth_name_element = how_it_works_cards_list[3].get_web_element_title().location['x']
+            self.assertEqual(first_name_element, third_name_element)
+            self.assertEqual(second_name_element, fourth_name_element)
+
+            first_description_element = how_it_works_cards_list[0].get_description_web_element()
+            second_description_element = how_it_works_cards_list[1].get_description_web_element()
+            third_description_element = how_it_works_cards_list[2].get_description_web_element()
+            fourth_description_element = how_it_works_cards_list[3].get_description_web_element()
+            self.assertEqual(first_description_element.location['x'], third_description_element.location['x'])
+
+            first_element_size = second_description_element.size
+            fourth_element_size = fourth_description_element.size
+            self.assertEqual(second_description_element.location['x'] + first_element_size['width'], fourth_description_element.location['x'] + fourth_element_size['width'])
+
+            # Verify that all UI controls are visible on the screen after resizing
+            resized_width = 1366
+            resized_height = 768
+            self.driver.set_window_size(resized_width, resized_height)
+
+            for card in how_it_works_cards_list:
+                data_block = card.get_web_element()
+                self.assertTrue(data_block.is_displayed())
+
+            # Verify that the “Become a student”/“Become a tutor” button changes color on hover.
+            button_become_a_student_tutor = HomePageGuest(self.driver).get_button_become_a_student_tutor()
+            expected_button_basic_color = "rgba(38, 50, 56, 1)"
+            expected_button_hovered_color = "rgba(69, 90, 100, 1)"
+            basic_button_color = button_become_a_student_tutor.value_of_css_property("background-color")
+            self.assertEqual(basic_button_color, expected_button_basic_color)
+            (HomePageGuest(self.driver).hover(button_become_a_student_tutor))
+            hover_button_color = button_become_a_student_tutor.value_of_css_property("background-color")
+            self.assertEqual(hover_button_color, expected_button_hovered_color)
+
+        elements_and_labels_tests()
+
+        self.driver.set_window_size(width, height)
+        self.driver.execute_script(f"document.body.style.zoom = '{zoom}'")
+        switcher.click()
+        sleep(2)
+
+        expected_block_location_x = 387
+        expected_location_y_first_element = expected_image_y_first_element = 151
+
+        expected_sign_up_title_text = "Sign Up"
+        expected_select_a_tutor_title_text = "Create a Tutor Account"
+        expected_send_request_title_text = "Get New Students"
+        expected_start_learning_title_text = "Receive Feedbacks"
+
+        expected_expected_titles = [expected_sign_up_title_text,
+                                    expected_select_a_tutor_title_text,
+                                    expected_send_request_title_text,
+                                    expected_start_learning_title_text]
+
+        expected_sign_up_description_text = "Registering on the Space2Study platform is very simple, just enter your email or use your Google account."
+        expected_select_a_tutor_description_text = "Creating a tutor account is easy, you just need to select a subject, upload teaching materials and create an offer."
+        expected_send_request_description_text = "Create fruitful cooperation with your students, confirming their requests, and start teaching."
+        expected_start_learning_description_text = "Receive positive feedback for your work to become popular and get even more satisfied students."
+        expected_description_list = [expected_sign_up_description_text,
+                                     expected_select_a_tutor_description_text,
+                                     expected_send_request_description_text,
+                                     expected_start_learning_description_text]
+
+        elements_and_labels_tests()
+
+        # Verify that all UI controls are active and focused when navigating by “Tab” keyboard button.
+        HeaderUnauthorizedComponent(self.driver).tab_key(13)
+        is_button_selected = (HomePageGuest(self.driver).is_button_become_a_student_tutor_selected())
+        self.assertTrue(is_button_selected)
+
+
+
+
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
     def test_visability_of_the_all_elements_after_resizing_for_who_we_are_block(self):
         window_width = 600

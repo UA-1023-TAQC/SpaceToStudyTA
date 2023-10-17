@@ -3,7 +3,7 @@ from time import sleep
 import allure
 
 from SpaceToStudy.ui.pages.email_confirmation_modal.email_confirmation_modal import EmailConfirmationModal
-from SpaceToStudy.ui.pages.first_login_student_modal.general_page import GeneralPageStudent
+from SpaceToStudy.ui.pages.first_login_student_modal.general_step import GeneralStepStudent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from tests.ui.test_runners import BaseTestRunner
 from tests.utils.api_for_emails import MailBox, TemporaryMailGenerator
@@ -17,7 +17,6 @@ class RegistrationAsAStudentTestCase(BaseTestRunner):
 
         # Registration
         (HomePageGuest(self.driver)
-         .click_started_for_free()
          .click_become_a_student()
          .set_first_name(ValueProvider.get_student_first_name())
          .set_last_name(ValueProvider.get_student_last_name())
@@ -44,7 +43,7 @@ class RegistrationAsAStudentTestCase(BaseTestRunner):
          .set_password(ValueProvider.get_student_password())
          .click_login_button())
 
-        first_login_as_student = GeneralPageStudent(self.driver)
+        first_login_as_student = GeneralStepStudent(self.driver)
         self.assertEqual(ValueProvider.get_student_first_name(),
                          first_login_as_student.get_first_name_input().get_attribute("value"))
         self.assertEqual(ValueProvider.get_student_last_name(),

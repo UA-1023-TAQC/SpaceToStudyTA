@@ -1,15 +1,16 @@
+from pprint import pprint
+from time import sleep
 import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver import ActionChains
 
 from SpaceToStudy.ui.elements.base_element import BaseElement
 
 INPUT = (By.XPATH, "./div/input")
 LABEL = (By.XPATH, "./label")
 ERROR_MESSAGE = (By.XPATH, "./p/span")
-
-
 
 
 class Input(BaseElement):
@@ -29,7 +30,7 @@ class Input(BaseElement):
     @allure.step("Set {text} text into input element")
     def set_text(self, text):
         self.get_input().send_keys(text)
-
+        
     @allure.step("Get text of input element")
     def get_text(self):
         return self.get_input().get_attribute("value")
