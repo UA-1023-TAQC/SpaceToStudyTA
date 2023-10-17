@@ -29,13 +29,13 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
     def test_popular_categories_block_ui_interaction(self):
         home = HomePageStudent(self.driver)
         title_music = home.click_category_el(0).get_text_subjects_title()
-        self.assertEqual("Computer science Subjects", title_music)
+        self.assertEqual("Music Subjects", title_music)
         self.driver.back()
         is_displayed_music = home.click_category_el(0).get_subjects_title().is_displayed()
         self.assertTrue(is_displayed_music)
 
         title_computer = home.click_category_el(1).get_text_subjects_title()
-        self.assertEqual("Music Subjects", title_computer)
+        self.assertEqual("Computer science Subjects", title_computer)
         self.driver.back()
         is_displayed_computer = home.click_category_el(1).get_text_subjects_title().is_displayed()
         self.assertTrue(is_displayed_computer)
