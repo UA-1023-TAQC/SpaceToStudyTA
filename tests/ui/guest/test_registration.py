@@ -420,6 +420,14 @@ class RegistrationTestCase(BaseTestRunner):
         self.assertEqual(error_message, email_error)
         self.assertEqual(error_message, confirm_password_error)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/108")
+    def test_password_header_disappears_with_valid_input(self):
+        password_field_filled = (HomePageGuest(self.driver)
+                                 .click_started_for_free()
+                                 .click_become_a_tutor()
+                                 .set_password("Alpha123"))
+        self.assertEqual("true", password_field_filled.get_password_label().get_attribute("data-shrink"))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
