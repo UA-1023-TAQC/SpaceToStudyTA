@@ -25,6 +25,7 @@ class TestAPICategories(APITestRunnerWithStudent):
         validate(instance=response.json(), schema=SCHEMA_CATEGORIES_BY_ID)
         self.assertEquals(response.json()["name"], "Music")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/418")
     def test_get_subjects_names_by_category_id(self):
         client = CategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_subjects_names_by_id("64884f21fdc2d1a130c24ac0")
