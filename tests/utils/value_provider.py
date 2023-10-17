@@ -1,6 +1,8 @@
 import os
 
 from dotenv import load_dotenv
+from pathlib import Path
+
 
 load_dotenv()
 
@@ -49,3 +51,7 @@ class ValueProvider:
     @classmethod
     def get_base_api_url(cls) -> str:
         return os.getenv("BASE_API_URL")
+
+    @classmethod
+    def get_built_test_data_file_path(cls, name) -> str:
+        return os.path.join(Path(__file__).parent.parent, "data", name)

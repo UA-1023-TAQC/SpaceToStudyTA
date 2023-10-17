@@ -48,6 +48,10 @@ class CategoriesPageTestCase(TestRunnerWithTutor):
         self.assertEqual("Categories", categories.get_categories_title())
         self.assertIn("/categories", self.driver.current_url)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/376")
+    def test_verify_tutor_can_find_popular_categories(self):
+        categories = HomePageTutor(self.driver).click_music_btn()
+        self.assertEqual("Music Subjects", categories.get_music_subjects())
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -3,11 +3,13 @@ https://apilayer.com/marketplace/temp_mail-api
 """
 import hashlib
 import json
+import requests
 import random
 import re
 import string
 
-import requests
+from time import sleep
+
 from bs4 import BeautifulSoup
 
 from tests.utils.value_provider import ValueProvider
@@ -65,17 +67,18 @@ class MailBox:
 
     def get_letters(self):
         url = f"https://api.apilayer.com/temp_mail/mail/id/{self.hashed_email}"
-        response = requests.request("GET", url, headers=self.headers, data=self.payload)
-        letter_data = response.json()
-        if response.status_code == 200:
-            if "error" in letter_data and letter_data["error"] == "There are no emails yet":
-                self.letters = []
-            else:
-                self.letters = [Letter(letter) for letter in letter_data]
-        else:
-            self.letters = []
-        return self.letters
+        letter_data = {'error': "There are no emails yet"}
+        counter = 0
 
+        while counter <= 10 and "error" in letter_data and letter_data["error"] == "There are no emails yet":
+            sleep(5)
+            response = requests.request("GET", url, headers=self.headers, data=self.payload)
+            if response.status_code == 200:
+                letter_data = response.json()
+            counter += 1
+          
+        self.letters = [Letter(letter) for letter in letter_data] if "error" not in letter_data else []
+        return self.letters
 
 class Letter:
     def __init__(self, data):
