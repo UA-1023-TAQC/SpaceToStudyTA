@@ -212,6 +212,7 @@ class HomePageGuest(BasePage):
 
     @allure.step("Click become a student ")
     def click_become_a_student(self) -> RegistrationModal:
+        self.driver.implicitly_wait(1)
         self.get_card_learn_from_experts().click_btn()
         return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
 
@@ -317,11 +318,6 @@ class HomePageGuest(BasePage):
         if not self._card_learn_from_experts:
             self._card_learn_from_experts = CardComponent(self.driver.find_element(*CARD_COMPONENT_LEARN_FROM_EXPERTS))
         return self._card_learn_from_experts
-
-    @allure.step("Click become a student ")
-    def click_become_a_student(self) -> RegistrationModal:
-        self.get_card_learn_from_experts().click_btn()
-        return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
 
     @allure.step("Get card share your experience")
     def get_card_share_your_experience(self) -> CardComponent:
