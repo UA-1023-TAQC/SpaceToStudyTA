@@ -35,8 +35,8 @@ class PhotoStepStudent(FirstLoginModal):
     
     @allure.step("Set photo {path}")
     def set_photo(self, path):
-        self.get_photo_input().send_keys(os.getcwd() + path)
-        print(os.getcwd() + path)
+        self.get_photo_input().send_keys(path)
+        return self
 
     @allure.step("Get photo input text")
     def get_photo_input_text(self) -> str:

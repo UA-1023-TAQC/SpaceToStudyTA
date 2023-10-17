@@ -463,7 +463,7 @@ class RegistrationTestCase(BaseTestRunner):
         subject2 = "Freestyle"
         category2 = "Dance"
         language = "Ukrainian"
-        photo_path = "/tests/materials/logo.jpg"
+        photo_path = ValueProvider.get_built_test_data_file_path("logo.jpg")
         pattern_get_file_name = "[\w-]+\..*"
         notification = "Success! Your data were added."
         
@@ -532,13 +532,14 @@ class RegistrationTestCase(BaseTestRunner):
 
         #test Photo step
         photo_step = language_step.click_next_button()
+
         photo_step.set_photo(photo_path)
-        sleep(30)
+        sleep(3)
         self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(), "Photo isn't added")
-        sleep(10)
+        sleep(1)
         result_notification = photo_step.click_finish_button()
         self.assertEqual(result_notification.get_notification_text(), notification, f"Notification doesn't equal {notification}")
-        sleep(10)
+        sleep(1)
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
     def test_visability_of_the_all_elements_after_resizing_for_who_we_are_block(self):
