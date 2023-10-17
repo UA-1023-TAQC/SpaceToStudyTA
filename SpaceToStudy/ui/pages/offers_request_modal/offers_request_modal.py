@@ -116,11 +116,8 @@ class FirstBlock(BaseComponent):
     @allure.step("Get all checkboxes names")
     def get_all_checkboxes(self) -> list:
         if not self._all_checkboxes:
-            node = self.node.find_elements(*ALL_CHECKBOXES)
-            res = list()
-            for c in node:
-                res.append(c)
-            return res
+            nodes = self.node.find_elements(*ALL_CHECKBOXES)
+            return nodes
 
     @allure.step("Get beginner checkbox")
     def get_checkbox_beginner(self) -> Checkbox:

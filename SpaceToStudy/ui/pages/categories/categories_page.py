@@ -99,8 +99,5 @@ class CategoriesPage(BasePage):
 
     @allure.step("Get Categories names")
     def get_categories_names(self) -> list:
-        res = list()
         cn = self.driver.find_elements(*CATEGORIES_NAMES)
-        for c in cn:
-            res.append(c)
-        return res
+        return cn

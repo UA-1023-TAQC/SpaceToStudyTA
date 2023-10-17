@@ -73,7 +73,7 @@ class HomePageTutor(BasePage):
         return len(found) > 0
 
     @allure.step("Click on the 'Find student' button")
-    def click_find_student_btn(self) -> ExploreOffersPage:
+    def click_find_student_btn(self):
         self.get_find_student_btn().click()
         return ExploreOffersPage(self.driver)
 
