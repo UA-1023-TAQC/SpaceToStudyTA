@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 temp_test.py
 *allure_results*/
+.DS_Store
