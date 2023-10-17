@@ -14,7 +14,6 @@ class OffersApiClient(BaseAPIClient):
         return response
 
     def get_offers_by_id(self, offers_id):
-        "/ categories / {id}"
         url = f"{self.url}/{offers_id}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
