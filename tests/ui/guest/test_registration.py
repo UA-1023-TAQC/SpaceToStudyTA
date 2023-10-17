@@ -1,4 +1,3 @@
-import os
 import re
 from time import sleep
 import unittest
@@ -533,12 +532,13 @@ class RegistrationTestCase(BaseTestRunner):
 
         #test Photo step
         photo_step = language_step.click_next_button()
-        photo_step.get_photo_input().send_keys(os.getcwd() + photo_path)
+        photo_step.set_photo(photo_path)
+        sleep(30)
         self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(), "Photo isn't added")
-        
+        sleep(10)
         result_notification = photo_step.click_finish_button()
         self.assertEqual(result_notification.get_notification_text(), notification, f"Notification doesn't equal {notification}")
-        
+        sleep(10)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

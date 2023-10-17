@@ -1,3 +1,4 @@
+import os
 import allure
 
 from selenium.webdriver.common.by import By
@@ -32,6 +33,12 @@ class PhotoStepStudent(FirstLoginModal):
             self._photo_input = self.node.find_element(*PHOTO_INPUT)
         return self._photo_input
     
+    @allure.step("Set photo")
+    def set_photo(self, path):
+        self.get_photo_input().send_keys(os.getcwd() + path)
+        print(os.getcwd() + path)
+
+    @allure.step("Get photo input text")
     def get_photo_input_text(self) -> str:
         if not self._photo_input_text:
             self._photo_input_text = self.node.find_element(*PHOTO_INPUT_TEXT).text
