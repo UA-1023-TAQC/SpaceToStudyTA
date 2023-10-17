@@ -55,4 +55,3 @@ class WhoWeAreBlock(BaseComponent):
     @allure.step("Get the text aligning in 'Wo We Are' block")
     def get_text_aligning(self) -> str:
         return self.node.find_element(*TEXT_DIV).value_of_css_property("text-align")
-

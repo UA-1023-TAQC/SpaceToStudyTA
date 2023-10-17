@@ -2,12 +2,12 @@ import jwt
 
 
 class BaseAPIClient:
-    def __init__(self, url, accessToken=None):
+    def __init__(self, url, access_token=None):
         self.url = url
-        self.accessToken = accessToken
+        self.access_token = access_token
 
     def get_decode_access_token(self) -> dict:
-        if not self.accessToken:
-            return None
-        decoded = jwt.decode(self.accessToken, algorithms=["HS256"], options={"verify_signature": False})
+        decoded = {}
+        if self.access_token:
+            decoded = jwt.decode(self.access_token, algorithms=["HS256"], options={"verify_signature": False})
         return decoded
