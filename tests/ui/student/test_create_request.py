@@ -1,11 +1,13 @@
 import unittest
 from random import randint
+from time import sleep
+
 import allure
 from selenium.webdriver.common.by import By
-
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
+from SpaceToStudy.ui.pages.my_profile.my_profile_page import MyProfile
 from SpaceToStudy.ui.pages.offer_details.offer_details import OfferDetailsPage
 from SpaceToStudy.ui.pages.offers_request_modal.offers_request_modal import (OffersRequestModal,
                                                                              FirstBlock,
@@ -179,6 +181,8 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
 
         subject_input.set_text(subject)
         subject_input.press_down_button(1).press_enter_button()
+
+        subject_input.press_down_button(1).press_enter_button()
         second_block = offers_request_modal.get_second_block()
         title = "This is a sort of Title"
         description = "This is a kind of Description"
@@ -212,6 +216,9 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         price_actual = (general_info_component
                         .get_pricing_component()
                         .get_value())
+
+        inline_card = OfferDetailsPage(self.driver).get_inline_card_component()
+        student_name_actual = inline_card.get_person_name()
         self.assertEqual(description, offer_desc_actual)
         self.assertEqual(subject, subject_actual)
         self.assertEqual(level, level_actual)
@@ -233,5 +240,13 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         self.assertEqual(question, question_actual)
         self.assertEqual(answer, answer_actual)
 
+        hps = HomePageStudent(self.driver).click_account_button()
+        hps.get_My_profile_button().click()
+        mp_name_surname = MyProfile(self.driver).get_name_surname_text().split()
+
+        student_name_expected = (f"{mp_name_surname[0]} "
+                                 f"{mp_name_surname[1][:1]}.")
+
+        self.assertEqual(student_name_expected, student_name_actual)
 if __name__ == '__main__':
     unittest.main(verbosity=2)
