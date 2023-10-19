@@ -16,6 +16,7 @@ class HomePageTutor(BasePage):
         super().__init__(driver)
         self._find_student = None
         self._go_to_categories = None
+        self._music = None
 
     def get_find_student_btn(self):
         if self._find_student is None:
