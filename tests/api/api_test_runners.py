@@ -4,25 +4,25 @@ from SpaceToStudy.api.auth_client import AuthApiClient
 from tests.utils.value_provider import ValueProvider
 
 
+def get_access_token(email, password):
+    client = AuthApiClient(ValueProvider.get_base_api_url())
+    client.login(email=email, password=password)
+    return client.accessToken
+
+
 class BaseAPITestRunner(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.accessToken = None
+    accessToken = None
 
 
 class APITestRunnerWithStudent(BaseAPITestRunner):
     @classmethod
     def setUpClass(cls):
-        api = AuthApiClient(ValueProvider.get_base_api_url())
-        api.login(ValueProvider.get_student_email(),
-                  ValueProvider.get_student_password())
-        cls.accessToken = api.accessToken
+        cls.accessToken = get_access_token(ValueProvider.get_student_email(),
+                                           ValueProvider.get_student_password())
 
 
 class APITestRunnerWithTutor(BaseAPITestRunner):
     @classmethod
     def setUpClass(cls):
-        api = AuthApiClient(ValueProvider.get_base_api_url())
-        api.login(ValueProvider.get_tutor_email(),
-                  ValueProvider.get_tutor_password())
-        cls.accessToken = api.accessToken
+        cls.accessToken = get_access_token(ValueProvider.get_tutor_email(),
+                                           ValueProvider.get_tutor_password())
