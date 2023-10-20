@@ -1,6 +1,6 @@
 import allure
 from jsonschema import validate
-from parameterized.parameterized import parameterized_class
+from parameterized.parameterized import parameterized_class, parameterized
 
 from SpaceToStudy.api.schema_for_errors import SCHEMA_FOR_ERRORS
 from SpaceToStudy.api.users.client import UsersApiClient
@@ -10,8 +10,10 @@ from tests.utils.value_provider import ValueProvider as VP
 
 
 @parameterized_class([
-    {"accessToken": get_access_token(VP.get_student_email(), VP.get_student_password())},
-    {"accessToken": get_access_token(VP.get_tutor_email(), VP.get_tutor_password())},
+    {"name:": VP.get_student_first_name(),
+     "accessToken": get_access_token(VP.get_student_email(), VP.get_student_password())},
+    {"name:": VP.get_tutor_first_name(),
+     "accessToken": get_access_token(VP.get_tutor_email(), VP.get_tutor_password())},
 ])
 class TestAPIUsers(BaseAPITestRunner):
 
@@ -25,22 +27,17 @@ class TestAPIUsers(BaseAPITestRunner):
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_USERS)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/404",
-                     "Create test for api/users Find user by ID ")
-    def test_find_user_by_id(self):
+                     "Create test for api/users Find user by ID role:{role} user_id:{user_id}")
+    @parameterized.expand([
+        (None, "644f6f1777e2551b87786650"),
+        ("tutor", "644f6f1777e2551b87786650"),
+        ("student", "650023e50eeb49de31750c84"),
+    ])
+    def test_find_user_by_id(self, role, user_id):
         expected_status_code = 200
-        user_id_tutor = "644f6f1777e2551b87786650"
-        user_id_student = "650023e50eeb49de31750c84"
 
         client = UsersApiClient(VP.get_base_api_url(), self.accessToken)
-        response = client.get_users_by_id(user_id_tutor)
-        self.assertEqual(expected_status_code, response.status_code)
-        validate(instance=response.json(), schema=SCHEMA_FOR_USER)
-
-        response = client.get_users_by_id(user_id_tutor, "tutor")
-        self.assertEqual(expected_status_code, response.status_code)
-        validate(instance=response.json(), schema=SCHEMA_FOR_USER)
-
-        response = client.get_users_by_id(user_id_student, "student")
+        response = client.get_users_by_id(user_id, role)
         self.assertEqual(expected_status_code, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_USER)
 
