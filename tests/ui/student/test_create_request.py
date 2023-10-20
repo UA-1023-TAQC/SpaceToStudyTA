@@ -1,9 +1,9 @@
 import unittest
 from random import randint
-from time import sleep
 
 import allure
 from selenium.webdriver.common.by import By
+
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
@@ -159,11 +159,11 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         offers_request_modal.get_categories_header_link().click()
         cp = CategoriesPage(self.driver)
         cn = cp.get_categories_names()
-        random_category_num = randint(0, len(cn)-1)
+        random_category_num = randint(0, len(cn) - 1)
         clicked_category = cn[random_category_num].text.split("\n")[0]
         cn[random_category_num].click()
         subcategories_list = cp.get_cards()
-        random_subcategory_num = randint(0, len(subcategories_list)-1)
+        random_subcategory_num = randint(0, len(subcategories_list) - 1)
         subject = subcategories_list[random_subcategory_num].get_title()
         offers_request_modal = (CategoriesPage(self.driver)
                                 .get_student_private_lesson_component()
@@ -175,7 +175,7 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         subject_input = first_block.get_subject_input()
 
         check_boxes = first_block.get_all_checkboxes()
-        random_check_box_num = randint(0, len(check_boxes)-1)
+        random_check_box_num = randint(0, len(check_boxes) - 1)
         level = check_boxes[random_check_box_num].text
         check_boxes[random_check_box_num].click()
 
@@ -189,8 +189,8 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         price = "789"
         second_block.get_title_input().set_text(title)
         second_block.get_describe_input().set_text(description)
-        second_block.get_language_input().press_down_button(randint(1,7)).press_enter_button()
-        second_block.get_language_input().press_down_button(randint(1,7)).press_enter_button()
+        second_block.get_language_input().press_down_button(randint(1, 7)).press_enter_button()
+        second_block.get_language_input().press_down_button(randint(1, 7)).press_enter_button()
         expected_languages_elements = second_block.get_all_selected_languages()
         expected_languages = list()
         for lang in expected_languages_elements:
@@ -225,9 +225,9 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
         languages_actual = list()
         for i in range(0, len(expected_languages)):
             languages_actual.append((general_info_component
-                                    .get_tutoring_languages_component()
-                                    .get_values()[i]
-                                    .get_text()))
+                                     .get_tutoring_languages_component()
+                                     .get_values()[i]
+                                     .get_text()))
         self.assertEqual(expected_languages, languages_actual)
         self.assertEqual(f"{price} UAH/hour", price_actual)
         question_actual = (OfferDetailsPage(self.driver)
@@ -248,5 +248,7 @@ class CreateStudentRequestTestCase(TestRunnerWithStudent):
                                  f"{mp_name_surname[1][:1]}.")
 
         self.assertEqual(student_name_expected, student_name_actual)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

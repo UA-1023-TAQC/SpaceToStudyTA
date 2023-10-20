@@ -195,7 +195,6 @@ class HomePageTestCase(BaseTestRunner):
         self.assertEqual("block", video_display)
         self.assertEqual("center", text_aligning)
 
-
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/179")
     def test_how_it_works_block_ui(self):
         width = 1920
@@ -280,7 +279,8 @@ class HomePageTestCase(BaseTestRunner):
 
             first_element_size = second_description_element.size
             fourth_element_size = fourth_description_element.size
-            self.assertEqual(second_description_element.location['x'] + first_element_size['width'], fourth_description_element.location['x'] + fourth_element_size['width'])
+            self.assertEqual(second_description_element.location['x'] + first_element_size['width'],
+                             fourth_description_element.location['x'] + fourth_element_size['width'])
 
             # Verify that all UI controls are visible on the screen after resizing
             resized_width = 1366
@@ -337,17 +337,14 @@ class HomePageTestCase(BaseTestRunner):
         is_button_selected = (HomePageGuest(self.driver).is_button_become_a_student_tutor_selected())
         self.assertTrue(is_button_selected)
 
-
-
-
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
     def test_visability_of_the_all_elements_after_resizing_for_who_we_are_block(self):
         window_width = 600
         window_height = 1000
         who_we_are = (HomePageGuest(self.driver)
-                              .get_header()
-                              .get_navigate_links()[2]
-                              .click())
+                      .get_header()
+                      .get_navigate_links()[2]
+                      .click())
         HomePageGuest(self.driver).set_size_window(window_width, window_height)
         who_we_are_elements = HomePageGuest(who_we_are)
         sleep(10)

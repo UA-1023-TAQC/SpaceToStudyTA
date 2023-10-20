@@ -34,4 +34,3 @@ class SortComponent(BaseComponent):
     @allure.step("Click high low")
     def click_high_low(self):
         self.get_high_low().click()
-

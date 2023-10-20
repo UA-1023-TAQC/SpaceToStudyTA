@@ -8,6 +8,7 @@ TITLE = (By.XPATH, "./div[2]/p")
 IMG = (By.XPATH, "./div[1]/svg")
 VALUE = (By.XPATH, "./div[2]/span")
 
+
 class InfoComponentOneValue(BaseComponent):
 
     def __init__(self, node):

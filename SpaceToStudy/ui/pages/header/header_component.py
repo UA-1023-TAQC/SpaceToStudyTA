@@ -1,5 +1,5 @@
-from selenium.webdriver import Keys
 import allure
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -25,14 +25,14 @@ class HeaderComponent(BaseComponent):
         self.get_logo().click()
 
     @allure.step("Get navigate links on the header")
-    def get_navigate_links(self) -> list: #the name should be changed for "get_navigate_elements"
+    def get_navigate_links(self) -> list:  # the name should be changed for "get_navigate_elements"
         from SpaceToStudy.ui.pages.header.navigate_component import NavigateComponent
         if not self._navigate_elements:
             navigate_links = self.node.find_elements(*NAVIGATE_ELEMENTS)
             for element in navigate_links:
                 self._navigate_elements.append(NavigateComponent(element))
         return self._navigate_elements
-    
+
     @allure.step("Click navigate link by name in header")
     def click_navigate_link_by_name(self, name):
         link = list(filter(lambda e: e.get_name() == name, self.get_navigate_links()))

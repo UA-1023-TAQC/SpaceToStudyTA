@@ -30,7 +30,8 @@ CHECKBOX_ADVANCED = (By.XPATH, "./div[2]/div[2]/div/label[3]")
 CHECKBOX_TEST_PREPARATION = (By.XPATH, "./div[2]/div[2]/div/label[4]")
 CHECKBOX_PROFESSIONAL = (By.XPATH, "./div[2]/div[2]/div/label[5]")
 CHECKBOX_SPECIALIZED = (By.XPATH, "./div[2]/div[2]/div/label[6]")
-ALL_CHECKBOXES = (By.XPATH, "//label[@class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1jaw3da']")
+ALL_CHECKBOXES = (
+By.XPATH, "//label[@class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1jaw3da']")
 SELECTED_LANGUAGES = (By.XPATH, "//div//span/p")
 
 SECOND_BLOCK_OF_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/form/div[2]")

@@ -1,9 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 
-from SpaceToStudy.ui.pages.base_page import BasePage
+from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
 from SpaceToStudy.ui.pages.first_login_student_modal.photo_step import PhotoStepStudent
 
@@ -42,7 +41,7 @@ class LanguageStepStudent(FirstLoginModal):
     @allure.step("Get native language input")
     def get_native_language_text(self) -> WebElement:
         return self.get_native_language_input().get_text()
-    
+
     @allure.step("Set native language input")
     def set_native_language_input(self, text):
         self.get_native_language_input().set_text_to_autocomplete_input(text, FIRST_AUTOCOMPLETE_ELEMENT)
@@ -51,7 +50,7 @@ class LanguageStepStudent(FirstLoginModal):
     def click_next_button(self):
         self.get_next_button().click()
         return PhotoStepStudent(self.node)
-    
+
     @allure.step("Click back button")
     def click_back_button(self):
         from SpaceToStudy.ui.pages.first_login_student_modal.interests_step import InterestsStepStudent

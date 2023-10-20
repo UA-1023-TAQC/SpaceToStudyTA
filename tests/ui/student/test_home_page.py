@@ -1,11 +1,9 @@
-from time import sleep
 import allure
 from selenium.webdriver import Keys
 
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
-from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from tests.ui.test_runners import TestRunnerWithStudent
 

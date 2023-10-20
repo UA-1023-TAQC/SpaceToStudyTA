@@ -7,6 +7,7 @@ from SpaceToStudy.ui.pages.base_component import BaseComponent
 TEXT = (By.XPATH, "./span")
 IMG = (By.XPATH, "./p/svg")
 
+
 class Value(BaseComponent):
 
     def __init__(self, node):

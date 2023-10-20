@@ -1,10 +1,7 @@
-from pprint import pprint
-from time import sleep
 import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver import ActionChains
 
 from SpaceToStudy.ui.elements.base_element import BaseElement
 
@@ -30,7 +27,7 @@ class Input(BaseElement):
     @allure.step("Set {text} text into input element")
     def set_text(self, text):
         self.get_input().send_keys(text)
-        
+
     @allure.step("Get text of input element")
     def get_text(self):
         return self.get_input().get_attribute("value")
@@ -68,8 +65,8 @@ class Input(BaseElement):
     @allure.step("Get text of error message element")
     def get_error_message(self) -> str:
         return self.node.find_element(*ERROR_MESSAGE).text
-    
-    
+
+
 class PasswordInput(Input):
     def __init__(self, node: WebElement):
         super().__init__(node)
