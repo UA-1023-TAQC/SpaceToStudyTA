@@ -232,11 +232,8 @@ class SecondBlock(BaseComponent):
     @allure.step("Get all selected languages")
     def get_all_selected_languages(self) -> list:
         if not self._all_selected_languages:
-            node = self.node.find_elements(*SELECTED_LANGUAGES)
-            res = list()
-            for c in node:
-                res.append(c)
-            return res
+            nodes = self.node.find_elements(*SELECTED_LANGUAGES)
+            return nodes
 
     @allure.step("Get description before price")
     def get_desc_before_price(self) -> str:
