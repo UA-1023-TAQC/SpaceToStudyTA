@@ -15,10 +15,10 @@ class InputWithImage(BaseElement):
         super().__init__(node)
         self._icon = None
 
-    # @allure.step("Set photo {path}")
-    # def set_photo(self, path):
-    #     self.node.send_keys(path)
-    #     return self
+    @allure.step("Set photo {path}")
+    def set_photo(self, path):
+        self.node.send_keys(path)
+        return self
 
     @allure.step("Get icon element")
     def get_icon(self):
