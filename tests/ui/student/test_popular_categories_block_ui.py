@@ -210,7 +210,6 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/361")
     def test_popular_categories_block_ui_interaction(self):
         title_music = HomePageStudent(self.driver).click_category_el(0).get_text_subjects_title()
-
         self.assertEqual("Music Subjects", title_music)
         self.driver.back()
         self.driver.refresh()

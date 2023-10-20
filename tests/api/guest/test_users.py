@@ -1,8 +1,8 @@
 import allure
 from jsonschema import validate
 
-from SpaceToStudy.api.users.client import UsersApiClient
 from SpaceToStudy.api.schema_for_errors import SCHEMA_FOR_ERRORS
+from SpaceToStudy.api.users.client import UsersApiClient
 from tests.api.api_test_runners import BaseAPITestRunner
 from tests.utils.value_provider import ValueProvider
 

@@ -1,6 +1,5 @@
 import allure
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 from SpaceToStudy.ui.pages.offer_details.info_component_many_values import InfoComponentManyValues

@@ -9,24 +9,25 @@ assignees: ''
 
 # [TC-ID] : Title of the test
 
-
 ### Priority
+
 Priority label
 
 ## Description
 
-The description should tell the tester what they’re going to test and include any other pertinent information such as the test environment, test data, and preconditions/assumptions.
+The description should tell the tester what they’re going to test and include any other pertinent information such as
+the test environment, test data, and preconditions/assumptions.
 
 ### Precondition
 
 Any preconditions that must be met prior to the test being executed.
 
 ## Test Steps
-| Step No.      | Step description       | Input data | Expected result   |
-|-------------|:-------------|:-----------|:-----|
-| 1. | what a tester should do |            | what a tester should see when they do that |
-| 2. | second |            | second expected |
 
+| Step No. | Step description        | Input data | Expected result                            |
+|----------|:------------------------|:-----------|:-------------------------------------------|
+| 1.       | what a tester should do |            | what a tester should see when they do that |
+| 2.       | second                  |            | second expected                            |
 
 ## Expected Result
 

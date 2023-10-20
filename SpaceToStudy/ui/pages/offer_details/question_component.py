@@ -1,11 +1,14 @@
 import allure
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 QUESTION_BTN = (By.XPATH, "./div")
 QUESTION = (By.XPATH, "./div/div/p")
 ANSWER = (By.XPATH, "./div[2]//p")
+
 
 class QuestionComponent(BaseComponent):
 
@@ -28,5 +31,6 @@ class QuestionComponent(BaseComponent):
     @allure.step("Get answer text in 'Frequently asked question' component on offer details page")
     def get_answer(self) -> str:
         if not self._answer:
+            WebDriverWait(self.node, 10).until(EC.visibility_of_element_located(ANSWER))
             self._answer = self.node.find_element(*ANSWER)
         return self._answer.text

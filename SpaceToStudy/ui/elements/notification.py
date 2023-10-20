@@ -4,7 +4,6 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.base_element import BaseElement
 
-
 NOTIFICATION = (By.XPATH, "/html/body/div/div[2]")
 NOTIFICATION_TEXT = (By.XPATH, "//*[@id='root']/div[2]/div")
 
@@ -21,7 +20,7 @@ class Notification(BaseElement):
         if not self._notification:
             self._notification = self.node.find_element(*NOTIFICATION)
         return self._notification
-    
+
     @allure.step("Get notification text")
     def get_notification_text(self) -> str:
         if not self._notification_text:

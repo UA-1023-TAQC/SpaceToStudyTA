@@ -2,8 +2,8 @@ import allure
 from jsonschema import validate
 
 from SpaceToStudy.api.categories.client import CategoriesApiClient
-from SpaceToStudy.api.categories.schemas import (SCHEMA_FOR_ALL_CATEGORIES, 
-                                                 SCHEMA_CATEGORIES_BY_ID, 
+from SpaceToStudy.api.categories.schemas import (SCHEMA_FOR_ALL_CATEGORIES,
+                                                 SCHEMA_CATEGORIES_BY_ID,
                                                  SCHEMA_FOR_SUBJECTS_BY_CATEGORY_ID,
                                                  SCHEMA_FOR_SUBJECTS_NAMES_BY_CATEGORY_ID)
 from tests.api.api_test_runners import APITestRunnerWithStudent

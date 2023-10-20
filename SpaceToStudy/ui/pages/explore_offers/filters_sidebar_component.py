@@ -1,13 +1,11 @@
-import allure
-from selenium.webdriver import ActionChains
 from time import sleep
 
+import allure
+from selenium.webdriver import ActionChains
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
-
 
 CLOSE_BUTTON = (By.XPATH, "./button")
 
@@ -152,7 +150,7 @@ class FiltersSidebarComponent(BaseComponent):
 
     @allure.step("Set the highest {value} input")
     def set_highest_value_input(self, value):
-        self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT)\
+        self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT) \
             .send_keys(Keys.CONTROL + "a" + Keys.BACKSPACE)
         self.node.find_element(*PRICE_HIGHEST_VALUE_INPUT).send_keys(value)
         return self

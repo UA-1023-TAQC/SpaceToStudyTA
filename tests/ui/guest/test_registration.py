@@ -1,20 +1,17 @@
 import re
-from time import sleep
 import unittest
+from time import sleep
 
 import allure
-from SpaceToStudy.ui.pages.email_confirmation_modal.email_confirmation_modal import EmailConfirmationModal
 
+from SpaceToStudy.ui.pages.email_confirmation_modal.email_confirmation_modal import EmailConfirmationModal
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
-
 from tests.ui.test_runners import BaseTestRunner
-from tests.utils.api_for_emails import TemporaryMailGenerator
-from tests.utils.value_provider import ValueProvider
-
 from tests.utils.api_for_emails import MailBox
 from tests.utils.api_for_emails import TemporaryMailGenerator
+from tests.utils.value_provider import ValueProvider
 
 
 class RegistrationTestCase(BaseTestRunner):
@@ -466,79 +463,89 @@ class RegistrationTestCase(BaseTestRunner):
         photo_path = ValueProvider.get_built_test_data_file_path("logo.jpg")
         pattern_get_file_name = "[\w-]+\..*"
         notification = "Success! Your data were added."
-        
-        #registration
+
+        # registration
         (HomePageGuest(self.driver)
-            .click_become_a_student()
-            .set_first_name(first_name)            
-            .set_last_name(last_name)
-            .set_email(email)
-            .set_password(password)
-            .set_confirm_password(password)
-            .click_i_agree_checkbox()
-            .click_sign_up_btn())
-        
-        #email validation
+         .click_become_a_student()
+         .set_first_name(first_name)
+         .set_last_name(last_name)
+         .set_email(email)
+         .set_password(password)
+         .set_confirm_password(password)
+         .click_i_agree_checkbox()
+         .click_sign_up_btn())
+
+        # email validation
         letters = MailBox(email).get_letters()
         letter = letters[0]
         link = letter.get_link_from_letter()
-        self.driver.get(link) 
+        self.driver.get(link)
 
-        #first loggining
+        # first loggining
         stepper = (EmailConfirmationModal(self.driver)
-        .click_go_to_login_button()
-        .set_email(email)
-        .set_password(password)
-        .click_login_button())
-        
-        
-        #test General step
+                   .click_go_to_login_button()
+                   .set_email(email)
+                   .set_password(password)
+                   .click_login_button())
+
+        # test General step
         general_step = stepper.click_general_step()
-        self.assertEqual(general_step.get_first_name_input_text(), first_name, f"In the first_name area text doesn't equal input {first_name}")
-        self.assertEqual(general_step.get_last_name_input_text(), last_name, f"In the last_name area text doesn't equal input {last_name}")
+        self.assertEqual(general_step.get_first_name_input_text(), first_name,
+                         f"In the first_name area text doesn't equal input {first_name}")
+        self.assertEqual(general_step.get_last_name_input_text(), last_name,
+                         f"In the last_name area text doesn't equal input {last_name}")
 
         general_step.set_country_input(country)
-        self.assertEqual(general_step.get_country_input_text(), country, f"In the county area text doesn't equal input {country}")
+        self.assertEqual(general_step.get_country_input_text(), country,
+                         f"In the county area text doesn't equal input {country}")
 
         general_step.set_city_input(city)
         self.assertEqual(general_step.get_city_input_text(), city, f"In the city area text doesn't equal input {city}")
 
         general_step.set_description(description)
-        self.assertEqual(general_step.get_description_text(), description, f"In the description area text doesn't equal input {description}")
+        self.assertEqual(general_step.get_description_text(), description,
+                         f"In the description area text doesn't equal input {description}")
 
-        #test Interests step
+        # test Interests step
         interest_step = general_step.click_next_button()
-        
+
         interest_step.set_main_tutoring_category_input(category1)
-        self.assertEqual(interest_step.get_main_tutoring_category_text(), category1, f"In the category area text doesn't equal input {category1}")
+        self.assertEqual(interest_step.get_main_tutoring_category_text(), category1,
+                         f"In the category area text doesn't equal input {category1}")
 
         interest_step.set_subject_input(subject1)
-        self.assertEqual(interest_step.get_subject_text(), subject1, f"In the subject area text doesn't equal input {subject1}")
+        self.assertEqual(interest_step.get_subject_text(), subject1,
+                         f"In the subject area text doesn't equal input {subject1}")
 
         interest_step.click_add_subject_button()
-        self.assertEqual(interest_step.get_main_tutoring_category_text(),"", "The category area is fiiled")
+        self.assertEqual(interest_step.get_main_tutoring_category_text(), "", "The category area is fiiled")
         self.assertEqual(interest_step.get_subject_text(), "", "The category area is fiiled")
 
         interest_step.set_main_tutoring_category_input(category2)
-        self.assertEqual(interest_step.get_main_tutoring_category_text(), category2, f"In the category area text doesn't equal input {category2}")
+        self.assertEqual(interest_step.get_main_tutoring_category_text(), category2,
+                         f"In the category area text doesn't equal input {category2}")
 
         interest_step.set_subject_input(subject2)
-        self.assertEqual(interest_step.get_subject_text(), subject2, f"In the subject area text doesn't equal input {subject2}")
+        self.assertEqual(interest_step.get_subject_text(), subject2,
+                         f"In the subject area text doesn't equal input {subject2}")
 
-        #test Language step
+        # test Language step
         language_step = interest_step.click_next_button()
         language_step.set_native_language_input(language)
-        self.assertEqual(language_step.get_native_language_text(), language, f"In the language area text doesn't equal input {language}")
+        self.assertEqual(language_step.get_native_language_text(), language,
+                         f"In the language area text doesn't equal input {language}")
 
-        #test Photo step
+        # test Photo step
         photo_step = language_step.click_next_button()
 
         photo_step.set_photo(photo_path)
         sleep(3)
-        self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(), "Photo isn't added")
+        self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(),
+                         "Photo isn't added")
         sleep(1)
         result_notification = photo_step.click_finish_button()
-        self.assertEqual(result_notification.get_notification_text(), notification, f"Notification doesn't equal {notification}")
+        self.assertEqual(result_notification.get_notification_text(), notification,
+                         f"Notification doesn't equal {notification}")
         sleep(1)
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
@@ -555,6 +562,30 @@ class RegistrationTestCase(BaseTestRunner):
                                .get_who_we_are_elements())
         for element in who_we_are_elements.values():
             self.assertTrue(element.is_displayed())
+
+    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/312')
+    def test_tutor_sign_up_button_active_with_correct_data(self):
+        (HomePageGuest(self.driver)
+         .click_started_for_free()
+         .click_become_a_tutor())
+        sign_up_button_state = (RegistrationModal(self.driver)
+                                .set_first_name("Dan")
+                                .set_last_name("Brown")
+                                .set_email("danbrown@example.com")
+                                .set_password("Password123")
+                                .set_confirm_password("Password123")
+                                .click_i_agree_checkbox()
+                                .get_sign_up_btn())
+        self.assertTrue(sign_up_button_state.is_enabled(), "The 'Sign Up' button should be active")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/108")
+    def test_password_header_disappears_with_valid_input(self):
+        password_field_filled = (HomePageGuest(self.driver)
+                                 .click_started_for_free()
+                                 .click_become_a_tutor()
+                                 .set_password("Alpha123"))
+        self.assertEqual("true", password_field_filled.get_password_label().get_attribute("data-shrink"))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

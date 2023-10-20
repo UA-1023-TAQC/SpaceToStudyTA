@@ -17,4 +17,3 @@ class OffersApiClient(BaseAPIClient):
         url = f"{self.url}/{offers_id}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
-

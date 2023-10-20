@@ -1,10 +1,8 @@
 import allure
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_page import BasePage
-
 
 NAVIGATION_BAR = (By.XPATH, '//*[@id="root"]/div/div[2]/div[1]/nav')
 MAIN_NAVIGATION_LINK = (By.XPATH, '//a[text()="Main"]')
@@ -41,18 +39,20 @@ PRICE_HIGH_LOW_OPTION = (By.XPATH, '//*[@id="menu-"]/div[3]/ul/li[4]')
 
 
 class MyCooperationsPage(BasePage):
-    @allure.step("Get the link to my cooperations page in the main navigation in the header by clicking the account icon")
+    @allure.step(
+        "Get the link to my cooperations page in the main navigation in the header by clicking the account icon")
     def get_main_navigation_link(self) -> WebElement:
         return self.driver.find_element(*MAIN_NAVIGATION_LINK)
 
-    @allure.step("Click the link to my cooperations page in the main navigation in the header by clicking the account icon")
+    @allure.step(
+        "Click the link to my cooperations page in the main navigation in the header by clicking the account icon")
     def click_main_navigation_link(self):
         self.get_main_navigation_link().click()
 
     @allure.step("Get a name of the my cooperations page (element near Main)")
     def get_current_page_name(self) -> str:
         return self.driver.find_element(*CURRENT_PAGE_NAME).text
-    
+
     @allure.step("Get a title of the my cooperations page (a big bold phrase)")
     def get_my_cooperations_page_title(self) -> str:
         return self.driver.find_element(*MY_COOPERATIONS_PAGE_TITLE).text
@@ -157,7 +157,8 @@ class MyCooperationsPage(BasePage):
     def get_last_update_table_title_element(self) -> WebElement:
         return self.driver.find_element(*LAST_UPDATE_TABLE_TITLE)
 
-    @allure.step("Click the element of a name of the 'Last update' column of the offers table to sort offers by last updating dates")
+    @allure.step(
+        "Click the element of a name of the 'Last update' column of the offers table to sort offers by last updating dates")
     def click_last_update_table_title_element(self):
         self.get_last_update_table_title_element().click()
 
@@ -188,7 +189,8 @@ class MyCooperationsPage(BasePage):
     def get_newest_option(self) -> WebElement:
         return self.driver.find_element(*NEWEST_OPTION)
 
-    @allure.step("Click the 'Newest' sorting option to sort offers by last update dates when offers are displayed in a card format")
+    @allure.step(
+        "Click the 'Newest' sorting option to sort offers by last update dates when offers are displayed in a card format")
     def click_newest_option(self):
         self.get_newest_option().click()
 
@@ -204,7 +206,8 @@ class MyCooperationsPage(BasePage):
     def get_price_low_high_option(self) -> WebElement:
         return self.driver.find_element(*PRICE_LOW_HIGH_OPTION)
 
-    @allure.step("Click the 'Price low-high' sorting option to sort offers by ascending prices when offers are displayed in a card format")
+    @allure.step(
+        "Click the 'Price low-high' sorting option to sort offers by ascending prices when offers are displayed in a card format")
     def click_price_low_high_option(self):
         self.get_price_low_high_option().click()
 
@@ -212,14 +215,16 @@ class MyCooperationsPage(BasePage):
     def get_price_high_low_option(self) -> WebElement:
         return self.driver.find_element(*PRICE_HIGH_LOW_OPTION)
 
-    @allure.step("Click the 'Price high-low' sorting option to sort offers by descending prices when offers are displayed in a card format")
+    @allure.step(
+        "Click the 'Price high-low' sorting option to sort offers by descending prices when offers are displayed in a card format")
     def click_price_high_low_option(self):
         self.get_price_high_low_option().click()
 
     @allure.step("Get the row 'No matches' in the offers table when you try to search for a non-existing user or title")
     def get_row_with_no_matches(self) -> WebElement:
         return self.driver.find_element(*ROW_WITH_NO_MATCHES)
-    
-    @allure.step("Get the text for 'No matches' row in the offers table when you try to search for a non-existing user or title")
+
+    @allure.step(
+        "Get the text for 'No matches' row in the offers table when you try to search for a non-existing user or title")
     def get_row_with_no_matches_text(self) -> str:
         return self.get_row_with_no_matches().text

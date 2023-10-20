@@ -1,13 +1,13 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.tutor_private_lesson_component import TutorPrivateLessonComponent
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
-
 
 CATEGORIES_TITLE = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/p')
 CATEGORIES_SUBTEXT = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/span')
@@ -17,10 +17,12 @@ SEARCH_INPUT = (By.XPATH, '//input[contains(@role, "combobox")]/../..')
 SEARCH_FIELD_HELP_TEXT = (By.XPATH, '//*[@id="mui-2488-label"]')
 STUDENT_PRIVATE_LESSON_COMPONENT = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]")
 CARDS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[5]/div/a")
+CATEGORIES_NAMES = (By.XPATH, "//a[@class='MuiBox-root css-1lap3qx']")
 
 NO_RESULT_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div/p")
 CATEGORIES_BLOCK = (By.XPATH, '/html/body/div/div/div[2]/div[2]')
 MUSIC_SUBJECTS = (By.XPATH, '/html/body/div/div/div[2]/div[2]/div[2]/p')
+
 
 class CategoriesPage(BasePage):
     def __init__(self, driver):
@@ -95,3 +97,8 @@ class CategoriesPage(BasePage):
             wait.until(EC.text_to_be_present_in_element(MUSIC_SUBJECTS, 'Music Subjects'))
             self._music_subjects = self.driver.find_element(*MUSIC_SUBJECTS).text
         return self._music_subjects
+
+    @allure.step("Get Categories names")
+    def get_categories_names(self) -> list:
+        cn = self.driver.find_elements(*CATEGORIES_NAMES)
+        return cn

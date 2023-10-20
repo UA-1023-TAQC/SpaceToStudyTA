@@ -1,11 +1,10 @@
+import re
+
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
-
-import re
-
 
 PERSON_ICON = (By.XPATH, './div/div[1]/a/div/svg')
 PERSON_NAME = (By.XPATH, './div/div[1]/div/a/p')
