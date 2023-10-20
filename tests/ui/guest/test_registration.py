@@ -533,7 +533,7 @@ class RegistrationTestCase(BaseTestRunner):
 
         #test Photo step
         photo_step = language_step.click_next_button()
-        sleep(3000)
+        
         photo_step.set_photo(photo_path)
         self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(), "Photo isn't added")
     
