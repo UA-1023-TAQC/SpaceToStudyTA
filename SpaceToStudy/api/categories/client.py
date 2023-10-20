@@ -35,8 +35,8 @@ class CategoriesApiClient(BaseAPIClient):
         return response
 
     def get_subjects_by_category_id(self, category_id, name=None):
-        url = f"{self.url}/{id}/subjects"
+        url = f"{self.url}/{category_id}/subjects"
         if name:
             url += f"?name={name}"
-        response = requests.get(f"{self.url}auth/login", headers={"Authorization": f"Bearer {self.access_token}"})
+        response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
