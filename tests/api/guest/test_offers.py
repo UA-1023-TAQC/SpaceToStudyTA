@@ -2,7 +2,7 @@ import allure
 from jsonschema import validate
 
 from SpaceToStudy.api.offers.client_offers import OffersApiClient
-from SpaceToStudy.api.offers.schemas import UNAUTHORIZED_SCHEMA
+from SpaceToStudy.api.schema_for_errors import SCHEMA_FOR_ERRORS
 
 from tests.api.api_test_runners import BaseAPITestRunner
 from tests.utils.value_provider import ValueProvider
@@ -18,5 +18,5 @@ class TestOffersApi(BaseAPITestRunner):
         assert response.status_code == 401
         assert response.json().get('message') == "The requested URL requires user authorization."
         assert response.json().get('code') == "UNAUTHORIZED"
-        validate(instance=response.json(), schema=UNAUTHORIZED_SCHEMA)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
 

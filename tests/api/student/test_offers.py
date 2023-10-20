@@ -3,6 +3,7 @@ import allure
 from SpaceToStudy.api.offers.client_offers import OffersApiClient
 from SpaceToStudy.api.offers.schemas import ALL_OFFERS_SCHEMA
 from SpaceToStudy.api.schema_for_errors import SCHEMA_FOR_ERRORS
+from SpaceToStudy.api.offers.schemas import ALL_OFFERS_SCHEMA, SCHEMA_OFFERS_ID
 from tests.api.api_test_runners import APITestRunnerWithStudent
 from tests.utils.value_provider import ValueProvider
 from jsonschema import validate
@@ -25,3 +26,10 @@ class TestOffersApi(APITestRunnerWithStudent):
         assert response.json().get('message') == "ID is invalid."
         assert response.json().get('code') == "INVALID_ID"
         validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/405#issue-1945106730")
+    def test_find_all_offers(self):
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_offers_by_id("652ea7336fc04ef55bb462cf")
+        self.assertEqual(200, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_OFFERS_ID)
