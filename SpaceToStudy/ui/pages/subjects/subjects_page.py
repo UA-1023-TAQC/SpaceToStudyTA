@@ -29,6 +29,7 @@ class SubjectsPage(BasePage):
         super().__init__(driver)
         self._cards = None
 
+    @allure.step("Get title")
     def get_subjects_title(self) -> WebElement:
         wait = WebDriverWait(self.driver, 10)
         el = wait.until(EC.visibility_of_element_located(SUBJECTS_TITLE))
