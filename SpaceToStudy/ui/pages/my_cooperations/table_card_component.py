@@ -1,5 +1,4 @@
 import allure
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -16,7 +15,7 @@ LAST_UPDATE = (By.XPATH, './div[1]/div[2]/div[2]/span')
 STATUS_VALUE = (By.XPATH, './div[1]/div[2]/div[1]/span/p/span[2]')
 
 
-class TableCardComponent(BaseComponent): #Should we change the name to OfferCardComponent? it doesn't relate to table
+class TableCardComponent(BaseComponent):  # Should we change the name to OfferCardComponent? it doesn't relate to table
     @allure.step("Get a person Icon when offers are displayed in the card format on my cooperations page")
     def get_person_icon(self) -> WebElement:
         return self.node.find_element(*PERSON_ICON)

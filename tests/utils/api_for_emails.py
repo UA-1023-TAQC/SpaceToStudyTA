@@ -3,13 +3,12 @@ https://apilayer.com/marketplace/temp_mail-api
 """
 import hashlib
 import json
-import requests
 import random
 import re
 import string
-
 from time import sleep
 
+import requests
 from bs4 import BeautifulSoup
 
 from tests.utils.value_provider import ValueProvider
@@ -76,9 +75,10 @@ class MailBox:
             if response.status_code == 200:
                 letter_data = response.json()
             counter += 1
-          
+
         self.letters = [Letter(letter) for letter in letter_data] if "error" not in letter_data else []
         return self.letters
+
 
 class Letter:
     def __init__(self, data):

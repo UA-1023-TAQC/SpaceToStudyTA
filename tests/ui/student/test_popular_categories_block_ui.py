@@ -206,4 +206,3 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
             self.assertEqual(start_coordinate_y + vertical_margin_between_elements, result.node.location['y'])
 
         self.assertEqual(right_margin, left_margin)
-

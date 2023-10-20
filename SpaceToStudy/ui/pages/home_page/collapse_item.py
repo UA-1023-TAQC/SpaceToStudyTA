@@ -1,11 +1,10 @@
 import allure
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
-from selenium.webdriver.support import expected_conditions as EC
 
 TITLE_COLLAPSE_ITEM = (By.XPATH, "./div[1]/div/h6")
 DESCRIPTION_COLLAPSE_ITEM = (By.XPATH, ".//p")
@@ -43,7 +42,6 @@ class CollapseItem(BaseComponent):
     def get_description_value_of_css(self, value):
         return self.node.find_element(*DESCRIPTION_COLLAPSE_ITEM).value_of_css_property(value)
 
-
     @allure.step("Check if element is expanded")
     def is_expanded(self) -> bool:
         aria_expanded = self.node.find_element(By.XPATH, ".//div[@aria-expanded]").get_attribute("aria-expanded")
@@ -56,6 +54,3 @@ class CollapseItem(BaseComponent):
     @allure.step("Get background el with tab")
     def get_background_el_with_tab(self) -> WebElement:
         return self.node.find_element(*TAB_ELEMENT)
-
-
-

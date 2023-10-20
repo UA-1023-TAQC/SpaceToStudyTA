@@ -12,4 +12,3 @@ class ChatsAPIClient(BaseAPIClient):
         url = f"{self.url}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
-

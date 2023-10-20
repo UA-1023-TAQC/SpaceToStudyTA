@@ -1,7 +1,6 @@
-import allure
 from time import sleep
 
-from selenium.common import NoSuchElementException
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 

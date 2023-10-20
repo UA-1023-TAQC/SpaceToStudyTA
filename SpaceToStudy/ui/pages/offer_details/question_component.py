@@ -1,12 +1,14 @@
 import allure
 from selenium.webdriver.common.by import By
-from SpaceToStudy.ui.pages.base_component import BaseComponent
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from SpaceToStudy.ui.pages.base_component import BaseComponent
 
 QUESTION_BTN = (By.XPATH, "./div")
 QUESTION = (By.XPATH, "./div/div/p")
 ANSWER = (By.XPATH, "./div[2]//p")
+
 
 class QuestionComponent(BaseComponent):
 

@@ -2,10 +2,10 @@ import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
 from SpaceToStudy.ui.pages.first_login_student_modal.interests_step import InterestsStepStudent
-from SpaceToStudy.ui.elements.input import Input
 
 STARTING_TEXT = (By.XPATH, "//form/div[1]")
 IMAGE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/img")
@@ -17,7 +17,8 @@ COUNTRY_INPUT = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div
 COUNTRY_LABEL = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[1]/div[3]/div/label")
 CITY_INPUT = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[1]/div[4]/div")
 CITY_LABEL = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[1]/div[4]/div/label")
-DESCRIPTION_INPUT = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[2]/div/div/textarea[1]")
+DESCRIPTION_INPUT = (
+By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[2]/div/div/textarea[1]")
 DESCRIPTION_LABEL = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[2]/div/label")
 SYMBOLS_COUNTER = (By.XPATH, "//html/body/div[2]/div[3]/div/div/div/div/div[2]/div//form/div[1]/div[2]/p")
 FIRST_AUTOCOMPLETE_ELEMENT = (By.XPATH, "/html/body/div[3]/div/ul/li[1]")
@@ -47,7 +48,7 @@ class GeneralStepStudent(FirstLoginModal):
             node = self.node.find_element(*FIRST_NAME_INPUT)
             self._first_name_input = Input(node)
         return self._first_name_input
-    
+
     @allure.step("Get first name input text")
     def get_first_name_input_text(self) -> str:
         return self.get_first_name_input().get_text()
@@ -66,7 +67,7 @@ class GeneralStepStudent(FirstLoginModal):
             node = self.node.find_element(*LAST_NAME_INPUT)
             self._last_name_input = Input(node)
         return self._last_name_input
-    
+
     @allure.step("Get last name input text")
     def get_last_name_input_text(self) -> str:
         return self.get_last_name_input().get_text()
@@ -85,7 +86,7 @@ class GeneralStepStudent(FirstLoginModal):
             node = self.node.find_element(*COUNTRY_INPUT)
             self._country_input = InputDropDownList(node)
         return self._country_input
-    
+
     @allure.step("Get country input text")
     def get_country_input_text(self) -> str:
         return self.get_country_input().get_text()
@@ -104,7 +105,7 @@ class GeneralStepStudent(FirstLoginModal):
             node = self.node.find_element(*CITY_INPUT)
             self._city_input = InputDropDownList(node)
         return self._city_input
-    
+
     @allure.step("Get city input text")
     def get_city_input_text(self) -> str:
         return self.get_city_input().get_text()
@@ -122,7 +123,7 @@ class GeneralStepStudent(FirstLoginModal):
         if not self._description_textarea:
             self._description_textarea = self.node.find_element(*DESCRIPTION_INPUT)
         return self._description_textarea
-    
+
     @allure.step("Get description input text")
     def get_description_text(self) -> str:
         return self.get_description_textarea().text
@@ -143,9 +144,7 @@ class GeneralStepStudent(FirstLoginModal):
     def get_symbols_counter_text(self) -> str:
         return self.get_symbols_counter().text
 
-
     @allure.step("Click next button")
     def click_next_button(self):
         self.get_next_button().click()
         return InterestsStepStudent(self.node)
-    

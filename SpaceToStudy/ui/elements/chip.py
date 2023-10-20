@@ -7,6 +7,7 @@ from SpaceToStudy.ui.elements.base_element import BaseElement
 NAME = (By.XPATH, ".//p")
 CLOSE_BTN = (By.XPATH, "./button")
 
+
 class Chip(BaseElement):
     def __init__(self, node: WebElement):
         super().__init__(node)

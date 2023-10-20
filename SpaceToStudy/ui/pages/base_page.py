@@ -2,8 +2,9 @@ import allure
 from selenium.common import NoSuchElementException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from SpaceToStudy.ui.pages.header.header_authorized_component import HeaderAuthorizedComponent
 from SpaceToStudy.ui.pages.header.header_unauthorized_component import HeaderUnauthorizedComponent
 
@@ -61,4 +62,3 @@ class BasePage:
     def click_navigate_link_in_header_by_name(self, name):
         self.get_header().click_navigate_link_by_name(name)
         return self
-

@@ -1,8 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
@@ -34,6 +34,7 @@ QUESTIONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[1]")
 QUESTIONS_ITEMS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[2]/div")
 ACCOUNT_BUTTON = (By.XPATH, "//button[@aria-label='Account']")
 MY_PROFILE_BUTTON = (By.XPATH, "//a[contains(@href, 'profile')]")
+
 
 class HomePageStudent(BasePage):
 
@@ -81,6 +82,7 @@ class HomePageStudent(BasePage):
         if not self._categories_block:
             self._categories_block = self.driver.find_element(*CATEGORIES_BLOCK)
         return self._categories_block
+
     @allure.step("Get My Profile button")
     def get_My_profile_button(self) -> WebElement:
         if not self._my_profile_button:

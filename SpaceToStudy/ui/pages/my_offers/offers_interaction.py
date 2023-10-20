@@ -1,5 +1,4 @@
 import allure
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -37,12 +36,14 @@ class OffersInteraction(BaseComponent):
     def click_grid_btn(self):
         self.get_grid_btn().click()
         return self
-    
-    @allure.step("Get the offers sorting button (dropdown menu) when offers are displayed in a card format on the My Offers page")
+
+    @allure.step(
+        "Get the offers sorting button (dropdown menu) when offers are displayed in a card format on the My Offers page")
     def get_sort(self) -> WebElement:
         return self.node.find_element(*SORT)
 
-    @allure.step("Click the offers sorting button (dropdown menu) when offers are displayed in a card format on the My Offers page")
+    @allure.step(
+        "Click the offers sorting button (dropdown menu) when offers are displayed in a card format on the My Offers page")
     def click_get_sort(self):
         self.get_sort().click()
         return SortComponent(self.node.find_element(By.XPATH, "/html/body/div[2]/div[3]"))
