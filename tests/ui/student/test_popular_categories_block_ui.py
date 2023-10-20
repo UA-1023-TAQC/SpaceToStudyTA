@@ -207,3 +207,58 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
 
         self.assertEqual(right_margin, left_margin)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/361")
+    def test_popular_categories_block_ui_interaction(self):
+        title_music = HomePageStudent(self.driver).click_category_el(0).get_text_subjects_title()
+
+        self.assertEqual("Music Subjects", title_music)
+        self.driver.back()
+        self.driver.refresh()
+        is_displayed_music = HomePageStudent(self.driver).click_category_el(0).get_subjects_title().is_displayed()
+        self.assertTrue(is_displayed_music)
+        self.driver.back()
+        self.driver.refresh()
+
+        title_computer = HomePageStudent(self.driver).click_category_el(1).get_text_subjects_title()
+        self.assertEqual("Computer science Subjects", title_computer)
+        self.driver.back()
+        self.driver.refresh()
+        is_displayed_computer = HomePageStudent(self.driver).click_category_el(1).get_subjects_title().is_displayed()
+        self.assertTrue(is_displayed_computer)
+        self.driver.back()
+        self.driver.refresh()
+
+        title_design = HomePageStudent(self.driver).click_category_el(2).get_text_subjects_title()
+        self.assertEqual("Dance Subjects", title_design)
+        self.driver.back()
+        self.driver.refresh()
+        is_displayed_design = HomePageStudent(self.driver).click_category_el(2).get_subjects_title().is_displayed()
+        self.assertTrue(is_displayed_design)
+        self.driver.back()
+        self.driver.refresh()
+
+        title_dance = HomePageStudent(self.driver).click_category_el(3).get_text_subjects_title()
+        self.assertEqual("Mathematics Subjects", title_dance)
+        self.driver.back()
+        self.driver.refresh()
+        is_displayed_dance = HomePageStudent(self.driver).click_category_el(3).get_subjects_title().is_displayed()
+        self.assertTrue(is_displayed_dance)
+        self.driver.back()
+        self.driver.refresh()
+
+        title_math = HomePageStudent(self.driver).click_category_el(4).get_text_subjects_title()
+        self.assertEqual("Design Subjects", title_math)
+        self.driver.back()
+        self.driver.refresh()
+        is_displayed_math = HomePageStudent(self.driver).click_category_el(4).get_subjects_title().is_displayed()
+        self.assertTrue(is_displayed_math)
+        self.driver.back()
+        self.driver.refresh()
+
+        title_language = HomePageStudent(self.driver).click_category_el(5).get_text_subjects_title()
+        self.assertEqual("Languages Subjects", title_language)
+        self.driver.back()
+        self.driver.refresh()
+        is_displayed_language = HomePageStudent(self.driver).click_category_el(5).get_subjects_title().is_displayed()
+        self.assertTrue(is_displayed_language)
+
