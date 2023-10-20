@@ -463,7 +463,7 @@ class RegistrationTestCase(BaseTestRunner):
         subject2 = "Freestyle"
         category2 = "Dance"
         language = "Ukrainian"
-        photo_path = "/tests/materials/logo.jpg"
+        photo_path = ValueProvider.get_built_test_data_file_path("logo.jpg")
         pattern_get_file_name = "[\w-]+\..*"
         notification = "Success! Your data were added."
         
@@ -533,6 +533,7 @@ class RegistrationTestCase(BaseTestRunner):
 
         #test Photo step
         photo_step = language_step.click_next_button()
+
         photo_step.get_photo_input().set_photo(photo_path)
         self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(), "Photo isn't added")
     

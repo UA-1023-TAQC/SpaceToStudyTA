@@ -68,6 +68,10 @@ class HowItWorksComponentStudent(BaseComponent):
             self._img_select_a_tutor_student = self.node.find_element(*ITEM_SELECT_A_TUTOR_IMG)
         return self._img_select_a_tutor_student
 
+    @allure.step("Get title webElement of 'Select a Tutor'")
+    def get_title_select_a_tutor_student_webelement(self) -> WebElement:
+        return self.node.find_element(*ITEM_SELECT_A_TUTOR_TITLE)
+
     @allure.step("Get text from the title of 'Select a Tutor'")
     def get_title_select_a_tutor_student(self) -> str:
         if not self._title_select_a_tutor_student:
@@ -85,6 +89,10 @@ class HowItWorksComponentStudent(BaseComponent):
         if not self._img_send_request_student:
             self._img_send_request_student = self.node.find_element(*ITEM_SEND_REQUEST_IMG)
         return self._img_send_request_student
+
+    @allure.step("Get title webElement of 'Send Request'")
+    def get_title_send_request_student_webelement(self) -> WebElement:
+        return self.node.find_element(*ITEM_SEND_REQUEST_TITLE)
 
     @allure.step("Get text the title from 'Send Request'")
     def get_title_send_request_student(self) -> str:
@@ -104,6 +112,10 @@ class HowItWorksComponentStudent(BaseComponent):
             self._img_start_learning_student = self.node.find_element(*ITEM_START_LEARNING_IMG)
         return self._img_start_learning_student
 
+    @allure.step("Get title webElement of 'Start Learning'")
+    def get_title_start_learning_student_webelement(self) -> WebElement:
+        return self.node.find_element(*ITEM_START_LEARNING_TITLE)
+
     @allure.step("Get text the title from 'Start Learning'")
     def get_title_start_learning_student(self) -> str:
         if not self._title_start_learning_student:
@@ -121,6 +133,10 @@ class HowItWorksComponentStudent(BaseComponent):
         if not self._img_write_feedback_student:
             self._img_write_feedback_student = self.node.find_element(*ITEM_WRITE_FEEDBACK_IMG)
         return self._img_write_feedback_student
+
+    @allure.step("Get title webElement of 'Write Feedback'")
+    def get_title_write_feedback_student_webelement(self) -> WebElement:
+        return self.node.find_element(*ITEM_WRITE_FEEDBACK_TITLE)
 
     @allure.step("Get text the title from 'Write Feedback'")
     def get_title_write_feedback_student(self) -> str:
