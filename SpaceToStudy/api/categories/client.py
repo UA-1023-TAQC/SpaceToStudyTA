@@ -24,7 +24,9 @@ class CategoriesApiClient(BaseAPIClient):
 
     def get_subjects_names_by_id(self, category_id):
         "/ categories / {id} / subjects / names"
-        pass
+        url = f"{self.url}/{category_id}/subjects/names"
+        response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
 
     def get_categories_by_id(self, category_id):
         "/ categories / {id}"
