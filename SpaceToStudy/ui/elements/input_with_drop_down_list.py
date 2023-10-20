@@ -10,6 +10,11 @@ class InputDropDownList(Input):
         super().__init__(node)
         self.default_press_count = 1
 
+    @allure.step("Set {text} text into input element with autofill option")
+    def set_text_to_autocomplete_input(self, text, element_locator):
+        self.set_text(text)
+        self.node.find_element(*element_locator).click()
+
     @allure.step("User presses a key on the keyboard {press_count} times without releasing it")
     def press_down_button(self, press_count: int):
         self.default_press_count = press_count

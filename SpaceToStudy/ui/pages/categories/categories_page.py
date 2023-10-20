@@ -1,7 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.tutor_private_lesson_component import TutorPrivateLessonComponent
@@ -19,6 +20,7 @@ CARDS = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[5]/div/a")
 
 NO_RESULT_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[4]/div/div/p")
 CATEGORIES_BLOCK = (By.XPATH, '/html/body/div/div/div[2]/div[2]')
+MUSIC_SUBJECTS = (By.XPATH, '/html/body/div/div/div[2]/div[2]/div[2]/p')
 
 class CategoriesPage(BasePage):
     def __init__(self, driver):
@@ -26,6 +28,7 @@ class CategoriesPage(BasePage):
         self._cards = None
         self._no_result_title = None
         self._categories_block = None
+        self._music_subjects = None
 
     @allure.step("Get categories title text")
     def get_categories_title(self) -> str:
@@ -84,3 +87,11 @@ class CategoriesPage(BasePage):
         if not self._categories_block:
             self._categories_block = self.driver.find_element(*CATEGORIES_BLOCK)
         return self._categories_block
+
+    @allure.step("Get music subjects")
+    def get_music_subjects(self):
+        if self._music_subjects is None:
+            wait = WebDriverWait(self.driver, 10)
+            wait.until(EC.text_to_be_present_in_element(MUSIC_SUBJECTS, 'Music Subjects'))
+            self._music_subjects = self.driver.find_element(*MUSIC_SUBJECTS).text
+        return self._music_subjects

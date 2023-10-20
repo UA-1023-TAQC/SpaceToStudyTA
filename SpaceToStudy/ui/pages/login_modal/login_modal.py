@@ -10,6 +10,8 @@ from SpaceToStudy.ui.elements.input import PasswordInput
 from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.elements.button import Button
 from SpaceToStudy.ui.pages.base_component import BaseComponent
+from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
+
 
 IMG_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/img")
 TITLE_MODAL = (By.XPATH, "//*[contains(text(),'Welcome back')]")
@@ -61,6 +63,7 @@ class LoginModal(BaseComponent):
 
     @allure.step("The email input field is set to the value: {email}")
     def set_email(self, email: str):
+        self.node.parent.implicitly_wait(2)
         self.get_email_input().set_text(email)
         return self
 
@@ -100,9 +103,17 @@ class LoginModal(BaseComponent):
 
     @allure.step("Click the 'Login' button")
     def click_login_button(self):
-        sleep(0.1)
+        from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
+        from SpaceToStudy.ui.pages.home_page.home_tutor import HomePageTutor
+        sleep(0.5)
         self.get_login_button().click_button()
         sleep(1)
+        if FirstLoginModal(self.node.parent).is_displayed():
+            return FirstLoginModal(self.node.parent)
+        elif HomePageStudent(self.node.parent).get_text_button_find_tutor() == "Find tutor":
+            return HomePageStudent(self.node.parent)
+        else:
+            return HomePageTutor(self.node.parent)
 
     @allure.step("Get the 'Join Us for Free' link")
     def get_join_us_for_free(self):

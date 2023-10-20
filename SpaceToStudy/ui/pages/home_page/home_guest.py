@@ -42,6 +42,7 @@ HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR = (By.XPATH, "/html/body/div/div/div[2]/div[1]
 HOW_IT_WORKS_BLOCK_SEND_REQUEST = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[4]")
 HOW_IT_WORKS_BLOCK_START_LEARNING = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[5]")
 BECOME_A_TUTOR_OR_STUDENT_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/button")
+BECOME_A_TUTOR_OR_STUDENT_BUTTON_SELECTED = (By.TAG_NAME, "span")
 CHECKBOX_HOW_IT_WORKS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[3]/div/div[1]/span/span[1]/input")
 
 WHO_WE_ARE_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[4]")
@@ -74,6 +75,7 @@ class HomePageGuest(BasePage):
         self._collapse_block = None
         self._collapse_items_mobile = None
         self._who_we_are_block = None
+        
 
     @allure.step("Get map image")
     def get_img_map(self) -> WebElement:
@@ -210,6 +212,7 @@ class HomePageGuest(BasePage):
 
     @allure.step("Click become a student ")
     def click_become_a_student(self) -> RegistrationModal:
+        self.driver.implicitly_wait(1)
         self.get_card_learn_from_experts().click_btn()
         return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
 
@@ -251,7 +254,7 @@ class HomePageGuest(BasePage):
         return self._how_it_works_block
 
     @allure.step("Get checkbox how it works block")
-    def get_checkbox_how_it_works_block(self) -> HowItWorksComponent:
+    def get_checkbox_how_it_works_block(self) -> WebElement:
         if not self._checkbox_how_it_works_block:
             return self.driver.find_element(*CHECKBOX_HOW_IT_WORKS_BLOCK)
 
@@ -262,31 +265,27 @@ class HomePageGuest(BasePage):
 
     @allure.step("Get sign up items")
     def get_sign_up_items(self) -> HowItWorksComponent:
-        if not self._sign_up:
-            _sign_up = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SIGN_UP)
-            self._sign_up = HowItWorksComponent(_sign_up)
-        return self._sign_up
+        _sign_up = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SIGN_UP)
+        return HowItWorksComponent(_sign_up)
+
 
     @allure.step("Get select a tutor items")
     def get_select_a_tutor_items(self) -> HowItWorksComponent:
-        if not self._select_a_tutor:
-            _select_a_tutor = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR)
-            self._select_a_tutor = HowItWorksComponent(_select_a_tutor)
-        return self._select_a_tutor
+        _select_a_tutor = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SELECT_A_TUTOR)
+        return HowItWorksComponent(_select_a_tutor)
+
 
     @allure.step("Get send request items")
     def get_send_request_items(self) -> HowItWorksComponent:
-        if not self._send_request:
-            _send_request = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SEND_REQUEST)
-            self._send_request = HowItWorksComponent(_send_request)
-        return self._send_request
+        _send_request = self.driver.find_element(*HOW_IT_WORKS_BLOCK_SEND_REQUEST)
+        return HowItWorksComponent(_send_request)
+
 
     @allure.step("Get start learning items")
-    def get_start_learning_items(self) -> WebElement:
-        if not self._start_learning:
-            node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
-            self._start_learning = HowItWorksComponent(node)
-        return self._start_learning
+    def get_start_learning_items(self) -> HowItWorksComponent:
+        node = self.driver.find_element(*HOW_IT_WORKS_BLOCK_START_LEARNING)
+        return HowItWorksComponent(node)
+
 
     @allure.step("Get how it works block")
     def get_how_it_works_block(self) -> HowItWorksComponent:
@@ -320,11 +319,6 @@ class HomePageGuest(BasePage):
             self._card_learn_from_experts = CardComponent(self.driver.find_element(*CARD_COMPONENT_LEARN_FROM_EXPERTS))
         return self._card_learn_from_experts
 
-    @allure.step("Click become a student ")
-    def click_become_a_student(self) -> RegistrationModal:
-        self.get_card_learn_from_experts().click_btn()
-        return RegistrationModal(self.driver.find_element(By.XPATH, "//div[@data-testid='popupContent']"))
-
     @allure.step("Get card share your experience")
     def get_card_share_your_experience(self) -> CardComponent:
         if not self._card_share_your_experience:
@@ -349,6 +343,21 @@ class HomePageGuest(BasePage):
     @allure.step("Get button become a student or tutor")
     def get_button_become_a_student_tutor(self) -> WebElement:
         return self.driver.find_element(*BECOME_A_TUTOR_OR_STUDENT_BUTTON)
+
+    @allure.step("Get button become a student or tutor text")
+    def get_button_become_a_student_tutor_text(self) -> str:
+        return self.get_button_become_a_student_tutor().text
+
+    @allure.step("Check button become a student or tutor is selected")
+    def is_button_become_a_student_tutor_selected(self) -> bool:
+        # when u press tab until button is selected
+        count_of_span_elements = self.get_button_become_a_student_tutor().find_elements(*BECOME_A_TUTOR_OR_STUDENT_BUTTON_SELECTED)
+        if len(count_of_span_elements) == 1:
+            return False
+        elif len(count_of_span_elements) == 3:
+            return True
+        else:
+            raise AssertionError(f"The logic for the '{self.get_button_become_a_student_tutor_text}' has been changed. Please review and update the code accordingly to handle this change.")
 
     @allure.step("Get text in button \"become a student or tutor\"")
     def get_text_button_become_a_student_tutor(self) -> str:
