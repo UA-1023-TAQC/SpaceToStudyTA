@@ -24,6 +24,7 @@ class HomePageTutor(BasePage):
         self._search_input = None
         self._find_student = None
         self._go_to_categories = None
+        self._music = None
 
     @allure.step("Get title")
     def get_title(self) -> WebElement:
