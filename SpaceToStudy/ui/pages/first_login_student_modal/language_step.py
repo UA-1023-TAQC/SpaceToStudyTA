@@ -28,24 +28,12 @@ class LanguageStepStudent(FirstLoginModal):
     def get_starting_text(self) -> str:
         return self.node.find_element(*STARTING_TEXT).text
 
-    @allure.step("Get native language label")
-    def get_native_language_label(self) -> WebElement:
-        return self.node.find_element(*NATIVE_LANGUAGE_LABEL)
-
     @allure.step("Get native language input")
     def get_native_language_input(self) -> InputDropDownList:
         if not self._native_language:
             node = self.node.find_element(*NATIVE_LANGUAGE_INPUT)
             self._native_language = InputDropDownList(node)
         return self._native_language
-
-    @allure.step("Get native language input")
-    def get_native_language_text(self) -> WebElement:
-        return self.get_native_language_input().get_text()
-    
-    @allure.step("Set native language input")
-    def set_native_language_input(self, text):
-        self.get_native_language_input().set_text_to_autocomplete_input(text, FIRST_AUTOCOMPLETE_ELEMENT)
 
     @allure.step("Click next button")
     def click_next_button(self):

@@ -1,11 +1,11 @@
-import os
 import allure
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from SpaceToStudy.ui.elements.notification import Notification
+from SpaceToStudy.ui.elements.input_with_image import InputWithImage
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
+from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 
 
 STARTING_TEXT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p[1]")
@@ -28,15 +28,11 @@ class PhotoStepStudent(FirstLoginModal):
         return self.node.find_element(*STARTING_TEXT).text
     
     @allure.step("Get photo input")
-    def get_photo_input(self) -> WebElement:
+    def get_photo_input(self) -> InputWithImage:
         if not self._photo_input:
-            self._photo_input = self.node.find_element(*PHOTO_INPUT)
+            node = self.node.find_element(*PHOTO_INPUT)
+            self._photo_input = InputWithImage(node)
         return self._photo_input
-    
-    @allure.step("Set photo")
-    def set_photo(self, path):
-        self.get_photo_input().send_keys(os.getcwd() + path)
-        print(os.getcwd() + path)
 
     @allure.step("Get photo input text")
     def get_photo_input_text(self) -> str:
@@ -70,4 +66,4 @@ class PhotoStepStudent(FirstLoginModal):
     @allure.step("Click finish button")
     def click_finish_button(self):
         self.get_finish_button().click()
-        return Notification(self.node)
+        return HomePageStudent(self.node)

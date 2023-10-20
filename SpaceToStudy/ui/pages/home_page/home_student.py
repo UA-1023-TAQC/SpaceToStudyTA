@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
+from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowItWorksComponentStudent
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
@@ -53,6 +54,7 @@ class HomePageStudent(BasePage):
         self._categories_block_description = None
         self._categories_block = None
         self._categories_mobile = None
+     
 
     @allure.step("Get categories")
     def get_categories(self) -> tuple[CategoryComponent]:
