@@ -1,8 +1,9 @@
 import allure
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from SpaceToStudy.ui.pages.notification import Notification
+from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
 
 STARTING_TEXT = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div[1]/p[1]")
@@ -67,4 +68,4 @@ class PhotoStepStudent(FirstLoginModal):
     @allure.step("Click finish button")
     def click_finish_button(self):
         self.get_finish_button().click()
-        return Notification(self.node)
+        return HomePageStudent(self.node)
