@@ -9,6 +9,7 @@ TITLE = (By.XPATH, "./div[1]/p")
 DESC = (By.XPATH, "./div[1]/span")
 VIDEO = (By.CSS_SELECTOR, "#who-we-are > div.MuiBox-root > div > img")
 
+
 class WhoWeAreBlock(BaseComponent):
     def __init__(self, node):
         super().__init__(node)
@@ -21,11 +22,11 @@ class WhoWeAreBlock(BaseComponent):
         if not self._title:
             self._title = self.node.find_element(*TITLE)
         return self._title
-    
+
     @allure.step("Get the title text of 'Who We Are' block")
     def get_title(self) -> str:
         return self.get_title_element().text
-    
+
     @allure.step("Get the description element of 'Who We Are' block")
     def get_desc_element(self) -> WebElement:
         if not self._desc:
@@ -41,7 +42,7 @@ class WhoWeAreBlock(BaseComponent):
         if not self._video:
             self._video = self.node.find_element(*VIDEO)
         return self._video
-    
+
     @allure.step("Get the list of web elements for 'Who We Are'' block")
     def get_who_we_are_elements(self) -> dict:
         return {"title": self.get_title_element(),

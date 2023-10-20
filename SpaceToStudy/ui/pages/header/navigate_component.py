@@ -4,7 +4,6 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 
-
 NAME = (By.XPATH, "./a")
 
 

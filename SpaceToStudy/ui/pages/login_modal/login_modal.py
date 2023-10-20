@@ -1,17 +1,16 @@
+from time import sleep
+
 import allure
-from selenium.common import NoSuchElementException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-from time import sleep
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.elements.button import Button
 from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input import PasswordInput
 from SpaceToStudy.ui.elements.link import Link
-from SpaceToStudy.ui.elements.button import Button
 from SpaceToStudy.ui.pages.base_component import BaseComponent
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
-
 
 IMG_MODAL = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/img")
 TITLE_MODAL = (By.XPATH, "//*[contains(text(),'Welcome back')]")
@@ -108,7 +107,7 @@ class LoginModal(BaseComponent):
         sleep(0.5)
         self.get_login_button().click_button()
         sleep(1)
-        if FirstLoginModal(self.node.parent).get_general_step().is_displayed():
+        if FirstLoginModal(self.node.parent).is_displayed():
             return FirstLoginModal(self.node.parent)
         elif HomePageStudent(self.node.parent).get_text_button_find_tutor() == "Find tutor":
             return HomePageStudent(self.node.parent)

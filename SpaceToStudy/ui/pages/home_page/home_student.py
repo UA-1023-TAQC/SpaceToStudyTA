@@ -1,8 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
@@ -26,16 +26,15 @@ CATEGORIES = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a")
 CATEGORIES_MOBILE = (By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/div/a")
 
 BUTTON_GO_TO_CATEGORIES = (By.XPATH, "//button[contains(text(), 'Go to categories')]")
+HEADER_LINK_CATEGORIES = (By.XPATH, "//a[contains(text(), 'Categories')]")
 BUTTON_FIND_TUTOR = (By.XPATH, "//a[contains(text(), 'Find tutor')]")
-
 SEARCH_INPUT_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div")
-
 HOW_IT_WORKS_BLOCK_STUDENT = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[3]")
-
 IMG_SEARCH_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/img")
-
 QUESTIONS_BLOCK = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[1]")
 QUESTIONS_ITEMS = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[4]/div[2]/div")
+ACCOUNT_BUTTON = (By.XPATH, "//button[@aria-label='Account']")
+MY_PROFILE_BUTTON = (By.XPATH, "//a[contains(@href, 'profile')]")
 
 
 class HomePageStudent(BasePage):
@@ -44,6 +43,7 @@ class HomePageStudent(BasePage):
         super().__init__(driver)
         self._categories = None
         self._button_go_to_categories = None
+        self._header_link_categories = None
         self._button_find_tutor = None
         self._questions_block = None
         self._questions_items = None
@@ -54,7 +54,8 @@ class HomePageStudent(BasePage):
         self._categories_block_description = None
         self._categories_block = None
         self._categories_mobile = None
-     
+        self._account_button = None
+        self._my_profile_button = None
 
     @allure.step("Get categories")
     def get_categories(self) -> tuple[CategoryComponent]:
@@ -82,6 +83,24 @@ class HomePageStudent(BasePage):
         if not self._categories_block:
             self._categories_block = self.driver.find_element(*CATEGORIES_BLOCK)
         return self._categories_block
+
+    @allure.step("Get My Profile button")
+    def get_My_profile_button(self) -> WebElement:
+        if not self._my_profile_button:
+            self._my_profile_button = self.driver.find_element(*MY_PROFILE_BUTTON)
+        return self._my_profile_button
+
+    @allure.step("Get categories header link")
+    def get_categories_header_link(self) -> WebElement:
+        if not self._header_link_categories:
+            self._header_link_categories = self.driver.find_element(*HEADER_LINK_CATEGORIES)
+        return self._header_link_categories
+
+    @allure.step("Get Account button")
+    def get_account_button(self) -> WebElement:
+        if not self._account_button:
+            self._account_button = self.driver.find_element(*ACCOUNT_BUTTON)
+        return self._account_button
 
     @allure.step("Get value css categories block")
     def get_gap_value_css_property_categories_block(self):
@@ -123,6 +142,21 @@ class HomePageStudent(BasePage):
     def click_button_go_to_categories(self):
         self.get_button_go_to_categories().click()
         return CategoriesPage(self.driver)
+
+    def get_header_link_categories(self) -> WebElement:
+        if not self._header_link_categories:
+            self._header_link_categories = self.driver.find_element(*HEADER_LINK_CATEGORIES)
+        return self._header_link_categories
+
+    @allure.step("Click header link \"Categories\"")
+    def click_header_link_categories(self):
+        self.get_header_link_categories().click()
+        return CategoriesPage(self.driver)
+
+    @allure.step("Click Account button")
+    def click_account_button(self):
+        self.get_account_button().click()
+        return HomePageStudent(self.driver)
 
     @allure.step("Get button \"find tutor\"")
     def get_button_find_tutor(self) -> WebElement:

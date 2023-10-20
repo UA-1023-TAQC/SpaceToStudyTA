@@ -1,9 +1,9 @@
 import allure
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
-
 
 GENERAL_STEP = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/div[1]")
 INTERESTS_STEP = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[1]/div[2]")
@@ -28,6 +28,13 @@ class FirstLoginModal(BaseComponent):
     @allure.step("Get interests step")
     def get_interests_step(self) -> WebElement:
         return self.node.find_element(*INTERESTS_STEP)
+
+    def is_displayed(self):
+        try:
+            self.get_general_step().is_displayed()
+            return True
+        except NoSuchElementException:
+            return False
 
     @allure.step("Click interests step")
     def click_interests_step(self):
@@ -54,7 +61,7 @@ class FirstLoginModal(BaseComponent):
         self.get_photo_step().click()
         from SpaceToStudy.ui.pages.first_login_student_modal.photo_step import PhotoStepStudent
         return PhotoStepStudent(self.node)
-    
+
     @allure.step("Get back button")
     def get_back_button(self) -> WebElement:
         return self.node.find_element(*BACK_BUTTON)
@@ -72,4 +79,3 @@ class FirstLoginModal(BaseComponent):
     def click_next_button(self):
         self.get_next_button().click()
         return self.node.parent
-    

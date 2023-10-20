@@ -366,3 +366,8 @@ class RegistrationModal(BaseComponent):
     @allure.step("Is displayed element")
     def is_displayed(self) -> bool:
         return self.node.is_displayed()
+
+    @allure.step("Get password label")
+    def get_password_label(self):
+        password_input = self.get_password_input()
+        return password_input.get_label()

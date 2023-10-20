@@ -2,11 +2,11 @@ import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from SpaceToStudy.ui.elements.input import Input
 from SpaceToStudy.ui.elements.input_with_drop_down_list import InputDropDownList
 from SpaceToStudy.ui.elements.textarea import Textarea
 from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
 from SpaceToStudy.ui.pages.first_login_student_modal.interests_step import InterestsStepStudent
-from SpaceToStudy.ui.elements.input import Input
 
 STARTING_TEXT = (By.XPATH, "//form/div[1]")
 IMAGE = (By.XPATH, "/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div/img")
@@ -92,9 +92,7 @@ class GeneralStepStudent(FirstLoginModal):
     def get_symbols_counter_text(self) -> str:
         return self.get_symbols_counter().text
 
-
     @allure.step("Click next button")
     def click_next_button(self):
         self.get_next_button().click()
         return InterestsStepStudent(self.node)
-    

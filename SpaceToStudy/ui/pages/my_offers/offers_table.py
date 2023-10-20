@@ -1,8 +1,7 @@
 import allure
+from selenium.webdriver.common.by import By
 
 from SpaceToStudy.ui.pages.base_component import BaseComponent
-
-from selenium.webdriver.common.by import By
 
 TITLE = (By.XPATH, "./td[1]")
 SUBJECT = (By.XPATH, "./td[2]/div/div[1]/span/p")

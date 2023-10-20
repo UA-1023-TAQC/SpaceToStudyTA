@@ -36,7 +36,7 @@ class QuestionsComponent(BaseComponent):
         from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
         home = HomePageStudent(self.node.parent)
         number_of_tabs_from_input_field_till_first_item = 9
-        home.get_search_input().get_input()\
+        home.get_search_input().get_input() \
             .send_keys(Keys.TAB * (number_of_tabs_from_input_field_till_first_item + item_sequence_number))
         sleep(0.5)
 

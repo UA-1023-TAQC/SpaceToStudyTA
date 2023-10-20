@@ -53,5 +53,6 @@ class CategoriesPageTestCase(TestRunnerWithTutor):
         categories = HomePageTutor(self.driver).click_music_btn()
         self.assertEqual("Music Subjects", categories.get_music_subjects())
 
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
