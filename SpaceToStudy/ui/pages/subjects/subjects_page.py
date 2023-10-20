@@ -1,6 +1,10 @@
+from time import sleep
+
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from SpaceToStudy.ui.pages.base_page import BasePage
 
@@ -26,10 +30,13 @@ class SubjectsPage(BasePage):
         self._cards = None
 
     def get_subjects_title(self) -> WebElement:
-        return self.driver.find_element(*SUBJECTS_TITLE)
+        wait = WebDriverWait(self.driver, 10)
+        el = wait.until(EC.visibility_of_element_located(SUBJECTS_TITLE))
+        return el
 
     @allure.step("Get title text")
     def get_text_subjects_title(self) -> str:
+        sleep(10)
         return self.get_subjects_title().text
 
     @allure.step("Get subjects subtext")

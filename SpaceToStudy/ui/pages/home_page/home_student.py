@@ -57,13 +57,8 @@ class HomePageStudent(BasePage):
 
     @allure.step("Click category element by the {index} index")
     def click_category_el(self, index: int):
-        # for i in range(s):
-        # if index == 0:
         self.get_categories()[index].click()
         return SubjectsPage(self.driver)
-        # elif index == 1:
-        #     self.get_categories()[1].click()
-        #     return ComputerScienceSubjectsPage(self.driver)
 
     @allure.step("Get search input")
     def get_search_input(self) -> SearchTutorComponent:

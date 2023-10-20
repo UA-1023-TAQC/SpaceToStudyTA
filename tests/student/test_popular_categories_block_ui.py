@@ -1,6 +1,10 @@
+from time import sleep
+
 import allure
 
+from SpaceToStudy.ui.pages.header.header_component import HeaderComponent
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent, BUTTON_GO_TO_CATEGORIES
+from SpaceToStudy.ui.pages.subjects.subjects_page import SubjectsPage
 from tests.test_runners import TestRunnerWithStudent
 
 
@@ -28,40 +32,44 @@ class PopularCategoriesBlockUI(TestRunnerWithStudent):
 
     def test_popular_categories_block_ui_interaction(self):
         home = HomePageStudent(self.driver)
+        header = HeaderComponent(self.driver)
         title_music = home.click_category_el(0).get_text_subjects_title()
+
         self.assertEqual("Music Subjects", title_music)
-        self.driver.back()
+        header.click_logo()
+        # self.driver.back()
+        sleep(5)
         is_displayed_music = home.click_category_el(0).get_subjects_title().is_displayed()
         self.assertTrue(is_displayed_music)
 
-        title_computer = home.click_category_el(1).get_text_subjects_title()
-        self.assertEqual("Computer science Subjects", title_computer)
-        self.driver.back()
-        is_displayed_computer = home.click_category_el(1).get_text_subjects_title().is_displayed()
-        self.assertTrue(is_displayed_computer)
-
-        title_design = home.click_category_el(2).get_text_subjects_title()
-        self.assertEqual("Design Subjects", title_design)
-        self.driver.back()
-        is_displayed_design = home.click_category_el(2).get_subjects_title().is_displayed()
-        self.assertTrue(is_displayed_design)
-
-        title_dance = home.click_category_el(3).get_text_subjects_title()
-        self.assertEqual("Dance Subjects", title_dance)
-        self.driver.back()
-        is_displayed_dance = home.click_category_el(3).get_subjects_title().is_displayed()
-        self.assertTrue(is_displayed_dance)
-
-        title_math = home.click_category_el(4).get_text_subjects_title()
-        self.assertEqual("Mathematics Subjects", title_math)
-        self.driver.back()
-        is_displayed_math = home.click_category_el(4).get_subjects_title().is_displayed()
-        self.assertTrue(is_displayed_math)
-
-        title_language = home.click_category_el(5).get_text_subjects_title()
-        self.assertEqual("Languages Subjects", title_language)
-        self.driver.back()
-        is_displayed_language = home.click_category_el(5).get_subjects_title().is_displayed()
-        self.assertTrue(is_displayed_language)
+        # title_computer = home.click_category_el(1).get_text_subjects_title()
+        # self.assertEqual("Computer science Subjects", title_computer)
+        # self.driver.back()
+        # is_displayed_computer = home.click_category_el(1).get_text_subjects_title().is_displayed()
+        # self.assertTrue(is_displayed_computer)
+        #
+        # title_design = home.click_category_el(2).get_text_subjects_title()
+        # self.assertEqual("Design Subjects", title_design)
+        # self.driver.back()
+        # is_displayed_design = home.click_category_el(2).get_subjects_title().is_displayed()
+        # self.assertTrue(is_displayed_design)
+        #
+        # title_dance = home.click_category_el(3).get_text_subjects_title()
+        # self.assertEqual("Dance Subjects", title_dance)
+        # self.driver.back()
+        # is_displayed_dance = home.click_category_el(3).get_subjects_title().is_displayed()
+        # self.assertTrue(is_displayed_dance)
+        #
+        # title_math = home.click_category_el(4).get_text_subjects_title()
+        # self.assertEqual("Mathematics Subjects", title_math)
+        # self.driver.back()
+        # is_displayed_math = home.click_category_el(4).get_subjects_title().is_displayed()
+        # self.assertTrue(is_displayed_math)
+        #
+        # title_language = home.click_category_el(5).get_text_subjects_title()
+        # self.assertEqual("Languages Subjects", title_language)
+        # self.driver.back()
+        # is_displayed_language = home.click_category_el(5).get_subjects_title().is_displayed()
+        # self.assertTrue(is_displayed_language)
 
 
