@@ -108,7 +108,7 @@ class LoginModal(BaseComponent):
         sleep(0.5)
         self.get_login_button().click_button()
         sleep(1)
-        if FirstLoginModal(self.node.parent).get_general_step().is_displayed():
+        if FirstLoginModal(self.node.parent).is_displayed():
             return FirstLoginModal(self.node.parent)
         elif HomePageStudent(self.node.parent).get_text_button_find_tutor() == "Find tutor":
             return HomePageStudent(self.node.parent)

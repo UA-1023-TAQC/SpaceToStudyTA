@@ -13,9 +13,12 @@ class UsersApiClient(BaseAPIClient):
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
 
-    def get_users_by_id(self, user_id):
-        "/ users / {id}"
-        pass
+    def get_users_by_id(self, user_id, role=None):
+        url = f"{self.url}/{user_id}"
+        if role in ["tutor", "student"]:
+            url += f"?role={role}"
+        response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
 
     def get_reviews_for_user_by_id(self, user_id, role):
         "/ users / {id} / reviews"
