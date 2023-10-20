@@ -1,4 +1,5 @@
 import allure
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -28,7 +29,12 @@ class FirstLoginModal(BaseComponent):
     @allure.step("Get interests step")
     def get_interests_step(self) -> WebElement:
         return self.node.find_element(*INTERESTS_STEP)
-
+    def is_displayed(self):
+        try:
+            self.get_general_step().is_displayed()
+            return True
+        except NoSuchElementException:
+            return False
     @allure.step("Click interests step")
     def click_interests_step(self):
         self.get_interests_step().click()
