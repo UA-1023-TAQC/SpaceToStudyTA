@@ -434,3 +434,113 @@ SCHEMA_FOR_USER = {
         "updatedAt"
     ]
 }
+
+SCHEMA_FOR_REVIEWS_BY_USER_ID = {
+    "type": "object",
+    "properties": {
+        "count": {
+            "type": "integer"
+        },
+        "reviews": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string"
+                    },
+                    "comment": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "integer"
+                    },
+                    "author": {
+                        "type": "object",
+                        "required": ["_id", "firstName", "lastName"],
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            },
+                            "photo": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "targetUserId": {
+                        "type": "string"
+                    },
+                    "targetUserRole": {
+                        "type": "string",
+                        "enum": ["student", "tutor"]
+                    },
+                    "offer": {
+                        "type": "object",
+                        "required": ["_id", "proficiencyLevel", "subjectId", "categoryId"],
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "proficiencyLevel": {
+                                "type": "string"
+                            },
+                            "subjectId": {
+                                "type": "object",
+                                "required": ["_id", "name"],
+                                "properties": {
+                                    "_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "categoryId": {
+                                "type": "object",
+                                "required": ["_id", "name"],
+                                "properties": {
+                                    "_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "_id",
+                    "comment",
+                    "rating",
+                    "author",
+                    "targetUserId",
+                    "targetUserRole",
+                    "offer",
+                    "createdAt",
+                    "updatedAt"
+                ]
+            }
+        }
+    },
+    "required": [
+        "count",
+        "reviews"
+    ]
+}
