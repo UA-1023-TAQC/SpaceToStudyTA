@@ -16,7 +16,7 @@ class TestAPISubjects(APITestRunnerWithStudent):
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_SUBJECTS)
 
-    def test_post_subject(self):
+    def test_post_and_delete_subject(self):
         test_data = {"name": "Klingon", "category": "64884fedfdc2d1a130c24ade"}
 
         # Check that initial list doesn't contain test data
@@ -37,3 +37,8 @@ class TestAPISubjects(APITestRunnerWithStudent):
         self.assertEqual(200, response.status_code)
         names = [item["name"] for item in response.json()]
         self.assertIn(test_data["name"], names)
+
+        # Delete the subject
+        client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.delete_subject_by_name(test_data["name"])
+        self.assertEqual(204, response.status_code)
