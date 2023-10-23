@@ -46,3 +46,39 @@ SCHEMA_FOR_ALL_SUBJECTS = {
   },
   "required": ["count", "items"]
 }
+
+SCHEMA_FOR_SUBJECTS_BY_ID = {
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "totalOffers": {
+      "type": "object",
+      "properties": {
+        "student": {
+          "type": "integer"
+        },
+        "tutor": {
+          "type": "integer"
+        }
+      },
+      "required": ["student", "tutor"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["_id", "name", "category", "totalOffers", "createdAt", "updatedAt"]
+}
