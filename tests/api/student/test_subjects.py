@@ -3,7 +3,7 @@ from jsonschema import validate
 
 from SpaceToStudy.api.categories.client import CategoriesApiClient
 from SpaceToStudy.api.subjects.client import SubjectsApiClient
-from SpaceToStudy.api.subjects.schemas import SCHEMA_FOR_ALL_SUBJECTS
+from SpaceToStudy.api.subjects.schemas import SCHEMA_FOR_ALL_SUBJECTS, SCHEMA_FOR_SUBJECTS_BY_ID
 from tests.api.api_test_runners import APITestRunnerWithStudent
 from tests.utils.value_provider import ValueProvider
 
@@ -42,3 +42,10 @@ class TestAPISubjects(APITestRunnerWithStudent):
         client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.delete_subject_by_name(test_data["name"])
         self.assertEqual(204, response.status_code)
+
+    def test_get_subject_by_id(self):
+        client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_subject_by_id("648850c4fdc2d1a130c24aea")
+        self.assertEqual(200, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_SUBJECTS_BY_ID)
+        self.assertEqual(response.json()["name"], "Guitar")
