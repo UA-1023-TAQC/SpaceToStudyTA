@@ -11,3 +11,7 @@ class SubjectsApiClient(BaseAPIClient):
     def get_subjects(self):
         response = requests.get(self.url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
+
+    def post_subjects(self, data):
+        response = requests.post(self.url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        return response
