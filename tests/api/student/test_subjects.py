@@ -44,8 +44,9 @@ class TestAPISubjects(APITestRunnerWithStudent):
         self.assertEqual(204, response.status_code)
 
     def test_get_subject_by_id(self):
+        test_data = {"name": "Guitar", "category": "648850c4fdc2d1a130c24aea"}
         client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.get_subject_by_id("648850c4fdc2d1a130c24aea")
+        response = client.get_subject_by_id(test_data["category"])
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_SUBJECTS_BY_ID)
-        self.assertEqual(response.json()["name"], "Guitar")
+        self.assertEqual(test_data["name"], response.json()["name"])
