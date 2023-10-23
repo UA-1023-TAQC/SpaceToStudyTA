@@ -15,3 +15,7 @@ class SubjectsApiClient(BaseAPIClient):
     def post_subjects(self, data):
         response = requests.post(self.url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
         return response
+
+    def delete_subject(self, subject_id):
+        response = requests.delete(f"{self.url}/{subject_id}", headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
