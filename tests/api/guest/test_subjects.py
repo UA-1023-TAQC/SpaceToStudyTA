@@ -3,7 +3,7 @@ from tests.api.api_test_runners import BaseAPITestRunner
 from tests.utils.value_provider import ValueProvider
 
 
-class TestAPIUsers(BaseAPITestRunner):
+class TestAPISubjects(BaseAPITestRunner):
 
     def test_find_all_subjects_unauthorized(self):
         expected_status_code = 401
@@ -13,3 +13,4 @@ class TestAPIUsers(BaseAPITestRunner):
         response = subjects.get_subjects()
         self.assertEqual(expected_status_code, response.status_code)
         self.assertEqual(expected_code, response.json().get('code'))
+        self.assertEqual(expected_message, response.json().get('message'))
