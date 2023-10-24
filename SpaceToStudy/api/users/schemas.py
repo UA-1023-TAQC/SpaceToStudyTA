@@ -482,15 +482,20 @@ SCHEMA_FOR_REVIEWS_BY_USER_ID = {
                     },
                     "offer": {
                         "type": "object",
-                        "required": ["_id", "proficiencyLevel", "subjectId", "categoryId"],
+                        "required": ["_id", "proficiencyLevel", "subject", "category"],
                         "properties": {
                             "_id": {
                                 "type": "string"
                             },
                             "proficiencyLevel": {
-                                "type": "string"
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": ["Beginner", "Intermediate", "Advanced", "Test Preparation", "Professional",
+                                             "Specialized"]
+                                }
                             },
-                            "subjectId": {
+                            "subject": {
                                 "type": "object",
                                 "required": ["_id", "name"],
                                 "properties": {
@@ -502,7 +507,7 @@ SCHEMA_FOR_REVIEWS_BY_USER_ID = {
                                     }
                                 }
                             },
-                            "categoryId": {
+                            "category": {
                                 "type": "object",
                                 "required": ["_id", "name"],
                                 "properties": {
@@ -539,8 +544,5 @@ SCHEMA_FOR_REVIEWS_BY_USER_ID = {
             }
         }
     },
-    "required": [
-        "count",
-        "reviews"
-    ]
+    "required": ["count", "reviews"]
 }

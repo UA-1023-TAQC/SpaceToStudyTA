@@ -91,15 +91,15 @@ class TestAPIUsers(BaseAPITestRunner):
                      "Create test for API GET /users/{id}/reviews Find all reviews for a user with the specified ID "
                      "and role role:{role} user_id:{user_id}")
     @parameterized.expand([
-        ("tutor", "644f6f1777e2551b87786650", None, None, None),
-        ("tutor", "644f6f1777e2551b87786650", 4, None, None),
-        ("tutor", "644f6f1777e2551b87786650", 4, 2, None),
-        ("tutor", "644f6f1777e2551b87786650", 4, 2, 6),
+        ("tutor", "647dec927ffdce904010287c", None, None, None),
+        ("tutor", "647dec927ffdce904010287c", 5, None, None),
+        ("tutor", "647dec927ffdce904010287c", 3, 2, None),
+        ("tutor", "647dec927ffdce904010287c", 5, 1, 6),
         ("student", "650023e50eeb49de31750c84", None, None, None),
-        (None, "644f6f1777e2551b87786650", 3, 1, 5),
-        (None, "650023e50eeb49de31750c84", None, None, None),
-        ("cat", "650023e50eeb49de31750c84", None, "abc", "abc"),
-        ("cat", "644f6f1777e2551b87786650", 3.5, 2.5, 2.5),
+        (None, "647dec927ffdce904010287c", 3, 0, 5),
+        (None, "647dec927ffdce904010287c", None, None, None),
+        ("cat", "647dec927ffdce904010287c", None, "abc", "abc"),
+        ("cat", "647dec927ffdce904010287c", 3.5, 2.5, 2.5)
     ])
     def test_get_reviews_for_user_by_id(self, role, user_id, rating, skip, limit):
         expected_status_code = 200
