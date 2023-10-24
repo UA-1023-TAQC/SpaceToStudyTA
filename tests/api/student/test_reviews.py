@@ -15,3 +15,4 @@ class TestAPIReviews(APITestRunnerWithStudent):
         response = client.get_all_reviews(rating=5, skip=1, limit=5)
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_REVIEWS)
+        self.assertTrue(all(item["rating"] == 5 for item in response.json()["reviews"]))
