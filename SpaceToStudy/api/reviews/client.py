@@ -20,3 +20,8 @@ class ReviewsApiClient(BaseAPIClient):
             url += f"?{_params}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
+
+    def get_reviews_by_id(self, review_id):
+        url = f"{self.url}/{review_id}"
+        response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
