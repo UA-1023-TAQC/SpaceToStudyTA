@@ -10,12 +10,14 @@ from tests.utils.value_provider import ValueProvider
 
 class TestAPISubjects(APITestRunnerWithStudent):
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/438")
     def test_find_all_subjects(self):
         client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_subjects()
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_SUBJECTS)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/439")
     def test_post_and_delete_subject(self):
         test_data = {"name": "Klingon", "category": "64884fedfdc2d1a130c24ade"}
 
@@ -43,6 +45,7 @@ class TestAPISubjects(APITestRunnerWithStudent):
         response = client.delete_subject_by_name(test_data["name"])
         self.assertEqual(204, response.status_code)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/440")
     def test_get_subject_by_id(self):
         test_data = {"name": "Guitar", "category": "648850c4fdc2d1a130c24aea"}
         client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
@@ -51,6 +54,7 @@ class TestAPISubjects(APITestRunnerWithStudent):
         validate(instance=response.json(), schema=SCHEMA_FOR_SUBJECTS_BY_ID)
         self.assertEqual(test_data["name"], response.json()["name"])
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/441")
     def test_patch_subject_by_id(self):
 
         # Test data
