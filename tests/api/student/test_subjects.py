@@ -50,3 +50,32 @@ class TestAPISubjects(APITestRunnerWithStudent):
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_SUBJECTS_BY_ID)
         self.assertEqual(test_data["name"], response.json()["name"])
+
+    def test_patch_subject_by_id(self):
+
+        # Test data
+        starting_subject_name = "Danish"
+        changed_subject_name = "DanishDanish"
+        subject_id = "64885121fdc2d1a130c24afc"
+
+        # Check that starting values exist in the database
+        client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_subject_by_id(subject_id)
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(starting_subject_name, response.json()["name"])
+
+        # Patch the subject and check that it was changed
+        client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.patch_subject_by_id(subject_id, {"name": changed_subject_name})
+        self.assertEqual(204, response.status_code)
+        response = client.get_subject_by_id(subject_id)
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(changed_subject_name, response.json()["name"])
+
+        # Return to original values
+        client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.patch_subject_by_id(subject_id, {"name": starting_subject_name})
+        self.assertEqual(204, response.status_code)
+        response = client.get_subject_by_id(subject_id)
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(starting_subject_name, response.json()["name"])
