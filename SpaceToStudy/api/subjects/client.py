@@ -21,6 +21,10 @@ class SubjectsApiClient(BaseAPIClient):
         response = requests.get(f"{self.url}/{subject_id}", headers={"Authorization": f"Bearer {self.access_token}"})
         return response
 
+    def patch_subject_by_id(self, subject_id, data):
+        response = requests.patch(f"{self.url}/{subject_id}", headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        return response
+
     def delete_subject(self, subject_id):
         response = requests.delete(f"{self.url}/{subject_id}", headers={"Authorization": f"Bearer {self.access_token}"})
         return response
