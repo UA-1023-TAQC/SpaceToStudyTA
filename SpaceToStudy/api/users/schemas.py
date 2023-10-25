@@ -434,3 +434,115 @@ SCHEMA_FOR_USER = {
         "updatedAt"
     ]
 }
+
+SCHEMA_FOR_REVIEWS_BY_USER_ID = {
+    "type": "object",
+    "properties": {
+        "count": {
+            "type": "integer"
+        },
+        "reviews": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string"
+                    },
+                    "comment": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "integer"
+                    },
+                    "author": {
+                        "type": "object",
+                        "required": ["_id", "firstName", "lastName"],
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            },
+                            "photo": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "targetUserId": {
+                        "type": "string"
+                    },
+                    "targetUserRole": {
+                        "type": "string",
+                        "enum": ["student", "tutor"]
+                    },
+                    "offer": {
+                        "type": "object",
+                        "required": ["_id", "proficiencyLevel", "subject", "category"],
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "proficiencyLevel": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": ["Beginner", "Intermediate", "Advanced", "Test Preparation", "Professional",
+                                             "Specialized"]
+                                }
+                            },
+                            "subject": {
+                                "type": "object",
+                                "required": ["_id", "name"],
+                                "properties": {
+                                    "_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "category": {
+                                "type": "object",
+                                "required": ["_id", "name"],
+                                "properties": {
+                                    "_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "_id",
+                    "comment",
+                    "rating",
+                    "author",
+                    "targetUserId",
+                    "targetUserRole",
+                    "offer",
+                    "createdAt",
+                    "updatedAt"
+                ]
+            }
+        }
+    },
+    "required": ["count", "reviews"]
+}

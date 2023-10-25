@@ -15,14 +15,22 @@ class UsersApiClient(BaseAPIClient):
 
     def get_users_by_id(self, user_id, role=None):
         url = f"{self.url}/{user_id}"
-        if role in ["tutor", "student"]:
-            url += f"?role={role}"
-        response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
+        params = {
+            "role": role
+        }
+        response = requests.get(url, params=params, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
 
-    def get_reviews_for_user_by_id(self, user_id, role):
-        "/ users / {id} / reviews"
-        pass
+    def get_reviews_for_user_by_id(self, user_id, role, rating: int = None, skip: int = 0, limit: int = 5):
+        url = f"{self.url}/{user_id}/reviews"
+        params = {
+            "role": role,
+            "rating": rating,
+            "skip": skip,
+            "limit": limit
+        }
+        response = requests.get(url, params=params, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
 
     def get_review_statistics_for_user_by_id(self, user_id, role):
         "/ users / {id} / reviews / stats"
