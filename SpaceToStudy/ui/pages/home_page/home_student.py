@@ -7,10 +7,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from SpaceToStudy.ui.pages.base_page import BasePage
 from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
+from SpaceToStudy.ui.pages.first_login_student_modal.first_login_modal import FirstLoginModal
 from SpaceToStudy.ui.pages.home_page.category_component import CategoryComponent
 from SpaceToStudy.ui.pages.home_page.how_it_works_component_student import HowItWorksComponentStudent
 from SpaceToStudy.ui.pages.home_page.questions_component import QuestionsComponent
 from SpaceToStudy.ui.pages.home_page.search_tutor_input_component import SearchTutorComponent
+from SpaceToStudy.ui.pages.subjects.subjects_page import SubjectsPage
 
 CATEGORY_MUSIC = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[1]")
 CATEGORY_COMPUTER = (By.XPATH, "/html/body/div/div/div[2]/div[1]/div[2]/div[2]/div/a[2]")
@@ -119,6 +121,11 @@ class HomePageStudent(BasePage):
         if not self._categories_block_description:
             self._categories_block_description = self.driver.find_element(*CATEGORIES_BLOCK_DESCRIPTION)
         return self._categories_block_description.text
+
+    @allure.step("Click category element by the {index} index")
+    def click_category_el(self, index: int):
+        self.get_categories()[index].click()
+        return SubjectsPage(self.driver)
 
     @allure.step("Get search input")
     def get_search_input(self) -> SearchTutorComponent:

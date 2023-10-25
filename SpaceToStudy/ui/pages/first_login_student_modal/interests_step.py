@@ -1,4 +1,5 @@
 import allure
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -40,36 +41,12 @@ class InterestsStepStudent(FirstLoginModal):
             self._main_tutoring_category_input = InputDropDownList(node)
         return self._main_tutoring_category_input
 
-    @allure.step("Get main tutoring category input text")
-    def get_main_tutoring_category_text(self) -> str:
-        return self.get_main_tutoring_category_input().get_text()
-
-    @allure.step("Set main tutoring category input")
-    def set_main_tutoring_category_input(self, text):
-        self.get_main_tutoring_category_input().set_text_to_autocomplete_input(text, FIRST_AUTOCOMPLETE_ELEMENT)
-
-    @allure.step("Get main tutoring category label")
-    def get_main_tutoring_category_label(self) -> WebElement:
-        return self.node.find_element(*MAIN_TUTORING_CATEGORY_LABEL)
-
     @allure.step("Get subject input")
     def get_subject_input(self) -> InputDropDownList:
         if not self._subject_input:
             node = self.node.find_element(*SUBJECT_INPUT)
             self._subject_input = InputDropDownList(node)
         return self._subject_input
-
-    @allure.step("Get subject input text")
-    def get_subject_text(self) -> str:
-        return self.get_subject_input().get_text()
-
-    @allure.step("Set subject input")
-    def set_subject_input(self, text):
-        self.get_subject_input().set_text_to_autocomplete_input(text, FIRST_AUTOCOMPLETE_ELEMENT)
-
-    @allure.step("Get subject label")
-    def get_subject_label(self) -> WebElement:
-        return self.node.find_element(*SUBJECT_LABEL)
 
     @allure.step("Get add subject button")
     def get_add_subject_button(self) -> WebElement:

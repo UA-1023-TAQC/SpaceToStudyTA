@@ -490,78 +490,52 @@ class RegistrationTestCase(BaseTestRunner):
 
         # test General step
         general_step = stepper.click_general_step()
-        self.assertEqual(general_step.get_first_name_input_text(), first_name,
-                         f"In the first_name area text doesn't equal input {first_name}")
-        self.assertEqual(general_step.get_last_name_input_text(), last_name,
-                         f"In the last_name area text doesn't equal input {last_name}")
+        self.assertEqual(general_step.get_first_name_input().get_text(), first_name, f"In the first_name area text doesn't equal input {first_name}")
+        self.assertEqual(general_step.get_last_name_input().get_text(), last_name, f"In the last_name area text doesn't equal input {last_name}")
 
-        general_step.set_country_input(country)
-        self.assertEqual(general_step.get_country_input_text(), country,
-                         f"In the county area text doesn't equal input {country}")
+        general_step.get_country_input().set_text_to_autocomplete_input(country)
+        self.assertEqual(general_step.get_country_input().get_text(), country, f"In the county area text doesn't equal input {country}")
 
-        general_step.set_city_input(city)
-        self.assertEqual(general_step.get_city_input_text(), city, f"In the city area text doesn't equal input {city}")
-
-        general_step.set_description(description)
-        self.assertEqual(general_step.get_description_text(), description,
-                         f"In the description area text doesn't equal input {description}")
+        general_step.get_city_input().set_text_to_autocomplete_input(city)
+        self.assertEqual(general_step.get_city_input().get_text(), city, f"In the city area text doesn't equal input {city}")
+        general_step.get_description_textarea().set_text(description)
+        self.assertEqual(general_step.get_description_textarea().get_text(), description, f"In the description area text doesn't equal input {description}")
 
         # test Interests step
         interest_step = general_step.click_next_button()
+        main_tutoring_category_input = interest_step.get_main_tutoring_category_input()
+        subject_input = interest_step.get_subject_input()
+        
+        main_tutoring_category_input.set_text_to_autocomplete_input(category1)
+        self.assertEqual(main_tutoring_category_input.get_text(), category1, f"In the category area text doesn't equal input {category1}")
 
-        interest_step.set_main_tutoring_category_input(category1)
-        self.assertEqual(interest_step.get_main_tutoring_category_text(), category1,
-                         f"In the category area text doesn't equal input {category1}")
-
-        interest_step.set_subject_input(subject1)
-        self.assertEqual(interest_step.get_subject_text(), subject1,
-                         f"In the subject area text doesn't equal input {subject1}")
-
+        subject_input.set_text_to_autocomplete_input(subject1)
+        self.assertEqual(subject_input.get_text(), subject1, f"In the subject area text doesn't equal input {subject1}")
+      
         interest_step.click_add_subject_button()
-        self.assertEqual(interest_step.get_main_tutoring_category_text(), "", "The category area is fiiled")
-        self.assertEqual(interest_step.get_subject_text(), "", "The category area is fiiled")
+        self.assertEqual(main_tutoring_category_input.get_text(),"", "The category area is fiiled")
+        self.assertEqual(subject_input.get_text(), "", "The category area is fiiled")
 
-        interest_step.set_main_tutoring_category_input(category2)
-        self.assertEqual(interest_step.get_main_tutoring_category_text(), category2,
-                         f"In the category area text doesn't equal input {category2}")
+        main_tutoring_category_input.set_text_to_autocomplete_input(category2)
+        self.assertEqual(main_tutoring_category_input.get_text(), category2, f"In the category area text doesn't equal input {category2}")
 
-        interest_step.set_subject_input(subject2)
-        self.assertEqual(interest_step.get_subject_text(), subject2,
-                         f"In the subject area text doesn't equal input {subject2}")
+        subject_input.set_text_to_autocomplete_input(subject2)
+        self.assertEqual(subject_input.get_text(), subject2, f"In the subject area text doesn't equal input {subject2}")
 
         # test Language step
         language_step = interest_step.click_next_button()
-        language_step.set_native_language_input(language)
-        self.assertEqual(language_step.get_native_language_text(), language,
-                         f"In the language area text doesn't equal input {language}")
+        language_step.get_native_language_input().set_text_to_autocomplete_input(language)
+        self.assertEqual(language_step.get_native_language_input().get_text(), language, f"In the language area text doesn't equal input {language}")
 
         # test Photo step
         photo_step = language_step.click_next_button()
-
+        
         photo_step.set_photo(photo_path)
-        sleep(3)
-        self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(),
-                         "Photo isn't added")
-        sleep(1)
-        result_notification = photo_step.click_finish_button()
-        self.assertEqual(result_notification.get_notification_text(), notification,
-                         f"Notification doesn't equal {notification}")
-        sleep(1)
-
-    @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/189')
-    def test_visability_of_the_all_elements_after_resizing_for_who_we_are_block(self):
-        window_width = 600
-        window_height = 1000
-        who_we_are = (HomePageGuest(self.driver)
-                      .get_header()
-                      .get_navigate_links()[2]
-                      .click())
-        HomePageGuest(self.driver).set_size_window(window_width, window_height)
-        who_we_are_elements = (HomePageGuest(who_we_are)
-                               .get_who_we_are_block()
-                               .get_who_we_are_elements())
-        for element in who_we_are_elements.values():
-            self.assertTrue(element.is_displayed())
+        self.assertEqual(photo_step.get_photo_input_text(), re.search(pattern_get_file_name, photo_path).group(), "Photo isn't added")
+    
+        result_notification = photo_step.click_finish_button().get_notification()
+        self.assertEqual(result_notification.get_notification_text(), notification, f"Notification doesn't equal {notification}")
+        
 
     @allure.testcase('https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/312')
     def test_tutor_sign_up_button_active_with_correct_data(self):

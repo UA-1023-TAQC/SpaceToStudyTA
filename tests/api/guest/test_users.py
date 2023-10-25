@@ -20,9 +20,9 @@ class TestAPIUsers(BaseAPITestRunner):
         client = UsersApiClient(ValueProvider.get_base_api_url())
         response = client.get_users()
         self.assertEqual(expected_status_code, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
         self.assertEqual(expected_code, response.json().get('code'))
         self.assertEqual(expected_message, response.json().get('message'))
-        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/404",
                      "Create test for api/users Find user by ID ")
@@ -30,9 +30,25 @@ class TestAPIUsers(BaseAPITestRunner):
         client = UsersApiClient(ValueProvider.get_base_api_url())
         response = client.get_users_by_id(user_id)
         self.assertEqual(expected_status_code, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
         self.assertEqual(expected_code, response.json().get('code'))
         self.assertEqual(expected_message, response.json().get('message'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/416",
+                     "Create test for API GET /users/{id}/reviews Find all reviews for a user with the specified ID "
+                     "and role")
+    def test_get_reviews_for_user_by_id_unauthorized(self):
+        expected_status_code = 401
+        expected_code = "UNAUTHORIZED"
+        expected_message = "The requested URL requires user authorization."
+        user_id = "644f6f1777e2551b87786650"
+
+        client = UsersApiClient(ValueProvider.get_base_api_url())
+        response = client.get_reviews_for_user_by_id(user_id, "student")
+        self.assertEqual(expected_status_code, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual(expected_code, response.json().get('code'))
+        self.assertEqual(expected_message, response.json().get('message'))
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/426",
                      "Create tests for GET /users/{id}/reviews/stats Find review statistics for a user with the "

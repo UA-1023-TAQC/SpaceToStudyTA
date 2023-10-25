@@ -1,8 +1,13 @@
 import allure
+
+from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.input import Input
+
+
+FIRST_AUTOCOMPLETE_ELEMENT = (By.XPATH, "/html/body/div[3]/div/ul/li[1]")
 
 
 class InputDropDownList(Input):
@@ -11,9 +16,9 @@ class InputDropDownList(Input):
         self.default_press_count = 1
 
     @allure.step("Set {text} text into input element with autofill option")
-    def set_text_to_autocomplete_input(self, text, element_locator):
+    def set_text_to_autocomplete_input(self, text):
         self.set_text(text)
-        self.node.find_element(*element_locator).click()
+        self.node.find_element(*FIRST_AUTOCOMPLETE_ELEMENT).click()
 
     @allure.step("User presses a key on the keyboard {press_count} times without releasing it")
     def press_down_button(self, press_count: int):
