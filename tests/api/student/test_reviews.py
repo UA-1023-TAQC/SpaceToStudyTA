@@ -17,6 +17,7 @@ class TestAPIReviews(APITestRunnerWithStudent):
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_REVIEWS)
         self.assertTrue(all(item["rating"] == 5 for item in response.json()["reviews"]))
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/445")
     def test_get_reviews_by_id(self):
         client = ReviewsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_reviews_by_id("642d3dcac160fddf141253ba")
@@ -24,6 +25,7 @@ class TestAPIReviews(APITestRunnerWithStudent):
         validate(instance=response.json(), schema=SCHEMA_FOR_REVIEW_BY_ID)
         self.assertEqual(response.json()["comment"], "cool")
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/446")
     def test_post_patch_delete_reviews(self):
         test_data_for_post = {
           "comment": "API POST works!",
