@@ -30,3 +30,8 @@ class ReviewsApiClient(BaseAPIClient):
         url = f"{self.url}"
         response = requests.post(url, data, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
+
+    def patch_review(self, review_id, data):
+        url = f"{self.url}/{review_id}"
+        response = requests.patch(url, data, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
