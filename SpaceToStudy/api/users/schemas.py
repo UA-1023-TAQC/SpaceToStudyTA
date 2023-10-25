@@ -434,3 +434,24 @@ SCHEMA_FOR_USER = {
         "updatedAt"
     ]
 }
+
+SCHEMA_FOR_REVIEW_STATISTICS_FOR_USER = {
+    "type": "object",
+    "properties": {
+        "stats": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["rating", "count"],
+                "properties": {
+                    "rating": {
+                        "type": "number"
+                    },
+                    "count": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
+}

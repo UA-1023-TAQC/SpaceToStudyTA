@@ -24,9 +24,13 @@ class UsersApiClient(BaseAPIClient):
         "/ users / {id} / reviews"
         pass
 
-    def get_review_statistics_for_user_by_id(self, user_id, role):
-        "/ users / {id} / reviews / stats"
-        pass
+    def get_review_statistics_for_user_by_id(self, user_id, role=None):
+        url = f"{self.url}/{user_id}/reviews/stats"
+        params = {
+            "role": role
+        }
+        response = requests.get(url, params=params, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
 
     def get_cooperations_for_user_by_id(self, user_id):
         "/ users / {id} / cooperations"
