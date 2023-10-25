@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 from SpaceToStudy.ui.elements.checkbox import Checkbox
-from SpaceToStudy.ui.elements.input import Input
+from SpaceToStudy.ui.elements.input import Input, PasswordInput
 from SpaceToStudy.ui.elements.input_with_image import InputWithImage
 from SpaceToStudy.ui.elements.link import Link
 from SpaceToStudy.ui.pages.base_component import BaseComponent
@@ -196,7 +196,7 @@ class RegistrationModal(BaseComponent):
     def get_password_input(self):
         if not self._password_input:
             node = self.node.find_element(*PASSWORD_INPUT)
-            self._password_input = InputWithImage(node)
+            self._password_input = PasswordInput(node)
         return self._password_input
 
     @allure.step("Set {password_text} password input")
@@ -231,7 +231,7 @@ class RegistrationModal(BaseComponent):
     def get_confirm_password_input(self):
         if not self._confirm_password_input:
             node = self.node.find_element(*CONFIRM_PASSWORD_INPUT)
-            self._confirm_password_input = InputWithImage(node)
+            self._confirm_password_input = PasswordInput(node)
         return self._confirm_password_input
 
     @allure.step("Set {confirm_password_text} confirm password")
