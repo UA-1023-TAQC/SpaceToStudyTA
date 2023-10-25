@@ -25,3 +25,8 @@ class ReviewsApiClient(BaseAPIClient):
         url = f"{self.url}/{review_id}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
+
+    def post_review(self, data):
+        url = f"{self.url}"
+        response = requests.post(url, data, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
