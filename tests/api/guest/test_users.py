@@ -38,11 +38,6 @@ class TestAPIUsers(BaseAPITestRunner):
                      "Create test for API GET /users/{id}/reviews Find all reviews for a user with the specified ID "
                      "and role")
     def test_get_reviews_for_user_by_id_unauthorized(self):
-        expected_status_code = 401
-        expected_code = "UNAUTHORIZED"
-        expected_message = "The requested URL requires user authorization."
-        user_id = "644f6f1777e2551b87786650"
-
         client = UsersApiClient(ValueProvider.get_base_api_url())
         response = client.get_reviews_for_user_by_id(user_id, "student")
         self.assertEqual(expected_status_code, response.status_code)
