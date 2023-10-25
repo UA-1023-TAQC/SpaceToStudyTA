@@ -23,3 +23,34 @@ class TestAPIReviews(APITestRunnerWithStudent):
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_REVIEW_BY_ID)
         self.assertEqual(response.json()["comment"], "cool")
+
+    def test_post_patch_delete_reviews(self):
+        test_data_for_post = {
+          "comment": "API POST works!",
+          "rating": 5,
+          "author": "64d525d214232a210a0c7dd9",
+          "targetUserId": "65219063e763fa892a0a1e88",
+          "targetUserRole": "tutor",
+          "offer": "6526e2cbe947d115f1a5dc25"
+        }
+
+        # Post
+        client = ReviewsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.post_review(test_data_for_post)
+        self.assertEqual(201, response.status_code)
+        review_id = response.json()["_id"]
+
+        # Patch
+        test_data_for_patch = {
+          "comment": "API PATCH works!",
+        }
+        client = ReviewsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.patch_review(review_id, test_data_for_patch)
+        self.assertEqual(204, response.status_code)
+        check_patch_worked = client.get_reviews_by_id(review_id).json()["comment"] == test_data_for_patch["comment"]
+        self.assertTrue(check_patch_worked)
+
+        # Delete
+        client = ReviewsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.delete_review(review_id)
+        self.assertEqual(204, response.status_code)
