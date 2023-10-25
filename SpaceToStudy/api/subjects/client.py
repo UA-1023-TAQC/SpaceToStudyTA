@@ -35,7 +35,7 @@ class SubjectsApiClient(BaseAPIClient):
         return response
 
     def find_subject_id_by_name(self, name):
-        response = requests.get(f"{self.url}", headers={"Authorization": f"Bearer {self.access_token}"})
+        response = self.get_subjects()
         if response.status_code == 200:
             for item in response.json().get("items", []):
                 if item.get("name") == name:
