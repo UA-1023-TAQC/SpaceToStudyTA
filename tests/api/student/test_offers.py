@@ -34,7 +34,7 @@ class TestOffersApi(APITestRunnerWithStudent):
         validate(instance=response.json(), schema=SCHEMA_OFFERS_ID)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/452#issue-1962971089")
-    def test_post_offer(self):
+    def test_post_delete_offer(self):
         # post offer
         data = {
             "price": "399",
