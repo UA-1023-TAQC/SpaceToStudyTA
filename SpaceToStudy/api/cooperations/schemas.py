@@ -167,3 +167,87 @@ ALL_COOPERATIONS_SCHEMA = {
         "count"
     ]
 }
+
+SCHEMA_COOPERATIONS_ID = {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "offer": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "author": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "_id",
+        "price",
+        "author"
+      ]
+    },
+    "initiator": {
+      "type": "string"
+    },
+    "initiatorRole": {
+      "type": "string"
+    },
+    "receiver": {
+      "type": "string"
+    },
+    "receiverRole": {
+      "type": "string"
+    },
+    "proficiencyLevel": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    },
+    "needAction": {
+      "type": "string"
+    },
+    "availableQuizzes": {
+      "type": "array",
+      "items": {}
+    },
+    "finishedQuizzes": {
+      "type": "array",
+      "items": {}
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "_id",
+    "offer",
+    "initiator",
+    "initiatorRole",
+    "receiver",
+    "receiverRole",
+    "proficiencyLevel",
+    "price",
+    "status",
+    "needAction",
+    "availableQuizzes",
+    "finishedQuizzes",
+    "createdAt",
+    "updatedAt"
+  ]
+}

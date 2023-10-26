@@ -14,3 +14,9 @@ class CooperationsApiClient(BaseAPIClient):
         url = f"{self.url}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
+
+    @allure.step("Get cooperations by id")
+    def get_cooperations_by_id(self, cooperations_id):
+        url = f"{self.url}/{cooperations_id}"
+        response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
