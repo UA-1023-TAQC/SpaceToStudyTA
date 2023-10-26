@@ -2,7 +2,7 @@ import allure
 from jsonschema import validate
 
 from SpaceToStudy.api.offers.client_offers import OffersApiClient
-from SpaceToStudy.api.offers.schemas import ALL_OFFERS_SCHEMA, SCHEMA_OFFERS_ID, SCHEMA_POST_OFFER
+from SpaceToStudy.api.offers.schemas import ALL_OFFERS_SCHEMA, SCHEMA_OFFERS_ID
 from SpaceToStudy.api.schema_for_errors import SCHEMA_FOR_ERRORS
 from tests.api.api_test_runners import APITestRunnerWithStudent
 from tests.utils.value_provider import ValueProvider
