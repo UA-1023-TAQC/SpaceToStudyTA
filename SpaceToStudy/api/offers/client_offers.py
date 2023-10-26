@@ -24,5 +24,11 @@ class OffersApiClient(BaseAPIClient):
     @allure.step("Patch offer")
     def patch_offer(self, offers_id, data):
         url = f"{self.url}/{offers_id}"
+        response = requests.patch(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        return response
+
+    @allure.step("Delete offer")
+    def delete_offer(self, offers_id, data):
+        url = f"{self.url}/{offers_id}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
         return response
