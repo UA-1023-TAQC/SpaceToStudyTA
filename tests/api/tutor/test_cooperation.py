@@ -18,14 +18,14 @@ class TestCooperationApi(APITestRunnerWithTutor):
         (999),
         (599),
     ])
-    def test_patch_offer_forbidden_action(self, data_price):
+    def test_patch_ocooperations(self, data_price):
         client = CooperationsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.patch_cooperations("6523cd18c296ee19b5a192f9", {"price": data_price})
         self.assertEqual(204, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_COOPERATIONS_ID)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/471#issue-1963647597")
-    def test_patch_offer_invalid_id(self):
+    def test_patch_cooperations_invalid_id(self):
         client = CooperationsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.patch_cooperations("652ea7336fc04ef55", {"price": 123})
         self.assertEqual(400, response.status_code)
@@ -40,7 +40,7 @@ class TestCooperationApi(APITestRunnerWithTutor):
         ("firstName", "Test"),
         ("role", "student"),
     ])
-    def test_patch_offer_document_not_found(self, key, value):
+    def test_patch_cooperations_document_not_found(self, key, value):
         client = CooperationsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.patch_cooperations("652ea7336fc04ef55bb462cf", {key, value})
         self.assertEqual(404, response.status_code)
