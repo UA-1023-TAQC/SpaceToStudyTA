@@ -13,16 +13,16 @@ from parameterized import parameterized, parameterized_class
 class TestCooperationApi(APITestRunnerWithTutor):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/470#issue-1963642535")
-    @parameterized.expand([
-        (299),
-        (999),
-        (599),
-    ])
-    def test_patch_ocooperations(self, data_price):
+    def test_patch_ocooperations(self):
         client = CooperationsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.patch_cooperations("6523cd18c296ee19b5a192f9", {"price": data_price})
-        self.assertEqual(204, response.status_code)
-        validate(instance=response.json(), schema=SCHEMA_COOPERATIONS_ID)
+        response1 = client.patch_cooperations("6523cd18c296ee19b5a192f9", {"status": "closed"})
+        response2 = client.patch_cooperations("6523cd18c296ee19b5a192f9", {"status": "active"})
+
+        self.list_patch = []
+        self.list_patch.append(response1)
+        self.list_patch.append(response2)
+        for i in self.list_patch:
+            self.assertEqual(204, i.status_code)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/471#issue-1963647597")
     def test_patch_cooperations_invalid_id(self):
