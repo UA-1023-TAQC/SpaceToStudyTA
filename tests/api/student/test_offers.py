@@ -18,7 +18,7 @@ class TestOffersApi(APITestRunnerWithStudent):
         validate(instance=response.json(), schema=ALL_OFFERS_SCHEMA)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/422#issue-1947831861")
-    def test_find_all_offers(self):
+    def test_offers_invalid_id(self):
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_offers_by_id("123")
         self.assertEqual(400, response.status_code)
@@ -32,3 +32,10 @@ class TestOffersApi(APITestRunnerWithStudent):
         response = client.get_offers_by_id("652ea7336fc04ef55bb462cf")
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_OFFERS_ID)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/450#issue-1962909192")
+    def test_patch_offer(self):
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.patch_offer("652ea7336fc04ef55bb462cf", {"firstName": "Oleksandra"})
+        self.assertEqual(200, response.status_code)
+
