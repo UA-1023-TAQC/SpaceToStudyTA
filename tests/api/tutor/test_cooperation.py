@@ -35,14 +35,14 @@ class TestCooperationApi(APITestRunnerWithTutor):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/472#issue-1963650643")
     @parameterized.expand([
-        ("lastName", "Oleksandra"),
-        ("price", 123),
-        ("firstName", "Test"),
-        ("role", "student"),
+        ("652ea7336fc04ef55bb462cf"),
+        ("652ea2345fc04ef55bb462cf"),
+        ("652ea6789fc04ef55bb462cf"),
+        ("652ea1263fc04ef55bb462cf")
     ])
-    def test_patch_cooperations_document_not_found(self, key, value):
+    def test_patch_cooperations_document_not_found(self, data_id):
         client = CooperationsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.patch_cooperations("652ea7336fc04ef55bb462cf", {key, value})
+        response = client.patch_cooperations(data_id, {"price": 321})
         self.assertEqual(404, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
         self.assertEqual("Cooperation with the specified ID was not found.", response.json().get('message'))
