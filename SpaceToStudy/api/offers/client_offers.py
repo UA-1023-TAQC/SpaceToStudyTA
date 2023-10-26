@@ -24,9 +24,3 @@ class OffersApiClient(BaseAPIClient):
         url = f"{self.url}/{offers_id}"
         response = requests.delete(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
-
-    @allure.step("Post offer")
-    def post_offer(self, data):
-        url = f"{self.url}"
-        response = requests.post(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
-        return response
