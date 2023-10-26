@@ -20,3 +20,14 @@ class CooperationsApiClient(BaseAPIClient):
         url = f"{self.url}/{cooperations_id}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
+
+    @allure.step("Post cooperations")
+    def post_cooperations(self, data):
+        response = requests.post(self.url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        return response
+
+    @allure.step("Patch cooperations")
+    def patch_cooperations(self, cooperations_id, data):
+        url = f"{self.url}/{cooperations_id}"
+        response = requests.patch(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        return response
