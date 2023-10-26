@@ -24,3 +24,5 @@ class OffersApiClient(BaseAPIClient):
         url = f"{self.url}"
         response = requests.post(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
         return response
+
+

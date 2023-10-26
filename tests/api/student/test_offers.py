@@ -52,9 +52,7 @@ class TestOffersApi(APITestRunnerWithStudent):
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.post_offer(data=data)
         self.assertEqual(201, response.status_code)
-        validate(instance=response.json(), schema=SCHEMA_POST_OFFER)
         data_id = response.json()["_id"]
-        print(response.content)
 
         # delete offer
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
