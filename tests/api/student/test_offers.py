@@ -39,3 +39,12 @@ class TestOffersApi(APITestRunnerWithStudent):
         response = client.patch_offer("652ea7336fc04ef55bb462cf", {"firstName": "Oleksandra"})
         self.assertEqual(200, response.status_code)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/450#issue-1962909192")
+    def test_patch_offer_incorrect_id(self):
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.patch_offer("652ea7336fc04ef55", {"firstName": "Oleksandra"})
+        self.assertEqual(400, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("ID is invalid.", response.json().get('message'))
+        self.assertEqual("INVALID_ID", response.json().get('code'))
+
