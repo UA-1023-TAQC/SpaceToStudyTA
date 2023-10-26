@@ -16,4 +16,8 @@ class TestAPICourses(APITestRunnerWithTutor):
 
     def test_get_courses_by_id(self):
         client = CoursesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.get_courses_by_id()
+        response = client.get_courses_by_id()  # There should be an ID here when it appears
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["count"], len(response.json()["items"]))
+        self.assertEqual(response.json()["title"], "Test title")
+        validate(instance=response.json(), schema=SCHEMA_FOR_ALL_COURSES)
