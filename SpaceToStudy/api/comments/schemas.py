@@ -1,4 +1,4 @@
-SCHEMA_FOR_COMMENTS = {
+SCHEMA_FOR_ALL_COMMENTS = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Comment Schema",
     "type": "array",
@@ -40,4 +40,36 @@ SCHEMA_FOR_COMMENTS = {
         },
         "required": ["_id", "author", "text", "cooperation", "createdAt", "updatedAt"]
     }
+}
+
+SCHEMA_FOR_COMMENTS = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Comment Schema",
+    "type": "object",
+    "properties": {
+        "_id": {
+            "type": "string"
+        },
+        "author": {
+            "type": "string"
+        },
+        "authorRole": {
+            "type": "string"
+        },
+        "cooperation": {
+            "type": "string"
+        },
+        "text": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": ["_id", "author", "authorRole", "cooperation", "text", "createdAt", "updatedAt"]
 }
