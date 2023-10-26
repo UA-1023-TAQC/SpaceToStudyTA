@@ -25,6 +25,7 @@ class CoursesApiClient(BaseAPIClient):
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
 
+    @allure.step("Create a new course")
     def post_new_course(self, data):
         url = f"{self.url}"
         response = requests.post(url, json=data, headers={"Authorization": f"Bearer {self.access_token}"})
