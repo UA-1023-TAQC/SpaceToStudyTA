@@ -19,3 +19,8 @@ class CoursesApiClient(BaseAPIClient):
             url += f"?{_params}"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
+
+    def get_courses_by_id(self, courses_id):
+        url = f"{self.url}/{courses_id}"
+        response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response

@@ -13,3 +13,7 @@ class TestAPICourses(APITestRunnerWithTutor):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["count"], len(response.json()["items"]))
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_COURSES)
+
+    def test_get_courses_by_id(self):
+        client = CoursesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_courses_by_id()
