@@ -366,3 +366,103 @@ SCHEMA_OFFERS_ID = {
         "chatId"
     ]
 }
+
+SCHEMA_POST_OFFER = {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "price": {
+      "type": "number"
+    },
+    "proficiencyLevel": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authorRole": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "authorFirstName": {
+      "type": "string"
+    },
+    "authorLastName": {
+      "type": "string"
+    },
+    "authorAvgRating": {
+      "type": "number"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "FAQ": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "answer": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "question",
+        "_id",
+        "answer"
+      ]
+    },
+    "_id": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "price",
+    "proficiencyLevel",
+    "title",
+    "description",
+    "languages",
+    "authorRole",
+    "author",
+    "authorFirstName",
+    "authorLastName",
+    "authorAvgRating",
+    "subject",
+    "category",
+    "status",
+    "FAQ",
+    "_id",
+    "createdAt",
+    "updatedAt"
+  ]
+}
