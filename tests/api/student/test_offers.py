@@ -41,21 +41,27 @@ class TestOffersApi(APITestRunnerWithStudent):
             "proficiencyLevel": [
                 "Advanced"
             ],
-            "title": "I hope to improve my skills and gain new knowledge",
+            "title": "Test",
+            "description": "Finally my test is working",
             "languages": [
                 "English",
                 "Ukrainian"
             ],
             "subject": "6488509cfdc2d1a130c24ae4",
             "category": "64884fb0fdc2d1a130c24ad8",
+            "FAQ": [
+                {
+                    "question": "offer question",
+                    "answer": "offer answer"
+                }
+            ]
         }
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.post_offer(data=data)
         self.assertEqual(201, response.status_code)
-        data_id = response.json()["_id"]
+        new_offer_id = response.json()["_id"]
 
         # delete offer
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.delete_offer(data_id)
+        response = client.delete_offer(new_offer_id)
         self.assertEqual(204, response.status_code)
-
