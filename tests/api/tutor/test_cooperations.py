@@ -31,3 +31,15 @@ class TestCooperationsApi(APITestRunnerWithTutor):
         response = client.get_cooperations_by_id(cooperations_id)
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_COOPERATIONS_ID)
+
+    # @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/470#issue-1963642535")
+    # @parameterized.expand([
+    #     (299),
+    #     (999),
+    #     (599),
+    # ])
+    # def test_patch_offer_forbidden_action(self):
+    #     client = CooperationsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+    #     response = client.patch_cooperations("6523cd18c296ee19b5a192f9", {"price": 5})
+    #     self.assertEqual(204, response.status_code)
+    #     validate(instance=response.json(), schema=SCHEMA_COOPERATIONS_ID)
