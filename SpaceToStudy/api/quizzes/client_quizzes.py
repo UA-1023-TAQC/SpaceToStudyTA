@@ -28,3 +28,9 @@ class QuizzesAPIClient(BaseAPIClient):
         allure.attach(f"Request: POST {url}\nData: {data}\n"
                       f"Response: {response.status_code} - {response.text}")
         return response
+
+    @allure.step("Updating the quizzes by ID")
+    def patch_quizzes(self, quizzes_id, data):
+        url = f"{self.url}/{quizzes_id}"
+        response = requests.patch(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        return response

@@ -41,3 +41,10 @@ class TestAPIQuizzes(APITestRunnerWithTutor):
         self.assertEqual(response.json().get('title'), "Test title")
         validate(instance=response.json(), schema=POST_QUIZZES_SCHEMA)
 
+    def test_patch_quizzes(self):
+        data = {
+            "title": "Test update title"
+        }
+        client = QuizzesAPIClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.patch_quizzes("653bb5b5c74d71b4d2d7f29c", data=data)
+        self.assertEqual(response.status_code, 204)
