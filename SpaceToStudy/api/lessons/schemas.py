@@ -37,14 +37,7 @@ SCHEMA_FOR_POST_LESSON = {
             "type": "array",
             "items": {"type": "string"}
         },
-        "category": {
-            "type": "object",
-            "properties": {
-                "_id": {"type": "string"},
-                "name": {"type": "string"}
-            },
-            "required": ["_id", "name"]
-        },
+        "category": {"type": "string"},
         "_id": {"type": "string"},
         "createdAt": {"type": "string", "format": "date-time"},
         "updatedAt": {"type": "string", "format": "date-time"}
