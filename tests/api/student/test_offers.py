@@ -59,9 +59,17 @@ class TestOffersApi(APITestRunnerWithStudent):
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.post_offer(data=data)
         self.assertEqual(201, response.status_code)
-        new_offer_id = response.json()["_id"]
+        posted_offer_id = response.json()["_id"]
 
-        # delete offer
+        # delete the posted offer
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.delete_offer(new_offer_id)
+        response = client.delete_offer(posted_offer_id)
         self.assertEqual(204, response.status_code)
+
+        # get the deleted offer
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_offers_by_id(posted_offer_id)
+        self.assertEqual(404, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("Offer with the specified ID was not found.", response.json().get('message'))
+        self.assertEqual("DOCUMENT_NOT_FOUND", response.json().get('code'))
