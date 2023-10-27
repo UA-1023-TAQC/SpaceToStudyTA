@@ -47,11 +47,13 @@ class TestAPIQuizzes(APITestRunnerWithTutor):
             "title": "Test update title"
         }
         client = QuizzesAPIClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.patch_quizzes("653bb5b5c74d71b4d2d7f29c", data=data)
+        quizzes_response = client.get_quizzes().json()['items'][0]['_id']
+        response = client.patch_quizzes(quizzes_response, data=data)
         self.assertEqual(response.status_code, 204)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/486")
     def test_delete_quizzes(self):
         client = QuizzesAPIClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.delete_quizzes("653bb64ac74d71b4d2d7f2a2")
+        quizzes_response = client.get_quizzes().json()['items'][0]['_id']
+        response = client.delete_quizzes(quizzes_response)
         self.assertEqual(response.status_code, 204)
