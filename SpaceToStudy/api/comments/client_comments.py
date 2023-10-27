@@ -16,11 +16,8 @@ class CommentsAPIClient(BaseAPIClient):
 
     @allure.step("Create a new comment")
     def post_new_comment(self, cooperation_id, data):
-        """
-        :param cooperation_id: ID of the collaboration to add a comment to.
-        :param data: Data for a new comment in JSON format.
-        :return: The object of the response from the server.
-        """
         url = f"{self.url}/{cooperation_id}/comments"
         response = requests.post(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        allure.attach(f"Request: POST {url}\nData: {data}\n"
+                      f"Response: {response.status_code} - {response.text}")
         return response
