@@ -41,10 +41,17 @@ class TestAPIQuizzes(APITestRunnerWithTutor):
         self.assertEqual(response.json().get('title'), "Test title")
         validate(instance=response.json(), schema=POST_QUIZZES_SCHEMA)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/484")
     def test_patch_quizzes(self):
         data = {
             "title": "Test update title"
         }
         client = QuizzesAPIClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.patch_quizzes("653bb5b5c74d71b4d2d7f29c", data=data)
+        self.assertEqual(response.status_code, 204)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/486")
+    def test_delete_quizzes(self):
+        client = QuizzesAPIClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.delete_quizzes("653bb64ac74d71b4d2d7f2a2")
         self.assertEqual(response.status_code, 204)
