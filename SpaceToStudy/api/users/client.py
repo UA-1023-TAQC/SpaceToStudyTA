@@ -1,3 +1,4 @@
+import allure
 import requests
 
 from SpaceToStudy.api.base_api_client import BaseAPIClient
@@ -36,9 +37,11 @@ class UsersApiClient(BaseAPIClient):
         "/ users / {id} / reviews / stats"
         pass
 
+    @allure.step("Get all cooperations for a user with the specified ID")
     def get_cooperations_for_user_by_id(self, user_id):
-        "/ users / {id} / cooperations"
-        pass
+        url = f"{self.url}/{user_id}/cooperations"
+        response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response
 
     def get_offers_for_user_by_id(self, user_id):
         "/ users / {id} / offers"
