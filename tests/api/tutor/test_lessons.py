@@ -30,8 +30,9 @@ class TestAPILessons(APITestRunnerWithTutor):
         response = client.get_lesson_by_id("64e24191c46e2c44c5bc387f")
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_LESSON_BY_ID)
+        self.assertIn("Guitar", response.json()["title"])
 
-    # CURRENTLY NOT WORKING
+    # CURRENTLY EDITING LESSON IS NOT WORKING ON WEBSITE
     # def test_patch_lesson_by_id(self):
     #     data_for_patch = {
     #         "title": "new title"
