@@ -10,7 +10,7 @@ SCHEMA_FOR_ALL_LESSONS = {
             "items": {
                 "type": "object",
                 "properties": {
-                    "category": {"type": ["object", "null"]},
+                    "category": {"type": "string"},
                     "_id": {"type": "string"},
                     "author": {"type": "string"},
                     "title": {"type": "string"},
