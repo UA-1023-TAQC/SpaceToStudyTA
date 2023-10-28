@@ -1,14 +1,13 @@
 import allure
 
 from SpaceToStudy.api.cooperations.client_cooperations import CooperationApiClient
-from SpaceToStudy.api.cooperations.schemas import ALL_COOPERATIONS_SCHEMA, SCHEMA_COOPERATIONS_ID
-from SpaceToStudy.api.offers.client_offers import OffersApiClient
-from SpaceToStudy.api.offers.schemas import SCHEMA_OFFERS_ID
+from SpaceToStudy.api.cooperations.schemas import (ALL_COOPERATIONS_SCHEMA,
+                                                   SCHEMA_COOPERATIONS_ID)
 from tests.api.api_test_runners import APITestRunnerWithTutor
 from tests.utils.value_provider import ValueProvider
 
 from jsonschema import validate
-from parameterized import parameterized, parameterized_class
+from parameterized import parameterized
 
 
 class TestCooperationApi(APITestRunnerWithTutor):
