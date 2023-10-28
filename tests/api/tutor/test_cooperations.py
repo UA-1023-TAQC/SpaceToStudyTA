@@ -2,6 +2,8 @@ import allure
 
 from SpaceToStudy.api.cooperations.client_cooperations import CooperationApiClient
 from SpaceToStudy.api.cooperations.schemas import ALL_COOPERATIONS_SCHEMA, SCHEMA_COOPERATIONS_ID
+from SpaceToStudy.api.offers.client_offers import OffersApiClient
+from SpaceToStudy.api.offers.schemas import SCHEMA_OFFERS_ID
 from tests.api.api_test_runners import APITestRunnerWithTutor
 from tests.utils.value_provider import ValueProvider
 
@@ -41,6 +43,6 @@ class TestCooperationApi(APITestRunnerWithTutor):
         client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_cooperation_by_id(cooperation_id)
         self.assertEqual(200, response.status_code)
+        offer_id = response.json()["offer"]["_id"]
+        self.assertEqual(offer_id_of_cooperation, offer_id)
         validate(instance=response.json(), schema=SCHEMA_COOPERATIONS_ID)
-        offer_id_of_cooperation = response.json()["offer"]["_id"]
-        self.assertEqual(offer_id_of_cooperation, offer_id_of_cooperation)
