@@ -83,3 +83,16 @@ class TestAPISubjects(APITestRunnerWithStudent):
         response = client.get_subject_by_id(subject_id)
         self.assertEqual(200, response.status_code)
         self.assertEqual(starting_subject_name, response.json()["name"])
+
+        # Negative tests
+
+    def test_get_subject_by_id_with_wrong_id_format(self):
+        client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_subject_by_id("thisisbadid")
+        expected_response = {
+            "status": 400,
+            "code": "INVALID_ID",
+            "message": "ID is invalid."
+            }
+        self.assertEqual(400, response.status_code)
+        self.assertEqual(expected_response, response.json())
