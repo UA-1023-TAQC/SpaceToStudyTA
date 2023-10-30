@@ -86,6 +86,7 @@ class TestAPISubjects(APITestRunnerWithStudent):
 
         # Negative tests
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/493")
     def test_get_subject_by_id_with_wrong_id_format(self):
         client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_subject_by_id("thisisbadid")
@@ -97,6 +98,7 @@ class TestAPISubjects(APITestRunnerWithStudent):
         self.assertEqual(400, response.status_code)
         self.assertEqual(expected_response, response.json())
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/495")
     def test_get_subject_by_id_with_nonexistent_id_of_valid_format(self):
         client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_subject_by_id("6255bc080a71adf9223df134")
