@@ -96,3 +96,14 @@ class TestAPISubjects(APITestRunnerWithStudent):
             }
         self.assertEqual(400, response.status_code)
         self.assertEqual(expected_response, response.json())
+
+    def test_get_subject_by_id_with_nonexistent_id_of_valid_format(self):
+        client = SubjectsApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_subject_by_id("6255bc080a71adf9223df134")
+        expected_response = {
+            "status": 404,
+            "code": "DOCUMENT_NOT_FOUND",
+            "message": "Subject with the specified ID was not found."
+            }
+        self.assertEqual(404, response.status_code)
+        self.assertEqual(expected_response, response.json())
