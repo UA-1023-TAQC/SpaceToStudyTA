@@ -48,7 +48,7 @@ class TestCooperationApi(APITestRunnerWithTutor):
         validate(instance=response.json(), schema=SCHEMA_COOPERATION_ID)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/467#issue-1963291810")
-    def test_patch_cooperation(self):
+    def test_post_patch_cooperation(self):
         data = {
             "offer": "652f7e64896a6442035e44a6",
             "initiator": "64e88b8b253a3ff15b9c6cf5",
