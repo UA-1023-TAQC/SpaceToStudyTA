@@ -1,10 +1,9 @@
 import allure
 
 from SpaceToStudy.api.cooperations.client_cooperations import CooperationApiClient
-from SpaceToStudy.api.cooperations.schemas import (ALL_COOPERATIONS_SCHEMA,
-                                                   SCHEMA_COOPERATIONS_ID)
-from SpaceToStudy.api.offers.client_offers import OffersApiClient
-from SpaceToStudy.api.offers.schemas import SCHEMA_OFFERS_ID
+from SpaceToStudy.api.cooperations.schemas import (SCHEMA_POST_COOPERATION,
+                                                   SCHEMA_COOPERATION_ID,
+                                                   ALL_COOPERATION_SCHEMA)
 from tests.api.api_test_runners import APITestRunnerWithTutor
 from tests.utils.value_provider import ValueProvider
 
@@ -19,7 +18,7 @@ class TestCooperationApi(APITestRunnerWithTutor):
         client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_cooperation()
         self.assertEqual(200, response.status_code)
-        validate(instance=response.json(), schema=ALL_COOPERATIONS_SCHEMA)
+        validate(instance=response.json(), schema=ALL_COOPERATION_SCHEMA)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/465#issue-1963247682")
     @parameterized.expand([
@@ -32,7 +31,7 @@ class TestCooperationApi(APITestRunnerWithTutor):
         client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_cooperation_by_id(cooperation_id)
         self.assertEqual(200, response.status_code)
-        validate(instance=response.json(), schema=SCHEMA_COOPERATIONS_ID)
+        validate(instance=response.json(), schema=SCHEMA_COOPERATION_ID)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/465#issue-1963247682")
     @parameterized.expand([
@@ -46,51 +45,24 @@ class TestCooperationApi(APITestRunnerWithTutor):
         self.assertEqual(200, response.status_code)
         offer_id = response.json()["offer"]["_id"]
         self.assertEqual(offer_id_of_cooperation, offer_id)
-        validate(instance=response.json(), schema=SCHEMA_COOPERATIONS_ID)
+        validate(instance=response.json(), schema=SCHEMA_COOPERATION_ID)
 
-    # @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/470#issue-1963642535")
-    # @parameterized.expand([
-    #     ("closed"),
-    #     ("active"),
-    #
-    #     # ({"status": "active"}),
-    #     # ({"status": "closed"})
-    # ])
-    # def test_patch_offer(self, status_data):
-    #     client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-    #     response = client.patch_cooperation("653ac65c716474c3a94b4911", {"status": status_data})
-    #     # response = client.patch_cooperations("653ac65c716474c3a94b4911", status_data)
-    #     self.assertEqual(204, response.status_code)
-    #     print("-----", response.content)
-    #
-    # @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/491#issue-1966961096")
-    # @parameterized.expand([
-    #     ("64944a54e874088383fdfb84", "64884f33fdc2d1a130c24ac2", "64885108fdc2d1a130c24af9"),
-    #     ("64ac054c137130e45017f841", "64884f21fdc2d1a130c24ac0", "648850c4fdc2d1a130c24aea"),
-    # ])
-    # def test_find_offers_by_id(self, offer_id, category_id, subject_id):
-    #     client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-    #     response = client.get_offers_by_id(offer_id)
-    #     category_id_of_offer = response.json()["category"]["_id"]
-    #     subject_id_of_offer = response.json()["subject"]["_id"]
-    #     self.assertEqual(200, response.status_code)
-    #     validate(instance=response.json(), schema=SCHEMA_OFFERS_ID)
-    #     self.assertEqual(category_id, category_id_of_offer)
-    #     self.assertEqual(subject_id, subject_id_of_offer)
-    #
-    #     print("====", category_id)
-    #
-    #
-    # def test_find_offers_by_ids(self):
-    #     client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-    #     response = client.get_offers_by_id("64ac054c137130e45017f841")
-    #     category_id_of_offer = response.json()["category"]["_id"]
-    #     subject_id_of_offer = response.json()["subject"]["_id"]
-    #     self.assertEqual(200, response.status_code)
-    #
-    #     self.assertEqual("64884f21fdc2d1a130c24ac0", category_id_of_offer)
-    #     self.assertEqual("648850c4fdc2d1a130c24aea", subject_id_of_offer)
-    #     validate(instance=response.json(), schema=SCHEMA_OFFERS_ID)
-    #     print("---", response.content)
-    #
-    #
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/467#issue-1963291810")
+    def test_patch_cooperation(self):
+        data = {
+            "offer": "652f7e64896a6442035e44a6",
+            "initiator": "64e88b8b253a3ff15b9c6cf5",
+            "initiatorRole": "tutor",
+            "receiver": "65086b8b8f5d654793fed4a5",
+            "receiverRole": "student",
+            "price": 300,
+            "proficiencyLevel": "Specialized"
+        }
+        client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.post_cooperation(data=data)
+        self.assertEqual(201, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_POST_COOPERATION)
+        posted_cooperation_id = response.json()['_id']
+
+        response_patch_cooperation = client.patch_cooperation(posted_cooperation_id, {"status": "closed"})
+        self.assertEqual(204, response_patch_cooperation.status_code)

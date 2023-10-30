@@ -31,3 +31,9 @@ class CooperationApiClient(BaseAPIClient):
         url = f"{self.url}/{cooperation_id}"
         response = requests.patch(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
         return response
+
+    @allure.step("Delete cooperation")
+    def delete_cooperation(self, cooperation_id):
+        url = f"{self.url}/{cooperation_id}"
+        response = requests.delete(url, headers={"Authorization": f"Bearer {self.access_token}"})
+        return response

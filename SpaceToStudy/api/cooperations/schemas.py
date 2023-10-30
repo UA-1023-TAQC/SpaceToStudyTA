@@ -1,4 +1,4 @@
-ALL_COOPERATIONS_SCHEMA = {
+ALL_COOPERATION_SCHEMA = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Generated schema for Root",
     "type": "object",
@@ -168,7 +168,7 @@ ALL_COOPERATIONS_SCHEMA = {
     ]
 }
 
-SCHEMA_COOPERATIONS_ID = {
+SCHEMA_COOPERATION_ID = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Generated schema for Root",
     "type": "object",
@@ -333,4 +333,58 @@ SCHEMA_COOPERATIONS_ID = {
         "updatedAt",
         "chatId"
     ]
+}
+
+SCHEMA_POST_COOPERATION = {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "offer": {
+      "type": "string"
+    },
+    "initiator": {
+      "type": "string"
+    },
+    "initiatorRole": {
+      "type": "string"
+    },
+    "receiver": {
+      "type": "string"
+    },
+    "receiverRole": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    },
+    "needAction": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "_id",
+    "offer",
+    "initiator",
+    "initiatorRole",
+    "receiver",
+    "receiverRole",
+    "price",
+    "status",
+    "needAction",
+    "createdAt",
+    "updatedAt"
+  ]
 }
