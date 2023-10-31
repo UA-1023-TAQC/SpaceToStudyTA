@@ -40,8 +40,8 @@ class TestResCategoriesApi(APITestRunnerWithTutor):
         response = client.post_res_categories(data)
         self.assertEqual(201, response.status_code)
 
-        response = client.get_res_categories(name=data.get("name"))
-        print (response.json())
-        names = [item["name"] for item in response.json()]
-        self.assertIn(data.get("name"), names)
-
+        response = client.get_res_categories(name=data["name"])
+        for i in range (response.json()["count"]):
+            for item in response.json()["items"]:
+                self.assertEqual(item["name"], data["name"])
+        print(response.json())
