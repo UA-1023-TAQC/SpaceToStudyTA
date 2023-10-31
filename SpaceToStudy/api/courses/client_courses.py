@@ -1,3 +1,4 @@
+import allure
 import requests
 
 from SpaceToStudy.api.base_api_client import BaseAPIClient
