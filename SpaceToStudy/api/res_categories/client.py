@@ -20,3 +20,7 @@ class ResoursesCategoriesApiClient(BaseAPIClient):
 
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
+
+    def post_res_categories(self, data):
+        response = requests.post(self.url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        return response
