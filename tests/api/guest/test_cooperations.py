@@ -1,6 +1,6 @@
 from SpaceToStudy.api.schema_for_errors import SCHEMA_FOR_ERRORS
 from tests.api.api_test_runners import BaseAPITestRunner
-
+from SpaceToStudy.api.cooperations.client_cooperations import CooperationApiClient
 import allure
 from jsonschema import validate
 
