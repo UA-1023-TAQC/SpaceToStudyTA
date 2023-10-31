@@ -157,3 +157,63 @@ class TestAPIUsers(BaseAPITestRunner):
         validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
         self.assertEqual(expected_code, response.json().get('code'))
         self.assertEqual(expected_message, response.json().get('message'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/479",
+                     "Create tests for PATCH /users/{id} Find and update current user info")
+    def test_patch_current_user_info_by_id(self):
+        data_for_patch = {
+            "lastName": "Holmes"
+        }
+        expected_status_code = 204
+
+        # get current name value
+        client = UsersApiClient(VP.get_base_api_url(), self.accessToken)
+        access_token_decoded_json = client.get_decode_access_token()
+        user_id = access_token_decoded_json.get("id")
+        current_lastname = client.get_users_by_id(user_id).json()["lastName"]
+
+        # patch
+        response = client.patch_current_user_info_by_id(user_id, data_for_patch)
+        self.assertEqual(expected_status_code, response.status_code)
+        new_lastname = client.get_users_by_id(user_id).json()["lastName"]
+        self.assertNotEqual(current_lastname, new_lastname)
+
+        # return to original value
+        response = client.patch_current_user_info_by_id(user_id, {"lastName": current_lastname})
+        self.assertEqual(expected_status_code, response.status_code)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/479",
+                     "Create tests for PATCH /users/{id} Find and update current user info")
+    def test_patch_other_user_info_by_id(self):
+        data_for_patch = {
+            "lastName": "Holmes"
+        }
+        expected_status_code = 403
+        expected_code = "FORBIDDEN"
+        expected_message = "You do not have permission to perform this action."
+        user_id = "64e88b8b253a3ff15b9c6cf5"
+
+        client = UsersApiClient(VP.get_base_api_url(), self.accessToken)
+        response = client.patch_current_user_info_by_id(user_id, data_for_patch)
+        self.assertEqual(expected_status_code, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual(expected_code, response.json().get('code'))
+        self.assertEqual(expected_message, response.json().get('message'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/479",
+                     "Create tests for PATCH /users/{id} Find and update current user info")
+    def test_patch_other_user_info_by_id_not_found_id(self):
+        data_for_patch = {
+            "lastName": "Holmes"
+        }
+        expected_status_code = 404
+        expected_code = "DOCUMENT_NOT_FOUND"
+        expected_message = "User with the specified ID was not found."
+        user_id = "004f6f1777e2551b87786650"
+
+        client = UsersApiClient(VP.get_base_api_url(), self.accessToken)
+        response = client.patch_current_user_info_by_id(user_id, data_for_patch)
+        self.assertEqual(expected_status_code, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual(expected_code, response.json().get('code'))
+        self.assertEqual(expected_message, response.json().get('message'))
