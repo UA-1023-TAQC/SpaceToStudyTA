@@ -21,7 +21,7 @@ class ChatsAPIClient(BaseAPIClient):
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
         return response
 
-    @allure.step("Get messages in chat by its {id}")
+    @allure.step("Get messages in chat by its {chat_id}")
     def get_messages_in_chat_by_id(self, chat_id):
         url = f"{self.url}/{chat_id}/messages"
         response = requests.get(url, headers={"Authorization": f"Bearer {self.access_token}"})
