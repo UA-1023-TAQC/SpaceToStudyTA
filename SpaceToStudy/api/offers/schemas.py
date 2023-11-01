@@ -201,6 +201,7 @@ ALL_OFFERS_SCHEMA = {
 }
 
 SCHEMA_OFFERS_ID = {
+
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Generated schema for Root",
   "type": "object",
@@ -376,3 +377,4 @@ SCHEMA_OFFERS_ID = {
     "chatId"
   ]
 }
+
