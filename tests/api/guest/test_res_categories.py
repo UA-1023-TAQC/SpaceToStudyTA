@@ -10,7 +10,7 @@ from tests.utils.value_provider import ValueProvider
 class TestResCategoriesApi(BaseAPITestRunner):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
-    def test_unauthorized_user(self):
+    def test_get_res_categories_unauthorized_user(self):
         client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_res_categories()
         self.assertEqual(401, response.status_code)
@@ -18,9 +18,18 @@ class TestResCategoriesApi(BaseAPITestRunner):
         self.assertEqual("The requested URL requires user authorization.", response.json().get('message'))
         self.assertEqual("UNAUTHORIZED", response.json().get('code'))
 
-class TestResCategoriesApi(APITestRunnerWithStudent):
+class TestResCategoriesApiWithStudent(APITestRunnerWithStudent):
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
-    def test_authorized_user(self):
+    def test_get_res_categories_authorized_user_student(self):
+        client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_res_categories()
+        self.assertEqual(403, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("You do not have permission to perform this action.", response.json().get('message'))
+        self.assertEqual("FORBIDDEN", response.json().get('code'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
+    def test_post_res_categories_authorized_user_student(self):
         client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         data = {
             "name": "Chemical Category"
@@ -30,9 +39,16 @@ class TestResCategoriesApi(APITestRunnerWithStudent):
         self.assertEqual("You do not have permission to perform this action.", response.json().get('message'))
         self.assertEqual("FORBIDDEN", response.json().get('code'))
 
-class TestResCategoriesApi(APITestRunnerWithTutor):
+class TestResCategoriesApiWithTutor(APITestRunnerWithTutor):
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
-    def test_authorized_user(self):
+    def test_get_res_categories_authorized_user_tutor(self):
+        client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_res_categories()
+        self.assertEqual(200, response.status_code)
+        print(response.json())
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
+    def test_post_res_categories_authorized_user_tutor(self):
         client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         data = {
             "name": "Chemical Category"
@@ -44,4 +60,13 @@ class TestResCategoriesApi(APITestRunnerWithTutor):
         for i in range (response.json()["count"]):
             for item in response.json()["items"]:
                 self.assertEqual(item["name"], data["name"])
+                resp_del = client.delete_res_categories(rc_id=item["_id"])
+                print(resp_del.json())
         print(response.json())
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
+    def test_delete_res_categories_authorized_user_tutor(self):
+        client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.delete_res_categories('6540f456a226df4d38cd60d4')
+        print(response.json())
+        self.assertEqual(200, response.status_code)

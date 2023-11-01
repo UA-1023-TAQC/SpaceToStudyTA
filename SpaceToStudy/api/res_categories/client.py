@@ -24,3 +24,8 @@ class ResoursesCategoriesApiClient(BaseAPIClient):
     def post_res_categories(self, data):
         response = requests.post(self.url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
         return response
+
+    def delete_res_categories(self, rc_id):
+        response = requests.delete(f"{self.url}/{rc_id}", headers={"Authorization": f"Bearer {self.access_token}"})
+        print("url = ", f"{self.url}/{rc_id}")
+        return response
