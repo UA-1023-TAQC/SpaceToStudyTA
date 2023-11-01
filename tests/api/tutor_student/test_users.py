@@ -7,7 +7,8 @@ from SpaceToStudy.api.users.client import UsersApiClient
 from SpaceToStudy.api.users.schemas import (SCHEMA_FOR_ALL_USERS,
                                             SCHEMA_FOR_USER,
                                             SCHEMA_FOR_REVIEWS_BY_USER_ID,
-                                            SCHEMA_FOR_REVIEW_STATISTICS_FOR_USER)
+                                            SCHEMA_FOR_REVIEW_STATISTICS_FOR_USER,
+                                            SCHEMA_FOR_COOPERATIONS_BY_USER_ID)
 from tests.api.api_test_runners import BaseAPITestRunner, get_access_token
 from tests.utils.value_provider import ValueProvider as VP
 
