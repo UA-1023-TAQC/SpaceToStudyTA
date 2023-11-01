@@ -4,6 +4,7 @@ from SpaceToStudy.api.cooperations.client_cooperations import CooperationApiClie
 from SpaceToStudy.api.cooperations.schemas import (SCHEMA_POST_COOPERATION,
                                                    SCHEMA_COOPERATION_ID,
                                                    ALL_COOPERATION_SCHEMA)
+from SpaceToStudy.api.schema_for_errors import SCHEMA_FOR_ERRORS
 from tests.api.api_test_runners import APITestRunnerWithTutor
 from tests.utils.value_provider import ValueProvider
 
@@ -66,3 +67,39 @@ class TestCooperationApi(APITestRunnerWithTutor):
 
         response_patch_cooperation = client.patch_cooperation(posted_cooperation_id, {"status": "closed"})
         self.assertEqual(204, response_patch_cooperation.status_code)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/470#issue-1963642535")
+    def test_patch_cooperation(self):
+        client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response1 = client.patch_cooperation("6523cd18c296ee19b5a192f9", {"status": "closed"})
+        response2 = client.patch_cooperation("6523cd18c296ee19b5a192f9", {"status": "active"})
+
+        self.list_patch = []
+        self.list_patch.append(response1)
+        self.list_patch.append(response2)
+        for i in self.list_patch:
+            self.assertEqual(204, i.status_code)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/471#issue-1963647597")
+    def test_patch_cooperation_invalid_id(self):
+        client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.patch_cooperation("652ea7336fc04ef55", {"price": 123})
+        self.assertEqual(400, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("ID is invalid.", response.json().get('message'))
+        self.assertEqual("INVALID_ID", response.json().get('code'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/472#issue-1963650643")
+    @parameterized.expand([
+        ("652ea7336fc04ef55bb462cf"),
+        ("652ea2345fc04ef55bb462cf"),
+        ("652ea6789fc04ef55bb462cf"),
+        ("652ea1263fc04ef55bb462cf")
+    ])
+    def test_patch_cooperation_document_not_found(self, data_id):
+        client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.patch_cooperation(data_id, {"price": 321})
+        self.assertEqual(404, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("Cooperation with the specified ID was not found.", response.json().get('message'))
+        self.assertEqual("DOCUMENT_NOT_FOUND", response.json().get('code'))
