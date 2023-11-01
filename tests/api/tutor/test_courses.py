@@ -8,7 +8,7 @@ from jsonschema import validate
 
 
 class TestAPICourses(APITestRunnerWithTutor):
-
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/474")
     def test_get_courses(self):
         client = CoursesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_courses()
@@ -16,9 +16,14 @@ class TestAPICourses(APITestRunnerWithTutor):
         self.assertEqual(response.json()["count"], len(response.json()["items"]))
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_COURSES)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/474")
     def test_get_courses_by_id(self):
         client = CoursesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.get_courses_by_id()
+        response = client.get_courses_by_id()  # There should be an ID here when it appears
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["count"], len(response.json()["items"]))
+        self.assertEqual(response.json()["title"], "Test title")
+        validate(instance=response.json(), schema=SCHEMA_FOR_ALL_COURSES)
 
     # The method has not yet been implemented, the developers have been informed about it
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/476")

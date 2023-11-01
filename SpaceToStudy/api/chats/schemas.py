@@ -112,3 +112,57 @@ SCHEMA_FOR_ALL_CHATS = {
         ]
     }
 }
+SCHEMA_FOR_ALL_MESSAGES_IN_CHAT = {
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "author": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "photo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "_id",
+          "photo"
+        ]
+      },
+      "authorRole": {
+        "type": "string"
+      },
+      "text": {
+        "type": "string"
+      },
+      "isRead": {
+        "type": "boolean"
+      },
+      "chat": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "string"
+      },
+      "updatedAt": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "_id",
+      "author",
+      "authorRole",
+      "text",
+      "isRead",
+      "chat",
+      "createdAt",
+      "updatedAt"
+    ]
+  }
+}
