@@ -20,6 +20,7 @@ class TestAPICourses(APITestRunnerWithTutor):
         client = CoursesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_courses_by_id()
 
+    # The method has not yet been implemented, the developers have been informed about it
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/476")
     def test_post_course(self):
         data = {
