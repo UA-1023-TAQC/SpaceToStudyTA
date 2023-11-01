@@ -55,3 +55,13 @@ class TestAPIUsers(BaseAPITestRunner):
         validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
         self.assertEqual(expected_code, response.json().get('code'))
         self.assertEqual(expected_message, response.json().get('message'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/469",
+                     "Create tests for GET /users/{id}/cooperations Find cooperations for a user with specified ID")
+    def test_find_cooperations_for_user_by_id_unauthorized(self):
+        client = UsersApiClient(ValueProvider.get_base_api_url())
+        response = client.get_cooperations_for_user_by_id(user_id)
+        self.assertEqual(expected_status_code, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual(expected_code, response.json().get('code'))
+        self.assertEqual(expected_message, response.json().get('message'))
