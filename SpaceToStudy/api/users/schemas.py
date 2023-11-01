@@ -244,7 +244,6 @@ SCHEMA_FOR_USER = {
         },
         "mainSubjects": {
             "type": "object",
-            "required": ["student", "tutor"],
             "properties": {
                 "student": {
                     "type": "array",
