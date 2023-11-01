@@ -18,7 +18,7 @@ class TestOffersApi(APITestRunnerWithStudent):
         validate(instance=response.json(), schema=ALL_OFFERS_SCHEMA)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/422#issue-1947831861")
-    def test_offers_invalid_id(self):
+    def test_find_offer_invalid_id(self):
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_offers_by_id("123")
         self.assertEqual(400, response.status_code)
@@ -27,7 +27,7 @@ class TestOffersApi(APITestRunnerWithStudent):
         self.assertEqual("INVALID_ID", response.json().get('code'))
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/405#issue-1945106730")
-    def test_find_all_offers(self):
+    def test_find_offers_by_id(self):
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_offers_by_id("652ea7336fc04ef55bb462cf")
         self.assertEqual(200, response.status_code)
