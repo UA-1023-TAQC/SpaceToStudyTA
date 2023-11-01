@@ -56,17 +56,16 @@ class TestResCategoriesApiWithTutor(APITestRunnerWithTutor):
         response = client.post_res_categories(data)
         self.assertEqual(201, response.status_code)
 
-        response = client.get_res_categories(name=data["name"])
+        response = client.get_res_categories()
         for i in range (response.json()["count"]):
             for item in response.json()["items"]:
                 self.assertEqual(item["name"], data["name"])
                 resp_del = client.delete_res_categories(rc_id=item["_id"])
-                print(resp_del.json())
-        print(response.json())
+                self.assertEqual(204, resp_del.status_code)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
     def test_delete_res_categories_authorized_user_tutor(self):
         client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.delete_res_categories('6540f456a226df4d38cd60d4')
-        print(response.json())
+        response = client.delete_res_categories('654285f3a226df4d38cd72d5')
+        print(response)
         self.assertEqual(200, response.status_code)
