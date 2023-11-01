@@ -1,6 +1,6 @@
-Feature: Verify first name input validation for tutor's sign up
+Feature: Tutor sign up input validation
 
-  Scenario: Verify first name input validation for tutor's sign up
+  Scenario: Verify first name input length validation
     Given the site is opened
     And the "get started for free" button is clicked
     And the "become a tutor" button is clicked
