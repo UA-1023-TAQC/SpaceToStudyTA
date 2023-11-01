@@ -34,6 +34,24 @@ class TestOffersApi(APITestRunnerWithStudent):
         self.assertEqual(200, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_OFFERS_ID)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/454#issue-1963038140")
+    def test_delete_offer_invalid_id(self):
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.delete_offer("12345")
+        self.assertEqual(400, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("ID is invalid.", response.json().get('message'))
+        self.assertEqual("INVALID_ID", response.json().get('code'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/455#issue-1963040501")
+    def test_delete_offer_invalid_id(self):
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.delete_offer("64954e34650b0c52c50d597e")
+        self.assertEqual(404, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("Offer with the specified ID was not found.", response.json().get('message'))
+        self.assertEqual("DOCUMENT_NOT_FOUND", response.json().get('code'))
+
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/450#issue-1962909192")
     def test_patch_offer_incorrect_id(self):
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
