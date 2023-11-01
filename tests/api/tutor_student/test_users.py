@@ -116,6 +116,7 @@ class TestAPIUsers(BaseAPITestRunner):
     @parameterized.expand([
         ("get_users_by_id", None),
         ("get_reviews_for_user_by_id", "student"),
+        ("get_review_statistics_for_user_by_id", None),
         ("get_cooperations_for_user_by_id", None)
     ])
     def test_invalid_id(self, method, role):
@@ -138,6 +139,7 @@ class TestAPIUsers(BaseAPITestRunner):
     @parameterized.expand([
         ("get_users_by_id", None),
         ("get_reviews_for_user_by_id", "student"),
+        ("get_review_statistics_for_user_by_id", None),
         ("get_cooperations_for_user_by_id", None)
     ])
     def test_id_not_found(self, method, role):
@@ -188,35 +190,3 @@ class TestAPIUsers(BaseAPITestRunner):
         self.assertEqual(expected_status_code, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_REVIEW_STATISTICS_FOR_USER)
         self.assertEqual({}, response.json(), "Received JSON is not empty")
-
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/426",
-                     "Create tests for GET /users/{id}/reviews/stats Find review statistics for a user with the "
-                     "specified ID and role ")
-    def test_find_review_statistics_for_user_by_id_invalid_id(self):
-        expected_status_code = 400
-        expected_code = "INVALID_ID"
-        expected_message = "ID is invalid."
-        user_id = "abcdefg"
-
-        client = UsersApiClient(VP.get_base_api_url(), self.accessToken)
-        response = client.get_review_statistics_for_user_by_id(user_id)
-        self.assertEqual(expected_status_code, response.status_code)
-        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
-        self.assertEqual(expected_code, response.json().get('code'))
-        self.assertEqual(expected_message, response.json().get('message'))
-
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/426",
-                     "Create tests for GET /users/{id}/reviews/stats Find review statistics for a user with the "
-                     "specified ID and role ")
-    def test_find_review_statistics_for_user_by_id_not_found_id(self):
-        expected_status_code = 404
-        expected_code = "DOCUMENT_NOT_FOUND"
-        expected_message = "User with the specified ID was not found."
-        user_id = "004f6f1777e2551b87786650"
-
-        client = UsersApiClient(VP.get_base_api_url(), self.accessToken)
-        response = client.get_review_statistics_for_user_by_id(user_id)
-        self.assertEqual(expected_status_code, response.status_code)
-        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
-        self.assertEqual(expected_code, response.json().get('code'))
-        self.assertEqual(expected_message, response.json().get('message'))
