@@ -244,7 +244,6 @@ SCHEMA_FOR_USER = {
         },
         "mainSubjects": {
             "type": "object",
-            "required": ["student", "tutor"],
             "properties": {
                 "student": {
                     "type": "array",
@@ -545,4 +544,25 @@ SCHEMA_FOR_REVIEWS_BY_USER_ID = {
         }
     },
     "required": ["count", "reviews"]
+}
+
+SCHEMA_FOR_REVIEW_STATISTICS_FOR_USER = {
+    "type": "object",
+    "properties": {
+        "stats": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["rating", "count"],
+                "properties": {
+                    "rating": {
+                        "type": "number"
+                    },
+                    "count": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
 }
