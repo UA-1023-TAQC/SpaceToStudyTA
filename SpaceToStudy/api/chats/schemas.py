@@ -166,3 +166,22 @@ SCHEMA_FOR_ALL_MESSAGES_IN_CHAT = {
     ]
   }
 }
+ERROR_SCHEMA = {
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "number"
+    },
+    "code": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "status",
+    "code",
+    "message"
+  ]
+}
