@@ -70,7 +70,46 @@ class TestOffersApi(APITestRunnerWithStudent):
         self.assertEqual("You do not have permission to perform this action.", response.json().get('message'))
         self.assertEqual("FORBIDDEN", response.json().get('code'))
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/452#issue-1962971089")
+    def test_post_delete_offer(self):
+        # post offer
+        data = {
+            "price": "399",
+            "proficiencyLevel": [
+                "Advanced"
+            ],
+            "title": "Test",
+            "description": "Finally my test is working",
+            "languages": [
+                "English",
+                "Ukrainian"
+            ],
+            "subject": "6488509cfdc2d1a130c24ae4",
+            "category": "64884fb0fdc2d1a130c24ad8",
+            "FAQ": [
+                {
+                    "question": "offer question",
+                    "answer": "offer answer"
+                }
+            ]
+        }
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.post_offer(data=data)
+        self.assertEqual(201, response.status_code)
+        posted_offer_id = response.json()["_id"]
 
+        # delete the posted offer
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.delete_offer(posted_offer_id)
+        self.assertEqual(204, response.status_code)
+
+        # get the deleted offer
+        client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_offers_by_id(posted_offer_id)
+        self.assertEqual(404, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("Offer with the specified ID was not found.", response.json().get('message'))
+        self.assertEqual("DOCUMENT_NOT_FOUND", response.json().get('code'))
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/491#issue-1966961096")
     @parameterized.expand([
