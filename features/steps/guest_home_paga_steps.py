@@ -16,6 +16,6 @@ def step_click_become_a_tutor_button(context, button_text):
     pass
 
 
-@then("the {modal} modal window is open")
-def step_open_home_page(context, modal):
+@then("the {registration_modal} modal window is open")
+def step_open_registration_modal(context, registration_modal):
     pass
