@@ -4,7 +4,7 @@ Feature: Sorting and filtering all offers
     Given the site is opened
     And the user is logged in as a Student
 
-  Scenario:
+  Scenario: Test filtering by level
     When I click "Go to categories"
     And I click "Show all offers"
     And I click "Filters"
