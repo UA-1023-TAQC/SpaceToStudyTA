@@ -30,6 +30,14 @@ def step_impl(context):
         .click_level_beginner_checkbox()
 
 
+@when('I set {text} in name input field')
+def step_impl(context, text):
+    ExploreOffersPage(context.driver)\
+        .get_filtering_and_sorting_block()\
+        .get_filters_sidebar_component()\
+        .set_search_by_name_input(text)
+
+
 @when('I click "Apply filters" button')
 def step_impl(context):
     ExploreOffersPage(context.driver) \
@@ -42,6 +50,12 @@ def step_impl(context):
 def step_impl(context):
     for offer in ExploreOffersPage(context.driver).get_list_of_offers_inline_card():
         assert "BEGINNER" in offer.get_level_label()
+
+
+@then('All offers contain {text} in name or offer title')
+def step_impl(context, text):
+    for offer in ExploreOffersPage(context.driver).get_list_of_offers_inline_card():
+        assert text.lower() in (offer.get_person_name() + offer.get_offer_title()).lower()
 
 
 @then('I can see number "1" near "Filters" button')
