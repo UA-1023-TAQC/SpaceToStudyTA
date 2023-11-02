@@ -6,6 +6,6 @@ Feature: Verify that the Guest is shown the tutor registration modal window afte
 
   Scenario: Verify the student registration modal window is displayed for the guest
     When I click on the “Get started for free” button
-    When page scrolled down to the What can you do block
-    When I click on the “Become a tutor” button
+    And page scrolled down to the What can you do block
+    And I click on the “Become a tutor” button
     Then the "Sign up as a tutor" modal window is open
