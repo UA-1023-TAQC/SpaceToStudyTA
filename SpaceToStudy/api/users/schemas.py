@@ -754,8 +754,7 @@ SCHEMA_FOR_OFFERS_BY_USER_ID = {
                     "languages": {
                         "type": "array",
                         "items": {
-                            "type": "string",
-                            "enum": ["English", "Ukrainian", "Polish", "German", "French", "Spanish", "Arabic"]
+                            "type": "string"
                         }
                     },
                     "authorRole": {
