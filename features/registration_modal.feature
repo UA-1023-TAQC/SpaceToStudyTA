@@ -1,4 +1,4 @@
-Feature: Verify that the Guest is shown the tutor registration modal window after clicking the "Get started for free" button
+Feature: Verify registration modal
 
   Background:
     Given the site is opened
