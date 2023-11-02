@@ -27,5 +27,12 @@ class ResoursesCategoriesApiClient(BaseAPIClient):
 
     def delete_res_categories(self, rc_id):
         response = requests.delete(f"{self.url}/{rc_id}", headers={"Authorization": f"Bearer {self.access_token}"})
-        print("url = ", f"{self.url}/{rc_id}")
+        return response
+
+    def patch_res_categories(self, rc_id, data):
+        response = requests.patch(f"{self.url}/{rc_id}", headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
+        return response
+
+    def get_res_categories_names(self):
+        response = requests.get(f"{self.url}/names", headers={"Authorization": f"Bearer {self.access_token}"})
         return response

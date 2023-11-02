@@ -45,7 +45,12 @@ class TestResCategoriesApiWithTutor(APITestRunnerWithTutor):
         client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.get_res_categories()
         self.assertEqual(200, response.status_code)
-        print(response.json())
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
+    def test_get_res_categories_names_authorized_user_tutor(self):
+        client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_res_categories_names()
+        self.assertEqual(200, response.status_code)
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
     def test_post_res_categories_authorized_user_tutor(self):
@@ -55,7 +60,6 @@ class TestResCategoriesApiWithTutor(APITestRunnerWithTutor):
         }
         response = client.post_res_categories(data)
         self.assertEqual(201, response.status_code)
-
         response = client.get_res_categories()
         for i in range (response.json()["count"]):
             for item in response.json()["items"]:
@@ -65,7 +69,29 @@ class TestResCategoriesApiWithTutor(APITestRunnerWithTutor):
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/436")
     def test_delete_res_categories_authorized_user_tutor(self):
+        data = {
+            "name": "Chemical Category (Just Stable Name)"
+        }
         client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
-        response = client.delete_res_categories('654285f3a226df4d38cd72d5')
-        print(response)
-        self.assertEqual(200, response.status_code)
+        response = client.post_res_categories(data)
+        self.assertEqual(201, response.status_code)
+        response = client.delete_res_categories(response.json()["_id"])
+        self.assertEqual(204, response.status_code)
+
+    def test_patch_res_categories_by_id_authorized_user_tutor(self):
+        client = ResoursesCategoriesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        rc_name = "Chemical Category"
+        rc_new_name = "Super Chemical Category"
+        response = client.post_res_categories({"name": rc_name})
+        self.assertEqual(201, response.status_code)
+        rc_id = response.json()["_id"]
+        response = client.patch_res_categories(rc_id, {"name": rc_new_name})
+        self.assertEqual(204, response.status_code)
+        response=client.get_res_categories()
+        names = []
+        for i in range (response.json()["count"]):
+            for item in response.json()["items"]:
+                names.append(item["name"])
+                resp_del = client.delete_res_categories(rc_id=item["_id"])
+                self.assertEqual(204, resp_del.status_code)
+        self.assertIn(rc_new_name, names)
