@@ -55,7 +55,7 @@ class UsersApiClient(BaseAPIClient):
         "/ users / {id} / offers"
         pass
 
-    @allure.step("Patch current user info by id")
+    @allure.step("Patch current user info by ID")
     def patch_current_user_info_by_id(self, user_id, data):
         url = f"{self.url}/{user_id}"
         response = requests.patch(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)

@@ -66,8 +66,8 @@ class TestAPIUsers(BaseAPITestRunner):
         self.assertEqual(expected_code, response.json().get('code'))
         self.assertEqual(expected_message, response.json().get('message'))
 
-    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/479",
-                     "Create tests for PATCH /users/{id} Find and update current user info")
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/525",
+                     "Create tests for PATCH /users/{id} Find and update other user info")
     def test_patch_other_user_info_by_id_unauthorized(self):
         data_for_patch = {
             "lastName": "Holmes"
