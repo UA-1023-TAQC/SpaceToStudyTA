@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
+from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
 from tests.utils.value_provider import ValueProvider
 
 IMPLICITLY_WAIT = 5
@@ -16,6 +17,26 @@ def setup_teardown(context):
     context.driver.get(ValueProvider.get_base_url())
     yield context
     context.driver.quit()
+
+
+def before_scenario(context, scenario):
+    if "student" in scenario.tags:
+        (HomePageGuest(context.driver)
+         .get_header()
+         .click_login_btn()
+         .set_email(ValueProvider.get_student_email())
+         .set_password(ValueProvider.get_student_password())
+         .click_login_button())
+    elif "tutor" in scenario.tags:
+        (HomePageGuest(context.driver)
+         .get_header()
+         .click_login_btn()
+         .set_email(ValueProvider.get_tutor_email())
+         .set_password(ValueProvider.get_tutor_password())
+         .click_login_button())
+    else:
+        pass
+
 
 # def before_all(context):
 #     use_fixture(setup_teardown, context)
