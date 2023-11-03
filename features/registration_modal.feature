@@ -11,13 +11,17 @@ Feature: Verify registration modal
     And I click on the “Become a tutor” button
     Then the "Sign up as a tutor" modal window is open
 
-  Scenario: Verify the tutor registration password without alphabetic numeric character
+  Scenario Outline: Verify the tutor registration password without alphabetic numeric character
     Given the Home page is opened
     When I click on the “Get started for free” button
     And page scrolled down to the What can you do block
     And I click on the “Become a tutor” button
-    And I enter "test" in the first name field
-    And I enter "test" in the last name field
-    And I enter "test@gmail.com" in the email field
-    And I enter "@#$%//////" in the password field
+    And I enter <first name> in the first name field
+    And I enter <last name> in the last name field
+    And I enter <email> in the email field
+    And I enter <password> in the password field
     Then the error message "Password must contain at least one alphabetic and one numeric character" is displayed
+
+    Examples:
+      | first name | last name | email          | password   |
+      | test       | test      | test@gmail.com | @#$%////// |
