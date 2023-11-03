@@ -1,46 +1,51 @@
 from behave import *
 
-
-@when("I click on the {button_text} button")
-def step_click_get_started_button(context, button_text):
-    pass
+from SpaceToStudy.ui.pages.home_page.home_guest import HomePageGuest
+from SpaceToStudy.ui.pages.sign_up_modal.sign_up_modal import RegistrationModal
 
 
-@when("page scrolled down to the {block_name} block")
-def step_what_can_you_do_block_is_displayed(context, block_name):
-    pass
+@when("I click on the \"Get started for free\" button")
+def step_click_get_started_button(context):
+    HomePageGuest(context.driver).click_started_for_free()
 
 
-@when("I click on the {button_text} button")
-def step_click_become_a_tutor_button(context, button_text):
-    pass
+@when("page scrolled down to the \"What can you do\" block")
+def step_what_can_you_do_block_is_displayed(context):
+    block_is_displayed = HomePageGuest(context.driver).get_what_can_u_do_block().is_displayed()
+    assert (bool(block_is_displayed), True)
 
 
-@then("the {registration_modal} modal is open")
-def step_open_registration_modal(context, registration_modal):
-    pass
+@when("I click on the \"Become a tutor button\" button")
+def step_click_become_a_tutor_button(context):
+    HomePageGuest(context.driver).click_become_a_tutor()
+
+
+@then("the Registration modal is open")
+def step_open_registration_modal(context):
+    RegistrationModal(context.driver).is_displayed()
 
 
 @when("I enter {first_name} in the first name field")
 def step_enter_first_name(context, first_name):
-    pass
+    RegistrationModal(context.driver).set_first_name(first_name)
 
 
 @when("I enter {last_name} in the last name field")
 def step_enter_last_name(context, last_name):
-    pass
+    RegistrationModal(context.driver).set_last_name(last_name)
 
 
 @when("I enter {email} in the email field")
 def step_enter_email(context, email):
-    pass
+    RegistrationModal(context.driver).set_email(email)
 
 
 @when("I enter {password} in the password field")
 def step_enter_incorrect_password(context, password):
-    pass
+    RegistrationModal(context.driver).set_password(password)
 
 
-@then("the the error message {error_message} is displayed")
-def step_error_message_is_displayed(context, error_message):
-    pass
+@then("the password error message is displayed")
+def step_error_message_is_displayed(context):
+    error_message = RegistrationModal(context.driver).get_password_error_message()
+    assert error_message == "Password must contain at least one alphabetic and one numeric character"
