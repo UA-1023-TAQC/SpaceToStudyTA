@@ -38,6 +38,15 @@ def step_impl(context):
         .click_4_and_above_radio_btn()
 
 
+@when('I set language input "Ukrainian"')
+def step_impl(context):
+    ExploreOffersPage(context.driver)\
+        .get_filtering_and_sorting_block()\
+        .get_filters_sidebar_component() \
+        .click_language_input() \
+        .set_language_input("Ukrainian")
+
+
 @when('I set {text} in name input field')
 def step_impl(context, text):
     ExploreOffersPage(context.driver)\
@@ -70,6 +79,12 @@ def step_impl(context, text):
 def step_impl(context):
     for offer in ExploreOffersPage(context.driver).get_list_of_offers_inline_card():
         assert float(offer.get_starline_element().get_numeric_value_for_stars()) >= 4
+
+
+@then('All offers have label "Ukrainian"')
+def step_impl(context):
+    for offer in ExploreOffersPage(context.driver).get_list_of_offers_inline_card():
+        assert "Ukrainian" in offer.get_languages()
 
 
 @then('I can see number "1" near "Filters" button')
