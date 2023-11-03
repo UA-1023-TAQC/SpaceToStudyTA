@@ -32,3 +32,12 @@ Feature: Sorting and filtering all offers
     And I click "Apply filters" button
     Then All offers have rating 4 stars and above
     And I can see number "1" near "Filters" button
+
+  Scenario: Test filtering by language in sidebar
+    When I click "Go to categories"
+    And I click "Show all offers"
+    And I click "Filters"
+    And I set language input "Ukrainian"
+    And I click "Apply filters" button
+    Then All offers have label "Ukrainian"
+    And I can see number "1" near "Filters" button
