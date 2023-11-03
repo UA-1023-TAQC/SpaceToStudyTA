@@ -1,18 +1,14 @@
 from behave import *
 
-from SpaceToStudy.ui.pages.categories.categories_page import CategoriesPage
 from SpaceToStudy.ui.pages.explore_offers.explore_offers_page import ExploreOffersPage
 from SpaceToStudy.ui.pages.home_page.home_student import HomePageStudent
 
 
-@when('I click "Go to categories"')
+@given('the user moved from home page to all offers page')
 def step_impl(context):
-    HomePageStudent(context.driver).click_button_go_to_categories()
-
-
-@when('I click "Show all offers"')
-def step_impl(context):
-    CategoriesPage(context.driver).click_show_all_offers_btn()
+    HomePageStudent(context.driver)\
+        .click_button_go_to_categories()\
+        .click_show_all_offers_btn()
 
 
 @when('I click "Filters"')
