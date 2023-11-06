@@ -6,9 +6,8 @@ from parameterized import parameterized_class
 
 from SpaceToStudy.api.res_categories.client import ResoursesCategoriesApiClient
 from SpaceToStudy.api.schema_for_errors import SCHEMA_FOR_ERRORS
-from tests.api.api_test_runners import BaseAPITestRunner, APITestRunnerWithStudent, APITestRunnerWithTutor, \
-    get_access_token
-from tests.utils.value_provider import ValueProvider as VP, ValueProvider
+from tests.api.api_test_runners import BaseAPITestRunner, get_access_token
+from tests.utils.value_provider import ValueProvider as VP
 from parameterized import parameterized
 
 
