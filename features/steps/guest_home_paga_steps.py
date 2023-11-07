@@ -47,5 +47,5 @@ def step_enter_incorrect_password(context, password):
 
 @then('the password {expected_error_message} is displayed')
 def step_error_message_is_displayed(context, expected_error_message):
-    actual_message = RegistrationModal(context.driver).get_password_error_message()
-    assert (expected_error_message, actual_message)
+    actual_error_message = RegistrationModal(context.driver).get_password_error_message()
+    assert (expected_error_message, actual_error_message)
