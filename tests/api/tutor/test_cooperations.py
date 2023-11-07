@@ -103,3 +103,21 @@ class TestCooperationApi(APITestRunnerWithTutor):
         validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
         self.assertEqual("Cooperation with the specified ID was not found.", response.json().get('message'))
         self.assertEqual("DOCUMENT_NOT_FOUND", response.json().get('code'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/494")
+    def test_get_cooperation_incorrect_id(self):
+        client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_cooperation_by_id("652e")
+        self.assertEqual(400, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("ID is invalid.", response.json().get('message'))
+        self.assertEqual("INVALID_ID", response.json().get('code'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/515#issue-1972401235")
+    def test_get_cooperation_document_not_found(self):
+        client = CooperationApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.get_cooperation_by_id("64954e34650b0c52c50d597e")
+        self.assertEqual(404, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual("Cooperation with the specified ID was not found.", response.json().get('message'))
+        self.assertEqual("DOCUMENT_NOT_FOUND", response.json().get('code'))
