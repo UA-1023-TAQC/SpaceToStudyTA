@@ -63,7 +63,7 @@ class UsersApiClient(BaseAPIClient):
         response = requests.patch(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)
         return response
 
-    @allure.step("Patch update user status by id")
+    @allure.step("Patch update user status by ID")
     def patch_update_user_status_by_id(self, user_id, data):
         url = f"{self.url}/{user_id}/change-status"
         response = requests.patch(url, headers={"Authorization": f"Bearer {self.access_token}"}, json=data)

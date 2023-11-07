@@ -95,11 +95,6 @@ class TestAPIUsers(BaseAPITestRunner):
         data_for_patch = {
             "tutor": "active"
         }
-        expected_status_code = 401
-        expected_code = "UNAUTHORIZED"
-        expected_message = "The requested URL requires user authorization."
-        user_id = "644f6f1777e2551b87786650"
-
         client = UsersApiClient(ValueProvider.get_base_api_url())
         response = client.patch_update_user_status_by_id(user_id, data_for_patch)
         self.assertEqual(expected_status_code, response.status_code)
