@@ -45,13 +45,7 @@ def step_enter_incorrect_password(context, password):
     RegistrationModal(context.driver).set_password(password)
 
 
-@then('the password "Password must contain at least one alphabetic and one numeric character" is displayed')
-def step_error_message_is_displayed(context):
-    message = RegistrationModal(context.driver).get_password_error_message()
-    assert message == "Password must contain at least one alphabetic and one numeric character"
-
-
-@then('the password "Password cannot be shorter than 8 and longer than 25 characters" is displayed')
-def step_error_message_is_displayed(context):
-    message = RegistrationModal(context.driver).get_password_error_message()
-    assert message == "Password cannot be shorter than 8 and longer than 25 characters"
+@then('the password {expected_error_message} is displayed')
+def step_error_message_is_displayed(context, expected_error_message):
+    actual_message = RegistrationModal(context.driver).get_password_error_message()
+    assert (expected_error_message, actual_message)
