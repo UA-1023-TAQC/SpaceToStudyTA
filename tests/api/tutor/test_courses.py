@@ -24,3 +24,24 @@ class TestAPICourses(APITestRunnerWithTutor):
         self.assertEqual(response.json()["count"], len(response.json()["items"]))
         self.assertEqual(response.json()["title"], "Test title")
         validate(instance=response.json(), schema=SCHEMA_FOR_ALL_COURSES)
+
+    # The method has not yet been implemented, the developers have been informed about it
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/476")
+    def test_post_course(self):
+        data = {
+            "title": "Test title",
+            "description": "Advanced english course with 5 modules and separated lessons for improving speaking, listening and reading.",
+            "author": "63da8767c9ad4c9a0b0eacd3",
+            "attachments": [
+                "63ed1cd25e9d781cdb6a6b15"
+            ],
+            "lessons": [
+                "63ed1cd25e9d781cdb6a6b17",
+                "63ac1ad47e9d526cdb6f4n51"
+            ]
+        }
+        client = CoursesApiClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.post_new_course(data=data)
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.json()["title"], "Test title")
+        validate(instance=response.json(), schema=SCHEMA_FOR_ALL_COURSES)

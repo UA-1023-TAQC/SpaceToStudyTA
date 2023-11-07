@@ -8,7 +8,8 @@ from SpaceToStudy.api.users.schemas import (SCHEMA_FOR_ALL_USERS,
                                             SCHEMA_FOR_USER,
                                             SCHEMA_FOR_REVIEWS_BY_USER_ID,
                                             SCHEMA_FOR_REVIEW_STATISTICS_FOR_USER,
-                                            SCHEMA_FOR_COOPERATIONS_BY_USER_ID)
+                                            SCHEMA_FOR_COOPERATIONS_BY_USER_ID,
+                                            SCHEMA_FOR_OFFERS_BY_USER_ID)
 from tests.api.api_test_runners import BaseAPITestRunner, get_access_token
 from tests.utils.value_provider import ValueProvider as VP
 
@@ -161,13 +162,28 @@ class TestAPIUsers(BaseAPITestRunner):
         self.assertEqual(expected_status_code, response.status_code)
         validate(instance=response.json(), schema=SCHEMA_FOR_COOPERATIONS_BY_USER_ID)
 
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/443",
+                     "Create tests for GET /users/{id}/offers Find offers for a user with specified ID:{user_id}")
+    @parameterized.expand([
+        ("tutor", "647dec927ffdce904010287c"),
+        ("student", "650023e50eeb49de31750c84")
+    ])
+    def test_find_offers_for_user_by_id(self, _, user_id):
+        expected_status_code = 200
+
+        client = UsersApiClient(VP.get_base_api_url(), self.accessToken)
+        response = client.get_offers_for_user_by_id(user_id)
+        self.assertEqual(expected_status_code, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_OFFERS_BY_USER_ID)
+
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/512",
                      "Create negative API tests GET /users [Status_code 400]")
     @parameterized.expand([
         ("get_users_by_id", None),
         ("get_reviews_for_user_by_id", "student"),
         ("get_review_statistics_for_user_by_id", None),
-        ("get_cooperations_for_user_by_id", None)
+        ("get_cooperations_for_user_by_id", None),
+        ("get_offers_for_user_by_id", None)
     ])
     def test_invalid_id(self, method, role):
         expected_status_code = 400
@@ -192,7 +208,8 @@ class TestAPIUsers(BaseAPITestRunner):
         ("get_users_by_id", None),
         ("get_reviews_for_user_by_id", "student"),
         ("get_review_statistics_for_user_by_id", None),
-        ("get_cooperations_for_user_by_id", None)
+        ("get_cooperations_for_user_by_id", None),
+        ("get_offers_for_user_by_id", None)
     ])
     def test_id_not_found(self, method, role):
         expected_status_code = 404

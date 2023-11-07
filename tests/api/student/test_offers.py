@@ -44,7 +44,7 @@ class TestOffersApi(APITestRunnerWithStudent):
         self.assertEqual("INVALID_ID", response.json().get('code'))
 
     @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/455#issue-1963040501")
-    def test_delete_offer_invalid_id(self):
+    def test_delete_offer_document_not_found(self):
         client = OffersApiClient(ValueProvider.get_base_api_url(), self.accessToken)
         response = client.delete_offer("64954e34650b0c52c50d597e")
         self.assertEqual(404, response.status_code)

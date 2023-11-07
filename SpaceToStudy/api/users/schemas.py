@@ -718,3 +718,218 @@ SCHEMA_FOR_COOPERATIONS_BY_USER_ID = {
         }
     }
 }
+
+SCHEMA_FOR_OFFERS_BY_USER_ID = {
+    "type": "object",
+    "required": ["count", "items"],
+    "properties": {
+        "count": {
+            "type": "integer"
+        },
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "proficiencyLevel": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": ["Beginner", "Intermediate", "Advanced", "Test Preparation", "Professional",
+                                     "Specialized"]
+                        }
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "languages": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "authorRole": {
+                        "type": "string",
+                        "enum": ["student", "tutor"]
+                    },
+                    "author": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            },
+                            "totalReviews": {
+                                "type": "object",
+                                "properties": {
+                                    "student": {
+                                        "type": "number"
+                                    },
+                                    "tutor": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": ["student", "tutor"]
+                            },
+                            "averageRating": {
+                                "type": "object",
+                                "properties": {
+                                    "student": {
+                                        "type": "number"
+                                    },
+                                    "tutor": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": ["student", "tutor"]
+                            },
+                            "FAQ": {
+                                "type": "object",
+                                "required": ["student", "tutor"],
+                                "properties": {
+                                    "student": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "required": ["question", "_id", "answer"],
+                                            "properties": {
+                                                "question": {
+                                                    "type": "string"
+                                                },
+                                                "_id": {
+                                                    "type": "string"
+                                                },
+                                                "answer": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "tutor": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "required": ["question", "_id", "answer"],
+                                            "properties": {
+                                                "question": {
+                                                    "type": "string"
+                                                },
+                                                "_id": {
+                                                    "type": "string"
+                                                },
+                                                "answer": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "professionalSummary": {
+                                "type": "string"
+                            },
+                            "photo": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["_id", "firstName", "lastName", "totalReviews", "averageRating"]
+                    },
+                    "subject": {
+                        "type": "object",
+                        "required": ["_id", "name"],
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "category": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string"
+                            },
+                            "appearance": {
+                                "type": "object",
+                                "properties": {
+                                    "icon": {
+                                        "type": "string"
+                                    },
+                                    "color": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["icon", "color"]
+                            }
+                        }
+                    },
+                    "chatId": {
+                        "type": ["string", "null"]
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "draft", "closed"]
+                    },
+                    "FAQ": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["_id", "question", "answer"],
+                            "properties": {
+                                "_id": {
+                                    "type": "string"
+                                },
+                                "question": {
+                                    "type": "string"
+                                },
+                                "answer": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "_id",
+                    "price",
+                    "proficiencyLevel",
+                    "title",
+                    "description",
+                    "languages",
+                    "authorRole",
+                    "author",
+                    "subject",
+                    "category",
+                    "status",
+                    "FAQ",
+                    "createdAt",
+                    "updatedAt",
+                    "chatId"
+                ],
+            }
+        }
+    }
+}
