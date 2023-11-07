@@ -88,3 +88,16 @@ class TestAPIUsers(BaseAPITestRunner):
         validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
         self.assertEqual(expected_code, response.json().get('code'))
         self.assertEqual(expected_message, response.json().get('message'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/502",
+                     "Create tests for PATCH /users/{id}/change-status Find and update user status by ID")
+    def test_patch_update_user_status_by_id_unauthorized(self):
+        data_for_patch = {
+            "tutor": "active"
+        }
+        client = UsersApiClient(ValueProvider.get_base_api_url())
+        response = client.patch_update_user_status_by_id(user_id, data_for_patch)
+        self.assertEqual(expected_status_code, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual(expected_code, response.json().get('code'))
+        self.assertEqual(expected_message, response.json().get('message'))

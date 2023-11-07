@@ -270,3 +270,30 @@ class TestAPIUsers(BaseAPITestRunner):
         validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
         self.assertEqual(expected_code, response.json().get('code'))
         self.assertEqual(expected_message, response.json().get('message'))
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/502",
+                     "Create tests for PATCH /users/{id}/change-status Find and update user status by ID")
+    @parameterized.expand([
+        ("current_user", None),
+        ("other_user", "64e88b8b253a3ff15b9c6cf5"),
+        ("invalid_id", "abcdefg"),
+        ("not_found_id", "004f6f1777e2551b87786650"),
+       ])
+    def test_patch_update_user_status_by_id(self, _, user_id):
+        data_for_patch = {
+            "tutor": "active"
+        }
+        expected_status_code = 403
+        expected_code = "FORBIDDEN"
+        expected_message = "You do not have permission to perform this action."
+
+        client = UsersApiClient(VP.get_base_api_url(), self.accessToken)
+        if user_id is None:
+            access_token_decoded_json = client.get_decode_access_token()
+            user_id = access_token_decoded_json.get("id")
+
+        response = client.patch_update_user_status_by_id(user_id, data_for_patch)
+        self.assertEqual(expected_status_code, response.status_code)
+        validate(instance=response.json(), schema=SCHEMA_FOR_ERRORS)
+        self.assertEqual(expected_code, response.json().get('code'))
+        self.assertEqual(expected_message, response.json().get('message'))
