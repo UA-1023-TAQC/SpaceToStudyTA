@@ -20,22 +20,21 @@ def setup_teardown(context):
 
 
 def before_scenario(context, scenario):
-    if "student" in scenario.tags:
-        (HomePageGuest(context.driver)
-         .get_header()
-         .click_login_btn()
-         .set_email(ValueProvider.get_student_email())
-         .set_password(ValueProvider.get_student_password())
-         .click_login_button())
-    elif "tutor" in scenario.tags:
-        (HomePageGuest(context.driver)
-         .get_header()
-         .click_login_btn()
-         .set_email(ValueProvider.get_tutor_email())
-         .set_password(ValueProvider.get_tutor_password())
-         .click_login_button())
-    else:
-        pass
+    login_page = (HomePageGuest(context.driver)
+                  .get_header()
+                  .click_login_btn())
+    match scenario.tags:
+
+        case "student":
+            (login_page
+             .set_email(ValueProvider.get_student_email())
+             .set_password(ValueProvider.get_student_password()))
+        case "tutor":
+            (login_page
+             .set_email(ValueProvider.get_tutor_email())
+             .set_password(ValueProvider.get_tutor_password()))
+
+    login_page.click_login_button()
 
 
 # def before_all(context):
