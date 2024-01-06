@@ -26,3 +26,9 @@ class QuestionsAPIClient(BaseAPIClient):
         url = f"{self.url}"
         response = requests.post(url, cookies={'accessToken': self.access_token}, json=data)
         return response
+
+    @allure.step("Updating the questions by ID")
+    def patch_questions(self, question_id, data):
+        url = f"{self.url}/{question_id}"
+        response = requests.patch(url, cookies={'accessToken': self.access_token}, json=data)
+        return response

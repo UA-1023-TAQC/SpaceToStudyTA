@@ -1,6 +1,4 @@
 import allure
-
-from SpaceToStudy.api.quizzes.client_quizzes import QuizzesAPIClient
 from api.questions.client_questions import QuestionsAPIClient
 from api.questions.schemas import ALL_QUESTIONS_SCHEMA, POST_QUESTIONS_SCHEMA
 from tests.api.api_test_runners import APITestRunnerWithTutor
@@ -48,3 +46,14 @@ class TestAPIQuestions(APITestRunnerWithTutor):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json().get('title'), "Test")
         validate(instance=response.json(), schema=POST_QUESTIONS_SCHEMA)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/547")
+    def test_patch_quizzes(self):
+        data = {
+            "title": "Test update title"
+        }
+        client = QuestionsAPIClient(ValueProvider.get_base_api_url(), self.accessToken)
+        quizzes_response = client.get_questions().json()['items'][0]['_id']
+        print(quizzes_response)
+        response = client.patch_questions(quizzes_response, data=data)
+        self.assertEqual(response.status_code, 204)
