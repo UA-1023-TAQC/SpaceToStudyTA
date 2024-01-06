@@ -2,7 +2,7 @@ import allure
 
 from SpaceToStudy.api.quizzes.client_quizzes import QuizzesAPIClient
 from api.questions.client_questions import QuestionsAPIClient
-from api.questions.schemas import ALL_QUESTIONS_SCHEMA
+from api.questions.schemas import ALL_QUESTIONS_SCHEMA, POST_QUESTIONS_SCHEMA
 from tests.api.api_test_runners import APITestRunnerWithTutor
 from tests.utils.value_provider import ValueProvider
 from jsonschema import validate
@@ -24,3 +24,27 @@ class TestAPIQuestions(APITestRunnerWithTutor):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json().get('_id'), "6599b0dd671d6db6ce5f2b70")
         self.assertEqual(response.json().get('title'), "Test")
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/546")
+    def test_post_new_question(self):
+        data = {
+            "title": "Test",
+            "text": "What is the chemical symbol for water?",
+            "answers": [
+                {
+                    "text": "First answer2",
+                    "isCorrect": True
+                },
+                {
+                    "text": "Second answer",
+                    "isCorrect": False
+                }
+            ],
+            "type": "multipleChoice",
+            "category": "6477007a6fa4d05e1a800ce1"
+        }
+        client = QuestionsAPIClient(ValueProvider.get_base_api_url(), self.accessToken)
+        response = client.post_question(data=data)
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.json().get('title'), "Test")
+        validate(instance=response.json(), schema=POST_QUESTIONS_SCHEMA)

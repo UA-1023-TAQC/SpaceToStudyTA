@@ -20,3 +20,9 @@ class QuestionsAPIClient(BaseAPIClient):
         url = f"{self.url}/{questions_id}"
         response = requests.get(url, cookies={'accessToken': self.access_token})
         return response
+
+    @allure.step("Post a new question")
+    def post_question(self, data):
+        url = f"{self.url}"
+        response = requests.post(url, cookies={'accessToken': self.access_token}, json=data)
+        return response
