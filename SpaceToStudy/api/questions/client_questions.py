@@ -14,3 +14,9 @@ class QuestionsAPIClient(BaseAPIClient):
         url = f"{self.url}"
         response = requests.get(url, cookies={'accessToken': self.access_token})
         return response
+
+    @allure.step("Getting a questions by ID")
+    def get_questions_by_id(self, questions_id):
+        url = f"{self.url}/{questions_id}"
+        response = requests.get(url, cookies={'accessToken': self.access_token})
+        return response
