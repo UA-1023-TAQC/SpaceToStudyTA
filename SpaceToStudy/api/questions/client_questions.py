@@ -32,3 +32,9 @@ class QuestionsAPIClient(BaseAPIClient):
         url = f"{self.url}/{question_id}"
         response = requests.patch(url, cookies={'accessToken': self.access_token}, json=data)
         return response
+
+    @allure.step("Deleting a question by ID")
+    def delete_question(self, question_id):
+        url = f"{self.url}/{question_id}"
+        response = requests.delete(url, cookies={'accessToken': self.access_token})
+        return response

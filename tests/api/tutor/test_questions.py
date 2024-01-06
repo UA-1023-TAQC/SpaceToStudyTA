@@ -57,3 +57,10 @@ class TestAPIQuestions(APITestRunnerWithTutor):
         print(quizzes_response)
         response = client.patch_questions(quizzes_response, data=data)
         self.assertEqual(response.status_code, 204)
+
+    @allure.testcase("https://github.com/UA-1023-TAQC/SpaceToStudyTA/issues/548")
+    def test_delete_quizzes(self):
+        client = QuestionsAPIClient(ValueProvider.get_base_api_url(), self.accessToken)
+        question_response = client.get_questions().json()['items'][0]['_id']
+        response = client.delete_question(question_response)
+        self.assertEqual(response.status_code, 204)
